@@ -135,10 +135,20 @@
        *
        * @param {string} message Text to be placed in pre element.
        */
-      function appendPre(message,temps) {
-        var pre = document.getElementById(temps=="f"?"outputNext":"outputPast");
+      function appendPre(message,temps,nextWeek) {
+        if(nextWeek){
+          var pre = document.getElementById("outputNW");
+          console.log("gothere")
+
+        }
+        else{
+          var pre = document.getElementById(temps=="f"?"outputNext":"outputPast");
+        }
+        var para= document.createElement("P");
         var textContent = document.createTextNode(message+"\n");
-        pre.appendChild(textContent);
+        para.appendChild(textContent);
+        //pre.appendChild(para.appendChild(textContent));
+        pre.appendChild(para);
       }
 
       function compareDate(dateP,date2){
@@ -148,8 +158,6 @@
       }
       else{return "f"};   
       }
-
-      //var numToMois={"01":"janvier","02":"février","03":"mars","04":"avril","05":"mai","06":"juin","07":"juillet","08":"août","09":"septembre","10":"octobre","11":"novembre","12":"décembre"};
 
       function outputEvent(event,temps){
         try{
@@ -162,13 +170,14 @@
           }
           else{
             var d=event.start.dateTime;
-            //var dateEv = new Date(d.substring(0,4),d.substring(5,7),d.substring(8,10));
             var dateEv = DT(d);
-            //console.log("DT used:");
-            //console.log(dateEv);
-            //var temps = compareDate(new Date(),dateEv);
-            //console.log("temps: "+temps);
-            appendPre(S(dateEv,VP(V("avoir").t(temps),NP(N("lieu").n("s")),NP(D("ce"),N("événement").a(":"))),event.summary),temps);
+            var nextWeek;
+            if((new Date(d) - new Date())<60*60*24*7*1000 && (new Date(d) - new Date())>0){
+              nextWeek=true;
+            }
+            else{nextWeek=false;}
+            //console.log("sub:"+(new Date(d) - new Date()))//dateEv - DT(new Date())))
+            appendPre(S(dateEv,VP(V("avoir").t(temps),NP(N("lieu").n("s")),NP(D("ce"),N("événement").a(":"))),event.summary),temps,nextWeek);
           }
         }
         catch(err){
