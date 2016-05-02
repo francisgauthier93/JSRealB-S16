@@ -74,6 +74,8 @@
        * appropriate message is printed.
        */
       function loadPersonalCalendar() {
+
+        $("#NW").show();
         var request2 = gapi.client.calendar.calendarList.list({
         });
         request2.execute(function(resp){
@@ -93,6 +95,7 @@
       }
 
       function loadIncomingEvents(t){
+
         var request=gapi.client.calendar.calendarList.list({
         });
         request.execute(function(resp){

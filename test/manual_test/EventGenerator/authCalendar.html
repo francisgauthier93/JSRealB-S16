@@ -5,13 +5,14 @@
     <title>Génération automatique d'agenda</title>
     <meta name="google-signin-client_id" content="412269236550-ccp971q3qlv6nhv39b4fqrltrgikin23.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="jquery-1.11.3.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="JSRealB.js"></script>
     <script type="text/javascript" charset="utf-8" src="authScript.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=checkAuth">
     </script>
   </head>
   <body>
-    <h2>Votre calendrier:</h2>
+    <h2>Votre calendrier</h2>
     <div id="calendarFrame"></div>
 
 <!--     <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
@@ -24,7 +25,7 @@
     </div>
     <div id="outputNW">
       <!-- <legend>Semaine prochaine</legend> -->
-      <h3>Semaine prochaine</h3>
+      <h3 hidden id="NW">Semaine prochaine</h3>
     </div>
 
     <div id="outputNext"></div>
