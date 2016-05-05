@@ -1,6 +1,7 @@
       var CLIENT_ID = "412269236550-ccp971q3qlv6nhv39b4fqrltrgikin23.apps.googleusercontent.com";
 
       var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
+      //document.getElementById("signout-button").style.display='none';
 
       /**
        * Check if current user has authorized this application.
@@ -56,13 +57,15 @@
        * once client library is loaded.
        */
       function loadCalendarApi() {
+        //document.getElementById("signout-button").style.display='inline';
         loadLanguage("./","fr",function(){
           gapi.client.load('calendar', 'v3', loadPersonalCalendar);
         });
       }
 
       function signOut(event){
-        gapi.auth.signOut();
+        var auth1=gapi.auth.getAuthInstance();
+        auth1.signOut();
         console.log("user signed out");
         var authorizeDiv = document.getElementById('authorize-div');
         authorizeDiv.style.display ='inline';
@@ -74,6 +77,10 @@
        * appropriate message is printed.
        */
       function loadPersonalCalendar() {
+
+        //test JSON
+        console.log(JSrealB.Config.get("lexicon"));
+        console.log(JSrealB.Config.get("db"));
 
         $("#NW").show();
         var request2 = gapi.client.calendar.calendarList.list({

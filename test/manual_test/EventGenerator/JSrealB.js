@@ -1577,7 +1577,9 @@ var JSrealB = (function() {
                 rule: rule,
                 feature: feature,
                 isDevEnv: true,
-                printTrace: false
+                printTrace: false,
+                //ajout db
+                db : null
             });
         }
     };
@@ -2742,7 +2744,8 @@ function loadLanguage(dataDir,language,fn){
         language: language,
         lexiconUrl: dataDir+"lex-"+language+".json",
         ruleUrl: dataDir+"rule-"+language+".json",
-        featureUrl: dataDir+"feature.json"
+        featureUrl: dataDir+"feature.json",
+        dbAEDIROUM : dataDir+"dbAEDIROUM.json"
     }, 
     fn,
     function(mess){
@@ -2828,7 +2831,9 @@ JSrealB.Config = (function() {
         printTrace: false,
         lexicon: {},
         rule: {},
-        feature: {}
+        feature: {},
+        //ajout db
+        db : {}
     };
     
     return {
@@ -3042,7 +3047,8 @@ JSrealB.Logger = (function() {
  * 
  * Initialization
  */
-var JSrealBResource = {en: {}, fr: {}, common: {}};
+ //ajout db
+var JSrealBResource = {en: {}, fr: {}, common: {},db:{}};
 
 var JSrealLoader = function(resource, done, fail) {
     
@@ -3070,6 +3076,7 @@ var JSrealLoader = function(resource, done, fail) {
     var lexiconUrl = resource.lexiconUrl;
     var ruleUrl = resource.ruleUrl;
     var featureUrl = resource.featureUrl;
+    var dbAEDIROUMUrl = resource.dbAEDIROUM; //dbAEDIROUM.json
     
     JSrealB.Request.getJson(
         lexiconUrl,
@@ -3091,19 +3098,39 @@ var JSrealLoader = function(resource, done, fail) {
                     {
                         JSrealB.Request.getJson(
                             featureUrl,
+                            //dbAEDIROUMUrl,
                             function(feature)
                             {
                                 JSrealBResource.common.feature = feature;
 
                                 JSrealB.init(language, lexicon, rule, feature);
-
+                                                               
                                 done();
+
+
                             }, 
                             function(status, error) {
                                 JSrealB.Logger.alert("Dictionary loading : " 
                                         + status + " : " + error);
                                 if(fail) fail(error);
                             }
+                        );
+                        //ajout Francis
+                        JSrealB.Request.getJson(
+                            dbAEDIROUMUrl,
+                            function(data){
+
+                                JSrealB.Config.set({db:data})
+
+                                        //done();
+                                },
+                                function(status,error){
+                                     JSrealB.Logger.alert("DB loading : " 
+                                             + status + " : " + error);
+                                    if(fail) fail(error);
+                                        //console.log("Could not load AEDIROUMdb : "+status+" : "+error);
+                                }
+
                         );
                     }
                 }, 

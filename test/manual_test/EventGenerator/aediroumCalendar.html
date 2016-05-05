@@ -2,16 +2,24 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8"> 
-    <title>Génération automatique d'agenda</title>
+    <title>Génération de l'agenda de l'AÉDIROUM</title>
     <meta name="google-signin-client_id" content="412269236550-ccp971q3qlv6nhv39b4fqrltrgikin23.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="JSRealB.js"></script>
-    <script type="text/javascript" charset="utf-8" src="authScript.js"></script>
+    <script type="text/javascript" scr="dbAEDIROUM2.js"></script>
+    <script type="text/javascript" src="createEvent.js"></script>
+    <script type="text/javascript" charset="utf-8" src="aediroumScript.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
   </head>
   <body>
-    <h2>Votre calendrier</h2>
+    <h2>Calendrier de l'AÉDIROUM</h2>
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
     <div id="calendarFrame"></div>
 
 <!--     <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
@@ -23,7 +31,6 @@
       </button>
     </div>
     <div id="outputNW">
-      <!-- <legend>Semaine prochaine</legend> -->
       <h3 hidden id="NW">Semaine prochaine</h3>
     </div>
 
