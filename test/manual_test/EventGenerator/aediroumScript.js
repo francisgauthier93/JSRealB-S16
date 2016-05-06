@@ -62,22 +62,17 @@
 
       function loadPersonalCalendar() {
 
-
         $("#NW").show();
         var request2 = gapi.client.calendar.calendarList.list({
         });
         request2.execute(function(resp){
           var listCal= resp.items;
-          //var i;
-          // for(i=0;i<listCal.length;i++){
-          //   if(listCal[i].primary){
           var frame=document.getElementById("calendarFrame");
 
             //changer la prochaine ligne pour le calenderId de l'AEDIROUM, une fois qu'on en aura un
 
-          frame.innerHTML = '<iframe src=https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ea0ig2m73k4a9gjb6p4nc4jsj0@group.calendar.google.com&amp;color=%232952A3&amp;ctz=Pacific%2FNiue" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>';
-          //   }
-          // }
+          frame.innerHTML = '<iframe src=https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ea0ig2m73k4a9gjb6p4nc4jsj0@group.calendar.google.com&amp;color=%232952A3&amp;ctz=Pacific%2FNiue" style="border-width:0" width="800" height="500" frameborder="0" scrolling="no"></iframe>';
+
         });
         loadIncomingEvents("f");
         loadIncomingEvents("i");
@@ -110,6 +105,7 @@
                   });
                   request3.execute(function(resp){
                     var events = resp.items;
+                    console.log(events)
                     for(var i=0;i<events.length;i++){
                       
                       outputEvent(events[i],t);
@@ -119,6 +115,7 @@
                 }
             }
           }
+
         });
       }
 
@@ -154,19 +151,23 @@
         else{
           try{
             eventObj = createEvent(event.description);
-            console.log("the event")
-            console.log(event)
-            var phrase1 = S(DT(event.start.dateTime).dOpt({day: false, hour: false, minute: false,seconde: false}).a(","),
+            var phrase1 =S(DT(event.start.dateTime).dOpt({day: false, hour: false, minute: false,seconde: false}).a(","),
                           (eventObj.org.prenom).tag("span",{"data-toggle":"tooltip", "title":getOrgInfo(eventObj.org), "data-placement":"top"}),VP(V("organiser").t(temps),eventObj.type));
             var phrase2 = S(VP(V("rejoindre").t("ip").pe(2).n("p").a("-"),D("le").g(eventObj.org.genre)),
-              PP(P("à"),(eventObj.lieu.nom).tag("span",{"data-toggle":"tooltip", "title":getLocInfo(eventObj.lieu), "data-placement":"top"})),PP(P("dès"),DT(event.start.dateTime).dOpt({year: false, month: false, date: false, day: false, second: false,nat:false})));
+              PP(P("à"),(eventObj.lieu.nom).tag("span",{"data-toggle":"tooltip", "title":getLocInfo(eventObj.lieu), "data-placement":"top"})),
+              PP(P("entre"),CP(C("et"),DT(event.start.dateTime).dOpt({year: false, month: false, date: false, day: false, second: false,nat:false}),
+              DT(event.end.dateTime).dOpt({year: false, month: false, date: false, day: false, second: false,nat:false}))));
             //Problème d'élision ... +problème d'espacement après le tiret
             var nextWeek;
+
+            //var phrase3 = S(NP(N("nombre"),PP(P("à"),VP(V("voir").a(":")))),NO("4").dOpt({rnum:true}));
+
             // if((new Date(event.start.dateTime) - new Date())<60*60*24*7*1000 && (new Date(event.start.dateTime) - new Date())>0){
             //   nextWeek=true;
             // }
             // else{nextWeek=false;}
             //phrase1 = eval('N("joueur").tag("i",{"style":"text-decoration:underline"})');
+
             
             appendPre(phrase1+" "+phrase2,temps,true);//nextWeek);
           }
@@ -206,6 +207,8 @@
             console.log("Could not access some info for an event: "+err);
           }     
       }
+
+
 
 
 

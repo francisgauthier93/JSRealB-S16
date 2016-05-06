@@ -151,6 +151,7 @@
         "raw": "raw",
         "max_precision": "mprecision",
         "natural": "nat",
+        "relative_number":"rnum",
         "year": "year",
         "month": "month",
         "date": "date",

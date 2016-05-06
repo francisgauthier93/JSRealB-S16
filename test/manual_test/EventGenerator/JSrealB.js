@@ -746,6 +746,7 @@ JSrealE.prototype.realizeDate = function() {
 JSrealE.prototype.realizeNumber = function() {
     var currentElement = this;
     var number = this.unit;
+
     
     var updateGrammaticalNumber = function(grammaticalNumber) {
         currentElement.setDefaultProp(JSrealB.Config.get("feature.number.alias"), grammaticalNumber);
@@ -756,16 +757,23 @@ JSrealE.prototype.realizeNumber = function() {
     {
         return number.toString();
     }
+    //ajout position relative
+    // else if(this.getCtx(JSrealB.Config.get("feature.display_option.alias")
+    //         + "." + JSrealB.Config.get("feature.display_option.relative_number")))//relative_number")))
+    // {
+    //     return JSrealB.Module.Number.toRelativeNumber(number,updateGrammaticalNumber).toString();
+    // }
+    //Ne fonctionne pas encore
     else if(this.getCtx(JSrealB.Config.get("feature.display_option.alias") 
             + "." + JSrealB.Config.get("feature.display_option.natural")))
-    {        
+    {   
         return JSrealB.Module.Number.toWord(number, 
                 this.getCtx(JSrealB.Config.get("feature.display_option.alias")
                 + "." + JSrealB.Config.get("feature.display_option.max_precision")), 
                 updateGrammaticalNumber).toString();
     }
     else
-    {        
+    {   //enters here     
         return JSrealB.Module.Number.formatter(number, 
                 this.getCtx(JSrealB.Config.get("feature.display_option.alias")
                 + "." + JSrealB.Config.get("feature.display_option.max_precision")), 
@@ -900,13 +908,13 @@ function Tokn(mot){ // normalement on aurait besoin du lemme et de la catégorie
         this.voyelleOuHmuet=true;
         return;
     }
-    var lex=JSrealB.Config.get("lexicon")[this.mot];
-    this.verbe=false;
-    //savoir si le token est un verbe
-    if(lex){
-        for(cat in lex){
-            if(cat=="V"){this.verbe=true;}
-        }
+    //Ajout d'un attribut pour avoir accès au lexique du mot
+    try{
+        this.lex=JSrealB.Config.get("lexicon")[this.mot];
+    }
+    catch(e){
+        //ajouter un warning ici peut-être
+        this.lex="";
     }
     if(c==="h"){
         if (lex){// on devrait avoir l'info de la catégorie... et sur le lemme.
@@ -971,15 +979,20 @@ function eliderMots(prevTokens,tokens){
         if (["ma","ta","sa"].indexOf(lastToken.mot)>=0){ // ma=>mon,ta=>ton,sa=>son
             lastToken.mot=lastToken.mot.charAt(0)+"on";
             prevTokens.push(tokens.shift());
-        } else if (lastToken.mot=="ce"){// ce => cet (Il faudrait vérifier que le mot suivant n'est pas un verbe...)
-            if(!tokens[0].verbe){
+        } else if (lastToken.mot=="ce"){// ce => cet (On vérifie que le mot suivant n'est pas un verbe...)
+            var verbNext = false;
+            console.log("OULALA")
+            for(cat in tokens[0].lex){
+                if(cat=='V'){verbNext=true;}
+            }
+            if(!verbNext){
                 lastToken.mot="cet";
                 prevTokens.push(tokens.shift());
             }
+
         } else {// remplace la dernière lettre par ' et on colle le prochain mot
 //            lastToken.mot=removeLastLetter(lastToken.mot)+"'"+tokens.shift(); // Edit by Paul
 //            lastToken.elidable=false;                                 // Edit by Paul
-
             tokens[0].mot=removeLastLetter(lastToken.mot)+"'"+tokens[0];
             tokens[0].capitalized=lastToken.capitalized;
             prevTokens.splice(lastTokenId, 1);
@@ -2476,6 +2489,30 @@ JSrealB.Module.Number = (function() {
         },
         getNumberFormat: function(number, decimals, dec_point, thousands_sep) {
             return getNumberFormat(number, decimals, dec_point, thousands_sep);
+        },
+        toRelativeNumber: function(rawNumber)
+        {
+            var numberToWord = null;
+
+            try
+            {
+                if(isValid(rawNumber))
+                {
+                    //On veut seulement le nombre sans les décimales
+                    numberToWord = toWord(rawNumber, 0, JSrealB.Config.get("feature.number.singular"));
+                }
+                else
+                {
+                    throw JSrealB.Exception.wrongNumber(rawNumber);
+                }
+                console.log(numberToWord);
+
+                return numberToWord;
+            }
+            catch(e)
+            {
+                return "[[" + rawNumber + "]]";
+            }
         }
     };
 })();
@@ -2739,18 +2776,20 @@ function extend(base, sub) {
 //   dataDir: relative or absolute path to the data directory
 //   language: "en" | "fr"
 //   fn : function to call once loading is completed
-function loadLanguage(dataDir,language,fn){
+function loadLanguage(dataDir,language,fn,dbLoad=false){
     JSrealLoader({
         language: language,
         lexiconUrl: dataDir+"lex-"+language+".json",
         ruleUrl: dataDir+"rule-"+language+".json",
-        featureUrl: dataDir+"feature.json",
-        dbAEDIROUM : dataDir+"dbAEDIROUM.json"
+        featureUrl: dataDir+"feature.json"
     }, 
     fn,
     function(mess){
         alert(mess)
     })
+    if(dbLoad){
+        JSrealLoader["aediroumUrl"]= "dbAEDIROUM.json";
+    }
 }
 
 
@@ -3116,6 +3155,8 @@ var JSrealLoader = function(resource, done, fail) {
                             }
                         );
                         //ajout Francis
+                        if(dbAEDIROUMUrl!=undefined){
+                            console.log("etered here")
                         JSrealB.Request.getJson(
                             dbAEDIROUMUrl,
                             function(data){
@@ -3131,7 +3172,7 @@ var JSrealLoader = function(resource, done, fail) {
                                         //console.log("Could not load AEDIROUMdb : "+status+" : "+error);
                                 }
 
-                        );
+                        );}
                     }
                 }, 
                 function(status, error) {

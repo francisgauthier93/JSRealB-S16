@@ -215,7 +215,7 @@ JSrealE.prototype.addConstituent = function(element, grammaticalFunction) {
         break;
         case JSrealE.grammaticalFunction.head:
             if(this.constituents.head === undefined
-                    || this.constituents.head === null)
+                    || this.constituents.head === null)
             {
                 element.fct = JSrealE.grammaticalFunction.head;
                 this.constituents.head = element;
@@ -746,6 +746,7 @@ JSrealE.prototype.realizeDate = function() {
 JSrealE.prototype.realizeNumber = function() {
     var currentElement = this;
     var number = this.unit;
+
     
     var updateGrammaticalNumber = function(grammaticalNumber) {
         currentElement.setDefaultProp(JSrealB.Config.get("feature.number.alias"), grammaticalNumber);
@@ -756,16 +757,23 @@ JSrealE.prototype.realizeNumber = function() {
     {
         return number.toString();
     }
+    //ajout position relative
+    // else if(this.getCtx(JSrealB.Config.get("feature.display_option.alias")
+    //         + "." + JSrealB.Config.get("feature.display_option.relative_number")))//relative_number")))
+    // {
+    //     return JSrealB.Module.Number.toRelativeNumber(number,updateGrammaticalNumber).toString();
+    // }
+    //Ne fonctionne pas encore
     else if(this.getCtx(JSrealB.Config.get("feature.display_option.alias") 
             + "." + JSrealB.Config.get("feature.display_option.natural")))
-    {        
+    {   
         return JSrealB.Module.Number.toWord(number, 
                 this.getCtx(JSrealB.Config.get("feature.display_option.alias")
                 + "." + JSrealB.Config.get("feature.display_option.max_precision")), 
                 updateGrammaticalNumber).toString();
     }
     else
-    {        
+    {   //enters here     
         return JSrealB.Module.Number.formatter(number, 
                 this.getCtx(JSrealB.Config.get("feature.display_option.alias")
                 + "." + JSrealB.Config.get("feature.display_option.max_precision")), 
@@ -836,6 +844,8 @@ JSrealE.prototype.phonetic = function(content) {
         if(length2>=2){
              // crée des Tokens qui devraient venir d'ailleurs...
             var tokens=mots.map(function(mot){return new Tokn(mot)});
+            //avant d'élider, je vais essayer de gérer le cas d'inversion de mots (en commencant par l'imperatif)
+            
 //            newContent=eliderMots([tokens.shift()],tokens).map(function(token){return token.toString()}).join(" "); // Edit by Paul
             tokens = eliderMots([tokens.shift()],tokens);
             newContent = "";
@@ -874,7 +884,7 @@ var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop) {
 };
 
 //// "module cheap" d'élision en français
-// appelé dans phraseFormatting
+/// appelé dans phraseFormatting
 var voyellesAccentuées="àäéèêëïîöôùû";
 var voyelles="aeiou"+voyellesAccentuées;
 
@@ -900,10 +910,18 @@ function Tokn(mot){ // normalement on aurait besoin du lemme et de la catégorie
         this.voyelleOuHmuet=true;
         return;
     }
+    //Ajout d'un attribut pour avoir accès au lexique du mot
+    try{
+        this.lex=JSrealB.Config.get("lexicon")[this.mot];
+    }
+    catch(e){
+        //ajouter un warning ici peut-être
+        this.lex="";
+    }
     if(c==="h"){
-        var lex=JSrealB.Config.get("lexicon")[this.mot];
         if (lex){// on devrait avoir l'info de la catégorie... et sur le lemme.
             // ici on cherche dans la première en supposant que le mot est un lemme 
+
             for (cat in lex){
                 if (!lex[cat].h){
                     this.voyelleOuHmuet=true;
@@ -963,13 +981,19 @@ function eliderMots(prevTokens,tokens){
         if (["ma","ta","sa"].indexOf(lastToken.mot)>=0){ // ma=>mon,ta=>ton,sa=>son
             lastToken.mot=lastToken.mot.charAt(0)+"on";
             prevTokens.push(tokens.shift());
-        // } else if (lastToken.mot=="ce"){ // ce => cet (Il faudrait vérifier que le mot suivant n'est pas un verbe...)
-        //     lastToken.mot="cet";
-        //     prevTokens.push(tokens.shift());
+        } else if (lastToken.mot=="ce"){// ce => cet (On vérifie que le mot suivant n'est pas un verbe...)
+            var verbNext = false;
+            for(cat in tokens[0].lex){
+                if(cat=='V'){verbNext=true;}
+            }
+            if(!verbNext){
+                lastToken.mot="cet";
+                prevTokens.push(tokens.shift());
+            }
+
         } else {// remplace la dernière lettre par ' et on colle le prochain mot
 //            lastToken.mot=removeLastLetter(lastToken.mot)+"'"+tokens.shift(); // Edit by Paul
 //            lastToken.elidable=false;                                 // Edit by Paul
-
             tokens[0].mot=removeLastLetter(lastToken.mot)+"'"+tokens[0];
             tokens[0].capitalized=lastToken.capitalized;
             prevTokens.splice(lastTokenId, 1);
@@ -1567,7 +1591,9 @@ var JSrealB = (function() {
                 rule: rule,
                 feature: feature,
                 isDevEnv: true,
-                printTrace: false
+                printTrace: false,
+                //ajout db
+                db : null
             });
         }
     };
@@ -2464,6 +2490,30 @@ JSrealB.Module.Number = (function() {
         },
         getNumberFormat: function(number, decimals, dec_point, thousands_sep) {
             return getNumberFormat(number, decimals, dec_point, thousands_sep);
+        },
+        toRelativeNumber: function(rawNumber)
+        {
+            var numberToWord = null;
+
+            try
+            {
+                if(isValid(rawNumber))
+                {
+                    //On veut seulement le nombre sans les décimales
+                    numberToWord = toWord(rawNumber, 0, JSrealB.Config.get("feature.number.singular"));
+                }
+                else
+                {
+                    throw JSrealB.Exception.wrongNumber(rawNumber);
+                }
+                console.log(numberToWord);
+
+                return numberToWord;
+            }
+            catch(e)
+            {
+                return "[[" + rawNumber + "]]";
+            }
         }
     };
 })();
@@ -2635,7 +2685,7 @@ var getValueByFeature = function(featureList, featureRequested) {
             if(featureList[i].hasOwnProperty(currentFeatureList[j])
                     && (featureList[i][currentFeatureList[j]]
                             === featureRequested[currentFeatureList[j]]
-                        || featureList[i][currentFeatureList[j]] === "x" // x accepts all values
+                        || featureList[i][currentFeatureList[j]] === "x" // x accepts all values
                         )
                     && featureRequested[currentFeatureList[j]] !== null
                 )
@@ -2727,7 +2777,7 @@ function extend(base, sub) {
 //   dataDir: relative or absolute path to the data directory
 //   language: "en" | "fr"
 //   fn : function to call once loading is completed
-function loadLanguage(dataDir,language,fn){
+function loadLanguage(dataDir,language,fn,dbLoad=false){
     JSrealLoader({
         language: language,
         lexiconUrl: dataDir+"lex-"+language+".json",
@@ -2738,6 +2788,9 @@ function loadLanguage(dataDir,language,fn){
     function(mess){
         alert(mess)
     })
+    if(dbLoad){
+        JSrealLoader["aediroumUrl"]= "dbAEDIROUM.json";
+    }
 }
 
 
@@ -2818,7 +2871,9 @@ JSrealB.Config = (function() {
         printTrace: false,
         lexicon: {},
         rule: {},
-        feature: {}
+        feature: {},
+        //ajout db
+        db : {}
     };
     
     return {
@@ -3032,7 +3087,8 @@ JSrealB.Logger = (function() {
  * 
  * Initialization
  */
-var JSrealBResource = {en: {}, fr: {}, common: {}};
+ //ajout db
+var JSrealBResource = {en: {}, fr: {}, common: {},db:{}};
 
 var JSrealLoader = function(resource, done, fail) {
     
@@ -3060,6 +3116,7 @@ var JSrealLoader = function(resource, done, fail) {
     var lexiconUrl = resource.lexiconUrl;
     var ruleUrl = resource.ruleUrl;
     var featureUrl = resource.featureUrl;
+    var dbAEDIROUMUrl = resource.dbAEDIROUM; //dbAEDIROUM.json
     
     JSrealB.Request.getJson(
         lexiconUrl,
@@ -3081,13 +3138,16 @@ var JSrealLoader = function(resource, done, fail) {
                     {
                         JSrealB.Request.getJson(
                             featureUrl,
+                            //dbAEDIROUMUrl,
                             function(feature)
                             {
                                 JSrealBResource.common.feature = feature;
 
                                 JSrealB.init(language, lexicon, rule, feature);
-
+                                                               
                                 done();
+
+
                             }, 
                             function(status, error) {
                                 JSrealB.Logger.alert("Dictionary loading : " 
@@ -3095,6 +3155,24 @@ var JSrealLoader = function(resource, done, fail) {
                                 if(fail) fail(error);
                             }
                         );
+                        //ajout Francis
+                        if(dbAEDIROUMUrl!=undefined){
+                        JSrealB.Request.getJson(
+                            dbAEDIROUMUrl,
+                            function(data){
+
+                                JSrealB.Config.set({db:data})
+
+                                        //done();
+                                },
+                                function(status,error){
+                                     JSrealB.Logger.alert("DB loading : " 
+                                             + status + " : " + error);
+                                    if(fail) fail(error);
+                                        //console.log("Could not load AEDIROUMdb : "+status+" : "+error);
+                                }
+
+                        );}
                     }
                 }, 
                 function(status, error) {

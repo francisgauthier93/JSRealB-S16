@@ -18,6 +18,7 @@ function getJsonDB(){
 	//Agenda
 	JSrealB.Config.get("lexicon")["Stéphanie"] = {"N":{"g":"f","tab":["nI"]}};
 	JSrealB.Config.get("lexicon")["Francis"] = {"N":{"g":"m","tab":["nI"]}};
+	JSrealB.Config.get("lexicon")["Laurent"] = {"N":{"g":"m","tab":["nI"]}};
 
 	return {
 	"type" : {
@@ -41,8 +42,9 @@ function getJsonDB(){
 			"genre" : "m"
 		},
 		"lj" : {
-			"prenom" : "Laurent",
+			"prenom" : N("Laurent"),
 			"nom" : "Jakubina",
+			"email" : "jakubinl@iro.umontreal.ca",
 			"genre" : "m"
 		},
 		"sl" : {
@@ -55,25 +57,25 @@ function getJsonDB(){
 		"sml" : {
 			"nom" : NP(D("le"),N("salon"),A("Maurice-Labbé")),//"le salon Maurice-Labbé",
 			"local" : NO(6000),
-			"étage" : NO(6),
+			"étage" : "6e",
 			"pavillon" : A("André-Aisenstadt")
 		},
 		"asso" : {
 			"nom" : NP(D("le"),N("local"),PP(P("de"),D("le"),N("association"))),//"local de l'AÉDIROUM",
 			"local" : "3190",
-			"étage" : "3",
+			"étage" : "3e",
 			"pavillon" : "André-Aisenstadt"
 		},
 		"cafe" : {
 			"nom" : NP(D("le"),N("café"),A("Math-Info")),//"café Math-Info",
 			"local" : "",
-			"étage" : NO(1),
+			"étage" : "1er",
 			"pavillon" : A("André-Aisenstadt")
 		},
 		"gym" :{
 			"nom" : NP(D("le"),N("centre"),A("sportif"),A("CEPSUM").en("(")),
 			"local" : "",
-			"étage" : NO(1),
+			"étage" : "1er",
 			"pavillon" : A("CEPSUM")
 		} 
 	} 
@@ -114,7 +116,6 @@ return event;
 
 function getOrgInfo(org){
 	var string = eval(org.prenom)+" "+org.nom;
-	console.log(org.email)
 	if(org.email!=undefined){
 		string = string+", contact: "+org.email;
 	}
@@ -122,11 +123,13 @@ function getOrgInfo(org){
 }
 
 function getLocInfo(lieu){
-	console.log(lieu)
 	//fais planter le script
-	var string = lieu.pavillon//lieu.nom;//eval(lieu.nom);
+	var string = "Pavillon: "+lieu.pavillon//lieu.nom;//eval(lieu.nom);
 	if(lieu.étage!=undefined){
 		string = string +", "+NP(lieu.étage,N("étage"));
+	}
+	if(lieu.local!=undefined){
+		string = string+", local: "+lieu.local;
 	}
 	return string;    
 }
