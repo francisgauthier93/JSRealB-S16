@@ -1,6 +1,8 @@
       var CLIENT_ID = "412269236550-ccp971q3qlv6nhv39b4fqrltrgikin23.apps.googleusercontent.com";
 
       var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
+
+      var data;
        /**
        * Check if current user has authorized this application.
        */
@@ -49,6 +51,22 @@
         //document.getElementById("signout-button").style.display='inline';
         loadLanguage("./","fr",function(){
           gapi.client.load('calendar', 'v3', loadPersonalCalendar);
+          //load the data base into the web storage
+          data = getJsonDB();
+          //update lexicon 
+          var database = JSON.parse(localStorage.getItem("db"));
+          for(organisateur in database.org){
+            var orgName = database.org[organisateur].prenom;
+            orgName = orgName.replace(/N\(\"(.*?)\"\)/,"$1");
+            //orgName = orgName.replace(/[\"\(\)]/g,"");
+            console.log(orgName)
+            if(!JSrealB.Config.get("lexicon")[orgName]){
+              //ajout des personnes manquantes
+              console.log(JSrealB.Config.get("lexicon"))
+              var genre = database.org[organisateur].genre;
+              JSrealB.Config.get("lexicon")[orgName]= {"N":{"g":genre,"tab":["nI"]}};
+            }
+          }
         });
       }
 
@@ -105,7 +123,6 @@
                   });
                   request3.execute(function(resp){
                     var events = resp.items;
-                    console.log(events)
                     for(var i=0;i<events.length;i++){
                       
                       outputEvent(events[i],t);
@@ -119,13 +136,6 @@
         });
       }
 
-      /**
-       * Append a pre element to the body containing the given message
-       * as its text node.
-       *
-       * @param {string} message Text to be placed in pre element.
-       */
-
        //À corriger pour avoir un meilleur layout
       function appendPre(message,temps,nextWeek) {
         if(nextWeek){
@@ -135,51 +145,59 @@
           var pre = document.getElementById(temps=="f"?"outputNext":"outputPast");
         }
         var para= document.createElement("P");
-        //var textContent = document.createTextNode("allo");
-        // var textContent = document.createTextNode(message+"\n");
-        // para.appendChild(textContent);
+        para.setAttribute('style','margin: 3px;');
         para.innerHTML = message;
         pre.appendChild(para);
-        //$pre.append("<p>"+message+"</p>");
       }
 
       function outputEvent(event,temps){
         
-        if(event.description=="undefined"){
+        if(event.description==undefined){
           lesserOutputEvent(event,temps);
         }
         else{
           try{
             eventObj = createEvent(event.description);
+            console.log(eventObj);
             var phrase1 =S(DT(event.start.dateTime).dOpt({day: false, hour: false, minute: false,seconde: false}).a(","),
-                          (eventObj.org.prenom).tag("span",{"data-toggle":"tooltip", "title":getOrgInfo(eventObj.org), "data-placement":"top"}),VP(V("organiser").t(temps),eventObj.type));
-            var phrase2 = S(VP(V("rejoindre").t("ip").pe(2).n("p").a("-"),D("le").g(eventObj.org.genre)),
-              PP(P("à"),(eventObj.lieu.nom).tag("span",{"data-toggle":"tooltip", "title":getLocInfo(eventObj.lieu), "data-placement":"top"})),
+                          (eval(eventObj.org.prenom))/**/.tag("span",{"data-toggle":"tooltip", "title": getOrgInfo(eventObj.org), "data-placement":"top"})/**/,
+                          VP(V("organiser").t(temps),eval(eventObj.type)));
+            if(temps=="i"){
+              var action =VP(Pro("je").g(eventObj.org.genre).pe(3),V("être").t("i"));
+            }
+            else{
+              var action =VP(V("rejoindre").t("ip").pe(2).n("p").a("-"),D("le").g(eventObj.org.genre));
+              console.log('lexicon');
+              console.log(JSrealB.Config.get("lexicon"));
+            }
+              var phrase2 = S(action,
+              PP(P("à"),(eval(eventObj.lieu.nom))/**/.tag("span",{"data-toggle":"tooltip", "title":getLocInfo(eventObj.lieu), "data-placement":"top"})/**/),
               PP(P("entre"),CP(C("et"),DT(event.start.dateTime).dOpt({year: false, month: false, date: false, day: false, second: false,nat:false}),
               DT(event.end.dateTime).dOpt({year: false, month: false, date: false, day: false, second: false,nat:false}))));
-            //Problème d'élision ... +problème d'espacement après le tiret
+            //Problème d'élision ... +problème d'espacement après le tire
+
             var nextWeek;
+            if((new Date(event.start.dateTime) - new Date())<60*60*24*7*1000 && (new Date(event.start.dateTime) - new Date())>0){
+              nextWeek=true;
+            }
+            else{nextWeek=false;}
 
-            //var phrase3 = S(NP(N("nombre"),PP(P("à"),VP(V("voir").a(":")))),NO("4").dOpt({rnum:true}));
-
-            // if((new Date(event.start.dateTime) - new Date())<60*60*24*7*1000 && (new Date(event.start.dateTime) - new Date())>0){
-            //   nextWeek=true;
-            // }
-            // else{nextWeek=false;}
-            //phrase1 = eval('N("joueur").tag("i",{"style":"text-decoration:underline"})');
-
+            //avec reservation
+            if(eventObj.resv == 't'){
+              JSrealB.Config.get("lexicon")["réservation"] = {"N":{"g":"f","tab":["n17"]}};
+              var phrase3 = S(NP(D("un"),N("réservation")),VP(V("être").t("p"),AP(A("nécessaire"))),AdvP(Adv("auprès"),PP(P("de"),
+                NP(eval(eventObj.org.prenom)/**/.tag("span",{"data-toggle":"tooltip", "title":getOrgInfo(eventObj.org), "data-placement":"top"})/**/))));
+              phrase2 += " "+phrase3;
+            }
             
-            appendPre(phrase1+" "+phrase2,temps,true);//nextWeek);
+            appendPre(phrase1+" "+phrase2,temps,nextWeek);
           }
           catch(e){
-            console.log("Could not create nice sentence: "+e)
+            console.log("Could not create the sentence correctly: "+e+", event description: "+event.description)
             //L'événement n'est pas dans le format requis. Cette implémentation est assez rigide. Faudra voir pour la rendre plus souple
             lesserOutputEvent(event,temps);
           }
-
-
-        }
-           
+        }     
       }
 
       function lesserOutputEvent(event,temps){

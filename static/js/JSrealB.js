@@ -3161,7 +3161,7 @@ var JSrealLoader = function(resource, done, fail) {
                             dbAEDIROUMUrl,
                             function(data){
 
-                                JSrealB.Config.set({db:data})
+                                //JSrealB.Config.set({db:data})
 
                                         //done();
                                 },

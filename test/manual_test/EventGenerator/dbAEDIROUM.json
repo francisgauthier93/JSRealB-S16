@@ -1,47 +1,60 @@
 {
 	"type" : {
-		"bc" : "beignes et Café",
-		"lb" : "lait et Biscuits",
-		"57" : "5 à 7",
-		"js" : "6 à 10: jeux de société",
-		"vf" : "vin et Fromages",
-		"ca" : "conseil d'administration",
-		"ag" : "assemblé générale",
-		"sp" : "sport",
-		"cb" : "cabane à sucre",
-		"in" : "journée de l'initiation",
-		"mi" : "mi-Diro"
+		"bc" : NP(D("le").n("s"),CP(C("et"),N("beigne"),N("café"))),
+		"lb" : NP(D("le").n("s"),CP(C("et"),N("lait"),N("biscuit").n("p"))),//"le lait et biscuit",
+		"57" : NP(D("un"),N("5 à 7")),//"un 5 à 7",
+		"js" : NP(D("un"),N("6 à 10").a(":"),NP(N("jeu").n("p"),PP(P("de"),N("société")))),//"6 à 10: jeux de société",
+		"vf" : NP(D("le").n("s"),CP(C("et"),N("vin"),N("fromage").n("p"))),//"le vin et fromages",
+		"ca" : NP(D("un"),N("conseil"),PP(P("de"),N("administration"))),//"un conseil d'administration",
+		"ag" : NP(D("un"),N("assemblée"),A("général")),//"une assemblée générale",
+		"sp" : NP(D("un"),N("séance"),PP(P("de"),N("sport"))),
+		"cb" : NP(D("le"),N("cabane"),PP(P("à"),N("sucre"))),//"cabane à sucre",
+		"in" : NP(D("le"),N("journée"),PP(P("de"),NP(D("le"),N("initiation").n("p")))),//"journée de l'initiation",
+		"mi" : NP(D("un"),N("Mi-Diro"))//"mi-Diro"
 	},
 	"org" : {
 		"fg" : {
-			"prenom" : "Francis",
+			"prenom" : N("Francis"),
 			"nom" : "Gauthier",
+			"email" : "francis.gauthier.2@umontreal.ca",
+			"genre" : "m"
+		},
+		"lj" : {
+			"prenom" : N("Laurent"),
+			"nom" : "Jakubina",
+			"email" : "jakubinl@iro.umontreal.ca",
 			"genre" : "m"
 		},
 		"sl" : {
-			"prenom" : "Stéphanie",
+			"prenom" : N("Stéphanie"),
 			"nom" : "Larocque",
 			"genre" : "f"
 		}
 	},
 	"lieu" : {
 		"sml" : {
-			"nom" : "salon Maurice-Labbé",
-			"local" : "6000",
-			"étage" : "6",
-			"pavillon" : "André-Aisenstadt"
+			"nom" : NP(D("le"),N("salon"),A("Maurice-Labbé")),//"le salon Maurice-Labbé",
+			"local" : NO(6000),
+			"étage" : "6e",
+			"pavillon" : A("André-Aisenstadt")
 		},
-		"lasso" : {
-			"nom" : "local de l'AÉDIROUM",
+		"asso" : {
+			"nom" : NP(D("le"),N("local"),PP(P("de"),D("le"),N("association"))),//"local de l'AÉDIROUM",
 			"local" : "3190",
-			"étage" : "3",
+			"étage" : "3e",
 			"pavillon" : "André-Aisenstadt"
 		},
 		"cafe" : {
-			"nom" : "café Math-Info",
+			"nom" : NP(D("le"),N("café"),A("Math-Info")),//"café Math-Info",
 			"local" : "",
-			"étage" : "1",
-			"pavillon" : "André-Aisenstadt"
+			"étage" : "1er",
+			"pavillon" : A("André-Aisenstadt")
+		},
+		"gym" :{
+			"nom" : NP(D("le"),N("centre"),A("sportif"),A("CEPSUM").en("(")),
+			"local" : "",
+			"étage" : "1er",
+			"pavillon" : A("CEPSUM")
 		} 
 	} 
 
