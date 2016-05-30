@@ -133,9 +133,10 @@ class DmFormatter
                     }
                     else
                     {
-                        echo 'Traduction manquante : '; // DEBUG ONLY
-                        var_dump($sInformation);
-                        echo '<br />';
+                    	lg(4,'Traduction manquante : ',$sInformation);
+                        //echo 'Traduction manquante : '; // DEBUG ONLY
+                        //var_dump($sInformation);
+                        //echo '<br />';
 //                        die;
                     }
                 }
@@ -269,6 +270,10 @@ class DmFormatter
             $sTableId = $aRawRule[1];
             $sCategory = $this->oDmConverter->getProperName($aRawRule[2]);
             
+            //Ajout Francis pour obtenir information sur les auxiliaires
+            if($sCategory == "V" && count($aRawRule)>3){
+            	$sAuxiliaire = $aRawRule[3];
+            }
 //            if(!isset($aFormatedRule[$sUnit]))
 //            {
 //                // Additional Information
@@ -313,9 +318,12 @@ class DmFormatter
                 }
                 
                 $aFormatedRule[$sUnit]['tab'][] = $sTableId;
+                if($sCategory == "V"){
+                	$aFormatedRule[$sUnit]['aux'][] = $sAuxiliaire;
+                }
             }
         }
-        
+
         return $aFormatedRule;
     }
 }

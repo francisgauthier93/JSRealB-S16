@@ -1883,6 +1883,9 @@ JSrealB.Module.Declension = (function() {
 //// Conjugation Module (Verbs)
 JSrealB.Module.Conjugation = (function() {
     var applyEnding = function(unit, tense, person, conjugationTable) {
+
+        var tempsCompEtSimple = {"pc":"p","pq":"i","spa":"s","spq":"si","cp":"c"};
+        
         if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined)
         {
             if(person === null || typeof conjugationTable.t[tense] === 'string')
@@ -1900,6 +1903,12 @@ JSrealB.Module.Conjugation = (function() {
             {
                 throw JSrealB.Exception.wrongPerson(unit, person);
             }
+        }
+        else if(Object.keys(tempsCompEtSimple).indexOf(tense)>=0){
+            //on doit travailler avec un temps composé
+            var auxiliaires = {"av":"avoir","êt":"avoir","aê":"avoir"};
+            var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];
+            return conjugate(aux,tempsCompEtSimple[tense],person)+" "+conjugate(unit,"pp",person);
         }
         else
         {
@@ -1937,6 +1946,7 @@ JSrealB.Module.Conjugation = (function() {
             return conjugatedVerb;
         }
     };
+
 })();
 
 // Regular rule Application Module (only 1 rule, no choice)

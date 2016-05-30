@@ -39,6 +39,11 @@ class JSRealFrService extends JSRealService
         /// Upgrade Lexicon
 //        $this->addTableIdToNounAndAdjective($aSimplifiedDmLexicon, $aLexicon); // Nouns, Adjectives, Ordinals, Quantifiers
         $this->addTableIdToVerb($aVerbList, $aLexicon); // Verb Only
+        
+        //Ajout Francis (auxiliaires)
+        $aVerbList2 = $this->getDmLexicon('; Verbs:', '; New words by Laurent');
+        $this->addAuxToVerb($aVerbList2, $aLexicon);
+        
         $aDmLexiconList = array(
                     Config::get('jsreal.feature.category.word.noun') => $aNounList,
                     Config::get('jsreal.feature.category.word.adjective') => $aAdjectiveList,
@@ -101,6 +106,8 @@ class JSRealFrService extends JSRealService
                 $this->exportDmFeature()
             );
         
+        lg(1,"Exported File : ", $aExportedFile);
+        
         return $aExportedFile;
     }
     
@@ -115,7 +122,7 @@ class JSRealFrService extends JSRealService
                 Config::get('path.relative.app_to_xsl') .
                 Config::get('jsreal.verb.dictionary.xsl.' . $this->sLanguage);
         $sJsonVerbList = Xslt::applyXsltTemplateToXml($sXmlFileRealPath, $sXslFileRealPath);
-
+       
         return Conversion::getArrayFromJson($sJsonVerbList);
     }
     
@@ -132,11 +139,13 @@ class JSRealFrService extends JSRealService
         
         $sJsonConjugation = Xslt::applyXsltTemplateToXml($sXmlFileRealPath, $sXslFileRealPath);
 
+        lg(6,"get conjugaison: ",$sJsonConjugation);
         return Conversion::getArrayFromJson($sJsonConjugation);
     }
     
     private function addInfinitiveTense(array &$aConjugation)
     {
+
         foreach($aConjugation as $sTableId => $aConjugationTable)
         {
             if(isset($aConjugationTable["ending"])

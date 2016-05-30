@@ -190,9 +190,24 @@ class JSRealService extends BaseService
             {
                 // en/fr formats support
                 $uVerbInfo = $aVerbList[$sUnit];
+                //uVerbInfo is basically the verbId (ex: v36)
                 $aLexicon[$sUnit]['V']['tab'] = (Arr::isValid($uVerbInfo) ? $uVerbInfo['tab'][0] : $uVerbInfo);
             }
         }
+    }
+    
+    //Added by Francis
+    protected function addAuxToVerb(array &$aVerbList, array &$aLexicon)
+    {
+    	foreach($aLexicon as $sUnit => $aInfoList)
+    	{
+    		if(isset($aLexicon[$sUnit]['V']) && isset($aVerbList[$sUnit]))
+    		{
+    			$uVerbInfo = $aVerbList[$sUnit];
+    			//uVerbInfo is basically the verbId (ex: v36)
+    			$aLexicon[$sUnit]['V']['aux'] = (Arr::isValid($uVerbInfo) ? $uVerbInfo['aux'][0] : $uVerbInfo);
+    		}
+    	}
     }
     
     protected function addTableIdToLexicon(array &$aSpecificLexiconList, array &$aLexicon)

@@ -43,9 +43,9 @@ function conjuguer(verbe){
             $("#tableau").append("<h1>"+titleConj[language]+verbe+"</h1>");
             if (language=='fr'){
                 addTable(verbe,[["Présent","p"],["Imparfait","i"],["Futur simple","f"]]);
-                addTable(verbe,[["Passé simple","ps"]]);//,["Plus-que-parfait","pq"],["Passé composé","pc"]]);
-                addTable(verbe,[["Subjonctif présent","s"],["Subjonctif imparfait","si"]]);//,["Subjonctif passé","spa"]]);
-                addTable(verbe,[["Conditionnel présent","c"]])//,["Conditionnel passé","cp"]]);
+                addTable(verbe,[["Passé simple","ps"],["Plus-que-parfait","pq"],["Passé composé","pc"]]);
+                addTable(verbe,[["Subjonctif présent","s"],["Subjonctif imparfait","si"],["Subjonctif passé","spa"],["Subjonctif plus-que-parfait","spq"]]);
+                addTable(verbe,[["Conditionnel présent","c"],["Conditionnel passé","cp"]]);
             } else {
                 addTable(verbe,[["Present","p"]]);
                 addTable(verbe,[["Simple past","ps"]])
@@ -91,6 +91,8 @@ function declinerNom(mot){
 }
 
 function conjugueDecline(e){
+    var t = S(CP(C('ou'),NP(AP(A('fort')), N('averse')),NP(N('orage'))).n('p'),VP(V('cesser').t('cp'),(PP(P('vers'),DT('2015/09/15 09:00').dOpt({year: false, month: false, date: false, day: true,minute: false, second: false, det:false, nat: true}))))).a('!')//"allo";
+    document.getElementById("test12").innerHTML= t;
     // console.log("conjugueDecline("+e+")")
     if (e.which==13){
         $tableau.text("");

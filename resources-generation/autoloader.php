@@ -5,10 +5,18 @@
  *
  * @author molinspa
  */
-//class autoloader
-//{
-//    
-//}
+
+$loglevel = 1;
+function lg($level, $message = "M", $obj = "")
+{
+    global $loglevel;
+	if($level <= $loglevel)
+		{
+			echo $message ;// . $obj . "<br />";
+			var_dump($obj);
+			echo "<br /><br />";
+		}
+}
 
 class AutoLoader
 {
