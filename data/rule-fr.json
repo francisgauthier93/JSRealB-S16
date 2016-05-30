@@ -4187,5 +4187,27 @@
             "decimal": ","
         },
         "number": ["zéro"]
+    },
+    "compound": {
+        "pc": {
+            "participle": "pp",
+            "auxTense": "p"
+        },
+        "pq": {
+            "participle": "pp",
+            "auxTense": "i"
+        },
+        "spa": {
+            "participle": "pp",
+            "auxTense": "s"
+        },
+        "spq": {
+            "participle": "pp",
+            "auxTense": "si"
+        },
+        "cp": {
+            "participle": "pp",
+            "auxTense": "c"
+        }
     }
 }

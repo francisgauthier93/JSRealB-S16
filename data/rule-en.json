@@ -2943,5 +2943,42 @@
             "decimal": "."
         },
         "number": ["zero"]
+    },
+    "compound": {
+        "f": {
+            "aux": "will",
+            "auxTense": "b",
+            "participle": "b"
+        },
+        "prc": {
+            "aux": "be",
+            "auxTense": "p",
+            "participle": "pr"
+        },
+        "pac": {
+            "aux": "be",
+            "auxTense": "ps",
+            "participle": "pr"
+        },
+        "fuc": {
+            "aux": "be",
+            "auxTense": "f",
+            "participle": "pr"
+        },
+        "prp": {
+            "aux": "have",
+            "auxTense": "p",
+            "participle": "pp"
+        },
+        "pap": {
+            "aux": "have",
+            "auxTense": "ps",
+            "participle": "pp"
+        },
+        "fup": {
+            "aux": "have",
+            "auxTense": "f",
+            "participle": "pp"
+        }
     }
 }

@@ -205,7 +205,7 @@ class JSRealService extends BaseService
     		{
     			$uVerbInfo = $aVerbList[$sUnit];
     			//uVerbInfo is basically the verbId (ex: v36)
-    			$aLexicon[$sUnit]['V']['aux'] = (Arr::isValid($uVerbInfo) ? $uVerbInfo['aux'][0] : $uVerbInfo);
+    			$aLexicon[$sUnit]['V']['aux'] = $uVerbInfo['aux'];//(Arr::isValid($uVerbInfo) ? $uVerbInfo['aux'][0] : $uVerbInfo);
     		}
     	}
     }

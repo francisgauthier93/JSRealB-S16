@@ -47,8 +47,9 @@ function conjuguer(verbe){
                 addTable(verbe,[["Subjonctif présent","s"],["Subjonctif imparfait","si"],["Subjonctif passé","spa"],["Subjonctif plus-que-parfait","spq"]]);
                 addTable(verbe,[["Conditionnel présent","c"],["Conditionnel passé","cp"]]);
             } else {
-                addTable(verbe,[["Present","p"]]);
-                addTable(verbe,[["Simple past","ps"]])
+                addTable(verbe,[["Present","p"],["Present continuous","prc"],["Present perfect","prp"]]);
+                addTable(verbe,[["Simple past","ps"],["Past continuous","pac"],["Past perfect","pap"]]);
+                addTable(verbe,[["Future","f"],["Future continuous", "fuc"],["Future perfect","fup"]]);
             }
         }
     }
@@ -91,8 +92,6 @@ function declinerNom(mot){
 }
 
 function conjugueDecline(e){
-    var t = S(CP(C('ou'),NP(AP(A('fort')), N('averse')),NP(N('orage'))).n('p'),VP(V('cesser').t('cp'),(PP(P('vers'),DT('2015/09/15 09:00').dOpt({year: false, month: false, date: false, day: true,minute: false, second: false, det:false, nat: true}))))).a('!')//"allo";
-    document.getElementById("test12").innerHTML= t;
     // console.log("conjugueDecline("+e+")")
     if (e.which==13){
         $tableau.text("");

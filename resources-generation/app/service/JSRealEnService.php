@@ -86,6 +86,8 @@ class JSRealEnService extends JSRealService
             );
         $aRuleTable['date'] = $this->getDateRule();
         $aRuleTable['number'] = $this->getNumberRule();
+        //Ajout auxiliaire et participle pour temps composés
+        $aRuleTable['compound'] = $this->getAuxRule();
 
         /// Export to files
         $aExportedFile = array_merge(
@@ -242,5 +244,46 @@ class JSRealEnService extends JSRealService
                 0 => 'zero'
             )
         );
+    }
+    
+    private  function getAuxRule()
+    {
+    	return array(
+    			'f' => array(
+    					'aux' => 'will',
+    					'auxTense' => 'b',
+    					'participle' => 'b'
+    			),
+    			'prc' => array(
+    					'aux' => 'be',
+    					'auxTense' => 'p',
+    					'participle' => 'pr'
+    			),
+    			'pac' => array(
+    					'aux' => 'be',
+    					'auxTense' => 'ps',
+    					'participle' => 'pr'
+    			),
+    			'fuc' => array(
+    					'aux' => 'be',
+    					'auxTense' => 'f',
+    					'participle' => 'pr'
+    			),
+    			'prp' => array(
+    					'aux' => 'have',
+    					'auxTense' => 'p',
+    					'participle' => 'pp'
+    			),
+    			'pap' => array(
+    					'aux' => 'have',
+    					'auxTense' => 'ps',
+    					'participle' => 'pp'
+    			),
+    			'fup' => array(
+    					'aux' => 'have',
+    					'auxTense' => 'f',
+    					'participle' => 'pp'
+    			),
+    	);
     }
 }

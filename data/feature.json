@@ -60,6 +60,16 @@
             "present": "pr",
             "past": "pp",
             "future": "pf"
+        },
+        "continuous": {
+            "present": "prc",
+            "past": "pac",
+            "future": "fuc"
+        },
+        "perfect": {
+            "present": "prp",
+            "past": "pap",
+            "future": "fup"
         }
     },
     "type": {

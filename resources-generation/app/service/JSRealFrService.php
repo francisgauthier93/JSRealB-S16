@@ -98,6 +98,8 @@ class JSRealFrService extends JSRealService
             );
         $aRuleTable['date'] = $this->getDateRule();
         $aRuleTable['number'] = $this->getNumberRule();
+        //Ajout auxiliaire et participle pour temps composés
+        $aRuleTable['compound'] = $this->getAuxRule();
         
         $aExportedFile = array_merge(
                 $this->exportLexicon(array_merge($aPunctuation, $aLexicon)),
@@ -374,5 +376,31 @@ class JSRealFrService extends JSRealService
                 0 => 'zéro'
             )
         );
+    }
+   
+    private  function getAuxRule()
+    {
+    	return array(
+    			'pc' => array(
+    					'participle' => 'pp',
+    					'auxTense' => 'p'
+    			),
+    			'pq' => array(
+    					'participle' => 'pp',
+    					'auxTense' => 'i'
+    			),
+    			'spa' => array(
+    					'participle' => 'pp',
+    					'auxTense' => 's'
+    			),
+    			'spq' => array(
+    					'participle' => 'pp',
+    					'auxTense' => 'si'
+    			),
+    			'cp' => array(
+    					'participle' => 'pp',
+    					'auxTense' => 'c'
+    			)
+    	);
     }
 }

@@ -95,7 +95,7 @@
     "être": {
         "V": {
             "tab": "v136",
-            "aux": "av"
+            "aux": ["av"]
         },
         "N": {
             "g": "m",
@@ -105,7 +105,7 @@
     "avoir": {
         "V": {
             "tab": "v135",
-            "aux": "av"
+            "aux": ["av"]
         },
         "N": {
             "g": "m",
@@ -353,19 +353,19 @@
     "abaisser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "abandonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "abattre": {
         "V": {
             "tab": "v87",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "abbé": {
@@ -389,7 +389,7 @@
     "abîmer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "abondamment": {
@@ -417,19 +417,19 @@
     "aborder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "aboutir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "aboyer": {
         "V": {
             "tab": "v5",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "abri": {
@@ -441,7 +441,7 @@
     "abriter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "absence": {
@@ -468,19 +468,19 @@
     "abuser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "accabler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "accepter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "accident": {
@@ -498,19 +498,19 @@
     "acclamer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "accompagner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "accomplir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "accord": {
@@ -522,19 +522,19 @@
     "accorder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "accourir": {
         "V": {
             "tab": "v57",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "accrocher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "accueil": {
@@ -546,19 +546,19 @@
     "accueillir": {
         "V": {
             "tab": "v51",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "accuser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "acharner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "achat": {
@@ -570,13 +570,13 @@
     "acheminer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "acheter": {
         "V": {
             "tab": "v11",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "acheteur": {
@@ -588,7 +588,7 @@
     "achever": {
         "V": {
             "tab": "v25",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "acide": {
@@ -606,13 +606,13 @@
     "acquérir": {
         "V": {
             "tab": "v39",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "acquitter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "acte": {
@@ -635,7 +635,7 @@
     "activer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "activité": {
@@ -663,7 +663,7 @@
     "admettre": {
         "V": {
             "tab": "v89",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "administration": {
@@ -675,7 +675,7 @@
     "administrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "admirable": {
@@ -692,25 +692,25 @@
     "admirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "adopter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "adorer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "adoucir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "adresse": {
@@ -722,7 +722,7 @@
     "adresser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "adroit": {
@@ -739,13 +739,13 @@
     "aérer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "affaiblir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "affaire": {
@@ -768,7 +768,7 @@
     "affectionner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "affectueusement": {
@@ -790,7 +790,7 @@
     "affliger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "affreux": {
@@ -801,7 +801,7 @@
     "agacer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "âge": {
@@ -829,7 +829,7 @@
     "agir": {
         "V": {
             "tab": "v58",
-            "aux": "êt"
+            "aux": ["êt","av"]
         }
     },
     "agitation": {
@@ -841,7 +841,7 @@
     "agiter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "agréable": {
@@ -857,7 +857,7 @@
     "agréer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "agrément": {
@@ -869,7 +869,7 @@
     "agrémenter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "aide": {
@@ -881,7 +881,7 @@
     "aider": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "aigu": {
@@ -898,7 +898,7 @@
     "aiguiser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "aile": {
@@ -920,7 +920,7 @@
     "aimer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "aîné": {
@@ -970,7 +970,7 @@
     "ajouter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "alcool": {
@@ -999,7 +999,7 @@
     "aligner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "aliment": {
@@ -1028,19 +1028,19 @@
     "aller": {
         "V": {
             "tab": "v137",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "allonger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "allumer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "allumette": {
@@ -1093,7 +1093,7 @@
     "amener": {
         "V": {
             "tab": "v24",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "amer": {
@@ -1153,7 +1153,7 @@
     "amuser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ancien": {
@@ -1205,7 +1205,7 @@
     "animer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "anneau": {
@@ -1235,7 +1235,7 @@
     "annoncer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "annuel": {
@@ -1246,7 +1246,7 @@
     "anticiper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "anxiété": {
@@ -1269,13 +1269,13 @@
     "apaiser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "apercevoir": {
         "V": {
             "tab": "v63",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "apostolique": {
@@ -1292,7 +1292,7 @@
     "apparaître": {
         "V": {
             "tab": "v101",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "apparence": {
@@ -1316,7 +1316,7 @@
     "appartenir": {
         "V": {
             "tab": "v52",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "appel": {
@@ -1328,7 +1328,7 @@
     "appeler": {
         "V": {
             "tab": "v7",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "appétissant": {
@@ -1345,7 +1345,7 @@
     "applaudir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "application": {
@@ -1357,31 +1357,31 @@
     "appliquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "apporter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "apprécier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "apprendre": {
         "V": {
             "tab": "v90",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "apprêter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "approche": {
@@ -1393,13 +1393,13 @@
     "approcher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "approuver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "appui": {
@@ -1411,7 +1411,7 @@
     "appuyer": {
         "V": {
             "tab": "v5",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "après": {
@@ -1481,7 +1481,7 @@
     "argenter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "arme": {
@@ -1499,7 +1499,7 @@
     "armer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "armoire": {
@@ -1511,13 +1511,13 @@
     "arracher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "arranger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "arrêt": {
@@ -1529,7 +1529,7 @@
     "arrêter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "arrière": {
@@ -1547,13 +1547,13 @@
     "arriver": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "arrondir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "arrondissement": {
@@ -1565,7 +1565,7 @@
     "arroser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "art": {
@@ -1589,7 +1589,7 @@
     "aspirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "assaut": {
@@ -1601,13 +1601,13 @@
     "assembler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "asseoir": {
         "V": {
             "tab": "v74",
-            "aux": "av"
+            "aux": ["av","av"]
         }
     },
     "assez": {
@@ -1629,19 +1629,19 @@
     "assister": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "associer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "assurer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "astre": {
@@ -1671,7 +1671,7 @@
     "attacher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "attaque": {
@@ -1683,31 +1683,31 @@
     "attaquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "attarder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "atteindre": {
         "V": {
             "tab": "v97",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "atteler": {
         "V": {
             "tab": "v7",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "attendre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "attente": {
@@ -1735,13 +1735,13 @@
     "attester": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "attirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "attrait": {
@@ -1753,19 +1753,19 @@
     "attraper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "attribuer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "attrister": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "aube": {
@@ -1789,7 +1789,7 @@
     "augmenter": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "aujourd'hui": {
@@ -1861,7 +1861,7 @@
     "autoriser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "autorité": {
@@ -1889,7 +1889,7 @@
     "avaler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "avance": {
@@ -1901,7 +1901,7 @@
     "avancer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "avant": {
@@ -1940,7 +1940,7 @@
     "aventurer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "avenue": {
@@ -1958,7 +1958,7 @@
     "avertir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "aveugle": {
@@ -1987,7 +1987,7 @@
     "aviser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "avoine": {
@@ -1999,7 +1999,7 @@
     "avouer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "avril": {
@@ -2034,13 +2034,13 @@
     "baigner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bâiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bain": {
@@ -2058,7 +2058,7 @@
     "baisser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bal": {
@@ -2070,7 +2070,7 @@
     "balancer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "balançoire": {
@@ -2082,7 +2082,7 @@
     "balayer": {
         "V": {
             "tab": "v4",
-            "aux": "av"
+            "aux": ["av","av"]
         }
     },
     "balcon": {
@@ -2154,7 +2154,7 @@
     "baptiser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "barbe": {
@@ -2243,7 +2243,7 @@
     "bâtir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bâton": {
@@ -2255,13 +2255,13 @@
     "battre": {
         "V": {
             "tab": "v87",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bavarder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bazar": {
@@ -2319,7 +2319,7 @@
     "bénir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "berceau": {
@@ -2331,7 +2331,7 @@
     "bercer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "béret": {
@@ -2509,7 +2509,7 @@
     "blanchir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "blé": {
@@ -2521,7 +2521,7 @@
     "blesser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "blessure": {
@@ -2555,7 +2555,7 @@
     "blottir": {
         "V": {
             "tab": "v58",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "blouse": {
@@ -2579,7 +2579,7 @@
     "boire": {
         "V": {
             "tab": "v121",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bois": {
@@ -2626,7 +2626,7 @@
     "bondir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bonheur": {
@@ -2680,7 +2680,7 @@
     "border": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bordure": {
@@ -2721,7 +2721,7 @@
     "boucher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "boucle": {
@@ -2733,13 +2733,13 @@
     "boucler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bouder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "boue": {
@@ -2756,7 +2756,7 @@
     "bouger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bougie": {
@@ -2798,7 +2798,7 @@
     "bouleverser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bouquet": {
@@ -2816,7 +2816,7 @@
     "bourdonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bourgeois": {
@@ -2834,7 +2834,7 @@
     "bourgeonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bourgmestre": {
@@ -2858,7 +2858,7 @@
     "bousculer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bout": {
@@ -2939,7 +2939,7 @@
     "briller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "brin": {
@@ -2969,7 +2969,7 @@
     "briser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "brochure": {
@@ -2981,7 +2981,7 @@
     "broder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "brouillard": {
@@ -2993,13 +2993,13 @@
     "brouter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "broyer": {
         "V": {
             "tab": "v5",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "bruit": {
@@ -3016,7 +3016,7 @@
     "brûler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "brume": {
@@ -3104,7 +3104,7 @@
     "butiner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "cabane": {
@@ -3128,7 +3128,7 @@
     "cacher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "cadavre": {
@@ -3199,7 +3199,7 @@
     "calculer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "calendrier": {
@@ -3222,7 +3222,7 @@
     "calmer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "calvaire": {
@@ -3353,7 +3353,7 @@
     "caresser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "carnet": {
@@ -3430,7 +3430,7 @@
     "casser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "catastrophe": {
@@ -3465,7 +3465,7 @@
     "causer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "cave": {
@@ -3483,7 +3483,7 @@
     "céder": {
         "V": {
             "tab": "v30",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ceinture": {
@@ -3500,7 +3500,7 @@
     "célébrer": {
         "V": {
             "tab": "v20",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "céleste": {
@@ -3597,7 +3597,7 @@
     "cesser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "chagrin": {
@@ -3669,7 +3669,7 @@
     "changer": {
         "V": {
             "tab": "v3",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "chanson": {
@@ -3687,7 +3687,7 @@
     "chanter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "chanteur": {
@@ -3747,7 +3747,7 @@
     "charger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "chariot": {
@@ -3787,7 +3787,7 @@
     "charmer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "charrette": {
@@ -3811,7 +3811,7 @@
     "chasser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "chasseur": {
@@ -3851,7 +3851,7 @@
     "chauffer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "chauffeur": {
@@ -3887,7 +3887,7 @@
     "chausser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "chaussure": {
@@ -3946,7 +3946,7 @@
     "chercher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "chéri": {
@@ -3957,7 +3957,7 @@
     "chérir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "cheval": {
@@ -4046,7 +4046,7 @@
     "choisir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "choix": {
@@ -4134,13 +4134,13 @@
     "circuler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "cirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "cirque": {
@@ -4158,7 +4158,7 @@
     "citer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "citoyen": {
@@ -4192,7 +4192,7 @@
     "claquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "clarté": {
@@ -4279,7 +4279,7 @@
     "clouer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "clown": {
@@ -4315,7 +4315,7 @@
     "coiffer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "coiffure": {
@@ -4357,7 +4357,7 @@
     "coller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "colline": {
@@ -4386,7 +4386,7 @@
     "colorer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "combat": {
@@ -4404,7 +4404,7 @@
     "combattre": {
         "V": {
             "tab": "v87",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "comble": {
@@ -4416,7 +4416,7 @@
     "combler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "commandant": {
@@ -4440,7 +4440,7 @@
     "commander": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "commencement": {
@@ -4452,7 +4452,7 @@
     "commencer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "commerçant": {
@@ -4475,7 +4475,7 @@
     "commettre": {
         "V": {
             "tab": "v89",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "commission": {
@@ -4521,7 +4521,7 @@
     "communier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "communion": {
@@ -4533,7 +4533,7 @@
     "communiquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "compagne": {
@@ -4563,7 +4563,7 @@
     "comparer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "compassion": {
@@ -4585,7 +4585,7 @@
     "compléter": {
         "V": {
             "tab": "v22",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "compliment": {
@@ -4597,13 +4597,13 @@
     "compliquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "composer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "composition": {
@@ -4615,7 +4615,7 @@
     "comprendre": {
         "V": {
             "tab": "v90",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "compte": {
@@ -4627,7 +4627,7 @@
     "compter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "comte": {
@@ -4645,7 +4645,7 @@
     "concerner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "concert": {
@@ -4657,7 +4657,7 @@
     "conclure": {
         "V": {
             "tab": "v109",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "concours": {
@@ -4669,7 +4669,7 @@
     "condamner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "condisciple": {
@@ -4693,7 +4693,7 @@
     "conduire": {
         "V": {
             "tab": "v113",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "conduite": {
@@ -4705,7 +4705,7 @@
     "confectionner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "conférence": {
@@ -4717,7 +4717,7 @@
     "confesser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "confiance": {
@@ -4729,7 +4729,7 @@
     "confier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "confiture": {
@@ -4741,7 +4741,7 @@
     "confondre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "conformément": {
@@ -4781,19 +4781,19 @@
     "connaître": {
         "V": {
             "tab": "v101",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "conquérir": {
         "V": {
             "tab": "v39",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "consacrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "conscience": {
@@ -4811,7 +4811,7 @@
     "conseiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "consentement": {
@@ -4823,7 +4823,7 @@
     "consentir": {
         "V": {
             "tab": "v46",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "conséquence": {
@@ -4835,7 +4835,7 @@
     "conserver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "considérable": {
@@ -4846,13 +4846,13 @@
     "considérer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "consister": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "consolation": {
@@ -4864,7 +4864,7 @@
     "consoler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "constamment": {
@@ -4880,13 +4880,13 @@
     "constater": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "constituer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "construction": {
@@ -4898,13 +4898,13 @@
     "construire": {
         "V": {
             "tab": "v113",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "consulter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "contact": {
@@ -4922,13 +4922,13 @@
     "contempler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "contenir": {
         "V": {
             "tab": "v52",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "content": {
@@ -4939,7 +4939,7 @@
     "contenter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "contenu": {
@@ -4951,7 +4951,7 @@
     "conter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "continuel": {
@@ -4967,7 +4967,7 @@
     "continuer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "contraire": {
@@ -4978,7 +4978,7 @@
     "contrarier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "contre": {
@@ -4995,13 +4995,13 @@
     "contribuer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "convaincre": {
         "V": {
             "tab": "v86",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "convenable": {
@@ -5012,7 +5012,7 @@
     "convenir": {
         "V": {
             "tab": "v52",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "conversation": {
@@ -5024,7 +5024,7 @@
     "convertir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "conviction": {
@@ -5036,7 +5036,7 @@
     "copier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "coq": {
@@ -5142,7 +5142,7 @@
     "corriger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "cortège": {
@@ -5190,7 +5190,7 @@
     "coucher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "coucou": {
@@ -5208,13 +5208,13 @@
     "coudre": {
         "V": {
             "tab": "v93",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "couler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "couleur": {
@@ -5249,7 +5249,7 @@
     "couper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "cour": {
@@ -5282,7 +5282,7 @@
     "courber": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "coureur": {
@@ -5294,7 +5294,7 @@
     "courir": {
         "V": {
             "tab": "v57",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "couronne": {
@@ -5306,7 +5306,7 @@
     "couronner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "courrier": {
@@ -5353,7 +5353,7 @@
     "coûter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "coutume": {
@@ -5377,7 +5377,7 @@
     "couver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "couvercle": {
@@ -5401,13 +5401,13 @@
     "couvrir": {
         "V": {
             "tab": "v44",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "craindre": {
         "V": {
             "tab": "v97",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "crainte": {
@@ -5425,7 +5425,7 @@
     "craquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "crayon": {
@@ -5455,7 +5455,7 @@
     "créer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "crème": {
@@ -5479,7 +5479,7 @@
     "creuser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "creux": {
@@ -5490,7 +5490,7 @@
     "crever": {
         "V": {
             "tab": "v25",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "cri": {
@@ -5502,7 +5502,7 @@
     "crier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "crime": {
@@ -5526,19 +5526,19 @@
     "croire": {
         "V": {
             "tab": "v115",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "croiser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "croître": {
         "V": {
             "tab": "v106",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "croix": {
@@ -5550,7 +5550,7 @@
     "croquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "croûte": {
@@ -5579,7 +5579,7 @@
     "cueillir": {
         "V": {
             "tab": "v51",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "cuiller": {
@@ -5603,7 +5603,7 @@
     "cuire": {
         "V": {
             "tab": "v113",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "cuisine": {
@@ -5639,7 +5639,7 @@
     "cultiver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "culture": {
@@ -5696,7 +5696,7 @@
     "daigner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dame": {
@@ -5730,13 +5730,13 @@
     "danser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "darder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "date": {
@@ -5748,7 +5748,7 @@
     "dater": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "davantage": {
@@ -5759,37 +5759,37 @@
     "débarquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "débarrasser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "débattre": {
         "V": {
             "tab": "v87",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "débiter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "déborder": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "déboucher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "debout": {
@@ -5812,7 +5812,7 @@
     "décéder": {
         "V": {
             "tab": "v30",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "décembre": {
@@ -5830,25 +5830,25 @@
     "déchaîner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "décharger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "déchirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "décider": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "décision": {
@@ -5860,25 +5860,25 @@
     "déclarer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "décorer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "découper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "décourager": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "découverte": {
@@ -5890,19 +5890,19 @@
     "découvrir": {
         "V": {
             "tab": "v44",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "décrire": {
         "V": {
             "tab": "v114",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dédaigner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dedans": {
@@ -5913,7 +5913,7 @@
     "défaire": {
         "V": {
             "tab": "v124",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "défaut": {
@@ -5925,7 +5925,7 @@
     "défendre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "défense": {
@@ -5943,7 +5943,7 @@
     "défiler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "défunt": {
@@ -5955,7 +5955,7 @@
     "dégager": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dégât": {
@@ -5983,13 +5983,13 @@
     "déjeuner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "délaisser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "délicat": {
@@ -6011,7 +6011,7 @@
     "délivrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "demain": {
@@ -6028,7 +6028,7 @@
     "demander": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "démarche": {
@@ -6040,7 +6040,7 @@
     "déménager": {
         "V": {
             "tab": "v3",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "demeure": {
@@ -6052,7 +6052,7 @@
     "demeurer": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "demi": {
@@ -6070,13 +6070,13 @@
     "démolir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "démontrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dent": {
@@ -6105,19 +6105,19 @@
     "dépasser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dépêcher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dépendre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dépens": {
@@ -6129,31 +6129,31 @@
     "dépenser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "déplacer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "déplaire": {
         "V": {
             "tab": "v123",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "déployer": {
         "V": {
             "tab": "v5",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "déposer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dépôt": {
@@ -6165,7 +6165,7 @@
     "dépouiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "depuis": {
@@ -6176,7 +6176,7 @@
     "déranger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dernier": {
@@ -6193,13 +6193,13 @@
     "dérober": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dérouler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "derrière": {
@@ -6220,7 +6220,7 @@
     "désaltérer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "désastre": {
@@ -6232,7 +6232,7 @@
     "descendre": {
         "V": {
             "tab": "v85",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "descente": {
@@ -6255,7 +6255,7 @@
     "désespérer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "désespoir": {
@@ -6267,13 +6267,13 @@
     "déshabiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "désigner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "désir": {
@@ -6285,7 +6285,7 @@
     "désirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "désireux": {
@@ -6296,7 +6296,7 @@
     "désobéir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "désobéissance": {
@@ -6319,7 +6319,7 @@
     "désoler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "désordre": {
@@ -6354,7 +6354,7 @@
     "dessiner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dessous": {
@@ -6377,13 +6377,13 @@
     "destiner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "détacher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "détail": {
@@ -6395,13 +6395,13 @@
     "déterminer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "détester": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "détour": {
@@ -6413,13 +6413,13 @@
     "détourner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "détruire": {
         "V": {
             "tab": "v113",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dette": {
@@ -6442,31 +6442,31 @@
     "développer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "devenir": {
         "V": {
             "tab": "v52",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "deviner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "devoir": {
         "V": {
             "tab": "v64",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dévorer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dévouement": {
@@ -6478,7 +6478,7 @@
     "dévouer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "diable": {
@@ -6502,7 +6502,7 @@
     "dicter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dictionnaire": {
@@ -6531,7 +6531,7 @@
     "différer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "difficile": {
@@ -6570,19 +6570,19 @@
     "diminuer": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "dîner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dire": {
         "V": {
             "tab": "v117",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "directement": {
@@ -6611,7 +6611,7 @@
     "diriger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "discours": {
@@ -6629,13 +6629,13 @@
     "discuter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "disparaître": {
         "V": {
             "tab": "v101",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "disparition": {
@@ -6647,19 +6647,19 @@
     "dispenser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "disperser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "disposer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "disposition": {
@@ -6671,13 +6671,13 @@
     "disputer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dissiper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "distance": {
@@ -6695,7 +6695,7 @@
     "distinguer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "distraction": {
@@ -6707,7 +6707,7 @@
     "distraire": {
         "V": {
             "tab": "v125",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "distrait": {
@@ -6718,7 +6718,7 @@
     "distribuer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "distribution": {
@@ -6735,7 +6735,7 @@
     "diviser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "division": {
@@ -6787,7 +6787,7 @@
     "dominer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dommage": {
@@ -6811,19 +6811,19 @@
     "donner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dorer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dormir": {
         "V": {
             "tab": "v45",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "dortoir": {
@@ -6852,7 +6852,7 @@
     "doubler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "doucement": {
@@ -6886,7 +6886,7 @@
     "douter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "doux": {
@@ -6921,7 +6921,7 @@
     "dresser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "droit": {
@@ -6959,7 +6959,7 @@
     "durer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "duvet": {
@@ -6983,25 +6983,25 @@
     "éblouir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ébranler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "écarter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "échanger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "échantillon": {
@@ -7013,7 +7013,7 @@
     "échapper": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "écharpe": {
@@ -7043,7 +7043,7 @@
     "éclabousser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "éclair": {
@@ -7055,13 +7055,13 @@
     "éclaircir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "éclairer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "éclat": {
@@ -7078,13 +7078,13 @@
     "éclater": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "éclore": {
         "V": {
             "tab": "v129",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "écluse": {
@@ -7114,7 +7114,7 @@
     "économiser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "écorce": {
@@ -7126,25 +7126,25 @@
     "écouler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "écouter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "écraser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "écrire": {
         "V": {
             "tab": "v114",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "écrit": {
@@ -7179,7 +7179,7 @@
     "édifier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "éducation": {
@@ -7191,13 +7191,13 @@
     "effacer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "effectuer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "effet": {
@@ -7215,7 +7215,7 @@
     "effrayer": {
         "V": {
             "tab": "v4",
-            "aux": "av"
+            "aux": ["av","av"]
         }
     },
     "effroyable": {
@@ -7242,7 +7242,7 @@
     "égarer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "église": {
@@ -7260,13 +7260,13 @@
     "élancer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "élargir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "électricité": {
@@ -7300,19 +7300,19 @@
     "élever": {
         "V": {
             "tab": "v25",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "emballer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "embarquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "embarras": {
@@ -7324,37 +7324,37 @@
     "embarrasser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "embaumer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "embellir": {
         "V": {
             "tab": "v58",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "embrasser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "émerveiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "emmener": {
         "V": {
             "tab": "v24",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "émotion": {
@@ -7366,13 +7366,13 @@
     "émouvoir": {
         "V": {
             "tab": "v66",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "empêcher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "empereur": {
@@ -7390,7 +7390,7 @@
     "emplir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "emploi": {
@@ -7408,13 +7408,13 @@
     "employer": {
         "V": {
             "tab": "v5",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "emporter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "empressement": {
@@ -7426,7 +7426,7 @@
     "encadrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "enchanté": {
@@ -7437,7 +7437,7 @@
     "encombrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "encore": {
@@ -7448,13 +7448,13 @@
     "encourager": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "encourir": {
         "V": {
             "tab": "v57",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "encre": {
@@ -7472,13 +7472,13 @@
     "endormir": {
         "V": {
             "tab": "v45",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "endosser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "endroit": {
@@ -7513,7 +7513,7 @@
     "enfermer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "enfin": {
@@ -7524,37 +7524,37 @@
     "enflammer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "enfoncer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "enfouir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "engager": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "engloutir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "enlever": {
         "V": {
             "tab": "v25",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ennemi": {
@@ -7572,7 +7572,7 @@
     "ennuyer": {
         "V": {
             "tab": "v5",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ennuyeux": {
@@ -7599,7 +7599,7 @@
     "enrichir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "enseignement": {
@@ -7611,7 +7611,7 @@
     "enseigner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ensemble": {
@@ -7632,13 +7632,13 @@
     "entasser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "entendre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "enterrement": {
@@ -7650,7 +7650,7 @@
     "enterrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "enthousiasme": {
@@ -7672,13 +7672,13 @@
     "entonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "entourer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "entrain": {
@@ -7690,7 +7690,7 @@
     "entraîner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "entre": {
@@ -7707,19 +7707,19 @@
     "entreprendre": {
         "V": {
             "tab": "v90",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "entrer": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "entretenir": {
         "V": {
             "tab": "v52",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "entretien": {
@@ -7731,19 +7731,19 @@
     "entrevoir": {
         "V": {
             "tab": "v72",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "entrouvrir": {
         "V": {
             "tab": "v44",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "envahir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "enveloppe": {
@@ -7755,7 +7755,7 @@
     "envelopper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "envers": {
@@ -7773,7 +7773,7 @@
     "envier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "environ": {
@@ -7784,7 +7784,7 @@
     "environner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "envoi": {
@@ -7796,7 +7796,7 @@
     "envoyer": {
         "V": {
             "tab": "v134",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "épais": {
@@ -7807,7 +7807,7 @@
     "épanouir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "épargne": {
@@ -7819,7 +7819,7 @@
     "épargner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "épaule": {
@@ -7831,7 +7831,7 @@
     "épauler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "épée": {
@@ -7861,7 +7861,7 @@
     "épouser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "épouvantable": {
@@ -7872,7 +7872,7 @@
     "épouvanter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "époux": {
@@ -7890,13 +7890,13 @@
     "éprouver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "épuiser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "équilibre": {
@@ -7920,13 +7920,13 @@
     "ériger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "errer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "erreur": {
@@ -7938,7 +7938,7 @@
     "escalader": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "escalier": {
@@ -7974,7 +7974,7 @@
     "espérer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "espiègle": {
@@ -8003,13 +8003,13 @@
     "essayer": {
         "V": {
             "tab": "v4",
-            "aux": "av"
+            "aux": ["av","av"]
         }
     },
     "essuyer": {
         "V": {
             "tab": "v5",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "estime": {
@@ -8021,7 +8021,7 @@
     "estimer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "estomac": {
@@ -8045,7 +8045,7 @@
     "établir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "établissement": {
@@ -8075,7 +8075,7 @@
     "étaler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "étang": {
@@ -8099,13 +8099,13 @@
     "éteindre": {
         "V": {
             "tab": "v97",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "étendre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "étendue": {
@@ -8133,7 +8133,7 @@
     "étinceler": {
         "V": {
             "tab": "v7",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "étincelle": {
@@ -8145,7 +8145,7 @@
     "étirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "étoffe": {
@@ -8169,13 +8169,13 @@
     "étonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "étouffer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "étourdi": {
@@ -8213,7 +8213,7 @@
     "étudier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "évangile": {
@@ -8225,7 +8225,7 @@
     "éveiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "événement": {
@@ -8248,7 +8248,7 @@
     "éviter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "exact": {
@@ -8276,13 +8276,13 @@
     "examiner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "exaucer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "excellence": {
@@ -8299,7 +8299,7 @@
     "exciter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "exclamation": {
@@ -8323,13 +8323,13 @@
     "excuser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "exécuter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "exécution": {
@@ -8353,7 +8353,7 @@
     "exercer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "exercice": {
@@ -8365,13 +8365,13 @@
     "exhaler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "exiger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "existence": {
@@ -8383,13 +8383,13 @@
     "exister": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "expédier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "expédition": {
@@ -8407,7 +8407,7 @@
     "expirer": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "explication": {
@@ -8419,13 +8419,13 @@
     "expliquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "exposer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "exposition": {
@@ -8448,7 +8448,7 @@
     "exprimer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "exquis": {
@@ -8464,7 +8464,7 @@
     "extraire": {
         "V": {
             "tab": "v125",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "extraordinaire": {
@@ -8498,7 +8498,7 @@
     "fabriquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "façade": {
@@ -8510,7 +8510,7 @@
     "fâcher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fâcheux": {
@@ -8537,7 +8537,7 @@
     "faciliter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "façon": {
@@ -8549,7 +8549,7 @@
     "façonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "facteur": {
@@ -8578,7 +8578,7 @@
     "faire": {
         "V": {
             "tab": "v124",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fait": {
@@ -8590,7 +8590,7 @@
     "falloir": {
         "V": {
             "tab": "v80",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fameux": {
@@ -8617,7 +8617,7 @@
     "faner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "farce": {
@@ -8651,13 +8651,13 @@
     "fatiguer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "faucher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "faucheur": {
@@ -8713,7 +8713,7 @@
     "favoriser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fée": {
@@ -8725,7 +8725,7 @@
     "féliciter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "femelle": {
@@ -8743,7 +8743,7 @@
     "fendre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fenêtre": {
@@ -8767,7 +8767,7 @@
     "fermer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fermier": {
@@ -8790,7 +8790,7 @@
     "ferrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fervent": {
@@ -8813,7 +8813,7 @@
     "fêter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "feu": {
@@ -8860,7 +8860,7 @@
     "fier": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         },
         "A": {
             "tab": ["n39"]
@@ -8886,7 +8886,7 @@
     "figurer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fil": {
@@ -8904,7 +8904,7 @@
     "filer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "filet": {
@@ -8951,7 +8951,7 @@
     "finir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "firmament": {
@@ -8968,7 +8968,7 @@
     "fixer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "flacon": {
@@ -8985,7 +8985,7 @@
     "flamber": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "flamme": {
@@ -9009,7 +9009,7 @@
     "flatter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "flatteur": {
@@ -9045,7 +9045,7 @@
     "fleurir": {
         "V": {
             "tab": "v43",
-            "aux": "av"
+            "aux": ["av","av"]
         }
     },
     "fleuve": {
@@ -9069,7 +9069,7 @@
     "flotter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "flûte": {
@@ -9111,7 +9111,7 @@
     "foncer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fonction": {
@@ -9129,7 +9129,7 @@
     "fondre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fonds": {
@@ -9159,7 +9159,7 @@
     "forcer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "forestier": {
@@ -9182,7 +9182,7 @@
     "forger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "forgeron": {
@@ -9200,7 +9200,7 @@
     "former": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "formidable": {
@@ -9253,7 +9253,7 @@
     "fouetter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fougère": {
@@ -9265,7 +9265,7 @@
     "fouiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "foule": {
@@ -9295,7 +9295,7 @@
     "fournir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fourniture": {
@@ -9307,7 +9307,7 @@
     "fourrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fourrure": {
@@ -9362,7 +9362,7 @@
     "franchir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "franchise": {
@@ -9374,7 +9374,7 @@
     "frapper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "frayeur": {
@@ -9391,7 +9391,7 @@
     "frémir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fréquemment": {
@@ -9407,7 +9407,7 @@
     "fréquenter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "frère": {
@@ -9425,7 +9425,7 @@
     "frissonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "froid": {
@@ -9436,7 +9436,7 @@
     "froisser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fromage": {
@@ -9466,7 +9466,7 @@
     "frotter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fruit": {
@@ -9483,7 +9483,7 @@
     "fuir": {
         "V": {
             "tab": "v54",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fuite": {
@@ -9501,7 +9501,7 @@
     "fumer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "fureur": {
@@ -9529,7 +9529,7 @@
     "gagner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gai": {
@@ -9557,7 +9557,7 @@
     "gambader": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gamin": {
@@ -9575,7 +9575,7 @@
     "garantir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "garçon": {
@@ -9593,7 +9593,7 @@
     "garder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gardien": {
@@ -9611,7 +9611,7 @@
     "garnir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "garniture": {
@@ -9629,7 +9629,7 @@
     "gâter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gauche": {
@@ -9664,7 +9664,7 @@
     "gazouiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "géant": {
@@ -9681,13 +9681,13 @@
     "geler": {
         "V": {
             "tab": "v8",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gémir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gendarme": {
@@ -9699,7 +9699,7 @@
     "gêner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "général": {
@@ -9778,7 +9778,7 @@
     "germer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "geste": {
@@ -9837,7 +9837,7 @@
     "glacer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gland": {
@@ -9854,7 +9854,7 @@
     "glisser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "glissoire": {
@@ -9872,7 +9872,7 @@
     "gonfler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gorge": {
@@ -9901,7 +9901,7 @@
     "goûter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "goutte": {
@@ -9919,7 +9919,7 @@
     "gouverner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "grâce": {
@@ -9995,7 +9995,7 @@
     "grandir": {
         "V": {
             "tab": "v58",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "grange": {
@@ -10024,7 +10024,7 @@
     "gratter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "grave": {
@@ -10040,13 +10040,13 @@
     "graver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gravir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gravure": {
@@ -10064,7 +10064,7 @@
     "grelotter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "grenier": {
@@ -10094,7 +10094,7 @@
     "griffer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "grille": {
@@ -10106,13 +10106,13 @@
     "grimper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "grincer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "grippe": {
@@ -10135,7 +10135,7 @@
     "gronder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gros": {
@@ -10158,7 +10158,7 @@
     "grossir": {
         "V": {
             "tab": "v58",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "grotte": {
@@ -10176,7 +10176,7 @@
     "grouper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "grue": {
@@ -10199,7 +10199,7 @@
     "guérir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "guérison": {
@@ -10217,7 +10217,7 @@
     "guetter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "guichet": {
@@ -10235,7 +10235,7 @@
     "guider": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "gymnastique": {
@@ -10258,7 +10258,7 @@
     "habiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "habit": {
@@ -10282,7 +10282,7 @@
     "habiter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "habitude": {
@@ -10299,7 +10299,7 @@
     "habituer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "hache": {
@@ -10392,14 +10392,14 @@
         "V": {
             "h": 1,
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "hausser": {
         "V": {
             "h": 1,
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "haut": {
@@ -10448,7 +10448,7 @@
     "hésiter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "hêtre": {
@@ -10478,7 +10478,7 @@
         "V": {
             "h": 1,
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "hier": {
@@ -10535,7 +10535,7 @@
     "honorer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "honte": {
@@ -10648,7 +10648,7 @@
         "V": {
             "h": 1,
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "hygiène": {
@@ -10686,7 +10686,7 @@
     "ignorer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "île": {
@@ -10698,7 +10698,7 @@
     "illuminer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "illusion": {
@@ -10715,7 +10715,7 @@
     "illustrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "image": {
@@ -10733,13 +10733,13 @@
     "imaginer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "imiter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "immaculé": {
@@ -10786,7 +10786,7 @@
     "implorer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "importance": {
@@ -10803,7 +10803,7 @@
     "importer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "imposant": {
@@ -10814,7 +10814,7 @@
     "imposer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "impossibilité": {
@@ -10842,7 +10842,7 @@
     "imprimer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "imprudence": {
@@ -10871,7 +10871,7 @@
     "incliner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "inconnu": {
@@ -10905,7 +10905,7 @@
     "indiquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "indispensable": {
@@ -10964,7 +10964,7 @@
     "informer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ingrat": {
@@ -10998,7 +10998,7 @@
     "inonder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "inquiet": {
@@ -11009,7 +11009,7 @@
     "inquiéter": {
         "V": {
             "tab": "v22",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "inquiétude": {
@@ -11021,7 +11021,7 @@
     "inscrire": {
         "V": {
             "tab": "v114",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "insecte": {
@@ -11039,7 +11039,7 @@
     "insister": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "inspecteur": {
@@ -11051,13 +11051,13 @@
     "inspirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "installer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "instant": {
@@ -11092,7 +11092,7 @@
     "instruire": {
         "V": {
             "tab": "v113",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "instrument": {
@@ -11131,7 +11131,7 @@
     "interdire": {
         "V": {
             "tab": "v118",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "intéressant": {
@@ -11142,7 +11142,7 @@
     "intéresser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "intérêt": {
@@ -11159,19 +11159,19 @@
     "interpeller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "interroger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "interrompre": {
         "V": {
             "tab": "v91",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "interruption": {
@@ -11183,7 +11183,7 @@
     "intervenir": {
         "V": {
             "tab": "v52",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "intime": {
@@ -11200,7 +11200,7 @@
     "introduire": {
         "V": {
             "tab": "v113",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "inutile": {
@@ -11228,25 +11228,25 @@
     "inviter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "invoquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "irriter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "isoler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ivoire": {
@@ -11280,7 +11280,7 @@
     "jaillir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "jaloux": {
@@ -11337,13 +11337,13 @@
     "jaunir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "jeter": {
         "V": {
             "tab": "v10",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "jeu": {
@@ -11379,7 +11379,7 @@
     "joindre": {
         "V": {
             "tab": "v97",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "joli": {
@@ -11391,7 +11391,7 @@
     "joncher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "jonquille": {
@@ -11409,7 +11409,7 @@
     "jouer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "jouet": {
@@ -11427,7 +11427,7 @@
     "jouir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "joujou": {
@@ -11484,7 +11484,7 @@
     "juger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "juillet": {
@@ -11502,7 +11502,7 @@
     "jurer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "jusque": {
@@ -11574,7 +11574,7 @@
     "labourer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "laboureur": {
@@ -11592,7 +11592,7 @@
     "lâcher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "laid": {
@@ -11609,7 +11609,7 @@
     "laisser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "lait": {
@@ -11644,7 +11644,7 @@
     "lancer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "langage": {
@@ -11695,19 +11695,19 @@
     "lasser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "laver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "lécher": {
         "V": {
             "tab": "v27",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "leçon": {
@@ -11769,7 +11769,7 @@
     "lever": {
         "V": {
             "tab": "v25",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "lèvre": {
@@ -11781,7 +11781,7 @@
     "libérer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "liberté": {
@@ -11804,7 +11804,7 @@
     "lier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "lierre": {
@@ -11858,7 +11858,7 @@
     "limiter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "limpide": {
@@ -11892,7 +11892,7 @@
     "lire": {
         "V": {
             "tab": "v120",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "lis": {
@@ -11939,7 +11939,7 @@
     "livrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "local": {
@@ -11963,7 +11963,7 @@
     "loger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "logis": {
@@ -12002,7 +12002,7 @@
     "longer": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "longtemps": {
@@ -12041,7 +12041,7 @@
     "louer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "loup": {
@@ -12080,7 +12080,7 @@
     "luire": {
         "V": {
             "tab": "v112",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "luisant": {
@@ -12132,7 +12132,7 @@
     "lutter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "lys": {
@@ -12206,7 +12206,7 @@
     "maintenir": {
         "V": {
             "tab": "v52",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "maire": {
@@ -12301,13 +12301,13 @@
     "manger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "manier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "manière": {
@@ -12319,7 +12319,7 @@
     "manifester": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "manoeuvre": {
@@ -12331,7 +12331,7 @@
     "manoeuvrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "manque": {
@@ -12343,7 +12343,7 @@
     "manquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "mansarde": {
@@ -12378,7 +12378,7 @@
     "marchander": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "marchandise": {
@@ -12402,7 +12402,7 @@
     "marcher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "mardi": {
@@ -12438,7 +12438,7 @@
     "marier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "marin": {
@@ -12462,7 +12462,7 @@
     "marquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "marquis": {
@@ -12555,7 +12555,7 @@
     "maudire": {
         "V": {
             "tab": "v60",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "maussade": {
@@ -12604,7 +12604,7 @@
     "méditer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "meilleur": {
@@ -12632,13 +12632,13 @@
     "mélanger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "mêler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "mélodie": {
@@ -12667,7 +12667,7 @@
     "menacer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ménage": {
@@ -12679,7 +12679,7 @@
     "ménager": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ménagerie": {
@@ -12697,13 +12697,13 @@
     "mendier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "mener": {
         "V": {
             "tab": "v24",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "mensonge": {
@@ -12721,7 +12721,7 @@
     "mentir": {
         "V": {
             "tab": "v46",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "menton": {
@@ -12775,7 +12775,7 @@
     "mériter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "merle": {
@@ -12821,7 +12821,7 @@
     "mesurer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "métal": {
@@ -12851,7 +12851,7 @@
     "mettre": {
         "V": {
             "tab": "v89",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "meuble": {
@@ -12977,7 +12977,7 @@
     "mirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "miroir": {
@@ -13041,7 +13041,7 @@
     "modérer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "moderne": {
@@ -13173,7 +13173,7 @@
     "monter": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "montre": {
@@ -13185,7 +13185,7 @@
     "montrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "monument": {
@@ -13197,7 +13197,7 @@
     "moquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "moqueur": {
@@ -13226,7 +13226,7 @@
     "mordre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "morne": {
@@ -13283,13 +13283,13 @@
     "moudre": {
         "V": {
             "tab": "v92",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "mouiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "moulin": {
@@ -13301,7 +13301,7 @@
     "mourir": {
         "V": {
             "tab": "v55",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "mousse": {
@@ -13331,7 +13331,7 @@
     "mouvoir": {
         "V": {
             "tab": "v65",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "moyen": {
@@ -13375,7 +13375,7 @@
     "munir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "mur": {
@@ -13398,7 +13398,7 @@
     "mûrir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "murmure": {
@@ -13410,7 +13410,7 @@
     "murmurer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "muscle": {
@@ -13462,7 +13462,7 @@
     "nager": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "naissance": {
@@ -13474,7 +13474,7 @@
     "naître": {
         "V": {
             "tab": "v104",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "nappe": {
@@ -13557,7 +13557,7 @@
     "négliger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "négociant": {
@@ -13580,7 +13580,7 @@
     "neiger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "nerveux": {
@@ -13596,7 +13596,7 @@
     "nettoyer": {
         "V": {
             "tab": "v5",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "neveu": {
@@ -13654,7 +13654,7 @@
     "noircir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "noisette": {
@@ -13689,7 +13689,7 @@
     "nommer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "non": {
@@ -13723,7 +13723,7 @@
     "nourrir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "nourriture": {
@@ -13747,7 +13747,7 @@
     "noyer": {
         "V": {
             "tab": "v5",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "nu": {
@@ -13786,7 +13786,7 @@
     "obéir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "obéissant": {
@@ -13809,7 +13809,7 @@
     "obliger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "obscur": {
@@ -13820,7 +13820,7 @@
     "obscurcir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "obscurité": {
@@ -13838,7 +13838,7 @@
     "observer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "obstacle": {
@@ -13850,7 +13850,7 @@
     "obtenir": {
         "V": {
             "tab": "v52",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "occasion": {
@@ -13862,7 +13862,7 @@
     "occasionner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "occupation": {
@@ -13874,7 +13874,7 @@
     "occuper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "océan": {
@@ -13927,7 +13927,7 @@
     "offenser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "office": {
@@ -13951,7 +13951,7 @@
     "offrir": {
         "V": {
             "tab": "v44",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "oie": {
@@ -13999,7 +13999,7 @@
     "onduler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "opération": {
@@ -14011,7 +14011,7 @@
     "opérer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "opinion": {
@@ -14023,7 +14023,7 @@
     "opposer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "or": {
@@ -14066,7 +14066,7 @@
     "ordonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ordre": {
@@ -14090,7 +14090,7 @@
     "organiser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "orgue": {
@@ -14119,7 +14119,7 @@
     "orner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "orphelin": {
@@ -14137,7 +14137,7 @@
     "oser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "osier": {
@@ -14149,7 +14149,7 @@
     "ôter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ouate": {
@@ -14197,7 +14197,7 @@
     "ouvrir": {
         "V": {
             "tab": "v44",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "page": {
@@ -14237,7 +14237,7 @@
     "paître": {
         "V": {
             "tab": "v102",
-            "aux": "tdir"
+            "aux": ["tdir"]
         }
     },
     "paix": {
@@ -14266,7 +14266,7 @@
     "pâlir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pan": {
@@ -14344,7 +14344,7 @@
     "paraître": {
         "V": {
             "tab": "v101",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "parapluie": {
@@ -14362,7 +14362,7 @@
     "parcourir": {
         "V": {
             "tab": "v57",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "parcours": {
@@ -14386,7 +14386,7 @@
     "pardonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pareil": {
@@ -14403,7 +14403,7 @@
     "parer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "paresse": {
@@ -14441,13 +14441,13 @@
     "parfumer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "parler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "parmi": {
@@ -14482,7 +14482,7 @@
     "parsemer": {
         "V": {
             "tab": "v13",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "part": {
@@ -14494,7 +14494,7 @@
     "partager": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "parterre": {
@@ -14512,7 +14512,7 @@
     "participer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "particulier": {
@@ -14534,7 +14534,7 @@
     "partir": {
         "V": {
             "tab": "v46",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "partout": {
@@ -14551,7 +14551,7 @@
     "parvenir": {
         "V": {
             "tab": "v52",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "passage": {
@@ -14581,7 +14581,7 @@
     "passer": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "passion": {
@@ -14669,7 +14669,7 @@
     "payer": {
         "V": {
             "tab": "v4",
-            "aux": "av"
+            "aux": ["av","av"]
         }
     },
     "pays": {
@@ -14711,13 +14711,13 @@
     "pécher": {
         "V": {
             "tab": "v27",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pêcher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pêcheur": {
@@ -14729,7 +14729,7 @@
     "peindre": {
         "V": {
             "tab": "v97",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "peine": {
@@ -14741,7 +14741,7 @@
     "peiner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "peintre": {
@@ -14771,7 +14771,7 @@
     "pencher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pendant": {
@@ -14782,7 +14782,7 @@
     "pendre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pendule": {
@@ -14794,7 +14794,7 @@
     "pénétrer": {
         "V": {
             "tab": "v17",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pénible": {
@@ -14822,7 +14822,7 @@
     "penser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pension": {
@@ -14846,7 +14846,7 @@
     "percer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "perche": {
@@ -14858,13 +14858,13 @@
     "percher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "perdre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "perdrix": {
@@ -14905,7 +14905,7 @@
     "périr": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "perle": {
@@ -14917,7 +14917,7 @@
     "permettre": {
         "V": {
             "tab": "v89",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "permission": {
@@ -14940,7 +14940,7 @@
     "persévérer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "personnage": {
@@ -14963,7 +14963,7 @@
     "persuader": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "perte": {
@@ -14975,7 +14975,7 @@
     "peser": {
         "V": {
             "tab": "v26",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pétale": {
@@ -14997,7 +14997,7 @@
     "pétrir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "peu": {
@@ -15014,7 +15014,7 @@
     "peupler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "peuplier": {
@@ -15043,7 +15043,7 @@
     "photographier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "phrase": {
@@ -15137,7 +15137,7 @@
     "piquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pis": {
@@ -15171,7 +15171,7 @@
     "placer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "plafond": {
@@ -15195,7 +15195,7 @@
     "plaindre": {
         "V": {
             "tab": "v97",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "plaine": {
@@ -15218,7 +15218,7 @@
     "plaire": {
         "V": {
             "tab": "v123",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "plaisir": {
@@ -15254,7 +15254,7 @@
     "planer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "plante": {
@@ -15266,7 +15266,7 @@
     "planter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "plaque": {
@@ -15307,13 +15307,13 @@
     "pleurer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pleuvoir": {
         "V": {
             "tab": "v79",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pli": {
@@ -15325,7 +15325,7 @@
     "plier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "plomb": {
@@ -15337,7 +15337,7 @@
     "plonger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pluie": {
@@ -15525,7 +15525,7 @@
     "pondre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pont": {
@@ -15573,7 +15573,7 @@
     "porter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "porteur": {
@@ -15597,7 +15597,7 @@
     "poser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "position": {
@@ -15609,7 +15609,7 @@
     "posséder": {
         "V": {
             "tab": "v30",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "possession": {
@@ -15707,7 +15707,7 @@
     "pourrir": {
         "V": {
             "tab": "v58",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "poursuite": {
@@ -15719,7 +15719,7 @@
     "poursuivre": {
         "V": {
             "tab": "v99",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pourtant": {
@@ -15730,13 +15730,13 @@
     "pourvoir": {
         "V": {
             "tab": "v82",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pousser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "poussière": {
@@ -15760,7 +15760,7 @@
     "pouvoir": {
         "V": {
             "tab": "v71",
-            "aux": "av"
+            "aux": ["av","av"]
         }
     },
     "prairie": {
@@ -15777,7 +15777,7 @@
     "pratiquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "pré": {
@@ -15806,13 +15806,13 @@
     "précéder": {
         "V": {
             "tab": "v30",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prêcher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "précieux": {
@@ -15823,7 +15823,7 @@
     "précipiter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "précisément": {
@@ -15840,13 +15840,13 @@
     "préférer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prendre": {
         "V": {
             "tab": "v90",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "préparatif": {
@@ -15864,7 +15864,7 @@
     "préparer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "près": {
@@ -15886,13 +15886,13 @@
     "présenter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "préserver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "président": {
@@ -15915,7 +15915,7 @@
     "presser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prêt": {
@@ -15926,13 +15926,13 @@
     "prétendre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prêter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prêtre": {
@@ -15950,19 +15950,19 @@
     "prévenir": {
         "V": {
             "tab": "v52",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prévoir": {
         "V": {
             "tab": "v73",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prière": {
@@ -16054,7 +16054,7 @@
     "priver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prix": {
@@ -16077,7 +16077,7 @@
     "procéder": {
         "V": {
             "tab": "v30",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "procession": {
@@ -16099,13 +16099,13 @@
     "proclamer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "procurer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "procureur": {
@@ -16122,7 +16122,7 @@
     "prodiguer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "production": {
@@ -16134,7 +16134,7 @@
     "produire": {
         "V": {
             "tab": "v113",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "produit": {
@@ -16164,7 +16164,7 @@
     "profiter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "profond": {
@@ -16210,13 +16210,13 @@
     "projeter": {
         "V": {
             "tab": "v10",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prolonger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "promenade": {
@@ -16228,7 +16228,7 @@
     "promener": {
         "V": {
             "tab": "v24",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "promeneur": {
@@ -16246,7 +16246,7 @@
     "promettre": {
         "V": {
             "tab": "v89",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prompt": {
@@ -16257,7 +16257,7 @@
     "prononcer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "propice": {
@@ -16274,7 +16274,7 @@
     "proposer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "proposition": {
@@ -16332,19 +16332,19 @@
     "protéger": {
         "V": {
             "tab": "v35",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prouver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "provenir": {
         "V": {
             "tab": "v52",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "proverbe": {
@@ -16368,7 +16368,7 @@
     "provoquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "prudence": {
@@ -16412,7 +16412,7 @@
     "punir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "punition": {
@@ -16435,7 +16435,7 @@
     "purifier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "quai": {
@@ -16499,7 +16499,7 @@
     "quitter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "quotidien": {
@@ -16510,13 +16510,13 @@
     "raccommoder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "raccourcir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "race": {
@@ -16534,7 +16534,7 @@
     "raconter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "radieux": {
@@ -16545,7 +16545,7 @@
     "rafraîchir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rage": {
@@ -16579,7 +16579,7 @@
     "ralentir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ramage": {
@@ -16591,7 +16591,7 @@
     "ramasser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rame": {
@@ -16609,7 +16609,7 @@
     "ramener": {
         "V": {
             "tab": "v24",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "randonnée": {
@@ -16627,13 +16627,13 @@
     "ranger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ranimer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rapide": {
@@ -16654,13 +16654,13 @@
     },
     "rapiécer": {
         "V": {
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rappeler": {
         "V": {
             "tab": "v7",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rapport": {
@@ -16672,13 +16672,13 @@
     "rapporter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rapprocher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rare": {
@@ -16694,19 +16694,19 @@
     "raser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rassembler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rassurer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rat": {
@@ -16718,13 +16718,13 @@
     "rater": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rattraper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ravage": {
@@ -16742,7 +16742,7 @@
     "ravir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ravissant": {
@@ -16759,13 +16759,13 @@
     "rayonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réaliser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réalité": {
@@ -16783,13 +16783,13 @@
     "recevoir": {
         "V": {
             "tab": "v63",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réchauffer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "recherche": {
@@ -16801,7 +16801,7 @@
     "rechercher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "récit": {
@@ -16813,13 +16813,13 @@
     "réciter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réclamer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "récolte": {
@@ -16831,7 +16831,7 @@
     "récolter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "recommandation": {
@@ -16843,13 +16843,13 @@
     "recommander": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "recommencer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "récompense": {
@@ -16861,19 +16861,19 @@
     "récompenser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "reconduire": {
         "V": {
             "tab": "v113",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réconforter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "reconnaissance": {
@@ -16890,13 +16890,13 @@
     "reconnaître": {
         "V": {
             "tab": "v101",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "recourir": {
         "V": {
             "tab": "v57",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "recours": {
@@ -16908,7 +16908,7 @@
     "recouvrir": {
         "V": {
             "tab": "v44",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "récréation": {
@@ -16920,13 +16920,13 @@
     "recueillir": {
         "V": {
             "tab": "v51",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "reculer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rédaction": {
@@ -16938,25 +16938,25 @@
     "redescendre": {
         "V": {
             "tab": "v85",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "redevenir": {
         "V": {
             "tab": "v52",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "redire": {
         "V": {
             "tab": "v117",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "redoubler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "redoutable": {
@@ -16967,19 +16967,19 @@
     "redouter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "redresser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réduire": {
         "V": {
             "tab": "v113",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réel": {
@@ -16995,7 +16995,7 @@
     "refaire": {
         "V": {
             "tab": "v124",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réfectoire": {
@@ -17007,13 +17007,13 @@
     "refermer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réfléchir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "reflet": {
@@ -17025,7 +17025,7 @@
     "refléter": {
         "V": {
             "tab": "v22",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réflexion": {
@@ -17037,7 +17037,7 @@
     "réformer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "refrain": {
@@ -17049,7 +17049,7 @@
     "refroidir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "refuge": {
@@ -17061,25 +17061,25 @@
     "réfugier": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "refuser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "regagner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "régaler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "regard": {
@@ -17091,7 +17091,7 @@
     "regarder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "régime": {
@@ -17121,7 +17121,7 @@
     "régler": {
         "V": {
             "tab": "v18",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "règne": {
@@ -17133,7 +17133,7 @@
     "régner": {
         "V": {
             "tab": "v19",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "regret": {
@@ -17145,7 +17145,7 @@
     "regretter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "régulier": {
@@ -17167,19 +17167,19 @@
     "rejeter": {
         "V": {
             "tab": "v10",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rejoindre": {
         "V": {
             "tab": "v97",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réjouir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "relatif": {
@@ -17201,7 +17201,7 @@
     "relever": {
         "V": {
             "tab": "v25",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "religieux": {
@@ -17218,7 +17218,7 @@
     "relire": {
         "V": {
             "tab": "v120",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "remarquable": {
@@ -17235,7 +17235,7 @@
     "remarquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "remède": {
@@ -17253,13 +17253,13 @@
     "remercier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "remettre": {
         "V": {
             "tab": "v89",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "remise": {
@@ -17271,7 +17271,7 @@
     "remonter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "remords": {
@@ -17283,31 +17283,31 @@
     "remplacer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "remplir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "remporter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "remuer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "renaître": {
         "V": {
             "tab": "v105",
-            "aux": "intr"
+            "aux": ["intr"]
         }
     },
     "renard": {
@@ -17325,7 +17325,7 @@
     "rencontrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rendez-vous": {
@@ -17337,19 +17337,19 @@
     "rendre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "renfermer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "renoncer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "renoncule": {
@@ -17367,7 +17367,7 @@
     "renouveler": {
         "V": {
             "tab": "v7",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "renouvellement": {
@@ -17385,7 +17385,7 @@
     "renseigner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rentrée": {
@@ -17397,43 +17397,43 @@
     "rentrer": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "renverser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "renvoyer": {
         "V": {
             "tab": "v134",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "répandre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "reparaître": {
         "V": {
             "tab": "v101",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réparer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "répartir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "repas": {
@@ -17445,31 +17445,31 @@
     "repasser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "repentir": {
         "V": {
             "tab": "v46",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "répéter": {
         "V": {
             "tab": "v22",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "replier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "répondre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réponse": {
@@ -17481,7 +17481,7 @@
     "reporter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "repos": {
@@ -17493,19 +17493,19 @@
     "reposer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "repousser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "reprendre": {
         "V": {
             "tab": "v90",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "représentant": {
@@ -17523,7 +17523,7 @@
     "représenter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "reprise": {
@@ -17541,7 +17541,7 @@
     "reprocher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réserve": {
@@ -17553,13 +17553,13 @@
     "réserver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "résigner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "résistance": {
@@ -17571,7 +17571,7 @@
     "résister": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "résolution": {
@@ -17583,13 +17583,13 @@
     "résonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "résoudre": {
         "V": {
             "tab": "v94",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "respect": {
@@ -17601,7 +17601,7 @@
     "respecter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "respectueux": {
@@ -17618,25 +17618,25 @@
     "respirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "resplendir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ressembler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ressentir": {
         "V": {
             "tab": "v46",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ressort": {
@@ -17660,7 +17660,7 @@
     "rester": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "résultat": {
@@ -17672,7 +17672,7 @@
     "rétablir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "retard": {
@@ -17690,25 +17690,25 @@
     "retenir": {
         "V": {
             "tab": "v52",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "retentir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "retirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "retomber": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "retour": {
@@ -17720,7 +17720,7 @@
     "retourner": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "retraite": {
@@ -17732,13 +17732,13 @@
     "retrousser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "retrouver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réunion": {
@@ -17750,13 +17750,13 @@
     "réunir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "réussir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rêve": {
@@ -17774,49 +17774,49 @@
     "réveiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "révéler": {
         "V": {
             "tab": "v16",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "revenir": {
         "V": {
             "tab": "v52",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "rêver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "reverdir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "revêtir": {
         "V": {
             "tab": "v56",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "revivre": {
         "V": {
             "tab": "v100",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "revoir": {
         "V": {
             "tab": "v72",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "revue": {
@@ -17862,7 +17862,7 @@
     "rider": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rigole": {
@@ -17879,7 +17879,7 @@
     "rire": {
         "V": {
             "tab": "v107",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "risque": {
@@ -17891,7 +17891,7 @@
     "risquer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rive": {
@@ -17932,7 +17932,7 @@
     "rôder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "roi": {
@@ -17955,7 +17955,7 @@
     "rompre": {
         "V": {
             "tab": "v91",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ronce": {
@@ -17978,13 +17978,13 @@
     "ronger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ronronner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rose": {
@@ -18037,13 +18037,13 @@
     "rougir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rouiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "rouleau": {
@@ -18055,7 +18055,7 @@
     "rouler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "roulotte": {
@@ -18124,7 +18124,7 @@
     "ruiner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ruisseau": {
@@ -18136,7 +18136,7 @@
     "ruisseler": {
         "V": {
             "tab": "v7",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "ruisselet": {
@@ -18158,67 +18158,67 @@
     "absenter": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "agenouiller": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "écrier": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "écrouler": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "efforcer": {
         "V": {
             "tab": "v0",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "éloigner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "emparer": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "empresser": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "enfuir": {
         "V": {
             "tab": "v54",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "envoler": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "évanouir": {
         "V": {
             "tab": "v58",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "sable": {
@@ -18271,7 +18271,7 @@
     "sacrifier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "sage": {
@@ -18293,7 +18293,7 @@
     "saigner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "sain": {
@@ -18309,7 +18309,7 @@
     "saisir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "saison": {
@@ -18338,7 +18338,7 @@
     "salir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "salle": {
@@ -18356,7 +18356,7 @@
     "saluer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "salut": {
@@ -18421,7 +18421,7 @@
     "satisfaire": {
         "V": {
             "tab": "v124",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "satisfait": {
@@ -18449,13 +18449,13 @@
     "sauter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "sautiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "sauvage": {
@@ -18466,7 +18466,7 @@
     "sauver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "savant": {
@@ -18478,7 +18478,7 @@
     "savoir": {
         "V": {
             "tab": "v67",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "savon": {
@@ -18490,7 +18490,7 @@
     "savourer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "savoureux": {
@@ -18513,13 +18513,13 @@
     "scier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "scintiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "scolaire": {
@@ -18547,7 +18547,7 @@
     "sécher": {
         "V": {
             "tab": "v27",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "seconde": {
@@ -18559,13 +18559,13 @@
     "secouer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "secourir": {
         "V": {
             "tab": "v57",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "secours": {
@@ -18629,13 +18629,13 @@
     "sembler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "semer": {
         "V": {
             "tab": "v13",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "séminaire": {
@@ -18670,13 +18670,13 @@
     "sentir": {
         "V": {
             "tab": "v46",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "séparer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "septembre": {
@@ -18721,7 +18721,7 @@
     "serrer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "serrure": {
@@ -18756,7 +18756,7 @@
     "servir": {
         "V": {
             "tab": "v47",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "serviteur": {
@@ -18800,7 +18800,7 @@
     "sévir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "siècle": {
@@ -18824,7 +18824,7 @@
     "siffler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "sifflet": {
@@ -18842,7 +18842,7 @@
     "signaler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "signature": {
@@ -18860,13 +18860,13 @@
     "signer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "signifier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "silence": {
@@ -18894,7 +18894,7 @@
     "sillonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "simple": {
@@ -18965,7 +18965,7 @@
     "situer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "sobre": {
@@ -19000,7 +19000,7 @@
     "soigner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "soigneusement": {
@@ -19073,7 +19073,7 @@
     "solliciter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "sombre": {
@@ -19102,13 +19102,13 @@
     "songer": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "sonner": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "sonnette": {
@@ -19143,7 +19143,7 @@
     "sortir": {
         "V": {
             "tab": "v46",
-            "aux": "av"
+            "aux": ["av","aê"]
         }
     },
     "sot": {
@@ -19177,7 +19177,7 @@
     "souffler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "souffrance": {
@@ -19189,7 +19189,7 @@
     "souffrir": {
         "V": {
             "tab": "v44",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "souhait": {
@@ -19201,13 +19201,13 @@
     "souhaiter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "souiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "soulagement": {
@@ -19219,13 +19219,13 @@
     "soulager": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "soulever": {
         "V": {
             "tab": "v25",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "soulier": {
@@ -19237,13 +19237,13 @@
     "soumettre": {
         "V": {
             "tab": "v89",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "soupçonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "soupe": {
@@ -19255,7 +19255,7 @@
     "souper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "soupir": {
@@ -19267,7 +19267,7 @@
     "soupirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "souple": {
@@ -19294,7 +19294,7 @@
     "sourire": {
         "V": {
             "tab": "v107",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "souris": {
@@ -19311,7 +19311,7 @@
     "soutenir": {
         "V": {
             "tab": "v52",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "souterrain": {
@@ -19400,7 +19400,7 @@
     "stationner": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "statue": {
@@ -19434,7 +19434,7 @@
     "subir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "subitement": {
@@ -19456,7 +19456,7 @@
     "succéder": {
         "V": {
             "tab": "v30",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "succès": {
@@ -19478,7 +19478,7 @@
     "sucer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "sucre": {
@@ -19502,7 +19502,7 @@
     "suffire": {
         "V": {
             "tab": "v116",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "suffisamment": {
@@ -19529,7 +19529,7 @@
     "suivre": {
         "V": {
             "tab": "v99",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "sujet": {
@@ -19551,19 +19551,19 @@
     "supplier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "supporter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "supposer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "suprême": {
@@ -19595,19 +19595,19 @@
     "surgir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "surmonter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "surprendre": {
         "V": {
             "tab": "v90",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "surprise": {
@@ -19625,7 +19625,7 @@
     "sursauter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "surtout": {
@@ -19636,19 +19636,19 @@
     "surveiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "survenir": {
         "V": {
             "tab": "v52",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "suspendre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "symbole": {
@@ -19702,19 +19702,19 @@
     "tacher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tâcher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tacheter": {
         "V": {
             "tab": "v10",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "taille": {
@@ -19726,7 +19726,7 @@
     "tailler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tailleur": {
@@ -19744,7 +19744,7 @@
     "taire": {
         "V": {
             "tab": "v122",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "talent": {
@@ -19790,7 +19790,7 @@
     "taper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tapis": {
@@ -19802,13 +19802,13 @@
     "tapisser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "taquiner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tard": {
@@ -19819,7 +19819,7 @@
     "tarder": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tarte": {
@@ -19867,7 +19867,7 @@
     "téléphoner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tellement": {
@@ -19884,7 +19884,7 @@
     "témoigner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "témoin": {
@@ -19936,7 +19936,7 @@
     "tenir": {
         "V": {
             "tab": "v52",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tentation": {
@@ -19954,7 +19954,7 @@
     "tenter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tenue": {
@@ -19972,7 +19972,7 @@
     "terminer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "terrain": {
@@ -20070,7 +20070,7 @@
     "tinter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tirelire": {
@@ -20082,7 +20082,7 @@
     "tirer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tiroir": {
@@ -20136,7 +20136,7 @@
     "tomber": {
         "V": {
             "tab": "v36",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "tonneau": {
@@ -20154,7 +20154,7 @@
     "tordre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "torrent": {
@@ -20183,7 +20183,7 @@
     "toucher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "touffe": {
@@ -20217,7 +20217,7 @@
     "tourbillonner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tourment": {
@@ -20229,7 +20229,7 @@
     "tourmenter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tournant": {
@@ -20247,13 +20247,13 @@
     "tourner": {
         "V": {
             "tab": "v36",
-            "aux": "aê"
+            "aux": ["aê"]
         }
     },
     "tournoyer": {
         "V": {
             "tab": "v5",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "toutefois": {
@@ -20276,7 +20276,7 @@
     "tracer": {
         "V": {
             "tab": "v0",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "train": {
@@ -20294,7 +20294,7 @@
     "traîner": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "trait": {
@@ -20312,7 +20312,7 @@
     "traiter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "trajet": {
@@ -20342,7 +20342,7 @@
     "trancher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tranquille": {
@@ -20364,13 +20364,13 @@
     "transformer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "transmettre": {
         "V": {
             "tab": "v89",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "transparent": {
@@ -20387,7 +20387,7 @@
     "transporter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "travail": {
@@ -20399,7 +20399,7 @@
     "travailler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "travailleur": {
@@ -20423,19 +20423,19 @@
     "traverser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "trembler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tremper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "très": {
@@ -20452,7 +20452,7 @@
     "tressaillir": {
         "V": {
             "tab": "v49",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tribunal": {
@@ -20475,7 +20475,7 @@
     "tricoter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "trimestre": {
@@ -20493,7 +20493,7 @@
     "triompher": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "triste": {
@@ -20515,7 +20515,7 @@
     "tromper": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "trompette": {
@@ -20538,7 +20538,7 @@
     "trotter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "trottoir": {
@@ -20562,13 +20562,13 @@
     "troubler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "trouer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "troupe": {
@@ -20586,13 +20586,13 @@
     "trouver": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tuer": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "tuile": {
@@ -20644,7 +20644,7 @@
     "unir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "univers": {
@@ -20672,7 +20672,7 @@
     "user": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "usine": {
@@ -20689,7 +20689,7 @@
     "utiliser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "utilité": {
@@ -20728,7 +20728,7 @@
     "vaincre": {
         "V": {
             "tab": "v86",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "vainqueur": {
@@ -20775,13 +20775,13 @@
     "valoir": {
         "V": {
             "tab": "v69",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "vanter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "vapeur": {
@@ -20793,7 +20793,7 @@
     "varier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "vase": {
@@ -20839,7 +20839,7 @@
     "veiller": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "veine": {
@@ -20874,7 +20874,7 @@
     "vendre": {
         "V": {
             "tab": "v85",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "vendredi": {
@@ -20886,19 +20886,19 @@
     "vénérer": {
         "V": {
             "tab": "v28",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "venger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "venir": {
         "V": {
             "tab": "v52",
-            "aux": "êt"
+            "aux": ["êt"]
         }
     },
     "vent": {
@@ -20956,7 +20956,7 @@
     "vérifier": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "véritable": {
@@ -20979,7 +20979,7 @@
     "vernir": {
         "V": {
             "tab": "v58",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "verre": {
@@ -20996,7 +20996,7 @@
     "verser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "vert": {
@@ -21025,7 +21025,7 @@
     "vêtir": {
         "V": {
             "tab": "v56",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "veuf": {
@@ -21071,7 +21071,7 @@
     "vider": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "vie": {
@@ -21191,7 +21191,7 @@
     "viser": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "visible": {
@@ -21208,7 +21208,7 @@
     "visiter": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "visiteur": {
@@ -21253,7 +21253,7 @@
     "vivre": {
         "V": {
             "tab": "v100",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "voeu": {
@@ -21282,13 +21282,13 @@
     "voiler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "voir": {
         "V": {
             "tab": "v72",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "voisin": {
@@ -21336,7 +21336,7 @@
     "voler": {
         "V": {
             "tab": "v36",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "volet": {
@@ -21365,7 +21365,7 @@
     "voltiger": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "volume": {
@@ -21377,7 +21377,7 @@
     "vouloir": {
         "V": {
             "tab": "v68",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "voûte": {
@@ -21395,7 +21395,7 @@
     "voyager": {
         "V": {
             "tab": "v3",
-            "aux": "av"
+            "aux": ["av"]
         }
     },
     "voyageur": {

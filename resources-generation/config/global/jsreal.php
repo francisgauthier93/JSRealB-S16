@@ -176,7 +176,19 @@ return array(
                 'present' => 'pr',
                 'past' => 'pp',
                 'future' => 'pf'
-            )
+            ),
+        	//Ajout des temps continuous anglais par Francis
+        	'continuous' => array(
+        			'present' => 'prc',
+        			'past' => 'pac',
+        			'future' => 'fuc'
+        	),
+        	//Ajout des perfect tense en anglais par Francis
+        	'perfect' => array(
+        			'present' => 'prp',
+        			'past' => 'pap',
+        			'future' => 'fup'
+        	)
         ),
         'type' => array(
             'verb' => array(

@@ -1904,14 +1904,34 @@ JSrealB.Module.Conjugation = (function() {
                 throw JSrealB.Exception.wrongPerson(unit, person);
             }
         }
-        else if(Object.keys(tempsCompEtSimple).indexOf(tense)>=0){
+        else{
+            try{
+                //console.log("compound [tense]:");
+                //console.log(JSrealB.Config.get('rule.compound')[tense]);
+                if(JSrealB.Config.get('rule.compound')[tense]["aux"]==undefined){
+                    //temps francophone sans auxiliaire prédéfini selon le temps
+                    var auxiliaires = {"av":"avoir","êt":"avoir","aê":"avoir"};
+                    var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];
+                }
+                else{
+                    var aux = JSrealB.Config.get('rule.compound')[tense]["aux"];
+                }
+                return conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person)+" "+conjugate(unit,JSrealB.Config.get('rule.compound')[tense]["participle"],person);
+            }
+            catch(e){
+                throw JSrealB.Exception.wrongTense(unit, tense);
+            }
+        /*else if(Object.keys(tempsCompEtSimple).indexOf(tense)>=0){
             //on doit travailler avec un temps composé
             var auxiliaires = {"av":"avoir","êt":"avoir","aê":"avoir"};
+            if(JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"].length>1){
+                //auxiliaire avoir et être avec sémantique différente
+                //À améliorer
+                return conjugate("avoir",tempsCompEtSimple[tense],person)+" "+conjugate(unit,"pp",person);
+            }
             var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];
             return conjugate(aux,tempsCompEtSimple[tense],person)+" "+conjugate(unit,"pp",person);
-        }
-        else
-        {
+        }*/
             throw JSrealB.Exception.wrongTense(unit, tense);
         }
     };
