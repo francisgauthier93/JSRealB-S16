@@ -284,6 +284,21 @@ class JSRealEnService extends JSRealService
     					'auxTense' => 'f',
     					'participle' => 'pp'
     			),
+    			'prpc' => array(
+    					'aux' => 'be',
+    					'auxTense' => 'prp',
+    					'participle' => 'pr'
+    			),
+    			'papc' => array(
+    					'aux' => 'be',
+    					'auxTense' => 'pap',
+    					'participle' => 'pr'
+    			),
+    			'fupc' => array(
+    					'aux' => 'be',
+    					'auxTense' => 'fup',
+    					'participle' => 'pr'
+    			)
     	);
     }
 }

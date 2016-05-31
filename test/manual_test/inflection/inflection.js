@@ -26,9 +26,9 @@ function addTable(verbe,temps){
                 var pronom=""+Pro(language=="fr"?"je":"I").pe(p).n(nb).g("f");
                 var v=""+V(verbe).t(temps[t][1]).pe(p).n(nb);
                 if (temps[t][0].substr(0,10)=="Subjonctif")
-                    $row.append("<td>"+S("que",pronom,v).a(" ")+"</td>");
+                    $row.append("<td style='padding-right:10px'>"+S("que",pronom,v).a(" ")+"</td>");
                 else
-                    $row.append("<td>"+S(pronom,v).a(" ")+"</td>");
+                    $row.append("<td style='padding-right:10px'>"+S(pronom,v).a(" ")+"</td>");
             }
             $tableau.append($row);
         }
@@ -42,14 +42,14 @@ function conjuguer(verbe){
         if ("V" in lexicon[verbe]){
             $("#tableau").append("<h1>"+titleConj[language]+verbe+"</h1>");
             if (language=='fr'){
-                addTable(verbe,[["Présent","p"],["Imparfait","i"],["Futur simple","f"]]);
-                addTable(verbe,[["Passé simple","ps"],["Plus-que-parfait","pq"],["Passé composé","pc"]]);
+                addTable(verbe,[["Présent","p"],["Imparfait","i"],["Futur simple","f"],["Passé simple","ps"]]);
+                addTable(verbe,[["Passé composé","pc"],["Plus-que-parfait","pq"],["Futur antérieur","fa"]]);
                 addTable(verbe,[["Subjonctif présent","s"],["Subjonctif imparfait","si"],["Subjonctif passé","spa"],["Subjonctif plus-que-parfait","spq"]]);
                 addTable(verbe,[["Conditionnel présent","c"],["Conditionnel passé","cp"]]);
             } else {
-                addTable(verbe,[["Present","p"],["Present continuous","prc"],["Present perfect","prp"]]);
-                addTable(verbe,[["Simple past","ps"],["Past continuous","pac"],["Past perfect","pap"]]);
-                addTable(verbe,[["Future","f"],["Future continuous", "fuc"],["Future perfect","fup"]]);
+                addTable(verbe,[["Present","p"],["Present continuous","prc"],["Present perfect","prp"],["Present perfect continuous","prpc"]]);
+                addTable(verbe,[["Simple past","ps"],["Past continuous","pac"],["Past perfect","pap"],["Past perfect continuous","papc"]]);
+                addTable(verbe,[["Future","f"],["Future continuous", "fuc"],["Future perfect","fup"],["Future perfect continuous","fupc"]]);
             }
         }
     }
@@ -67,10 +67,16 @@ function declinerNom(mot){
         if ("N" in lexicon[mot]){
             $tableau.append("<h1>"+titleDecl[language]+mot+titleCommeNom[language]+"</h1>");
             if (language=="fr"){
-                addLigne("Masculin singulier: ",N(mot).g("m").n("s"));
-                addLigne("Féminin singulier: " ,N(mot).g("f").n("s"));
-                addLigne("Masculin pluriel: "  ,N(mot).g("m").n("p"));
-                addLigne("Féminin pluriel: "   ,N(mot).g("f").n("p"));
+                //if(N(mot).g("m").n("s"))à
+                var r = /\[/g;
+                if(!r.test(N(mot).g("m").n("s"))){
+                    addLigne("Masculin singulier: ",N(mot).g("m").n("s")); 
+                    addLigne("Masculin pluriel: "  ,N(mot).g("m").n("p"));
+                }
+                if(!r.test(N(mot).g("f").n("s"))){
+                    addLigne("Féminin singulier: ",N(mot).g("f").n("s")); 
+                    addLigne("Féminin pluriel: "  ,N(mot).g("f").n("p"));
+                }              
             } else {
                 addLigne("Singular: ",N(mot).n("s"));
                 addLigne("Plural: "  ,N(mot).n("p"));

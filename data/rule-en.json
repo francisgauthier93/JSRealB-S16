@@ -2979,6 +2979,21 @@
             "aux": "have",
             "auxTense": "f",
             "participle": "pp"
+        },
+        "prpc": {
+            "aux": "be",
+            "auxTense": "prp",
+            "participle": "pr"
+        },
+        "papc": {
+            "aux": "be",
+            "auxTense": "pap",
+            "participle": "pr"
+        },
+        "fupc": {
+            "aux": "be",
+            "auxTense": "fup",
+            "participle": "pr"
         }
     }
 }

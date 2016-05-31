@@ -148,8 +148,8 @@ return array(
                 'compound_past' => 'pc',
                 'pluperfect' => 'pq',
 //                pa	passé antérieur
-                'simple_future' => 'f'
-//                fa	futur antérieur
+                'simple_future' => 'f',
+                'futur antérieur' => 'fa'
 //                fp	futur du passé
 //                fap	futur antérieur du passé
             ),
@@ -188,6 +188,12 @@ return array(
         			'present' => 'prp',
         			'past' => 'pap',
         			'future' => 'fup'
+        	),
+        	//Ajout des perfect tense en anglais par Francis
+        	'perfect continuous' => array(
+        			'present' => 'prpc',
+        			'past' => 'papc',
+        			'future' => 'fupc'
         	)
         ),
         'type' => array(

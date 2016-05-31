@@ -4208,6 +4208,10 @@
         "cp": {
             "participle": "pp",
             "auxTense": "c"
+        },
+        "fa": {
+            "participle": "pp",
+            "auxTense": "f"
         }
     }
 }

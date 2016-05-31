@@ -107,8 +107,7 @@ class JSRealFrService extends JSRealService
                 $this->exportTest($aTest),
                 $this->exportDmFeature()
             );
-        
-        lg(1,"Exported File : ", $aExportedFile);
+
         
         return $aExportedFile;
     }
@@ -400,6 +399,10 @@ class JSRealFrService extends JSRealService
     			'cp' => array(
     					'participle' => 'pp',
     					'auxTense' => 'c'
+    			),
+    			'fa' => array(
+    					'participle' => 'pp',
+    					'auxTense' => 'f'
     			)
     	);
     }

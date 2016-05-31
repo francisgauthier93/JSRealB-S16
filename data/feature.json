@@ -35,7 +35,8 @@
             "simple_past": "ps",
             "compound_past": "pc",
             "pluperfect": "pq",
-            "simple_future": "f"
+            "simple_future": "f",
+            "futur antérieur": "fa"
         },
         "imperative": {
             "present": "ip",
@@ -70,6 +71,11 @@
             "present": "prp",
             "past": "pap",
             "future": "fup"
+        },
+        "perfect continuous": {
+            "present": "prpc",
+            "past": "papc",
+            "future": "fupc"
         }
     },
     "type": {

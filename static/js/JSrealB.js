@@ -1884,7 +1884,7 @@ JSrealB.Module.Declension = (function() {
 JSrealB.Module.Conjugation = (function() {
     var applyEnding = function(unit, tense, person, conjugationTable) {
 
-        var tempsCompEtSimple = {"pc":"p","pq":"i","spa":"s","spq":"si","cp":"c"};
+        //var tempsCompEtSimple = {"pc":"p","pq":"i","spa":"s","spq":"si","cp":"c"};
         
         if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined)
         {
@@ -1906,14 +1906,14 @@ JSrealB.Module.Conjugation = (function() {
         }
         else{
             try{
-                //console.log("compound [tense]:");
-                //console.log(JSrealB.Config.get('rule.compound')[tense]);
+                //Obtenir l'auxiliaire d'abord
                 if(JSrealB.Config.get('rule.compound')[tense]["aux"]==undefined){
                     //temps francophone sans auxiliaire prédéfini selon le temps
                     var auxiliaires = {"av":"avoir","êt":"avoir","aê":"avoir"};
                     var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];
                 }
                 else{
+                    //en anglais, les auxiliaires son en fonction du temps. Les tables sont dans rule-en
                     var aux = JSrealB.Config.get('rule.compound')[tense]["aux"];
                 }
                 return conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person)+" "+conjugate(unit,JSrealB.Config.get('rule.compound')[tense]["participle"],person);
