@@ -2856,6 +2856,21 @@
             "pos": "r"
         }
     },
+    "sentence_type": {
+        "exc": {
+            "type": "exclamative",
+            "punctuation": "!"
+        },
+        "int": {
+            "type": "interrogative",
+            "punctuation": "?",
+            "prefix": "Do"
+        },
+        "dec": {
+            "type": "declarative",
+            "punctuation": "."
+        }
+    },
     "regular": {
         "pp": {
             "ending": "",

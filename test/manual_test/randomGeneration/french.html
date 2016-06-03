@@ -84,6 +84,7 @@
                                         <td>
                                             <select name="mode" id="mode" onchange="changeTemps()" size="1">
                                                 <option value="ind">indicatif</option>
+                                                <option value="comp">temps composé</option>
                                                 <option value="cond">conditionnel</option>
                                                 <option value="sub">subjonctif</option>
                                             </select>
@@ -94,6 +95,10 @@
                                         <td>
                                             <select id="temps" size="1"><option value="p">présent</option><option value="i">imparfait</option><option value="ps">passé simple</option><option value="f">futur</option></select>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Négation</label></td>
+                                        <td><input type="checkbox" name="negation" id="negation"></td>
                                     </tr>
                                 </tbody></table>
                         </fieldset>
@@ -174,6 +179,17 @@
                                 </tbody></table>
                         </fieldset>
                     </td>
+                </tr>
+                <tr>
+                    <fieldset>
+                        <legend>Forme de la phrase</legend>
+                        <form>
+                            <input type="radio" name="Form" value="dec" checked>Déclarative</input>
+                            <input type="radio" id="excForm" name="Form" value="exc">Exclamative</input>
+                            <input type="radio" id="queForm" name="Form" value="int">Interrogative</input>
+                        </form>
+
+                    </fieldset>
                 </tr>
             </tbody></table>
         <table>

@@ -91,6 +91,9 @@
                             <td>
                                 <select name="mode" id="mode" onchange="changeTemps()" size="1">
                                     <option value="ind">indicative</option>
+                                    <option value="cont">continuous</option>
+                                    <option value="perf">perfect</option>
+                                    <option value="perfcont">perfect continuous</option>
                                     <!-- <option value="cond">conditional</option>
                                     <option value="sub">subjonctive</option> -->
                                 </select>
@@ -101,6 +104,10 @@
                             <td>
                                 <select id="temps" size="1"><option value="p">present</option><option value="ps">simple past</option></select>
                             </td>
+                        </tr>
+                        <tr>
+                            <td><label>Negative</label></td>
+                            <td><input type="checkbox" name="negation" id="negation"></td>
                         </tr>
                     </tbody></table>
                 </fieldset>
@@ -195,6 +202,17 @@
                 </fieldset>
             </td>
         </tr>
+        <tr>
+                    <fieldset>
+                        <legend>Sentence type</legend>
+                        <form>
+                            <input type="radio" name="Form" value="dec" checked>Declarative</input>
+                            <input type="radio" id="excForm" name="Form" value="exc">Exclamatory</input>
+                            <input type="radio" id="queForm" name="Form" value="int">Interrogative</input>
+                        </form>
+
+                    </fieldset>
+                </tr>
     </tbody></table>
     <table>
         <tbody><tr>

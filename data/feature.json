@@ -39,8 +39,7 @@
             "futur antérieur": "fa"
         },
         "imperative": {
-            "present": "ip",
-            "past": "ipa"
+            "present": "ip"
         },
         "conditional": {
             "present": "c",
@@ -146,6 +145,17 @@
             "right": "r"
         },
         "complementary": "compl"
+    },
+    "sentence_type": {
+        "alias": "typ",
+        "declarative": "dec",
+        "exclamative": "exc",
+        "interrogative": "int"
+    },
+    "negation": {
+        "alias": "neg",
+        "yes": "y",
+        "no": "n"
     },
     "html": {
         "alias": "html",

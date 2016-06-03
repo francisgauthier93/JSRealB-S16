@@ -396,6 +396,14 @@ JSrealE.prototype.a = function(punctuation) {
 JSrealE.prototype.en = function(punctuation) {
     return this.setCtx(JSrealB.Config.get("feature.typography.surround"), punctuation);
 };
+//Ajout Francis pour les types de phrases
+JSrealE.prototype.typ = function(type){
+    return this.setCtx(JSrealB.Config.get("feature.sentence_type.alias"),type);
+}
+JSrealE.prototype.neg = function(yOrN){
+	return this.setCtx(JSrealB.Config.get("feature.negation.alias"),yOrN);
+}
+//end
 // Coordination
 JSrealE.prototype.c = function(wordOrPunctuation) {
     return this.setCtx(JSrealB.Config.get("feature.category.word.conjunction"), wordOrPunctuation);
@@ -582,16 +590,32 @@ JSrealE.prototype.printElements = function() {
     var result = this.printEachElement(elementList, separator, lastSeparator);
     
     // SENTENCE
+    //Ajouts Francis pour type de Phrase
     var addFullStop = false;
     var upperCaseFirstLetter = false;
+    
     if(this.parent === null
         && this.category === JSrealB.Config.get("feature.category.phrase.sentence"))
     {
         addFullStop = (this.getCtx(JSrealB.Config.get("feature.typography.surround")) === null);
         upperCaseFirstLetter = (this.getCtx(JSrealB.Config.get("feature.typography.ucfist")) === null);
+        var punctuationTag = this.getCtx(JSrealB.Config.get("feature.sentence_type.alias"));
+        if(punctuationTag == undefined){
+            var lastPunctuation = ".";
+        }
+        else{
+            //we are dealing with a special type of sentence
+            var lastPunctuation = JSrealB.Config.get("rule.sentence_type")[punctuationTag]["punctuation"];
+            if(JSrealB.Config.get("rule.sentence_type")[punctuationTag]["prefix"]!=undefined){
+                //there is a prefix specified (ex: Est-ce que)
+                return phraseFormatting(result, upperCaseFirstLetter, addFullStop, lastPunctuation, JSrealB.Config.get("rule.sentence_type")[punctuationTag]["prefix"]);
+        }
+        }
+
+        
     }
     
-    result = phraseFormatting(result, upperCaseFirstLetter, addFullStop);
+    result = phraseFormatting(result, upperCaseFirstLetter, addFullStop, lastPunctuation);
     
     return result;
 };
@@ -682,13 +706,16 @@ JSrealE.prototype.realizeConjugation = function() {
     var tense = this.getProp(JSrealB.Config.get("feature.tense.alias"));
     var person = this.getProp(JSrealB.Config.get("feature.person.alias"));
     var number = this.getProp(JSrealB.Config.get("feature.number.alias"));
+    var negation = this.getCtx(JSrealB.Config.get("feature.negation.alias"));
 
     if(number === JSrealB.Config.get("feature.number.plural"))
     {
         person += 3;
     }
-    
-    return JSrealB.Module.Conjugation.conjugate(this.unit, tense, person);
+    console.log("avant module:")
+    console.log(this)
+    console.log(this.parent);
+    return JSrealB.Module.Conjugation.conjugate(this.unit, tense, person, negation);
 };
 
 JSrealE.prototype.realizeDeclension = function() {
@@ -862,10 +889,15 @@ JSrealE.prototype.phonetic = function(content) {
 };
 
 //// Utils
-var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop) {
+var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop, lastPunctuation, prefix=null) {
     // replace multiple spaces with a single space
     var newString = str.replace(/\s{2,}/g, ' ');
     
+
+    if(prefix!=null){
+        newString = prefix+" "+newString;
+    }
+
     if(upperCaseFirstLetter)
     {
         var stringWithoutLeftHtml = stripLeftHtml(newString);
@@ -875,7 +907,12 @@ var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop) {
     
     if(addFullStop)
     {
-        newString = JSrealB.Module.Punctuation.after(newString, "."); // add full stop
+        if(JSrealB.Module.Punctuation.isValid(lastPunctuation)){
+            newString = JSrealB.Module.Punctuation.after(newString, lastPunctuation);
+        }
+        else{
+            newString = JSrealB.Module.Punctuation.after(newString, "."); // add full stop
+        }
     }
     
     newString = trim(newString);
@@ -1884,10 +1921,20 @@ JSrealB.Module.Declension = (function() {
 JSrealB.Module.Conjugation = (function() {
     var applyEnding = function(unit, tense, person, conjugationTable) {
 
-        //var tempsCompEtSimple = {"pc":"p","pq":"i","spa":"s","spq":"si","cp":"c"};
-        
+        //Cas spécifique des verbes impératifs.
+        if(tense == 'ip'){
+        	console.log(unit);
+        	console.log(tense);
+        	console.log(person);
+        	console.log(conjugationTable);
+        	console.log(this);
+            console.log(this.JSrealE.getCtx)
+        }
+
+
         if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined)
         {
+        	//temps simple
             if(person === null || typeof conjugationTable.t[tense] === 'string')
             {
                 return stem(unit, conjugationTable.ending) 
@@ -1909,7 +1956,7 @@ JSrealB.Module.Conjugation = (function() {
                 //Obtenir l'auxiliaire d'abord
                 if(JSrealB.Config.get('rule.compound')[tense]["aux"]==undefined){
                     //temps francophone sans auxiliaire prédéfini selon le temps
-                    var auxiliaires = {"av":"avoir","êt":"avoir","aê":"avoir"};
+                    var auxiliaires = {"av":"avoir","êt":"être","aê":"avoir"};
                     var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];
                 }
                 else{
@@ -1921,28 +1968,104 @@ JSrealB.Module.Conjugation = (function() {
             catch(e){
                 throw JSrealB.Exception.wrongTense(unit, tense);
             }
-        /*else if(Object.keys(tempsCompEtSimple).indexOf(tense)>=0){
-            //on doit travailler avec un temps composé
-            var auxiliaires = {"av":"avoir","êt":"avoir","aê":"avoir"};
-            if(JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"].length>1){
-                //auxiliaire avoir et être avec sémantique différente
-                //À améliorer
-                return conjugate("avoir",tempsCompEtSimple[tense],person)+" "+conjugate(unit,"pp",person);
+  
+            throw JSrealB.Exception.wrongTense(unit, tense);
+        }
+    };
+
+    var applyNegatEndingFR = function(unit, tense, person, conjugationTable) {
+
+        if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined)
+        {//temps simple
+        	if(person === null || typeof conjugationTable.t[tense] === 'string')
+            {
+                return "ne "+stem(unit, conjugationTable.ending) 
+                        + conjugationTable.t[tense]+" pas";
             }
-            var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];
-            return conjugate(aux,tempsCompEtSimple[tense],person)+" "+conjugate(unit,"pp",person);
-        }*/
+            else if(conjugationTable.t[tense][person-1] !== undefined
+                    && conjugationTable.t[tense][person-1] !== null)
+            {
+                return "ne "+stem(unit, conjugationTable.ending) 
+                        + conjugationTable.t[tense][person-1]+" pas";
+            }
+            else
+            {
+                throw JSrealB.Exception.wrongPerson(unit, person);
+            }
+        }
+        else{//temps composé
+            try{
+                //Obtenir l'auxiliaire d'abord
+                var auxiliaires = {"av":"avoir","êt":"être","aê":"avoir"};
+                var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];           
+                
+                return "ne "+conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person)+" pas "+conjugate(unit,JSrealB.Config.get('rule.compound')[tense]["participle"],person);
+            }
+            catch(e){
+                throw JSrealB.Exception.wrongTense(unit, tense);
+            }
+  
+            throw JSrealB.Exception.wrongTense(unit, tense);
+        }
+    };
+
+    var applyNegatEndingEN = function(unit, tense, person, conjugationTable) {
+
+        try{
+            //Obtenir l'auxiliaire d'abord
+            if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined){
+            	//temps simple
+
+                //cas particulier de 'be'
+                if(unit == 'be'){
+                    return conjugate(unit,tense,person)+" not ";
+                }
+                else{//tous les autres verbes
+                    var aux = 'do';
+                    var auxTense = tense;
+                    var parTense = 'b';
+                }
+
+        	}
+            else{
+                //en anglais, les auxiliaires son en fonction du temps. Les tables sont dans rule-en
+                var aux = JSrealB.Config.get('rule.compound')[tense]["aux"];
+                var auxTense = JSrealB.Config.get('rule.compound')[tense]["auxTense"];
+                var parTense = JSrealB.Config.get('rule.compound')[tense]["participle"];
+            }
+            //the 'not' is place right after the first auxiliary, so the one being present or past tense. (no compound)
+            if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][auxTense] !== undefined){
+                return conjugate(aux,auxTense,person)+" not "+conjugate(unit,parTense,person);
+            }
+            else{
+                return conjugate(aux,auxTense,person,'y')+" "+conjugate(unit,parTense,person);
+            }           
+            
+        }
+        catch(e){
             throw JSrealB.Exception.wrongTense(unit, tense);
         }
     };
     
-    var conjugate = function(unit, tense, person) {
+    var conjugate = function(unit, tense, person, negation = 'n') {
         var verbInfo = JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'));
         var conjugationTable = JSrealB.Config.get("rule").conjugation[verbInfo.tab];
 
         if(conjugationTable !== undefined)
-        {
-            return applyEnding(unit, tense, person, conjugationTable);
+        {	//check the negation
+        	if(negation=='y'){
+        		if(JSrealB.Config.get("language")==JSrealE.language.english){
+        			return applyNegatEndingEN(unit, tense, person, conjugationTable);
+        		}
+        		else{
+        			return applyNegatEndingFR(unit, tense, person, conjugationTable);
+        		}
+				
+        	}
+        	else{
+        		return applyEnding(unit, tense, person, conjugationTable);
+        	}
+            
         }
         else
         {
@@ -1951,12 +2074,12 @@ JSrealB.Module.Conjugation = (function() {
     };
 
     return {
-        conjugate: function(verb, tense, person) {
+        conjugate: function(verb, tense, person, negation) {
             var conjugatedVerb = null;
 
             try
             {
-                conjugatedVerb = conjugate(verb, tense, person);
+                conjugatedVerb = conjugate(verb, tense, person, negation);
             }
             catch(err)
             {
@@ -2674,6 +2797,10 @@ var fetchFromObject = function(obj, prop, value) {
     if(obj === undefined)
         return undefined;
 
+    if(typeof(prop)!="string"){
+        console.log("We're here");
+    }
+    //console.log(prop);
     var _index = prop.indexOf('.');
 
     if(_index > -1)

@@ -36,8 +36,9 @@ function expressionNP(det,nom,adj,adjForm,pluriel,pronom){
 function expressionVerbe(){
     var verbe=$("#verbe").val();
     var temps=$("#temps").val();
+    var negation=$("#negation").is(':checked');
     if(verbe!=""){
-        var v="V(\""+verbe+"\").t('"+temps+"')";
+        var v="V(\""+verbe+"\").t('"+temps+"')"+(negation?".neg('y')":"");
         return v;
     }
     return null;
@@ -48,7 +49,10 @@ function option(code,nom){
 }
 
 var codesTemps={
-    ind:{p:"present",ps:"simple past"}
+    ind:{p:"present",ps:"simple past",f:"future"},
+    cont:{prc:"present",pac:"past",fuc:"future"},
+    perf:{prp:"present",pap:"past",fup:"future"},
+    perfcont:{prpc:"present",papc:"past",fupc:"future"}
     };
 // var codesTemps={
 //         ind:{p:"présent",i:"imparfait",ps:"passé simple", f:"futur"},
@@ -97,7 +101,14 @@ function realiser(){
                                    $("#adjOI").val(),
                                    $("#adjOIForm").val(),
                                    $("#plurielOI").is(":checked"),
-                                   $("#est-pronomOI").is(":checked")?"me":null); 
+                                   $("#est-pronomOI").is(":checked")?"me":null);
+    var theForm = document.forms[0];
+    for(var i =0; i< theForm.length;i++){
+      if(theForm[i].checked){
+        var sType = theForm[i].value; 
+      }
+    }
+
     if(sujet!=null || verbe!=null){
         var expr="S(";
         if(sujet!=null)expr+=sujet;
@@ -117,7 +128,7 @@ function realiser(){
             expr+=")"; // fin de VP(
         }
         // console.log("expr",expr);
-        expr+=")";// fin du S
+        expr+=")"+((sType!=undefined)?".typ('"+sType+"')":"") //fin du S
         $("#jsreal").val(expr);
         $("#realisation").val(eval(expr+".real()"));
     } else
@@ -157,6 +168,7 @@ function aleatoire() {
   aleatoireBinaire($('#adjAntOI'));
   motAleatoire($('#adjOI'),lesAdjectifs);
   aleatoireBinaire($('#plurielOI'));
+  aleatoireBinaire($('#negation'));
   // aleatoireBinaire($('#est-pronomOI'));
 
   realiser(); 

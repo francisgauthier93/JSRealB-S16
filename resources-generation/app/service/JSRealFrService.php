@@ -83,6 +83,7 @@ class JSRealFrService extends JSRealService
         
         $aRuleTable = array();
         $aRuleTable['conjugation'] = $aConjugation;
+        $aRuleTable['compound'] = $this->getAuxRule();
 //        $aRuleTable['declension'] = $aDeclensionRule;
 //        $aRuleTable['pronoun'] = $aPronounRule;
 //        $aRuleTable['punctuation'] = $aPunctuationRule;
@@ -92,6 +93,7 @@ class JSRealFrService extends JSRealService
                 $aDeterminerDeclension
             );
         $aRuleTable['punctuation'] = $aPunctuationRule;
+        $aRuleTable['sentence_type'] = $this->getSentenceFormRule();
         $aRuleTable['regular'] = array_merge(
                 $aAdverbRule,
                 $aPrepositionRule
@@ -99,7 +101,7 @@ class JSRealFrService extends JSRealService
         $aRuleTable['date'] = $this->getDateRule();
         $aRuleTable['number'] = $this->getNumberRule();
         //Ajout auxiliaire et participle pour temps composés
-        $aRuleTable['compound'] = $this->getAuxRule();
+        
         
         $aExportedFile = array_merge(
                 $this->exportLexicon(array_merge($aPunctuation, $aLexicon)),
@@ -403,6 +405,25 @@ class JSRealFrService extends JSRealService
     			'fa' => array(
     					'participle' => 'pp',
     					'auxTense' => 'f'
+    			)
+    	);
+    }
+   
+    private  function getSentenceFormRule()
+    {
+    	return array(
+    			'exc' => array(
+    					'type' => 'exclamative',
+    					'punctuation' => '!',
+    			),
+    			'int' => array(
+    					'type' => 'interrogative',
+    					'punctuation' => '?',
+    					'prefix' => 'Est ce que'
+    			),
+    			'dec' => array(
+    					'type' => 'declarative',
+    					'punctuation' => '.'
     			)
     	);
     }

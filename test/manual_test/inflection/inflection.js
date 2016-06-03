@@ -5,7 +5,7 @@
 var $entree,$tableau;
 var language;
 
-var titleConj={"fr": "Conjugaison de ","en":"Conjugation of "};
+var titleConj={"fr": "Conjugaison de ","en":"Conjugation of: To "};
 var titleDecl={"fr": "Déclinaison de ","en":"Declension of "};
 var titleCommeNom={"fr": " comme nom","en":" as noun"};
 var titleCommeAdj={"fr": " comme adjectif","en":" as adjective"};
@@ -24,11 +24,22 @@ function addTable(verbe,temps){
             $row=$("<tr/>");
             for(var t=0;t<temps.length;t++){ // a row at 3 tenses
                 var pronom=""+Pro(language=="fr"?"je":"I").pe(p).n(nb).g("f");
-                var v=""+V(verbe).t(temps[t][1]).pe(p).n(nb);
+                var negation = $("#negationButton").is(':checked');
+                var v=(negation?""+V(verbe).t(temps[t][1]).pe(p).n(nb).neg('y'):""+V(verbe).t(temps[t][1]).pe(p).n(nb));
                 if (temps[t][0].substr(0,10)=="Subjonctif")
                     $row.append("<td style='padding-right:10px'>"+S("que",pronom,v).a(" ")+"</td>");
-                else
+                else if(temps[t][1]=='ip'){//temps impératif
+                    if(["1s","3s","3p"].indexOf(p+nb)>=0){
+                        $row.append("<td style='padding-right:10px'></td>");
+                    }
+                    else{
+                        $row.append("<td style='padding-right:10px'>"+S(v).a(" ")+"</td>");
+                    }
+                }
+                else{    
                     $row.append("<td style='padding-right:10px'>"+S(pronom,v).a(" ")+"</td>");
+                }
+                    
             }
             $tableau.append($row);
         }
@@ -45,11 +56,16 @@ function conjuguer(verbe){
                 addTable(verbe,[["Présent","p"],["Imparfait","i"],["Futur simple","f"],["Passé simple","ps"]]);
                 addTable(verbe,[["Passé composé","pc"],["Plus-que-parfait","pq"],["Futur antérieur","fa"]]);
                 addTable(verbe,[["Subjonctif présent","s"],["Subjonctif imparfait","si"],["Subjonctif passé","spa"],["Subjonctif plus-que-parfait","spq"]]);
-                addTable(verbe,[["Conditionnel présent","c"],["Conditionnel passé","cp"]]);
+                addTable(verbe,[["Conditionnel présent","c"],["Conditionnel passé","cp"],["Impératif","ip"]]);
             } else {
                 addTable(verbe,[["Present","p"],["Present continuous","prc"],["Present perfect","prp"],["Present perfect continuous","prpc"]]);
                 addTable(verbe,[["Simple past","ps"],["Past continuous","pac"],["Past perfect","pap"],["Past perfect continuous","papc"]]);
                 addTable(verbe,[["Future","f"],["Future continuous", "fuc"],["Future perfect","fup"],["Future perfect continuous","fupc"]]);
+                //Ajout imperative
+                $("#tableau").append($("<tr/>").append("<th style='padding-top:10px'>Imperative</th>"));
+                var negation = $("#negationButton").is(':checked');
+                var v=(negation?""+V(verbe).t('b').neg('y'):""+V(verbe).t('b'));
+                $("#tableau").append($("<tr/>").append("<td style='padding-right:10px'>"+S(v).a(" ")+"</td>"));
             }
         }
     }

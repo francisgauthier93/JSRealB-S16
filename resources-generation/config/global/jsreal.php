@@ -155,7 +155,7 @@ return array(
             ),
             'imperative' => array(
                 'present' => 'ip',
-                'past' => 'ipa'
+                //'past' => 'ipa'
             ),
             'conditional' => array(
                 'present' => 'c',
@@ -265,6 +265,19 @@ return array(
             ),
             'complementary' => 'compl'
         ),
+    	//Ajout Francis pour les types de phrases
+    	'sentence_type' => array(
+    		'alias' => 'typ',
+    		'declarative' => 'dec',
+    		'exclamative' => 'exc',
+    		'interrogative' => 'int',
+    	),
+    	'negation' => array(
+    			'alias' => 'neg',
+    			'yes' => 'y',
+    			'no' => 'n'
+    	),
+    	//end
         'html' => array(
             'alias' => 'html',
             'element' => 'elt',

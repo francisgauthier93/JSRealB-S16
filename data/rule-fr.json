@@ -2337,6 +2337,32 @@
             }
         }
     },
+    "compound": {
+        "pc": {
+            "participle": "pp",
+            "auxTense": "p"
+        },
+        "pq": {
+            "participle": "pp",
+            "auxTense": "i"
+        },
+        "spa": {
+            "participle": "pp",
+            "auxTense": "s"
+        },
+        "spq": {
+            "participle": "pp",
+            "auxTense": "si"
+        },
+        "cp": {
+            "participle": "pp",
+            "auxTense": "c"
+        },
+        "fa": {
+            "participle": "pp",
+            "auxTense": "f"
+        }
+    },
     "declension": {
         "nI": {
             "ending": "",
@@ -4079,6 +4105,21 @@
             "pos": "r"
         }
     },
+    "sentence_type": {
+        "exc": {
+            "type": "exclamative",
+            "punctuation": "!"
+        },
+        "int": {
+            "type": "interrogative",
+            "punctuation": "?",
+            "prefix": "Est ce que"
+        },
+        "dec": {
+            "type": "declarative",
+            "punctuation": "."
+        }
+    },
     "regular": {
         "av": {
             "ending": "",
@@ -4187,31 +4228,5 @@
             "decimal": ","
         },
         "number": ["zéro"]
-    },
-    "compound": {
-        "pc": {
-            "participle": "pp",
-            "auxTense": "p"
-        },
-        "pq": {
-            "participle": "pp",
-            "auxTense": "i"
-        },
-        "spa": {
-            "participle": "pp",
-            "auxTense": "s"
-        },
-        "spq": {
-            "participle": "pp",
-            "auxTense": "si"
-        },
-        "cp": {
-            "participle": "pp",
-            "auxTense": "c"
-        },
-        "fa": {
-            "participle": "pp",
-            "auxTense": "f"
-        }
     }
 }

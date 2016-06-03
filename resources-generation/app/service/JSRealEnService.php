@@ -81,6 +81,7 @@ class JSRealEnService extends JSRealService
                 $aAdverbRule
             );
         $aRuleTable['punctuation'] = $aPunctuationRule;
+        $aRuleTable['sentence_type'] = $this->getSentenceFormRule();
         $aRuleTable['regular'] = array_merge(
                 $aPrepositionRule
             );
@@ -298,6 +299,24 @@ class JSRealEnService extends JSRealService
     					'aux' => 'be',
     					'auxTense' => 'fup',
     					'participle' => 'pr'
+    			)
+    	);
+    }
+    private  function getSentenceFormRule()
+    {
+    	return array(
+    			'exc' => array(
+    					'type' => 'exclamative',
+    					'punctuation' => '!',
+    			),
+    			'int' => array(
+    					'type' => 'interrogative',
+    					'punctuation' => '?',
+    					'prefix' => 'Do'
+    			),
+    			'dec' => array(
+    					'type' => 'declarative',
+    					'punctuation' => '.'
     			)
     	);
     }

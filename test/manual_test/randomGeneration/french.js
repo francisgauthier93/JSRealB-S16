@@ -33,8 +33,9 @@ function expressionNP(det,nom,adj,adjAnt,pluriel,pronom){
 function expressionVerbe(){
     var verbe=$("#verbe").val();
     var temps=$("#temps").val();
+    var negation=$("#negation").is(':checked');
     if(verbe!=""){
-        var v="V(\""+verbe+"\").t('"+temps+"')";
+        var v="V(\""+verbe+"\").t('"+temps+"')"+(negation?".neg('y')":"");
         return v;
     }
     return null;
@@ -45,9 +46,10 @@ function option(code,nom){
 }
 
 var codesTemps={
-        ind:{p:"présent",i:"imparfait",ps:"passé simple", f:"futur"},
-        cond:{c:"présent"},
-        sub:{s:"présent",si:"imparfait"},
+        ind:{p:"présent",i:"imparfait",ps:"passé simple", f:"futur"},//,ip:"impératif"},
+        comp:{pc:"passé composé",pq:"plus-que-parfait",fa:"futur antérieur"},
+        cond:{c:"présent",cp:"passé"},
+        sub:{s:"présent",si:"imparfait",spa:"passé",spq:"plus-que-parfait"},
     };
 
 function changeTemps(){
@@ -92,6 +94,13 @@ function realiser(){
                                    $("#adjAntOI").is(":checked"),
                                    $("#plurielOI").is(":checked"),
                                    $("#est-pronomOI").is(":checked")?"moi":null); 
+    var theForm = document.forms[0];
+    for(var i =0; i< theForm.length;i++){
+      if(theForm[i].checked){
+        var sType = theForm[i].value; 
+      }
+    }
+
     if(sujet!=null || verbe!=null){
         var expr="S(";
         if(sujet!=null)expr+=sujet;
@@ -110,8 +119,8 @@ function realiser(){
             }
             expr+=")"; // fin de VP(
         }
-        // console.log("expr",expr);
-        expr+=")";// fin du S
+        //Ajout type de phrase
+        expr+=")"+((sType!=undefined)?".typ('"+sType+"')":"")
         $("#jsreal").val(expr);
         $("#realisation").val(eval(expr+".real()"));
     } else
@@ -151,6 +160,7 @@ function aleatoire() {
   aleatoireBinaire($('#adjAntOI'));
   motAleatoire($('#adjOI'),lesAdjectifs);
   aleatoireBinaire($('#plurielOI'));
+  aleatoireBinaire($('#negation'));
   // aleatoireBinaire($('#est-pronomOI'));
 
   realiser(); 
