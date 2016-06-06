@@ -133,6 +133,11 @@
         "comparative": "co",
         "superlative": "su"
     },
+    "antepose": {
+        "alias": "ant",
+        "before": "b",
+        "after": "a"
+    },
     "typography": {
         "alias": "typo",
         "ucfist": "ucf",

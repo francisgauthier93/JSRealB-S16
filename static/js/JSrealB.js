@@ -374,6 +374,14 @@ JSrealE.prototype.ow = function(owner) {
     }
     return this.setProp(JSrealB.Config.get("feature.owner.alias"), owner);
 };
+//adjectif anteposé
+JSrealE.prototype.ant = function(antepose) {
+    if(!contains(JSrealB.Config.get("feature.antepose"), antepose))
+    {
+        throw JSrealB.Exception.invalidInput(antepose, "antéposé")
+    }
+    return this.setProp(JSrealB.Config.get("feature.antepose.alias"), antepose);
+}
 
 //// Typography / Html / Context
 // first char in upper case
@@ -487,7 +495,12 @@ JSrealE.prototype.elementToPhrasePropagation = function(element) {
         element.bottomUpFeaturePropagation(this);
     }
 };
-
+////Modification majeure à la structure d'un syntagme
+JSrealE.prototype.modifyVisibility = function(visibility){
+    if(visibility == false){
+        this.realization = "";
+    }
+}
 //// Transformation
 JSrealE.prototype.toString = function() {
     return this.real();
@@ -518,7 +531,6 @@ JSrealE.prototype.real = function() {
 
 JSrealE.prototype.createRealizationList = function() {
     var eltList = [];
-    
     if(this.constituents.modifier !== undefined && this.constituents.modifier.length > 0)
         eltList = eltList.concat(this.constituents.modifier);
     
@@ -530,7 +542,7 @@ JSrealE.prototype.createRealizationList = function() {
     
     if(this.constituents.complement !== undefined && this.constituents.complement.length > 0)
         eltList = eltList.concat(this.constituents.complement);
-        
+
     return eltList;
 };
 
@@ -538,11 +550,14 @@ JSrealE.prototype.createRealizationList = function() {
 JSrealE.prototype.realizeGroup = function(elementList) {
     var i, length;
     var e = null;
+    //console.log(this);
     for(i = 0, length = elementList.length; i < length; i++)
     {
         e = elementList[i];
         
-        e.parent = this.category;
+        //console.log(e)
+        //essaie de changer le parent en pointant vers l'objet au lieu de la catégorie
+        e.parent = this;//.category;
         
         this.phraseToElementPropagation(e);
 
@@ -552,12 +567,76 @@ JSrealE.prototype.realizeGroup = function(elementList) {
         this.elementToPhrasePropagation(e);
     }
 };
+//Ajout fonction pour ordonner les groupes du nom avec adjectifs
+
+JSrealE.prototype.adjPositioning = function(adj, nom){
+    //version simpliste du positionnement de l'adjectif et du nom en français
+    var numSylNom = numSyllab(nom);
+    var numSylAdj = numSyllab(adj);
+    if(numSylAdj == 1){
+        this.setProp(JSrealB.Config.get("feature.antepose.alias"), 'b');
+    }
+    else{
+        this.setProp(JSrealB.Config.get("feature.antepose.alias"), 'a');
+    }
+}
+
+JSrealE.prototype.arrangeNP = function (elemList) {
+    var nounIndex = -1;
+    var adjIndex = -1;
+    for(var i = 0, j = 0, length = elemList.length; i < length; i++)
+    {
+        var eCategory = elemList[i].category;
+        if(eCategory == JSrealB.Config.get("feature.category.word.noun"))
+        {
+            nounIndex = i;
+        }
+        if(eCategory == JSrealB.Config.get("feature.category.word.adjective") || eCategory == JSrealB.Config.get("feature.category.phrase.adjective"))
+        {
+            adjIndex = i;
+        }
+    }
+
+    if(adjIndex == -1){
+        //no adjective 
+    }
+    else if(this.getProp(JSrealB.Config.get("feature.antepose.alias")) == 'b'){
+        if(adjIndex > nounIndex){
+            //placement de l'adjectif avant le nom
+            var noun = elemList[nounIndex];
+            elemList[nounIndex] = elemList[adjIndex];
+            elemList[adjIndex] = noun;
+            return elemList;
+        }
+    }
+    else if(this.getProp(JSrealB.Config.get("feature.antepose.alias")) == 'a'){
+        if(adjIndex < nounIndex){
+            //placement de l'adjectif après le nom
+            var noun = elemList[nounIndex];
+            elemList[nounIndex] = elemList[adjIndex];
+            elemList[adjIndex] = noun;
+            return elemList;
+        }
+    }
+    else{
+        //il y a un adjectif, mais sa position n'a pas été déterminée. Nous allons essayé de lui trouver une valeur par défaut.
+        var adj = elemList[adjIndex].unit;
+        var nom = elemList[nounIndex].unit;
+        this.adjPositioning(adj,nom);
+        return this.arrangeNP(elemList);
+    }
+    return elemList;
+}
 
 JSrealE.prototype.printElements = function() {
     var elementList = this.elements;
-    
     var separator = " ";
     var lastSeparator = " ";
+
+    if(this.category === JSrealB.Config.get("feature.category.phrase.noun") && JSrealB.Config.get("language")==JSrealE.language.french){
+        //s'assurer que le nom et l'adjectif sont dans le bon ordre 
+        elementList = this.arrangeNP(elementList);
+    }
     
     // COORDINATED PHRASE
     var conjunction = this.getCtx(JSrealB.Config.get("feature.category.word.conjunction"));
@@ -591,6 +670,23 @@ JSrealE.prototype.printElements = function() {
     
     // SENTENCE
     //Ajouts Francis pour type de Phrase
+    
+    // //Essais phrase impérative
+    // if(this.category === JSrealB.Config.get("feature.category.phrase.verb") && this.getChildrenProp(JSrealB.Config.get("feature.tense.alias"))=='ip')
+    // {
+    //     console.log(this.getCtx(JSrealB.Config.get("feature.typography.ucfist")))
+    //     console.log(this);
+    //     if(this.parent.category === JSrealB.Config.get("feature.category.phrase.sentence")){
+    //         for(child in this.parent.elements){
+    //             console.log(this.parent.elements[child])
+    //             if(this.parent.elements[child].category === JSrealB.Config.get("feature.category.phrase.noun")){
+    //                 console.log(this.parent.elements[child].getCtx(JSrealB.Config.get("feature.typography.ucfist")))
+    //                 this.parent.elements[child].modifyVisibility(false);
+    //             }
+    //         }
+    //     }
+    // }
+
     var addFullStop = false;
     var upperCaseFirstLetter = false;
     
@@ -611,8 +707,6 @@ JSrealE.prototype.printElements = function() {
                 return phraseFormatting(result, upperCaseFirstLetter, addFullStop, lastPunctuation, JSrealB.Config.get("rule.sentence_type")[punctuationTag]["prefix"]);
         }
         }
-
-        
     }
     
     result = phraseFormatting(result, upperCaseFirstLetter, addFullStop, lastPunctuation);
@@ -712,9 +806,6 @@ JSrealE.prototype.realizeConjugation = function() {
     {
         person += 3;
     }
-    console.log("avant module:")
-    console.log(this)
-    console.log(this.parent);
     return JSrealB.Module.Conjugation.conjugate(this.unit, tense, person, negation);
 };
 
@@ -725,6 +816,7 @@ JSrealE.prototype.realizeDeclension = function() {
     feature[(JSrealB.Config.get("feature.form.alias"))] = this.getProp(JSrealB.Config.get("feature.form.alias"));
     feature[(JSrealB.Config.get("feature.person.alias"))] = this.getProp(JSrealB.Config.get("feature.person.alias"));
     feature[(JSrealB.Config.get("feature.owner.alias"))] = this.getProp(JSrealB.Config.get("feature.owner.alias"));
+    feature[(JSrealB.Config.get("feature.antepose.alias"))] = this.getProp(JSrealB.Config.get("feature.antepose.alias"));
 
     return JSrealB.Module.Declension.decline(this.unit, this.category, feature);
 };
@@ -895,6 +987,7 @@ var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop, lastPunc
     
 
     if(prefix!=null){
+        //ajout d'un prefixe ex.: Est-ce que
         newString = prefix+" "+newString;
     }
 
@@ -924,6 +1017,23 @@ var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop, lastPunc
 /// appelé dans phraseFormatting
 var voyellesAccentuées="àäéèêëïîöôùû";
 var voyelles="aeiou"+voyellesAccentuées;
+
+//Pour placement de l'adjectif
+//ne fonctionne qu'à moitié... de toute façon, le module de choix de position de l'adjectif est à régler
+function numSyllab(string){
+    var count=0;
+    var previousCharVoyelle = false;
+    for(var i = 0; i<string.length;i++){
+        if(voyelles.indexOf(string[i])>=0 && !previousCharVoyelle){
+            count++;
+            previousCharVoyelle = true;
+        }
+        else{
+            previousCharVoyelle = false;
+        }
+    }
+    return count;
+}
 
 var elidables = ["la","ma","ta","sa",
                  "le","me","te","se","ce","de","ne","je",
@@ -1921,17 +2031,6 @@ JSrealB.Module.Declension = (function() {
 JSrealB.Module.Conjugation = (function() {
     var applyEnding = function(unit, tense, person, conjugationTable) {
 
-        //Cas spécifique des verbes impératifs.
-        if(tense == 'ip'){
-        	console.log(unit);
-        	console.log(tense);
-        	console.log(person);
-        	console.log(conjugationTable);
-        	console.log(this);
-            console.log(this.JSrealE.getCtx)
-        }
-
-
         if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined)
         {
         	//temps simple
@@ -1958,12 +2057,14 @@ JSrealB.Module.Conjugation = (function() {
                     //temps francophone sans auxiliaire prédéfini selon le temps
                     var auxiliaires = {"av":"avoir","êt":"être","aê":"avoir"};
                     var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];
+                    return conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person)+" "+conjugate(unit,JSrealB.Config.get('rule.compound')[tense]["participle"],person);
                 }
                 else{
                     //en anglais, les auxiliaires son en fonction du temps. Les tables sont dans rule-en
                     var aux = JSrealB.Config.get('rule.compound')[tense]["aux"];
+                    return conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person)+" "+conjugate(unit,JSrealB.Config.get('rule.compound')[tense]["participle"],person);
                 }
-                return conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person)+" "+conjugate(unit,JSrealB.Config.get('rule.compound')[tense]["participle"],person);
+                //return conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person)+" "+conjugate(unit,JSrealB.Config.get('rule.compound')[tense]["participle"],person);
             }
             catch(e){
                 throw JSrealB.Exception.wrongTense(unit, tense);

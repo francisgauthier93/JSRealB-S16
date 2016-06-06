@@ -16,14 +16,10 @@ function expressionNP(det,nom,adj,adjAnt,pluriel,pronom){
     if(nom!=""){
         var np="NP(";
         if(det!="nil")np+="D('"+det+"'),";
-        if(adj!=""  && adjAnt){
-            np+="A(\""+adj+"\"),";
-        }
         np+="N(\""+nom+"\")";
-        if(adj!="" && !adjAnt){
-            np+=",A(\""+adj+"\")";
-        }
+        if(adj!="")np+=",A(\""+adj+"\")";
         np+=")";// fin du NP
+        if(adj!="")np+=(adjAnt=="")?"":".ant('"+adjAnt+"')";
         if(pluriel)np+=".n('p')";
         return np;
     } 
@@ -70,7 +66,7 @@ function realiser(){
     var sujet=expressionNP($("#det").val(),
                            $("#nom").val(),
                            $("#adj").val(),
-                           $("#adjAnt").is(":checked"),
+                           $("#adjAnt").val(),
                            $("#pluriel").is(":checked"),
                            $("#est-pronom").is(":checked")?"je":null);
     if(sujet==null){
@@ -84,14 +80,14 @@ function realiser(){
     var objetDirect=expressionNP($("#detOD").val(),
                                  $("#nomOD").val(),
                                  $("#adjOD").val(),
-                                 $("#adjAntOD").is(":checked"),
+                                 $("#adjAntOD").val(),
                                  $("#plurielOD").is(":checked"),
                                  objDirNominalise);
     var prepOI=$("#prepOI").val();
     var objetIndirect=expressionNP($("#detOI").val(),
                                    $("#nomOI").val(),
                                    $("#adjOI").val(),
-                                   $("#adjAntOI").is(":checked"),
+                                   $("#adjAntOI").val(),
                                    $("#plurielOI").is(":checked"),
                                    $("#est-pronomOI").is(":checked")?"moi":null); 
     var theForm = document.forms[0];
@@ -135,7 +131,7 @@ var lesNoms,lesAdjectifs,lesVerbes,LesPrepositions;
 function aleatoire() {
   deroulantAleatoire($('#det'),1);
   motAleatoire($('#nom'),lesNoms);
-  aleatoireBinaire($('#adjAnt'));
+  $('#adjAnt')[0][0].selected = 'selected';
   motAleatoire($('#adj'),lesAdjectifs);
   aleatoireBinaire($('#pluriel'));
   // aleatoireBinaire($('#est-pronom'));
@@ -144,7 +140,7 @@ function aleatoire() {
 
   deroulantAleatoire($('#detOD'));
   motAleatoire($('#nomOD'),lesNoms)
-  aleatoireBinaire($('#adjAntOD'));
+  $('#adjAntOD')[0][0].selected = 'selected';
   motAleatoire($('#adjOD'),lesAdjectifs);
   aleatoireBinaire($('#plurielOD'));
   // aleatoireBinaire($('#est-pronomOD'));
@@ -157,7 +153,7 @@ function aleatoire() {
   motAleatoire($('#prepOI'),lesPrepositions);
   deroulantAleatoire($('#detOI'));
   motAleatoire($('#nomOI'),lesNoms);
-  aleatoireBinaire($('#adjAntOI'));
+  $('#adjAntOI')[0][0].selected = 'selected';
   motAleatoire($('#adjOI'),lesAdjectifs);
   aleatoireBinaire($('#plurielOI'));
   aleatoireBinaire($('#negation'));

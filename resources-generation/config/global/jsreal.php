@@ -252,6 +252,11 @@ return array(
             'comparative' => 'co',
             'superlative' => 'su'
         ),
+    	'antepose' => array(
+    		'alias' => 'ant',
+    		'before' => 'b',
+    		'after' => 'a'
+    	),
         'typography' => array(
             'alias' => 'typo',
             'ucfist' => 'ucf',  // upper-case first letter
