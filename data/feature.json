@@ -157,6 +157,12 @@
         "exclamative": "exc",
         "interrogative": "int"
     },
+    "verb_option": {
+        "alias": "vOpt",
+        "negation": "neg",
+        "passive": "pas",
+        "progressive": "prog"
+    },
     "negation": {
         "alias": "neg",
         "yes": "y",

@@ -277,6 +277,12 @@ return array(
     		'exclamative' => 'exc',
     		'interrogative' => 'int',
     	),
+    	'verb_option' => array(
+    		'alias' => 'vOpt',
+    		'negation' => 'neg',
+    		'passive' => 'pas',
+    		'progressive' => 'prog'
+    	),
     	'negation' => array(
     			'alias' => 'neg',
     			'yes' => 'y',
