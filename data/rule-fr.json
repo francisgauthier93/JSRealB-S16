@@ -2340,27 +2340,33 @@
     "compound": {
         "pc": {
             "participle": "pp",
-            "auxTense": "p"
+            "auxTense": "p",
+            "progAuxTense": "i"
         },
         "pq": {
             "participle": "pp",
-            "auxTense": "i"
+            "auxTense": "i",
+            "progAuxTense": "i"
         },
         "spa": {
             "participle": "pp",
-            "auxTense": "s"
+            "auxTense": "s",
+            "progAuxTense": "i"
         },
         "spq": {
             "participle": "pp",
-            "auxTense": "si"
+            "auxTense": "si",
+            "progAuxTense": "i"
         },
         "cp": {
             "participle": "pp",
-            "auxTense": "c"
+            "auxTense": "c",
+            "progAuxTense": "c"
         },
         "fa": {
             "participle": "pp",
-            "auxTense": "f"
+            "auxTense": "f",
+            "progAuxTense": "f"
         }
     },
     "declension": {

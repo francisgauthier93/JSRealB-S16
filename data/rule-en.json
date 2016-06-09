@@ -2960,55 +2960,20 @@
         "number": ["zero"]
     },
     "compound": {
-        "f": {
-            "aux": "will",
-            "auxTense": "b",
-            "participle": "b"
-        },
-        "prc": {
+        "continuous": {
             "aux": "be",
-            "auxTense": "p",
             "participle": "pr"
         },
-        "pac": {
-            "aux": "be",
-            "auxTense": "ps",
-            "participle": "pr"
-        },
-        "fuc": {
-            "aux": "be",
-            "auxTense": "f",
-            "participle": "pr"
-        },
-        "prp": {
+        "perfect": {
             "aux": "have",
-            "auxTense": "p",
             "participle": "pp"
         },
-        "pap": {
-            "aux": "have",
-            "auxTense": "ps",
+        "passive": {
+            "aux": "be",
             "participle": "pp"
         },
-        "fup": {
-            "aux": "have",
-            "auxTense": "f",
-            "participle": "pp"
-        },
-        "prpc": {
-            "aux": "be",
-            "auxTense": "prp",
-            "participle": "pr"
-        },
-        "papc": {
-            "aux": "be",
-            "auxTense": "pap",
-            "participle": "pr"
-        },
-        "fupc": {
-            "aux": "be",
-            "auxTense": "fup",
-            "participle": "pr"
+        "future": {
+            "aux": "will"
         }
     }
 }

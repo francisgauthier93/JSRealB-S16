@@ -161,7 +161,8 @@
         "alias": "vOpt",
         "negation": "neg",
         "passive": "pas",
-        "progressive": "prog"
+        "progressive": "prog",
+        "perfect": "perf"
     },
     "negation": {
         "alias": "neg",

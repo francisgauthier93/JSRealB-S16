@@ -25,12 +25,24 @@ function addTable(verbe,temps){
             for(var t=0;t<temps.length;t++){ // a row at 3 tenses
                 var pronom=""+Pro(language=="fr"?"je":"I").pe(p).n(nb).g("f");
                 var negation = $("#negationButton").is(':checked');
-                var v=(negation?""+V(verbe).t(temps[t][1]).pe(p).n(nb).neg('y'):""+V(verbe).t(temps[t][1]).pe(p).n(nb));
+                var passive = $("#passiveButton").is(':checked');
+                var progressive = $("#progressiveButton").is(':checked');
+                if (language=='en'){
+        
+                   var perfect = $("#perfectButton").is(":checked"); 
+                } 
+                else{
+                    var perfect = false;
+                } 
+                
+                var v=V(verbe).t(temps[t][1]).pe(p).n(nb).vOpt({neg:negation,pas:passive,prog:progressive,perf:perfect});
+
                 if (temps[t][0].substr(0,10)=="Subjonctif")
                     $row.append("<td style='padding-right:10px'>"+S("que",pronom,v).a(" ")+"</td>");
                 else if(temps[t][1]=='ip'){//temps impératif
                     if(["1s","3s","3p"].indexOf(p+nb)>=0){
                         $row.append("<td style='padding-right:10px'></td>");
+                        
                     }
                     else{
                         $row.append("<td style='padding-right:10px'>"+S(v).a(" ")+"</td>");
@@ -58,13 +70,13 @@ function conjuguer(verbe){
                 addTable(verbe,[["Subjonctif présent","s"],["Subjonctif imparfait","si"],["Subjonctif passé","spa"],["Subjonctif plus-que-parfait","spq"]]);
                 addTable(verbe,[["Conditionnel présent","c"],["Conditionnel passé","cp"],["Impératif","ip"]]);
             } else {
-                addTable(verbe,[["Present","p"],["Present continuous","prc"],["Present perfect","prp"],["Present perfect continuous","prpc"]]);
-                addTable(verbe,[["Simple past","ps"],["Past continuous","pac"],["Past perfect","pap"],["Past perfect continuous","papc"]]);
-                addTable(verbe,[["Future","f"],["Future continuous", "fuc"],["Future perfect","fup"],["Future perfect continuous","fupc"]]);
+                addTable(verbe,[["Present","p"]]);//,["Present continuous","prc"],["Present perfect","prp"],["Present perfect continuous","prpc"]]);
+                addTable(verbe,[["Simple past","ps"]]);//,["Past continuous","pac"],["Past perfect","pap"],["Past perfect continuous","papc"]]);
+                addTable(verbe,[["Future","f"]]);//,["Future continuous", "fuc"],["Future perfect","fup"],["Future perfect continuous","fupc"]]);
                 //Ajout imperative
                 $("#tableau").append($("<tr/>").append("<th style='padding-top:10px'>Imperative</th>"));
                 var negation = $("#negationButton").is(':checked');
-                var v=(negation?""+V(verbe).t('b').neg('y'):""+V(verbe).t('b'));
+                var v=V(verbe).t('b').vOpt({neg:negation});
                 $("#tableau").append($("<tr/>").append("<td style='padding-right:10px'>"+S(v).a(" ")+"</td>"));
             }
         }
@@ -138,6 +150,12 @@ var configs = {"fr":{ language: "fr",
 function checkLanguage() {
     language = $("#lang-fr")[0].checked?"fr":"en";
     JSrealLoader(configs[language],function(){},console.error);
+    if(language == 'fr'){
+        $("#perfectL").hide();
+    }
+    else{
+        $("#perfectL").show();
+    }
 };
 
 

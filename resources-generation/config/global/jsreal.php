@@ -281,7 +281,8 @@ return array(
     		'alias' => 'vOpt',
     		'negation' => 'neg',
     		'passive' => 'pas',
-    		'progressive' => 'prog'
+    		'progressive' => 'prog',
+    		'perfect' => 'perf'
     	),
     	'negation' => array(
     			'alias' => 'neg',

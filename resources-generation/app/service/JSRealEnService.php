@@ -250,55 +250,21 @@ class JSRealEnService extends JSRealService
     private  function getAuxRule()
     {
     	return array(
-    			'f' => array(
+    			//second implementation (more concise)
+    			'continuous' => array(
+    					'aux' => 'be',
+    					'participle' => 'pr'
+    			),
+    			'perfect' => array(
+    					'aux' => 'have',
+    					'participle' => 'pp'
+    			),
+    			'passive' => array(
+    					'aux' => 'be',
+    					'participle' => 'pp'
+    			),
+    			'future' => array(
     					'aux' => 'will',
-    					'auxTense' => 'b',
-    					'participle' => 'b'
-    			),
-    			'prc' => array(
-    					'aux' => 'be',
-    					'auxTense' => 'p',
-    					'participle' => 'pr'
-    			),
-    			'pac' => array(
-    					'aux' => 'be',
-    					'auxTense' => 'ps',
-    					'participle' => 'pr'
-    			),
-    			'fuc' => array(
-    					'aux' => 'be',
-    					'auxTense' => 'f',
-    					'participle' => 'pr'
-    			),
-    			'prp' => array(
-    					'aux' => 'have',
-    					'auxTense' => 'p',
-    					'participle' => 'pp'
-    			),
-    			'pap' => array(
-    					'aux' => 'have',
-    					'auxTense' => 'ps',
-    					'participle' => 'pp'
-    			),
-    			'fup' => array(
-    					'aux' => 'have',
-    					'auxTense' => 'f',
-    					'participle' => 'pp'
-    			),
-    			'prpc' => array(
-    					'aux' => 'be',
-    					'auxTense' => 'prp',
-    					'participle' => 'pr'
-    			),
-    			'papc' => array(
-    					'aux' => 'be',
-    					'auxTense' => 'pap',
-    					'participle' => 'pr'
-    			),
-    			'fupc' => array(
-    					'aux' => 'be',
-    					'auxTense' => 'fup',
-    					'participle' => 'pr'
     			)
     	);
     }

@@ -115,6 +115,7 @@ JSrealE.prototype.initUnitProperty = function() {
 
 JSrealE.prototype.initContext = function(naturalDisplay) {
     this.ctx[JSrealB.Config.get("feature.display_option.alias")] = {};
+    this.ctx[JSrealB.Config.get("feature.verb_option.alias")] = {};
     this.defaultCtx[JSrealB.Config.get("feature.display_option.alias")] = {};
     this.defaultCtx[JSrealB.Config.get("feature.display_option.alias")][JSrealB.Config.get("feature.display_option.natural")] = naturalDisplay;
     this.defaultCtx[JSrealB.Config.get("feature.display_option.alias")][JSrealB.Config.get("feature.display_option.relative_time")] = false;
@@ -412,6 +413,21 @@ JSrealE.prototype.neg = function(yOrN){
 	return this.setCtx(JSrealB.Config.get("feature.negation.alias"),yOrN);
 }
 //end
+//Verb options (neg,pas,prog)
+JSrealE.prototype.vOpt = function(optionList){
+    if(optionList !== undefined && isObject(optionList))
+    {
+        var optionKeyList = Object.keys(optionList);
+        for(var i = 0, length = optionKeyList.length; i < length; i++)
+        {
+            this.setCtx(JSrealB.Config.get("feature.verb_option.alias") 
+                    + "." + optionKeyList[i], optionList[optionKeyList[i]]);
+        }        
+        return this;
+    }
+    
+    return null;
+}
 // Coordination
 JSrealE.prototype.c = function(wordOrPunctuation) {
     return this.setCtx(JSrealB.Config.get("feature.category.word.conjunction"), wordOrPunctuation);
@@ -803,12 +819,19 @@ JSrealE.prototype.realizeConjugation = function() {
     var negation = this.getCtx(JSrealB.Config.get("feature.negation.alias"));
 
     var gender = this.getProp(JSrealB.Config.get("feature.gender.alias"));
+    var verbOptions = { neg: this.getCtx(JSrealB.Config.get("feature.verb_option.alias")+".neg"),
+                        pas: this.getCtx(JSrealB.Config.get("feature.verb_option.alias")+".pas"),
+                        prog:this.getCtx(JSrealB.Config.get("feature.verb_option.alias")+".prog"),
+                        perf:this.getCtx(JSrealB.Config.get("feature.verb_option.alias")+".perf")};
+    if(!(verbOptions.prog == true || verbOptions.pas == true || verbOptions.perf == true)){
+        verbOptions.native = true; //needed for simple tense negative in english 
+    }
 
     if(number === JSrealB.Config.get("feature.number.plural"))
     {
         person += 3;
     }
-    return JSrealB.Module.Conjugation.conjugate(this.unit, tense, person, gender, negation);
+    return JSrealB.Module.Conjugation.conjugate(this.unit, tense, person, gender, verbOptions);
 };
 
 JSrealE.prototype.realizeDeclension = function() {
@@ -1957,7 +1980,7 @@ JSrealB.Module.Declension = (function() {
             //quelques mots français du lexique peuvent s'accorder dans les deux genres.
             feature.g = 'm';
         }
-        
+
         var declension = getValueByFeature(declensionTable.declension, feature);
                 
 
@@ -1973,7 +1996,7 @@ JSrealB.Module.Declension = (function() {
     
     var decline = function(unit, category, feature) {
         var unitInfo = JSrealB.Module.Common.getWordFeature(unit, category);
-        console.log(unitInfo);
+
         if(feature === undefined) { feature = {}; }
         
         var declensionTable = [];
@@ -2038,151 +2061,174 @@ JSrealB.Module.Declension = (function() {
 
 //// Conjugation Module (Verbs)
 JSrealB.Module.Conjugation = (function() {
-    var applyEnding = function(unit, tense, person, gender, conjugationTable) {
-
-        if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined)
-        {
-        	//temps simple
-            if(person === null || typeof conjugationTable.t[tense] === 'string')
-            {
-                return stem(unit, conjugationTable.ending) 
-                        + conjugationTable.t[tense];
-            }
-            else if(conjugationTable.t[tense][person-1] !== undefined
-                    && conjugationTable.t[tense][person-1] !== null)
-            {
-                return stem(unit, conjugationTable.ending) 
-                        + conjugationTable.t[tense][person-1];
-            }
-            else
-            {
-                throw JSrealB.Exception.wrongPerson(unit, person);
-            }
-        }
-        else{
-            try{
-                //Temps composé...
-                if(JSrealB.Config.get("language")==JSrealE.language.french){
-                    //temps francophone sans auxiliaire prédéfini selon le temps
-                    var auxiliaires = {"av":"avoir","êt":"être","aê":"avoir"};
-                    //Obtenir l'auxiliaire d'abord
-                    var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];
-                    if(aux == "être"){
-                        return conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person)+" "
-                            +conjugatePPAvecEtre(unit, person, gender, JSrealB.Config.get('rule.compound')[tense]["participle"]); 
-                    }
-                    else{
-                        //avec auxiliaire avoir
-                        return conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person)+" "+conjugate(unit,JSrealB.Config.get('rule.compound')[tense]["participle"],person);
-                    }
-                    
+    var applyEnding = function(unit, tense, person, gender, conjugationTable, verbOptions ={}) {
+        
+        //français
+        try{
+            if(JSrealB.Config.get("language")==JSrealE.language.french){
+                //francais
+                if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined ){
+                     //temps simple
+                     return applySimpleEndingFR(unit, tense, person, conjugationTable, verbOptions)
                 }
                 else{
-                    //en anglais, les auxiliaires son en fonction du temps. Les tables sont dans rule-en
-                    var aux = JSrealB.Config.get('rule.compound')[tense]["aux"];
-                    return conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person)+" "+conjugate(unit,JSrealB.Config.get('rule.compound')[tense]["participle"],person);
+                    
+                    return applyEndingFR(unit, tense, person, gender, conjugationTable, verbOptions)
+                }   
+            }
+            else{
+                //anglais
+                //catch simple tense first
+                if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined && verbOptions.native == true){
+                    //special case: be native and negative
+                    if(unit == 'be'){
+                        return applySimpleEnding(unit, tense, person, conjugationTable)+((verbOptions.neg == true)?" not":"");
+                    }
+                    if(verbOptions.prog == true || verbOptions.pas == true || verbOptions.perf == true){
+                        //not simple
+                        return applyEndingEN(unit, tense, person, conjugationTable, verbOptions);
+                    }
+                    return applySimpleEndingEN(unit, tense, person, conjugationTable, verbOptions);
                 }
-            }
-            catch(e){
-                throw JSrealB.Exception.wrongTense(unit, tense);
-            }
-  
-            throw JSrealB.Exception.wrongTense(unit, tense);
-        }
-    };
-
-    var applyNegatEndingFR = function(unit, tense, person, gender, conjugationTable) {
-
-        if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined)
-        {//temps simple
-        	if(person === null || typeof conjugationTable.t[tense] === 'string')
-            {
-                return "ne "+stem(unit, conjugationTable.ending) 
-                        + conjugationTable.t[tense]+" pas";
-            }
-            else if(conjugationTable.t[tense][person-1] !== undefined
-                    && conjugationTable.t[tense][person-1] !== null)
-            {
-                return "ne "+stem(unit, conjugationTable.ending) 
-                        + conjugationTable.t[tense][person-1]+" pas";
-            }
-            else
-            {
-                throw JSrealB.Exception.wrongPerson(unit, person);
-            }
-        }
-        else{//temps composé
-            try{
-                //Obtenir l'auxiliaire d'abord
-                var auxiliaires = {"av":"avoir","êt":"être","aê":"avoir"};
-                var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];           
+                else{
+                    return applyEndingEN(unit, tense, person, conjugationTable, verbOptions);
+                }
                 
-                return "ne "+conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person)+" pas "+conjugate(unit,JSrealB.Config.get('rule.compound')[tense]["participle"],person);
             }
-            catch(e){
-                throw JSrealB.Exception.wrongTense(unit, tense);
-            }
-  
-            throw JSrealB.Exception.wrongTense(unit, tense);
-        }
-    };
-
-    var applyNegatEndingEN = function(unit, tense, person, gender, conjugationTable) {
-
-        try{
-            //Obtenir l'auxiliaire d'abord
-            if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined){
-            	//temps simple
-
-                //cas particulier de 'be'
-                if(unit == 'be'){
-                    return conjugate(unit,tense,person)+" not ";
-                }
-                else{//tous les autres verbes
-                    var aux = 'do';
-                    var auxTense = tense;
-                    var parTense = 'b';
-                }
-
-        	}
-            else{
-                //en anglais, les auxiliaires son en fonction du temps. Les tables sont dans rule-en
-                var aux = JSrealB.Config.get('rule.compound')[tense]["aux"];
-                var auxTense = JSrealB.Config.get('rule.compound')[tense]["auxTense"];
-                var parTense = JSrealB.Config.get('rule.compound')[tense]["participle"];
-            }
-            //the 'not' is place right after the first auxiliary, so the one being present or past tense. (no compound)
-            if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][auxTense] !== undefined){
-                return conjugate(aux,auxTense,person)+" not "+conjugate(unit,parTense,person);
-            }
-            else{
-                return conjugate(aux,auxTense,person,'y')+" "+conjugate(unit,parTense,person);
-            }           
-            
         }
         catch(e){
             throw JSrealB.Exception.wrongTense(unit, tense);
         }
+
+        throw JSrealB.Exception.wrongTense(unit, tense);    
     };
+
+    var applySimpleEnding = function(unit, tense, person, conjugationTable){
+        //temps simple
+        if(person === null || typeof conjugationTable.t[tense] === 'string')
+        {
+            return stem(unit, conjugationTable.ending) 
+                    + conjugationTable.t[tense];
+        }
+        else if(conjugationTable.t[tense][person-1] !== undefined
+                && conjugationTable.t[tense][person-1] !== null)
+        {
+            return stem(unit, conjugationTable.ending) 
+                    + conjugationTable.t[tense][person-1];
+        }
+        else
+        {
+            throw JSrealB.Exception.wrongPerson(unit, person);
+        }
+    };
+
+    var applySimpleEndingFR = function(unit, tense, person, conjugationTable, verbOptions= {}){
+
+        var verb = (verbOptions.neg == true)?"ne ":"";
+        verb += (verbOptions.pas == true || verbOptions.prog == true)?conjugate("être", tense, person, conjugationTable):applySimpleEnding(unit, tense, person, conjugationTable);
+        verb += (verbOptions.neg == true)?" pas":"";
+        verb += (verbOptions.prog == true)?" en train de":"";
+        verb += (verbOptions.pas == true && verbOptions.prog == true)?" être":"";
+        verb += (verbOptions.pas == true || verbOptions.prog == true)?" "+applySimpleEnding(unit, (verbOptions.pas == true)?"pp":"b", person, conjugationTable):"";
+        //verb += (verbOptions.pas == true)?" par":"";
+
+        return verb;
+    }
+    var applyEndingFR = function(unit, tense, person, gender, conjugationTable, verbOptions =  {}){
+
+        var verb = (verbOptions.neg == true)?"ne ":"";
+        //auxiliaire
+        var auxiliaires = {"av":"avoir","êt":"être","aê":"avoir"};
+        var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];
+        if(aux == "être") verbOptions.pas = false; //un verbe d'état ne se met pas au passif
+        verb += (verbOptions.prog == true)?conjugate("être",JSrealB.Config.get('rule.compound')[tense]["progAuxTense"],person):conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person);
+        //options
+        verb += (verbOptions.neg == true)?" pas":"";
+        verb += (verbOptions.prog == true)?" en train de":"";
+        verb += (verbOptions.pas == true)?" "+conjugate("être",(verbOptions.prog == true)?"b":"pp",person):"";
+        //participe
+        //if(parTense == undefined) var parTense = JSrealB.Config.get('rule.compound')[tense]["participle"];
+        if(verbOptions.prog == true && !verbOptions.pas == true){ verb += " "+applySimpleEnding(unit,"b",person, conjugationTable)}
+        else{ verb += (aux=="être")?" "+conjugatePPAvecEtre(unit, person, gender, "pp"):" "+conjugatePPAvecAvoir(unit, person, gender, "pp");}
+        //verb += (verbOptions.pas == true)?" par":""; //Devrait vérifier si le sujet existe
+
+        return verb;
+
+    };
+
+    var applySimpleEndingEN = function(unit, tense, person, conjugationTable, verbOptions = {}){
+        //temps simple - present, past ou future
+        if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined)
+        {
+            if(verbOptions.neg == true){
+                var verb = conjugate("do",tense,person);
+                verb += " not "+conjugate(unit, "b", person);
+                return verb;
+            }
+            else{
+                //present and past no negation
+                return applySimpleEnding(unit, tense, person, conjugationTable);
+            }
+        }
+        else if(tense == "f"){
+            var aux = JSrealB.Config.get('rule.compound.future.aux');
+            var verb = conjugate(aux, "b", person); //will
+            verb += (verbOptions.neg == true)?" not":"";
+            verb += " "+applySimpleEnding(unit,"b",person, conjugationTable);
+            return verb;
+        }            
+        else{
+            throw JSrealB.Exception.wrongTense(unit, tense);
+        }
+
+    }
+
+    var applyEndingEN = function(unit, tense, person, conjugationTable, verbOptions = {}){
+        //parTense
+        if(verbOptions.pas == true) var parTense = JSrealB.Config.get("rule.compound.passive.participle");
+        else if(verbOptions.prog == true) var parTense = JSrealB.Config.get("rule.compound.continuous.participle");
+        else if(verbOptions.perf == true) var parTense = JSrealB.Config.get("rule.compound.perfect.participle");
+        else var parTense = tense;
+        //1st auxiliary
+        if(verbOptions.pas == true){
+            verbOptions.pas = false;
+            var aux = conjugate(JSrealB.Config.get("rule.compound.passive.aux"), tense, person, "", verbOptions);
+        }
+        else if(verbOptions.prog == true){
+            verbOptions.prog = false;
+            var aux = conjugate(JSrealB.Config.get("rule.compound.continuous.aux"), tense, person, "", verbOptions);
+        }
+        else if(verbOptions.perf == true){
+            verbOptions.perf = false;
+            var aux = conjugate(JSrealB.Config.get("rule.compound.perfect.aux"), tense, person, "", verbOptions);
+        }
+        else if(verbOptions.neg == true){
+            if(tense == "f"){
+                return applySimpleEndingEN(unit,tense, person, conjugationTable, verbOptions);
+            }
+            else{
+                return applySimpleEndingEN(unit, tense, person, conjugationTable)+" not";
+            }
+        }
+        else{
+            return applySimpleEndingEN(unit, tense, person, conjugationTable);
+        }     
+
+        var verb = aux+" "+conjugate(unit, parTense, person);
+
+        return verb;
+    }
     
-    var conjugate = function(unit, tense, person, gender, negation = 'n') {
+    var conjugate = function(unit, tense, person, gender = "", verbOptions = {}) {
         var verbInfo = JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'));
         var conjugationTable = JSrealB.Config.get("rule").conjugation[verbInfo.tab];
 
         if(conjugationTable !== undefined)
-        {	//check the negation
-        	if(negation=='y'){
-        		if(JSrealB.Config.get("language")==JSrealE.language.english){
-        			return applyNegatEndingEN(unit, tense, person, gender, conjugationTable);
-        		}
-        		else{
-        			return applyNegatEndingFR(unit, tense, person, gender, conjugationTable);
-        		}
-				
-        	}
-        	else{
-        		return applyEnding(unit, tense, person, gender, conjugationTable);
-        	}
+        {	
+            if(tense == 'ip') verbOptions.prog = false;//cause une erreur pour l'impératif au passif 
+
+        	return applyEnding(unit, tense, person, gender, conjugationTable, verbOptions);
+        	// }
             
         }
         else
@@ -2210,13 +2256,18 @@ JSrealB.Module.Conjugation = (function() {
 
     }
 
+    var conjugatePPAvecAvoir = function(unit, person, gender, tense){
+        var pp = conjugate(unit,tense,person);
+        return pp;
+    }
+
     return {
-        conjugate: function(verb, tense, person, gender, negation) {
+        conjugate: function(verb, tense, person, gender, verbOptions) {
             var conjugatedVerb = null;
 
             try
             {
-                conjugatedVerb = conjugate(verb, tense, person, gender, negation);
+                conjugatedVerb = conjugate(verb, tense, person, gender, verbOptions);
             }
             catch(err)
             {

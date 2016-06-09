@@ -30,9 +30,22 @@ function expressionVerbe(){
     var verbe=$("#verbe").val();
     var temps=$("#temps").val();
     var negation=$("#negation").is(':checked');
+    var passive =$("#passive").is(':checked');
+    var progressive =$("#progressive").is(':checked');
     if(verbe!=""){
-        var v="V(\""+verbe+"\").t('"+temps+"')"+(negation?".neg('y')":"");
-        return v;
+      var vopt = ".vOpt({";
+      vopt += (negation)?"neg:true,":"";
+      vopt +=(passive)?"pas:true,":"";
+      vopt +=(progressive)?"prog:true,":"";
+      if(vopt == ".vOpt({"){
+        vopt = "";
+      }
+      else{
+        vopt = vopt.slice(0,-1);
+        vopt += "})"
+      }
+      var v="V(\""+verbe+"\").t('"+temps+"')"+vopt;
+      return v;
     }
     return null;
 }
@@ -149,6 +162,11 @@ function aleatoire() {
   deroulantAleatoire($('#mode'), true);
   changeTemps();
   deroulantAleatoire($('#temps'), true);
+  //options aléatoires
+  aleatoireBinaire($('#negation'));
+  //aleatoireBinaire($('#passive'));
+  //aleatoireBinaire($('#progressive'));
+
 
   motAleatoire($('#prepOI'),lesPrepositions);
   deroulantAleatoire($('#detOI'));

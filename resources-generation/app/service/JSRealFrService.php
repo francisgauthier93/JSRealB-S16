@@ -384,27 +384,33 @@ class JSRealFrService extends JSRealService
     	return array(
     			'pc' => array(
     					'participle' => 'pp',
-    					'auxTense' => 'p'
+    					'auxTense' => 'p',
+    					'progAuxTense' => 'i'
     			),
     			'pq' => array(
     					'participle' => 'pp',
-    					'auxTense' => 'i'
+    					'auxTense' => 'i',
+    					'progAuxTense' => 'i'
     			),
     			'spa' => array(
     					'participle' => 'pp',
-    					'auxTense' => 's'
+    					'auxTense' => 's',
+    					'progAuxTense' => 'i'
     			),
     			'spq' => array(
     					'participle' => 'pp',
-    					'auxTense' => 'si'
+    					'auxTense' => 'si',
+    					'progAuxTense' => 'i'
     			),
     			'cp' => array(
     					'participle' => 'pp',
-    					'auxTense' => 'c'
+    					'auxTense' => 'c',
+    					'progAuxTense' => 'c'
     			),
     			'fa' => array(
     					'participle' => 'pp',
-    					'auxTense' => 'f'
+    					'auxTense' => 'f',
+    					'progAuxTense' => 'f'
     			)
     	);
     }

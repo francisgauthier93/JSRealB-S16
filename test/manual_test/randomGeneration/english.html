@@ -91,9 +91,9 @@
                             <td>
                                 <select name="mode" id="mode" onchange="changeTemps()" size="1">
                                     <option value="ind">indicative</option>
-                                    <option value="cont">continuous</option>
+<!--                                     <option value="cont">continuous</option>
                                     <option value="perf">perfect</option>
-                                    <option value="perfcont">perfect continuous</option>
+                                    <option value="perfcont">perfect continuous</option> -->
                                     <!-- <option value="cond">conditional</option>
                                     <option value="sub">subjonctive</option> -->
                                 </select>
@@ -108,6 +108,15 @@
                         <tr>
                             <td><label>Negative</label></td>
                             <td><input type="checkbox" name="negation" id="negation"></td>
+                            <td><label>Continuous</label></td>
+                            <td><input type="checkbox" name="progressive" id="progressive"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Perfect</label></td>
+                            <td><input type="checkbox" name="perfect" id="perfect"></td>
+                            <td><label>Passive</label></td>
+                            <td><input type="checkbox" name="passive" id="passive"></td>
+                        </tr>
                         </tr>
                     </tbody></table>
                 </fieldset>
@@ -203,7 +212,7 @@
             </td>
         </tr>
         <tr>
-                    <fieldset>
+                    <tr><fieldset>
                         <legend>Sentence type</legend>
                         <form>
                             <input type="radio" name="Form" value="dec" checked>Declarative</input>
@@ -211,7 +220,7 @@
                             <input type="radio" id="queForm" name="Form" value="int">Interrogative</input>
                         </form>
 
-                    </fieldset>
+                    </fieldset></tr>
                 </tr>
     </tbody></table>
     <table>
