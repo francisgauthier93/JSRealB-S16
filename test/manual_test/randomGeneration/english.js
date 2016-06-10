@@ -65,9 +65,10 @@ function option(code,nom){
 
 var codesTemps={
     ind:{p:"present",ps:"past",f:"future"},
-    cont:{prc:"present",pac:"past",fuc:"future"},
-    perf:{prp:"present",pap:"past",fup:"future"},
-    perfcont:{prpc:"present",papc:"past",fupc:"future"}
+    imp:{ip:"present"},
+    // cont:{prc:"present",pac:"past",fuc:"future"},
+    // perf:{prp:"present",pap:"past",fup:"future"},
+    // perfcont:{prpc:"present",papc:"past",fupc:"future"}
     };
 // var codesTemps={
 //         ind:{p:"présent",i:"imparfait",ps:"passé simple", f:"futur"},

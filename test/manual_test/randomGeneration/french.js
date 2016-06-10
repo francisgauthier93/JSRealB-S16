@@ -6,12 +6,20 @@ var lexique;
 
 function expressionNP(det,nom,adj,adjAnt,pluriel,pronom){
     // console.log("expressionNP",det,nom,adj,adjAnt,pluriel,pronom);
-    if (pronom!=null){
-        var nm=lexique[nom];
-        if (nm && nm["N"]){
-            return "Pro('"+pronom+"').pe(3).g('"+nm["N"]["g"]+"')"+(pluriel?".n('p')":"");
-        }
-        return null;
+    // var temps =$("#temps").val();
+    // if(temps == "ip"){
+    //   var personne=$("#personne").val();
+    //   var nombre=$("#nombre").val();
+    //   console.log("param", personne, nombre)
+    //   if(personne!="nil" && nombre!="nil")
+    //     return "NP(Pro('je').pe('"+personne+"')"+".n('"+nombre+"'))";
+    // }
+    if (pronom!=null){        
+      var nm=lexique[nom];
+      if (nm && nm["N"]){
+        return "NP(Pro('"+pronom+"').pe(3).g('"+nm["N"]["g"]+"')"+(pluriel?".n('p'))":")");
+      }
+      return null; 
     }
     if(nom!=""){
         var np="NP(";
@@ -45,6 +53,7 @@ function expressionVerbe(){
         vopt += "})"
       }
       var v="V(\""+verbe+"\").t('"+temps+"')"+vopt;
+      v += (temps == "ip")?".pe('"+$("#personne").val()+"')"+".n('"+$("#nombre").val()+"')":"";
       return v;
     }
     return null;
@@ -59,7 +68,18 @@ var codesTemps={
         comp:{pc:"passé composé",pq:"plus-que-parfait",fa:"futur antérieur"},
         cond:{c:"présent",cp:"passé"},
         sub:{s:"présent",si:"imparfait",spa:"passé",spq:"plus-que-parfait"},
+        imp:{ip:"présent"},
     };
+
+var codesPersonne={
+  imp:{p:[1,2],s:[2]},
+  aut:{p:[1,2,3],s:[1,2,3]}
+}
+var tagPersonne={
+  1:"1ière",
+  2:"2ième",
+  3:"3ième"
+}
 
 function changeTemps(){
     // console.log("appel de changeTemps");
@@ -69,6 +89,20 @@ function changeTemps(){
         select.append($("<option>"+cts[ct]+"</option>").attr({value:ct}));
     var oldSelect=$("#temps");
     oldSelect.replaceWith(select);
+
+    var tempsSel = ($("#mode").val() == "imp")?"imp":"aut";
+    var nombre = $("#nombre").val();
+    var perSelect=$("<select>").attr({id:"personne",size:1});
+
+    for(var pers in codesPersonne[tempsSel][nombre]){
+      perSelect.append($("<option>"+tagPersonne[codesPersonne[tempsSel][nombre][pers]]+"</option>").attr({value:codesPersonne[tempsSel][nombre][pers]}))
+    }       
+      
+    var oldPerSelect =$("#personne");
+    oldPerSelect.replaceWith(perSelect);
+      
+    //}
+
 }
 
 function evaluer(){
@@ -86,7 +120,7 @@ function realiser(){
         var personne=$("#personne").val();
         var nombre=$("#nombre").val();
         if(personne!="nil" && nombre!="nil")
-            sujet="Pro('je').pe("+personne+").n('"+nombre+"')";
+            sujet="NP(Pro('je').pe("+personne+").n('"+nombre+"'))";
     }
     var verbe=expressionVerbe();
     var objDirNominalise=$("#est-pronomOD").is(":checked")?"me":null;

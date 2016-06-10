@@ -529,8 +529,18 @@ JSrealE.prototype.real = function() {
         if(this.constituents.head !== undefined)
         {
             var eltList = this.createRealizationList();
+            
+            //console.log(this);
+            //console.log(eltList)
+            //eltList = this.modifyStructure(eltList);
+            
+
             this.realizeGroup(eltList);
+
+            this.modifyStructure();
+            
             this.realization = this.printElements();
+            console.log(this.realization)
             return this.typography(this.html(this.phonetic(this.realization)));
         }
         else
@@ -543,6 +553,41 @@ JSrealE.prototype.real = function() {
         var realization = this.realizeTerminalElement();
         return this.typography(this.html(this.phonetic(realization)));
     }
+};
+
+JSrealE.prototype.modifyStructure = function() {
+    //console.log(this.category);
+    //console.log(this.childrenProp);
+
+    var elemList = this.elements;
+    console.log(elemList)
+
+    if(this.getChildrenProp(JSrealB.Config.get("feature.tense.alias")) == "ip"){
+        if(this.category == "S"){
+            var NPpos = -1;
+            for(var i = 0, imax = elemList.length; i < imax; i++){
+                if(elemList[i].category == "NP"){
+                    NPpos = i;
+                }
+            }
+            if(NPpos != -1){
+                //remove NP from elements
+                for(var j = NPpos; j < imax-1; j++){
+                     elemList[j] = elemList[j+1];
+                }
+                delete elemList[imax-1];
+                elemList.length -=1;
+            }
+        }
+    }
+
+    if(this.getChildrenProp(JSrealB.Config.get("feature.verb_option.alias")) != null){
+        console.log("verbOPTIONS!")
+    }
+
+    this.elements = elemList;
+    //return elemList;
+    
 };
 
 JSrealE.prototype.createRealizationList = function() {
@@ -572,6 +617,7 @@ JSrealE.prototype.realizeGroup = function(elementList) {
         e = elementList[i];
         
         //console.log(e)
+        //console.log(this)
         //essaie de changer le parent en pointant vers l'objet au lieu de la catégorie
         e.parent = this;//.category;
         
@@ -683,25 +729,6 @@ JSrealE.prototype.printElements = function() {
     }
     
     var result = this.printEachElement(elementList, separator, lastSeparator);
-    
-    // SENTENCE
-    //Ajouts Francis pour type de Phrase
-    
-    // //Essais phrase impérative
-    // if(this.category === JSrealB.Config.get("feature.category.phrase.verb") && this.getChildrenProp(JSrealB.Config.get("feature.tense.alias"))=='ip')
-    // {
-    //     console.log(this.getCtx(JSrealB.Config.get("feature.typography.ucfist")))
-    //     console.log(this);
-    //     if(this.parent.category === JSrealB.Config.get("feature.category.phrase.sentence")){
-    //         for(child in this.parent.elements){
-    //             console.log(this.parent.elements[child])
-    //             if(this.parent.elements[child].category === JSrealB.Config.get("feature.category.phrase.noun")){
-    //                 console.log(this.parent.elements[child].getCtx(JSrealB.Config.get("feature.typography.ucfist")))
-    //                 this.parent.elements[child].modifyVisibility(false);
-    //             }
-    //         }
-    //     }
-    // }
 
     var addFullStop = false;
     var upperCaseFirstLetter = false;
@@ -2079,6 +2106,8 @@ JSrealB.Module.Conjugation = (function() {
             else{
                 //anglais
                 //catch simple tense first
+                console.log(this)
+                if(tense == 'ip') tense = 'b'
                 if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined && verbOptions.native == true){
                     //special case: be native and negative
                     if(unit == 'be'){

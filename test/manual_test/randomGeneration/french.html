@@ -60,13 +60,13 @@
                                             <label for="personne">Pronom</label>
                                         </td>
                                         <td style="border-top:1px solid black; padding-top:10px">
-                                            <select name="personne" id="personne" onchange="" size="1">
+                                            <select name="personne" id="personne" onchange="changeTemps()" size="1">
                                                 <option value="nil"></option>
                                                 <option value="1">1ière</option>
                                                 <option value="2">2ième</option>
                                                 <option value="3">3ième</option>
                                             </select>
-                                            <select name="nombre" id="nombre" size="1">
+                                            <select name="nombre" id="nombre" onchange="changeTemps()" size="1">
                                                 <option value="nil"></option>
                                                 <option value="s">singulier</option>
                                                 <option value="p">pluriel</option>
@@ -92,6 +92,7 @@
                                                 <option value="comp">temps composé</option>
                                                 <option value="cond">conditionnel</option>
                                                 <option value="sub">subjonctif</option>
+                                                <option value="imp">impératif</option>>
                                             </select>
                                         </td>
                                     </tr>
