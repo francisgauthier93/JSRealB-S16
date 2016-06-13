@@ -528,19 +528,14 @@ JSrealE.prototype.real = function() {
         this.sortWord();
         if(this.constituents.head !== undefined)
         {
-            var eltList = this.createRealizationList();
-            
-            //console.log(this);
-            //console.log(eltList)
-            //eltList = this.modifyStructure(eltList);
-            
+            var eltList = this.createRealizationList();          
 
             this.realizeGroup(eltList);
 
             this.modifyStructure();
             
             this.realization = this.printElements();
-            console.log(this.realization)
+          
             return this.typography(this.html(this.phonetic(this.realization)));
         }
         else
@@ -556,11 +551,9 @@ JSrealE.prototype.real = function() {
 };
 
 JSrealE.prototype.modifyStructure = function() {
-    //console.log(this.category);
-    //console.log(this.childrenProp);
 
     var elemList = this.elements;
-    console.log(elemList)
+    console.log(this)
 
     if(this.getChildrenProp(JSrealB.Config.get("feature.tense.alias")) == "ip"){
         if(this.category == "S"){
@@ -568,6 +561,10 @@ JSrealE.prototype.modifyStructure = function() {
             for(var i = 0, imax = elemList.length; i < imax; i++){
                 if(elemList[i].category == "NP"){
                     NPpos = i;
+                }
+                if(elemList[i].category == "VP"){
+                    //on essaie de trouver le NP avant le VP. Évite d'effacer un complément de phrase qui serait un NP
+                    break;
                 }
             }
             if(NPpos != -1){
@@ -581,8 +578,13 @@ JSrealE.prototype.modifyStructure = function() {
         }
     }
 
-    if(this.getChildrenProp(JSrealB.Config.get("feature.verb_option.alias")) != null){
+    if(this.getCtx(JSrealB.Config.get("feature.verb_option.alias")) != null){
         console.log("verbOPTIONS!")
+        var vOptions = this.getCtx(JSrealB.Config.get("feature.verb_option.alias"));
+        console.log(vOptions)
+        if(vOptions["pas"] == true){
+            console.log("passif pls")
+        }
     }
 
     this.elements = elemList;
@@ -1003,30 +1005,34 @@ JSrealE.prototype.html = function(content) {
 
 JSrealE.prototype.phonetic = function(content) {
     var newContent = content;
-    
-    // patch pour l'élision et la contraction en français
-    if (JSrealB.Config.get("language")=="fr"){
-//        var mots=newContent.split(" ");
-        var htmlTagRegex =/\s*(<[^>]*>)|\s+/ig;
-        var mots = newContent.split(htmlTagRegex);
-        for(var i = 0, length1 = mots.length; i < length1; i++) { if(mots[i] === undefined) mots.splice(i, 1); } // fix : remove undefined
-        var length2=mots.length;
-        if(length2>=2){
-             // crée des Tokens qui devraient venir d'ailleurs...
-            var tokens=mots.map(function(mot){return new Tokn(mot)});
-            //avant d'élider, je vais essayer de gérer le cas d'inversion de mots (en commencant par l'imperatif)
+
+    // patch pour l'élision et la contraction en français et un peu en anglais (a => an)
+
+    var mots=newContent.split(" ");
+    var htmlTagRegex =/\s*(<[^>]*>)|\s+/ig;
+    var mots = newContent.split(htmlTagRegex);
+    for(var i = 0, length1 = mots.length; i < length1; i++) { if(mots[i] === undefined) mots.splice(i, 1); } // fix : remove undefined
+    var length2=mots.length;
+    if(length2>=2){
+         // crée des Tokens qui devraient venir d'ailleurs...
+        var tokens=mots.map(function(mot){return new Tokn(mot)});
+        //avant d'élider, je vais essayer de gérer le cas d'inversion de mots (en commencant par l'imperatif)
             
-//            newContent=eliderMots([tokens.shift()],tokens).map(function(token){return token.toString()}).join(" "); // Edit by Paul
+        if(JSrealB.Config.get("language")=="fr"){
             tokens = eliderMots([tokens.shift()],tokens);
-            newContent = "";
-            for(var j = 0, length3 = tokens.length; j < length3; j++)
-            {
-                newContent += tokens[j] + ((tokens[j].mot.charAt(0) === "<" 
-                        || (j+1 < length3 && tokens[j+1].mot.slice(0, 2) === "</")
-                        || j+1 >= length3) ? "" : " ");
-            }
+        }
+        else{
+            tokens = aToAn([tokens.shift()],tokens);
+        }
+        newContent = "";
+        for(var j = 0, length3 = tokens.length; j < length3; j++)
+        {
+            newContent += tokens[j] + ((tokens[j].mot.charAt(0) === "<" 
+                    || (j+1 < length3 && tokens[j+1].mot.slice(0, 2) === "</")
+                    || j+1 >= length3) ? "" : " ");
         }
     }
+    
 
     return newContent;
 };
@@ -1063,12 +1069,6 @@ var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop, lastPunc
     
     return newString;
 };
-
-//// "module cheap" d'élision en français
-/// appelé dans phraseFormatting
-var voyellesAccentuées="àäéèêëïîöôùû";
-var voyelles="aeiou"+voyellesAccentuées;
-
 //Pour placement de l'adjectif
 //ne fonctionne qu'à moitié... de toute façon, le module de choix de position de l'adjectif est à régler
 function numSyllab(string){
@@ -1085,6 +1085,12 @@ function numSyllab(string){
     }
     return count;
 }
+//// "module cheap" d'élision en français
+/// appelé dans phraseFormatting
+var voyellesAccentuées="àäéèêëïîöôùû";
+var voyelles="aeiou"+voyellesAccentuées;
+
+
 
 var elidables = ["la","ma","ta","sa",
                  "le","me","te","se","ce","de","ne","je",
@@ -1102,6 +1108,15 @@ function Tokn(mot){ // normalement on aurait besoin du lemme et de la catégorie
         this.mot=c+this.mot.substring(1);
         this.capitalized=true;
     }
+    var e=mot.charAt(mot.length-1);
+    try{
+        var end = JSrealB.Config.get("lexicon")[e]["Pc"]
+        this.end=e;
+        this.mot=this.mot.slice(0,-1);
+    }
+    catch(e){
+        this.end="";
+    }
     this.elidable=elidables.indexOf(this.mot)>=0;
     this.voyelleOuHmuet=false;
     if(voyelles.indexOf(c)>=0){
@@ -1117,11 +1132,11 @@ function Tokn(mot){ // normalement on aurait besoin du lemme et de la catégorie
         this.lex="";
     }
     if(c==="h"){
-        if (lex){// on devrait avoir l'info de la catégorie... et sur le lemme.
+        if (this.lex){// on devrait avoir l'info de la catégorie... et sur le lemme.
             // ici on cherche dans la première en supposant que le mot est un lemme 
 
-            for (cat in lex){
-                if (!lex[cat].h){
+            for (cat in this.lex){
+                if (!this.lex[cat].h){
                     this.voyelleOuHmuet=true;
                     break;
                 }
@@ -1135,13 +1150,30 @@ function Tokn(mot){ // normalement on aurait besoin du lemme et de la catégorie
 }
 
 Tokn.prototype.toString = function (){
-    if (this.capitalized)return this.mot.charAt(0).toUpperCase()+this.mot.substring(1);
-    return this.mot;
+    if (this.capitalized)return this.mot.charAt(0).toUpperCase()+this.mot.substring(1)+this.end;
+    return this.mot+this.end;
 }
 
 // pour la mise au point
 function showTokens(tokens){
     return "["+tokens.map(function(token){return token.toString()}).join(",")+"]";
+}
+
+function aToAn(prevTokens, tokens){
+    //place un 'an' devant les mots commençant par des voyelles. Ceci est une simplification de la règle actuelle. ex: a unique place, an hour ne fonctionne pas
+    if(tokens.length == 0){
+        return prevTokens;
+    }
+    var lastTokenId=((prevTokens[prevTokens.length-1]).mot.charAt(0) !== "<") ? prevTokens.length-1 : prevTokens.length-2;
+    var lastToken=prevTokens[lastTokenId];
+    if (lastToken.mot == "a" && tokens[0].voyelleOuHmuet){
+        lastToken.mot = "an";
+        prevTokens.push(tokens.shift());
+    }
+    else{
+        prevTokens.push(tokens.shift());
+    }
+    return aToAn(prevTokens,tokens); 
 }
 
 function removeLastLetter(str){return str.substring(0,str.length-1)}
@@ -2106,7 +2138,6 @@ JSrealB.Module.Conjugation = (function() {
             else{
                 //anglais
                 //catch simple tense first
-                console.log(this)
                 if(tense == 'ip') tense = 'b'
                 if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined && verbOptions.native == true){
                     //special case: be native and negative
@@ -2273,14 +2304,11 @@ JSrealB.Module.Conjugation = (function() {
         var featureAux = {"g":gender,"n":(person>3)?"p":"s"};
         //j'ai pris la déclension N28 pour modèle
         var declTable = JSrealB.Config.get("rule.declension")["n28"];
-        console.log(declTable);
         var declension = getValueByFeature(declTable.declension, featureAux);
-        //console.log(declension);
         if(declension !== null)
         {
             var ppConjugue = stem(pp, declTable.ending) + declension;
         }
-        console.log(ppConjugue);
         return ppConjugue;
 
     }
@@ -3014,10 +3042,6 @@ var fetchFromObject = function(obj, prop, value) {
     if(obj === undefined)
         return undefined;
 
-    if(typeof(prop)!="string"){
-        console.log("We're here");
-    }
-    //console.log(prop);
     var _index = prop.indexOf('.');
 
     if(_index > -1)
