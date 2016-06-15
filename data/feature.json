@@ -164,11 +164,6 @@
         "progressive": "prog",
         "perfect": "perf"
     },
-    "negation": {
-        "alias": "neg",
-        "yes": "y",
-        "no": "n"
-    },
     "html": {
         "alias": "html",
         "element": "elt",

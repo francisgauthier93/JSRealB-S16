@@ -284,11 +284,6 @@ return array(
     		'progressive' => 'prog',
     		'perfect' => 'perf'
     	),
-    	'negation' => array(
-    			'alias' => 'neg',
-    			'yes' => 'y',
-    			'no' => 'n'
-    	),
     	//end
         'html' => array(
             'alias' => 'html',
