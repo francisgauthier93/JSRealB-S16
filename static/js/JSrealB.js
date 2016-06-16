@@ -675,9 +675,22 @@ JSrealE.prototype.modifyStructure = function() {
 
     //Passif (inversion du sujet et de l'objet direct)
     if(this.getChildrenProp(JSrealB.Config.get("feature.verb_option.alias")+".pas") == true){
+        changeStructure: {
         if(this.category == "VP"){
             var parent = this.getTreeRoot();
             var verbe = this.constituents.head;
+            
+            var aux = JSrealB.Module.Common.getWordFeature(verbe.unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]
+            console.log(aux)
+            if(aux == "êt"){
+                alert("Désolé, mais le verbe \""+verbe.unit+"\" n'a pas de forme passive.");
+                console.log(this)
+                verbe.setInitProp("vOpt.pas",false);
+                this.childrenProp["vOpt.pas"] = false;
+                change = true;
+                break changeStructure; 
+            } 
+            
             //get subject
             var subjectPos = getSubjectNP(parent);
             
@@ -715,6 +728,7 @@ JSrealE.prototype.modifyStructure = function() {
                 parent.resetProp(true);
                 change = true;
             }
+        }
         }
     }
 
@@ -974,7 +988,6 @@ JSrealE.prototype.realizeTerminalElement = function() {
 };
 
 JSrealE.prototype.realizeConjugation = function() {
-    console.log(this);
     var tense = this.getProp(JSrealB.Config.get("feature.tense.alias"));
     var person = this.getProp(JSrealB.Config.get("feature.person.alias"));
     var number = this.getProp(JSrealB.Config.get("feature.number.alias"));
@@ -1260,8 +1273,14 @@ function Tokn(mot){ // normalement on aurait besoin du lemme et de la catégorie
     var e=mot.charAt(mot.length-1);
     try{
         var end = JSrealB.Config.get("lexicon")[e]["Pc"]
-        this.end=e;
-        this.mot=this.mot.slice(0,-1);
+        if(end == undefined){
+            this.end = "";
+        }
+        else{
+            this.end=e;
+            this.mot=this.mot.slice(0,-1);
+        }
+        
     }
     catch(e){
         this.end="";
@@ -2334,8 +2353,6 @@ JSrealB.Module.Conjugation = (function() {
 
     var applySimpleEndingFR = function(unit, tense, person, gender, conjugationTable, verbOptions= {}, cdProp = {}){
 
-        console.log(unit,tense,person,gender)
-
         var auxiliaires = {"av":"avoir","êt":"être","aê":"avoir"};
         var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];
 
@@ -2419,6 +2436,9 @@ JSrealB.Module.Conjugation = (function() {
     }
 
     var applyEndingEN = function(unit, tense, person, conjugationTable, verbOptions = {}){
+        
+        var sub = (verbOptions.hasSubject == true);
+        verbOptions.hasSubject = false;
         //parTense
         if(verbOptions.pas == true) var parTense = JSrealB.Config.get("rule.compound.passive.participle");
         else if(verbOptions.prog == true) var parTense = JSrealB.Config.get("rule.compound.continuous.participle");
@@ -2450,7 +2470,8 @@ JSrealB.Module.Conjugation = (function() {
             return applySimpleEndingEN(unit, tense, person, conjugationTable);
         }     
 
-        var verb = aux+" "+conjugate(unit, parTense, person);
+        var verb = aux+" "+conjugate(unit, parTense, person)
+        verb += (sub)?" by":"";
 
         return verb;
     }
