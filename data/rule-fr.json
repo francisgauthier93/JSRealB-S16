@@ -4126,6 +4126,9 @@
             "punctuation": "."
         }
     },
+    "propositional": {
+        "default": "que"
+    },
     "regular": {
         "av": {
             "ending": "",

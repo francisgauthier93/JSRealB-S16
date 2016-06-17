@@ -2871,6 +2871,9 @@
             "punctuation": "."
         }
     },
+    "propositional": {
+        "default": "that"
+    },
     "regular": {
         "pp": {
             "ending": "",

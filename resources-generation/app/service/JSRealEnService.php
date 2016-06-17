@@ -82,6 +82,7 @@ class JSRealEnService extends JSRealService
             );
         $aRuleTable['punctuation'] = $aPunctuationRule;
         $aRuleTable['sentence_type'] = $this->getSentenceFormRule();
+        $aRuleTable['propositional'] = $this->getPropositionalRule();
         $aRuleTable['regular'] = array_merge(
                 $aPrepositionRule
             );
@@ -284,6 +285,13 @@ class JSRealEnService extends JSRealService
     					'type' => 'declarative',
     					'punctuation' => '.'
     			)
+    	);
+    }
+
+    private function getPropositionalRule()
+    {
+    	return array(
+    			'default' => 'that'
     	);
     }
 }

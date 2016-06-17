@@ -94,6 +94,7 @@ class JSRealFrService extends JSRealService
             );
         $aRuleTable['punctuation'] = $aPunctuationRule;
         $aRuleTable['sentence_type'] = $this->getSentenceFormRule();
+        $aRuleTable['propositional'] = $this->getPropositionalRule();
         $aRuleTable['regular'] = array_merge(
                 $aAdverbRule,
                 $aPrepositionRule
@@ -431,6 +432,13 @@ class JSRealFrService extends JSRealService
     					'type' => 'declarative',
     					'punctuation' => '.'
     			)
+    	);
+    }
+    
+    private function getPropositionalRule()
+    {
+    	return array(
+    			'default' => 'que'
     	);
     }
 }
