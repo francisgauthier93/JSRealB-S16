@@ -138,16 +138,6 @@
         "before": "b",
         "after": "a"
     },
-    "propositional": {
-        "base": "que",
-        "pronoun": {
-            "alias": "pro",
-            "type": "Pro"
-        },
-        "cdInfo": {
-            "alias": "cdInfo"
-        }
-    },
     "typography": {
         "alias": "typo",
         "ucfist": "ucf",

@@ -4127,7 +4127,15 @@
         }
     },
     "propositional": {
-        "default": "que"
+        "base": "que",
+        "sujet": "qui",
+        "pronoun": {
+            "alias": "pro",
+            "type": "Pro"
+        },
+        "cdInfo": {
+            "alias": "cdInfo"
+        }
     },
     "regular": {
         "av": {

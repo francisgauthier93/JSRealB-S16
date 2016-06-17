@@ -114,11 +114,6 @@ JSrealE.prototype.initUnitProperty = function() {
         }
         
     }
-    //default pronoun for SP
-    if(this.category == "SP")//JSrealB.Config.get("feature.phrase.propositional"))
-    {
-        this.defaultProp[JSrealB.Config.get("feature.propositional.pronoun.alias")] = JSrealB.Config.get("feature.propositional.base");
-    }
 };
 
 JSrealE.prototype.initContext = function(naturalDisplay) {
@@ -462,12 +457,12 @@ JSrealE.prototype.c = function(wordOrPunctuation) {
     return this.setCtx(JSrealB.Config.get("feature.category.word.conjunction"), wordOrPunctuation);
 };
 // Preposition change of subordinate
-JSrealE.prototype.pro = function(pronoun) {
-    if(JSrealB.Config.get("lexicon")[pronoun] == undefined){
-        throw JSrealB.Exception.invalidInput(pronoun, "pronom");
-    }
-    return this.setProp(JSrealB.Config.get("feature.propositional.pronoun.alias"), pronoun);
-}
+// JSrealE.prototype.pro = function(pronoun) {
+//     if(JSrealB.Config.get("lexicon")[pronoun] == undefined){
+//         throw JSrealB.Exception.invalidInput(pronoun, "pronom");
+//     }
+//     return this.setProp(JSrealB.Config.get("feature.propositional.pronoun.alias"), pronoun);
+// }
 // Natural
 JSrealE.prototype.nat = function(natural) {
     if(!isBoolean(natural) && natural !== undefined)
@@ -914,10 +909,10 @@ JSrealE.prototype.printElements = function() {
         }
     }
     //Propositional phrase
-    if(this.category == JSrealB.Config.get("feature.category.phrase.propositional")){
-        var pronoun = this.getProp(JSrealB.Config.get("feature.propositional.pronoun.alias"))
-        return phraseFormatting(result, upperCaseFirstLetter, addFullStop, lastPunctuation, pronoun);
-    }
+    // if(this.category == JSrealB.Config.get("feature.category.phrase.propositional")){
+    //     var pronoun = this.getProp(JSrealB.Config.get("feature.propositional.pronoun.alias"))
+    //     return phraseFormatting(result, upperCaseFirstLetter, addFullStop, lastPunctuation, pronoun);
+    // }
     
     result = phraseFormatting(result, upperCaseFirstLetter, addFullStop, lastPunctuation);
     
@@ -1017,7 +1012,8 @@ JSrealE.prototype.realizeConjugation = function() {
                         prog:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".prog"),
                         perf:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".perf"),
                         hasSubject:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".hasSubject")};
-    var cdProp = this.getProp(JSrealB.Config.get("feature.propositional.cdInfo.alias"));
+    //À revoir
+    var cdProp = this.getProp(JSrealB.Config.get("rule.propositional.cdInfo.alias"));
     if(this.getInitProp("vOpt.pas") == true){
         verbOptions.pas = true;
     }
@@ -1031,17 +1027,13 @@ JSrealE.prototype.realizeConjugation = function() {
     return JSrealB.Module.Conjugation.conjugate(this.unit, tense, person, gender, verbOptions, cdProp);
 };
 
-JSrealE.prototype.getCDProp = function() {
-    var siblingList = this.parent.elements;
-    var CDpos = -1;
-    for(var i = 0, imax = siblingList.length; i < imax; i++){
-        if(siblingList[i].category == "NP"){
-            CDpos = i;
+JSrealE.prototype.getFirstPron = function() {
+    for(var i = 0, imax = this.elements.length; i < imax; i++){
+        if(this.elements[i].category == "Pro"){
+            return this.elements[i];
         }
     }
-    var cdProp = {};
-    if(CDpos != -1) var cdProp = siblingList[CDpos].childrenProp;
-    return cdProp;
+    return null;
 }
 
 JSrealE.prototype.realizeDeclension = function() {
@@ -1461,7 +1453,6 @@ var C = function(unit) {
     return new JSrealE(unit, JSrealB.Config.get("feature.category.word.conjunction"), JSrealE.ruleType.none);
 };
 
-
 //// Phrase
 /// Sentence
 var S = function(childrenElt) {
@@ -1754,7 +1745,7 @@ NP_FR.prototype.sortWord = function() {
 };
 
 //Element to element propagation needs to be a little different for subordinate
-NP.prototype.elementToElementPropagation = function(element) {
+NP_FR.prototype.elementToElementPropagation = function(element) {
     if(element.fct === JSrealE.grammaticalFunction.modifier) 
     {
         if(this.constituents.head !== null)
@@ -1770,12 +1761,23 @@ NP.prototype.elementToElementPropagation = function(element) {
                 var groupPropNameList = Object.keys(element.prop).concat(Object.keys(element.defaultProp));
 
                 var j, nbGroupProp;
-                var cdInfo = {};
+                var npInfo = {};
                 for(j = 0, nbGroupProp = groupPropNameList.length; j < nbGroupProp; j++)
                 {   
-                    cdInfo[groupPropNameList[j]] = element.getProp(groupPropNameList[j])
+                    npInfo[groupPropNameList[j]] = element.getProp(groupPropNameList[j])
                 }
-                this.constituents.subordinate[i].setProp(JSrealB.Config.get("feature.propositional.cdInfo.alias"),cdInfo);
+                //var pronomSub = this.constituents.subordinate[i].getProp(JSrealB.Config.get("feature.propositional.pronoun.alias"));
+                var pronomSub = this.constituents.subordinate[i].getFirstPron();
+                if(pronomSub.unit == JSrealB.Config.get("rule.propositional.base")){
+                    this.constituents.subordinate[i].setProp(JSrealB.Config.get("rule.propositional.cdInfo.alias"),npInfo);
+                }
+                else if(pronomSub.unit == JSrealB.Config.get("rule.propositional.sujet")){
+                    for(var key in npInfo){
+                        pronomSub.setProp(key,npInfo[key]);
+                    }
+                    
+                }
+                
             }
             else{
                 element.siblingFeaturePropagation(this.constituents.subordinate[i]);

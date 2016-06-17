@@ -16,6 +16,9 @@ class JSRealFrService extends JSRealService
     {
         /// Lexicon
         $aPunctuation = $this->getPunctuation();
+        //Add few words manually
+//         $extraWord = $this->getExtraWord();
+        //end
         $aLexicon = $this->getLexicon();
         $this->applyLexiconPatch($aLexicon);
         $this->extendLexicon($aLexicon);
@@ -270,6 +273,18 @@ class JSRealFrService extends JSRealService
         );
     }
     
+//     private function getExtraWord()
+//     {
+//     	//few words added manually
+//     	return array(
+//     			'amasser' => array(
+//     					Config::get('jsreal.feature.category.word.verb') => array('tab' => array('v36'), 'aux' => array('av'))
+//     			),
+//     			//Actuellement la prochaine ligne est effacée par le lexique, qui priorise le comme déterminant
+//     			'le' => array(Config::get('jsreal.feature.category.word.pronoun') => array('tab' => array('d1')))
+//     	);
+//     }
+    
     private function getDateRule()
     {
         return array(
@@ -437,8 +452,15 @@ class JSRealFrService extends JSRealService
     
     private function getPropositionalRule()
     {
-    	return array(
-    			'default' => 'que'
-    	);
+        return 	array('base' => 'que',
+        				'sujet' => 'qui',
+    					'pronoun' => 
+        					array('alias' => 'pro',
+    							'type' => 'Pro'
+    						),
+    					'cdInfo' => 
+        					array('alias' => 'cdInfo'
+    						) 
+    );
     }
 }

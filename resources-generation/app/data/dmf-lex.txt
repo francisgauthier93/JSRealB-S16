@@ -3692,6 +3692,7 @@
 ("comment"	pn32	Pron pwhi piqi)
 ("combien"	pn33	Pron pwhi piqi)
 ("pourquoi"	pn34	Pron pwhi piqi)
+("le" d1 Pron prp poda)
 
 ; Prepositions:
 

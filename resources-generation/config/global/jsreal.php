@@ -257,16 +257,6 @@ return array(
     		'before' => 'b',
     		'after' => 'a'
     	),
-    	'propositional' => array(
-    			'base' => 'que',
-    			'pronoun' => array(
-    				'alias' => 'pro',
-    				'type' => 'Pro'
-    			),
-    			'cdInfo' => array(
-    				'alias' => 'cdInfo'
-    			) 
-    	),
         'typography' => array(
             'alias' => 'typo',
             'ucfist' => 'ucf',  // upper-case first letter
