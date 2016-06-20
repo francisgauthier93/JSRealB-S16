@@ -285,6 +285,9 @@ return array(
     		'perfect' => 'perf'
     	),
     	//end
+    	'liaison' => array(
+    			'alias' => 'lier'
+    	),
         'html' => array(
             'alias' => 'html',
             'element' => 'elt',

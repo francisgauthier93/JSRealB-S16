@@ -164,6 +164,9 @@
         "progressive": "prog",
         "perfect": "perf"
     },
+    "liaison": {
+        "alias": "lier"
+    },
     "html": {
         "alias": "html",
         "element": "elt",

@@ -430,6 +430,11 @@ JSrealE.prototype.a = function(punctuation) {
 JSrealE.prototype.en = function(punctuation) {
     return this.setCtx(JSrealB.Config.get("feature.typography.surround"), punctuation);
 };
+//Liaison forçée en français
+JSrealE.prototype.lier = function() {
+    this.setCtx(JSrealB.Config.get("feature.typography.after"), "-");
+    return this.setProp(JSrealB.Config.get("feature.liaison.alias"),true);
+};
 //Ajout Francis pour les types de phrases
 JSrealE.prototype.typ = function(type){
     return this.setCtx(JSrealB.Config.get("feature.sentence_type.alias"),type);
@@ -456,13 +461,6 @@ JSrealE.prototype.vOpt = function(optionList){
 JSrealE.prototype.c = function(wordOrPunctuation) {
     return this.setCtx(JSrealB.Config.get("feature.category.word.conjunction"), wordOrPunctuation);
 };
-// Preposition change of subordinate
-// JSrealE.prototype.pro = function(pronoun) {
-//     if(JSrealB.Config.get("lexicon")[pronoun] == undefined){
-//         throw JSrealB.Exception.invalidInput(pronoun, "pronom");
-//     }
-//     return this.setProp(JSrealB.Config.get("feature.propositional.pronoun.alias"), pronoun);
-// }
 // Natural
 JSrealE.prototype.nat = function(natural) {
     if(!isBoolean(natural) && natural !== undefined)
@@ -676,9 +674,10 @@ JSrealE.prototype.modifyStructure = function() {
     if(this.getChildrenProp(JSrealB.Config.get("feature.tense.alias")) == "ip"){
         if(this.category == "S"){
             var NPpos = getSubjectNP(this);
-            this.deleteElement(NPpos);
-            change = true;
-            
+            if(NPpos != -1){
+                this.deleteElement(NPpos);
+                change = true;     
+            }
         }
     }
 
@@ -908,11 +907,6 @@ JSrealE.prototype.printElements = function() {
         }
         }
     }
-    //Propositional phrase
-    // if(this.category == JSrealB.Config.get("feature.category.phrase.propositional")){
-    //     var pronoun = this.getProp(JSrealB.Config.get("feature.propositional.pronoun.alias"))
-    //     return phraseFormatting(result, upperCaseFirstLetter, addFullStop, lastPunctuation, pronoun);
-    // }
     
     result = phraseFormatting(result, upperCaseFirstLetter, addFullStop, lastPunctuation);
     
@@ -935,6 +929,10 @@ JSrealE.prototype.printEachElement = function(elementList, separator, lastSepara
         else if(i === listLength - 2) // avant dernier
         {
             currentSeparator = lastSeparator;
+        }
+        else if(e instanceof JSrealE && e.getProp(JSrealB.Config.get("feature.liaison.alias")) == true)
+        {
+            currentSeparator = "";
         }
         else
         {
@@ -1362,7 +1360,7 @@ function remplaceToken(tokens,i,newMot){
 }
 
 function contracter(tokens){
-    // appliquer les contractions à le=> au, "à les"=> aux, "de le"=>du, "de les"=>"des", "de des"=> "de", "des autres"=>"d'autres"
+    // appliquer les contractions à le=> au, "à les"=> aux, "de le"=>du, "de les"=>"des", "de des"=> "de", "des autres"=>"d'autres", "si il(s)"=> "s'il(s)"
     for(var i=0;i<tokens.length-1;i++){
         var motI=tokens[i].mot;
         var motI1=tokens[i+1].mot;
@@ -1376,6 +1374,9 @@ function contracter(tokens){
             else if (motI1=="autres") remplaceToken(tokens,i,"d'autres")
         } else if (motI=="des"){
             if (motI1=="autres") remplaceToken(tokens,i,"d'autres")
+        } else if (motI=="si"){
+            if(motI1=="il")remplaceToken(tokens,i,"s'il")
+            else if(motI1=="ils")remplaceToken(tokens,i,"s'ils")
         }
     }
     return tokens;
@@ -1399,7 +1400,6 @@ function eliderMots(prevTokens,tokens){
                 lastToken.mot="cet";
                 prevTokens.push(tokens.shift());
             }
-
         } else {// remplace la dernière lettre par ' et on colle le prochain mot
 //            lastToken.mot=removeLastLetter(lastToken.mot)+"'"+tokens.shift(); // Edit by Paul
 //            lastToken.elidable=false;                                 // Edit by Paul
@@ -2453,6 +2453,7 @@ JSrealB.Module.Conjugation = (function() {
 
         var auxiliaires = {"av":"avoir","êt":"être","aê":"avoir"};
         var aux = auxiliaires[JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]];
+        if(aux == "être") verbOptions.pas = false; //un verbe d'état ne se met pas au passif
 
         var verb = (verbOptions.neg == true)?"ne ":"";
         if(verbOptions.pas == true || verbOptions.prog == true){
@@ -2469,20 +2470,13 @@ JSrealB.Module.Conjugation = (function() {
         
         if(verbOptions.pas == true || verbOptions.prog == true){
             if(verbOptions.pas == true) verb += " "+conjugatePPAvecEtre(unit, person, gender,"pp");
-            else verb += applySimpleEnding(unit, "b", person, conjugationTable);
+            else verb += " "+applySimpleEnding(unit, "b", person, conjugationTable);
         }
         verb += (verbOptions.pas == true && verbOptions.hasSubject == true)?" par":"";
 
         return verb;
     }
     var applyEndingFR = function(unit, tense, person, gender, conjugationTable, verbOptions =  {}, cdProp = {}){
-
-        // if(verbOptions.pas == true){
-        //     // le verbe doit s'accorder avec le cd au lieu du sujet
-        //     person =(cdProp.pe != undefined)?cdProp.pe:3;
-        //     person +=(cdProp.n == JSrealB.Config.get("feature.number.plural"))?3:0;
-        // }
-        console.log(verbOptions);
 
         var verb = (verbOptions.neg == true)?"ne ":"";
         //auxiliaire
@@ -2613,13 +2607,11 @@ JSrealB.Module.Conjugation = (function() {
         var declTable = JSrealB.Config.get("rule.declension")["n28"];
         if(aux == "être"){
             var featureAux = {"g":gender,"n":(person>3)?"p":"s"};
-            var declension = getValueByFeature(declTable.declension, featureAux);
-        }
         else{
             if(cdProp == undefined) return pp;
             var featureAux = {"g":cdProp.g, "n":cdProp.n};
-            var declension = getValueByFeature(declTable.declension, featureAux);
         }
+        var declension = getValueByFeature(declTable.declension, featureAux);
         if(declension !== null)
         {
             var ppConjugue = stem(pp, declTable.ending) + declension;
