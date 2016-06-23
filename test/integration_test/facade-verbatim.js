@@ -7,7 +7,7 @@ JSrealLoader({
     QUnit.test( "Verbatim FR", function( assert ) {
         assert.equal(NP(D("un"), N("joueur"), "gentille").g("f"), "une joueuse gentille", "1. Verbatim");
         assert.equal(S("bonjour"), "Bonjour.", "2. Verbatim");
-        assert.equal(S(NP(Pro("je").pe(1)), VP(V("être").t("p"), "John")).a("!"), "Je suis John !", "3. Verbatim");
+        assert.equal(S(NP(Pro("je").pe(1)), VP(V("être").t("p"), "John")).a("!"), "Je suis John!", "3. Verbatim");
         assert.equal(PP(P("à"), NP(N("midi"))), "à midi", "4. Verbatim");
         assert.equal(VP(V("manger").t("p"), "un oeuf"), "mange un oeuf", "5. Verbatim");
         

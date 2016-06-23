@@ -2889,6 +2889,12 @@
             "prep1": "not"
         }
     },
+    "usePronoun": {
+        "S": "I",
+        "VP": "I",
+        "PP": "I",
+        "Pro": "me"
+    },
     "date": {
         "format": {
             "non_natural": {

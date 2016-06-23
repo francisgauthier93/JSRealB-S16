@@ -258,8 +258,8 @@ class JSRealFrService extends JSRealService
             ',' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc4'))),
             ';' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc2'))),
             ':' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc2'))),
-            '!' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc2'))),
-            '?' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc2'))),
+            '!' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc4'))),
+            '?' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc4'))),
             '-' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc1'))),
 //            '-' => array(Config::get('jsreal.feature.category.word.punctuation') => array(Config::get('jsreal.feature.typography.complementary') => '-', 'tab' => array('pc7', 'pc8'))),
             '"' => array(Config::get('jsreal.feature.category.word.punctuation') => array(Config::get('jsreal.feature.typography.complementary') => '"', 'tab' => array('pc5', 'pc6'))),
@@ -443,7 +443,7 @@ class JSRealFrService extends JSRealService
     			'int' => array(
     					'type' => 'interrogative',
     					'punctuation' => '?',
-    					'prefix' => 'Est ce que'
+    					'prefix' => 'Est-ce que'
     			),
     			'dec' => array(
     					'type' => 'declarative',
@@ -499,7 +499,8 @@ class JSRealFrService extends JSRealService
     	return array(	
     			'S' => 'je',
     			'VP' => 'le',
-    			'PP' => 'moi',	
+    			'PP' => 'moi',
+    			'Pro' => 'moi'
     	);
     }
 }

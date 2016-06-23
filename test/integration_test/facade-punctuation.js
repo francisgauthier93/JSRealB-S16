@@ -20,16 +20,16 @@ JSrealLoader({
 
         // after
         assert.equal( S(N("cadeau").n("p")).a(",").cap(), "Cadeaux,", "1 virgule d'exclamation en fin de phrase" );
-        assert.equal( S(N("cadeau").n("p")).a("!").cap(), "Cadeaux !", "1 point d'exclamation en fin de phrase" );
+        assert.equal( S(N("cadeau").n("p")).a("!").cap(), "Cadeaux!", "1 point d'exclamation en fin de phrase" );
         assert.equal( S(N("cadeau").n("p")).a("...").cap(), "Cadeaux...", "3 points en fin de phrase" );
         assert.equal( S(N("cadeau").n("p").a("..."), V("dormir").t("p").pe(3), V("manger").t("p").pe(1)).cap(), "Cadeaux... dort mange.", "Ponctuation sur des éléments à l'intérieur de la phrase" );
         
         // surround
         assert.equal( S(N("cadeau").n("p")).en("(").cap(), "(Cadeaux)", "Entourer la phrase de parenthèses" );
         assert.equal( S(N("cadeau").n("p")).en(")").cap(), "(Cadeaux)", "Entourer la phrase de parenthèses" );
-        assert.equal( S(N("cadeau").n("p")).a("!").en("[").cap(), "[Cadeaux !]", "Entourer la phrase de crochets" );
-        assert.equal( S(N("cadeau").n("p")).a("!").en("]").cap(), "[Cadeaux !]", "Entourer la phrase de crochets" );
-        assert.equal( S(A("grand").g("f"), N("maison"), N("cadeau").n("p").a("!").en("]")).cap(), "Grande maison [cadeaux !].", "Entourer la phrase de crochets" );
+        assert.equal( S(N("cadeau").n("p")).a("!").en("[").cap(), "[Cadeaux!]", "Entourer la phrase de crochets" );
+        assert.equal( S(N("cadeau").n("p")).a("!").en("]").cap(), "[Cadeaux!]", "Entourer la phrase de crochets" );
+        assert.equal( S(A("grand").g("f"), N("maison"), N("cadeau").n("p").a("!").en("]")).cap(), "Grande maison [cadeaux!].", "Entourer la phrase de crochets" );
         
         //        assert.equal( , "", "" );
     });

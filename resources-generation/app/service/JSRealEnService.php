@@ -87,6 +87,7 @@ class JSRealEnService extends JSRealService
                 $aPrepositionRule
             );
         $aRuleTable['verb_option'] = $this->getVerbOptionsRule();
+        $aRuleTable['usePronoun'] = $this->getPronounRule();
         $aRuleTable['date'] = $this->getDateRule();
         $aRuleTable['number'] = $this->getNumberRule();
         //Ajout auxiliaire et participle pour temps composés
@@ -308,6 +309,17 @@ class JSRealEnService extends JSRealService
     			'neg' => array(
     					'prep1' => 'not',
     					)    			
+    	);
+    }
+    
+    private function getPronounRule()
+    {
+    	return array(
+    			'S' => 'I',
+    			'VP' => 'I',
+    			'PP' => 'I',
+    			'Pro' => 'me'
+    			
     	);
     }
 }

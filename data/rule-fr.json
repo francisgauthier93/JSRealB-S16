@@ -4119,7 +4119,7 @@
         "int": {
             "type": "interrogative",
             "punctuation": "?",
-            "prefix": "Est ce que"
+            "prefix": "Est-ce que"
         },
         "dec": {
             "type": "declarative",
@@ -4181,7 +4181,8 @@
     "usePronoun": {
         "S": "je",
         "VP": "le",
-        "PP": "moi"
+        "PP": "moi",
+        "Pro": "moi"
     },
     "date": {
         "format": {

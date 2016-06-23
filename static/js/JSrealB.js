@@ -678,12 +678,16 @@ JSrealE.prototype.addNewElement = function(elemIndex, elementAdd) {
 }
 
 
-JSrealE.prototype.getTreeRoot = function() {
+JSrealE.prototype.getTreeRoot = function(strict = true) {
     if(this.category == JSrealB.Config.get("feature.category.phrase.sentence"))
         return this;
-    else{
-        return this.parent.getTreeRoot();
+    else if(!strict && this.category == JSrealB.Config.get("feature.category.phrase.propositional")){
+        return this;
+    }else if(this.parent!= null){
+        return this.parent.getTreeRoot(strict);
     }
+
+    throw "Could not find tree root (S or SP)";
 }
 
 
@@ -722,21 +726,23 @@ JSrealE.prototype.modifyStructure = function() {
     var change = false;
     var imax = elemList.length;
     //console.log(this)
-    var getSubjectNP = function(sObject){
-        if(sObject.category == JSrealB.Config.get("feature.category.phrase.sentence")){
+    var getSubject = function(sObject){
+        if(sObject.category == JSrealB.Config.get("feature.category.phrase.sentence") 
+            || sObject.category == JSrealB.Config.get("feature.category.phrase.propositional")){
             var elemList = sObject.elements;
             var imax = elemList.length;
-            var NPpos = -1;
+            var SubjPos = -1;
             for(var i = 0; i < imax; i++){
-                if(elemList[i].category == JSrealB.Config.get("feature.category.phrase.noun")){
-                    NPpos = i;
+                if(elemList[i].category == JSrealB.Config.get("feature.category.phrase.noun")
+                        || (elemList[i].category == JSrealB.Config.get("feature.category.word.pronoun") && elemList[i].unit == JSrealB.Config.get("rule.usePronoun.S"))){
+                    SubjPos = i;
                 }
                 if(elemList[i].category == JSrealB.Config.get("feature.category.phrase.verb")){
-                    //on essaie de trouver le NP avant le VP. Évite d'effacer un complément de phrase qui serait un NP
+                    //on essaie de trouver le sujet avant le VP. Évite d'effacer un complément de phrase qui serait un NP
                     break;
                 }
             }
-            return NPpos;
+            return SubjPos;
         }
         else{
             throw "Not a Sentence type, could not find subject";
@@ -755,13 +761,12 @@ JSrealE.prototype.modifyStructure = function() {
     }
     //Passif (inversion du sujet et de l'objet direct)
     if(this.getChildrenProp(JSrealB.Config.get("feature.verb_option.alias")+".pas") == true){
-        changeStructure: {
         if(this.category == JSrealB.Config.get("feature.category.phrase.verb")){
             var parent = this.getTreeRoot();
             var verbe = this.constituents.head;
 
             //get subject
-            var subjectPos = getSubjectNP(parent);
+            var subjectPos = getSubject(parent);
             
             //get CD
             var CDpos = getGroup(this, JSrealB.Config.get("feature.category.phrase.noun"));
@@ -769,6 +774,7 @@ JSrealE.prototype.modifyStructure = function() {
 
             if(subjectPos!= -1 && CDpos != -1){
                 var suj= parent.elements[subjectPos];
+                if(suj.category == JSrealB.Config.get("feature.category.word.pronoun")) suj.unit = JSrealB.Config.get("rule.usePronoun."+JSrealB.Config.get("feature.category.word.pronoun")); 
                 var cd = elemList[CDpos];
                 //inversion
                 parent.elements[subjectPos] = cd;
@@ -779,6 +785,8 @@ JSrealE.prototype.modifyStructure = function() {
                 change = true;
             }
             else if(subjectPos != -1){
+                var suj= parent.elements[subjectPos];
+                if(suj.category == JSrealB.Config.get("feature.category.word.pronoun")) suj.unit = JSrealB.Config.get("rule.usePronoun."+JSrealB.Config.get("feature.category.word.pronoun"));
                 this.addNewElement(VPos+1,parent.elements[subjectPos]);
                 parent.deleteElement(subjectPos);
 
@@ -797,7 +805,6 @@ JSrealE.prototype.modifyStructure = function() {
                 parent.resetProp(true);
                 change = true;
             }
-        }
         }
     }
     //Pronominalisation d'un groupe du nom
@@ -836,7 +843,7 @@ JSrealE.prototype.modifyStructure = function() {
     //Impératif (retrait du Sujet)
     if(this.getChildrenProp(JSrealB.Config.get("feature.tense.alias")) == JSrealB.Config.get("feature.tense.imperative.present")){
         if(this.category == JSrealB.Config.get("feature.category.phrase.sentence")){
-            var NPpos = getSubjectNP(this);
+            var NPpos = getSubject(this);
             if(NPpos != -1){
                 this.deleteElement(NPpos);
                 change = true;     

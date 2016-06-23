@@ -6,8 +6,8 @@ JSrealLoader({
     }, function() {
     QUnit.test( "HTML FR", function( assert ) {
         assert.equal( S(NP(Pro("je").pe(1)), VP(V("habiter")).t("p").tag("span")), "<span>J'habite</span>.", "1. HTML SPAN" );
-        assert.equal( S(NP(Pro("je").pe(1)), VP(V("manger")).t("ps").tag("span", {"class": "verb"})).a("!"), 'Je <span class="verb">mangeai</span> !', "2. HTML SPAN" );
-        assert.equal( S(NP(Pro("je").pe(1)), VP(V("manger").tag("span", {"class": "verb"}))).t("ps").a("!"), 'Je <span class="verb">mangeai</span> !', "3. HTML SPAN" );
+        assert.equal( S(NP(Pro("je").pe(1)), VP(V("manger")).t("ps").tag("span", {"class": "verb"})).a("!"), 'Je <span class="verb">mangeai</span>!', "2. HTML SPAN" );
+        assert.equal( S(NP(Pro("je").pe(1)), VP(V("manger").tag("span", {"class": "verb"}))).t("ps").a("!"), 'Je <span class="verb">mangeai</span>!', "3. HTML SPAN" );
         assert.equal( V("jouer").pe(2).t("p").tag("span", {"class": "verb"}), '<span class="verb">joues</span>', "4. HTML SPAN" );
         assert.equal( S(NP(Pro("je")), VP(V("habiter").t("p"))).tag("i"), "<i>Il habite.</i>", "1. HTML italic" );
         assert.equal( S(NP(Pro("je")), VP(V("habiter").t("p"), PP(P("à"), NP(D("le"), N("ville"))).tag("i"))), "Il habite <i>à la ville</i>.", "2. HTML italic" );
@@ -17,7 +17,7 @@ JSrealLoader({
         assert.equal( S(NP(D("un"), N("femme").tag("strong"))), 'Une <strong>femme</strong>.', "1. HTML strong" );
         assert.equal( S(NP(D("un"), N("femme").tag("em"))), 'Une <em>femme</em>.', "1. HTML em" );
         assert.equal( S(NP(Pro("je").pe(1)), VP(V("habiter"), PP(P("à"), NP(D("le"), N("maison")))).t("p").tag("span")), "<span>J'habite à la maison</span>.", "1. HTML + elision" );
-        assert.equal( S(NP(Pro("je").pe(1)), VP(V("habiter"), PP(P("à"), NP(D("le"), N("maison")))).t("p").tag("span")).a("!"), "<span>J'habite à la maison</span> !", "2. HTML + elision" );
+        assert.equal( S(NP(Pro("je").pe(1)), VP(V("habiter"), PP(P("à"), NP(D("le"), N("maison")))).t("p").tag("span")).a("!"), "<span>J'habite à la maison</span>!", "2. HTML + elision" );
         assert.equal( S(NP(D("un"), A("beau").tag("span"), N("femme").tag("span")).t("p")), "Une <span>belle</span> <span>femme</span>.", "3. HTML + elision" );
         assert.equal( S(NP(D("le"), N("ours").tag("b"))), "<b>L'ours</b>.", "4. HTML + elision" );
         assert.equal( S(CP(C("et"), NP(D("le"), N("boulanger").g("f")).tag("span"), NP(D("le"), N("client").g("f").tag("span"))), VP(V("parler").t("p")).tag("span")), "<span>La boulangère</span> et la <span>cliente</span> <span>parlent</span>.", "5. HTML + elision" );
