@@ -833,7 +833,7 @@
     "agir": {
         "V": {
             "tab": "v58",
-            "aux": ["êt","av"]
+            "aux": ["av"]
         }
     },
     "agitation": {
@@ -1611,7 +1611,7 @@
     "asseoir": {
         "V": {
             "tab": "v74",
-            "aux": ["av","av"]
+            "aux": ["av"]
         }
     },
     "assez": {
@@ -2086,7 +2086,7 @@
     "balayer": {
         "V": {
             "tab": "v4",
-            "aux": ["av","av"]
+            "aux": ["av"]
         }
     },
     "balcon": {
@@ -7219,7 +7219,7 @@
     "effrayer": {
         "V": {
             "tab": "v4",
-            "aux": ["av","av"]
+            "aux": ["av"]
         }
     },
     "effroyable": {
@@ -8007,7 +8007,7 @@
     "essayer": {
         "V": {
             "tab": "v4",
-            "aux": ["av","av"]
+            "aux": ["av"]
         }
     },
     "essuyer": {
@@ -9049,7 +9049,7 @@
     "fleurir": {
         "V": {
             "tab": "v43",
-            "aux": ["av","av"]
+            "aux": ["av"]
         }
     },
     "fleuve": {
@@ -14673,7 +14673,7 @@
     "payer": {
         "V": {
             "tab": "v4",
-            "aux": ["av","av"]
+            "aux": ["av"]
         }
     },
     "pays": {
@@ -15764,7 +15764,7 @@
     "pouvoir": {
         "V": {
             "tab": "v71",
-            "aux": ["av","av"]
+            "aux": ["av"]
         }
     },
     "prairie": {
@@ -19147,7 +19147,7 @@
     "sortir": {
         "V": {
             "tab": "v46",
-            "aux": ["av","aê"]
+            "aux": ["aê"]
         }
     },
     "sot": {

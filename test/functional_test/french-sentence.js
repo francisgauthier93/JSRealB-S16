@@ -9,7 +9,7 @@ JSrealLoader({
             S(
                 NP( D('le'),
                     N('souris'),
-                    SP( C('que'),
+                    SP( Pro('que'),
                         NP(D('le'),
                             N('chat')).n("p"),
                         VP(V('manger').t('f')))),

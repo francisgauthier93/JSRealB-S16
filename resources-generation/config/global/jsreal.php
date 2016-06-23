@@ -177,24 +177,7 @@ return array(
                 'past' => 'pp',
                 'future' => 'pf'
             ),
-        	//Ajout des temps continuous anglais par Francis
-        	'continuous' => array(
-        			'present' => 'prc',
-        			'past' => 'pac',
-        			'future' => 'fuc'
-        	),
-        	//Ajout des perfect tense en anglais par Francis
-        	'perfect' => array(
-        			'present' => 'prp',
-        			'past' => 'pap',
-        			'future' => 'fup'
-        	),
-        	//Ajout des perfect tense en anglais par Francis
-        	'perfect continuous' => array(
-        			'present' => 'prpc',
-        			'past' => 'papc',
-        			'future' => 'fupc'
-        	)
+
         ),
         'type' => array(
             'verb' => array(
@@ -253,9 +236,10 @@ return array(
             'superlative' => 'su'
         ),
     	'antepose' => array(
-    		'alias' => 'ant',
-    		'before' => 'b',
-    		'after' => 'a'
+    		'alias' => 'pos',
+    		'default' => 'post',
+    		'before' => 'pre',
+    		'after' => 'post'
     	),
         'typography' => array(
             'alias' => 'typo',
@@ -285,8 +269,14 @@ return array(
     		'perfect' => 'perf'
     	),
     	//end
+    	'cdInfo' => array(
+    		'alias' => 'cdInfo',
+    	),
     	'liaison' => array(
-    			'alias' => 'lier'
+    		'alias' => 'lier',
+    	),
+    	'toPronoun' => array(
+    			'alias' => 'toPro',
     	),
         'html' => array(
             'alias' => 'html',

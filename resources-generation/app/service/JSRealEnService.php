@@ -86,6 +86,7 @@ class JSRealEnService extends JSRealService
         $aRuleTable['regular'] = array_merge(
                 $aPrepositionRule
             );
+        $aRuleTable['verb_option'] = $this->getVerbOptionsRule();
         $aRuleTable['date'] = $this->getDateRule();
         $aRuleTable['number'] = $this->getNumberRule();
         //Ajout auxiliaire et participle pour temps composés
@@ -291,7 +292,22 @@ class JSRealEnService extends JSRealService
     private function getPropositionalRule()
     {
     	return array(
-    			'default' => 'that'
+    			'base' => 'that',
+    			'subject' => 'who',    			
+    			'autres' => array(
+    					'which',
+    					'whose',
+    					'whom',
+    			)
+    	);
+    }
+    
+    private function getVerbOptionsRule()
+    {
+    	return array(
+    			'neg' => array(
+    					'prep1' => 'not',
+    					)    			
     	);
     }
 }

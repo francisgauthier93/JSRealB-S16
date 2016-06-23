@@ -60,21 +60,6 @@
             "present": "pr",
             "past": "pp",
             "future": "pf"
-        },
-        "continuous": {
-            "present": "prc",
-            "past": "pac",
-            "future": "fuc"
-        },
-        "perfect": {
-            "present": "prp",
-            "past": "pap",
-            "future": "fup"
-        },
-        "perfect continuous": {
-            "present": "prpc",
-            "past": "papc",
-            "future": "fupc"
         }
     },
     "type": {
@@ -134,9 +119,10 @@
         "superlative": "su"
     },
     "antepose": {
-        "alias": "ant",
-        "before": "b",
-        "after": "a"
+        "alias": "pos",
+        "default": "post",
+        "before": "pre",
+        "after": "post"
     },
     "typography": {
         "alias": "typo",
@@ -164,8 +150,14 @@
         "progressive": "prog",
         "perfect": "perf"
     },
+    "cdInfo": {
+        "alias": "cdInfo"
+    },
     "liaison": {
         "alias": "lier"
+    },
+    "toPronoun": {
+        "alias": "toPro"
     },
     "html": {
         "alias": "html",

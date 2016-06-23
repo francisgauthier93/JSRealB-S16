@@ -2872,7 +2872,9 @@
         }
     },
     "propositional": {
-        "default": "that"
+        "base": "that",
+        "subject": "who",
+        "autres": ["which","whose","whom"]
     },
     "regular": {
         "pp": {
@@ -2880,6 +2882,11 @@
             "option": [{
                 "val": ""
             }]
+        }
+    },
+    "verb_option": {
+        "neg": {
+            "prep1": "not"
         }
     },
     "date": {

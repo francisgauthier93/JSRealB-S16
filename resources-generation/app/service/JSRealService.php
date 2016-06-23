@@ -129,7 +129,7 @@ class JSRealService extends BaseService
         
         $oDmFormatter = new DmFormatter($aDmRawLexicon, $this->oDmConverter);
         $aDmLexicon = $oDmFormatter->getLexicon($aAllowedCategoryList);
-        
+
         return $aDmLexicon;
     }
     

@@ -102,6 +102,8 @@ class JSRealFrService extends JSRealService
                 $aAdverbRule,
                 $aPrepositionRule
             );
+        $aRuleTable['verb_option'] = $this->getVerbOptionsRule();
+        $aRuleTable['usePronoun'] = $this->getPronounRule();
         $aRuleTable['date'] = $this->getDateRule();
         $aRuleTable['number'] = $this->getNumberRule();
         //Ajout auxiliaire et participle pour temps composés
@@ -398,33 +400,33 @@ class JSRealFrService extends JSRealService
     private  function getAuxRule()
     {
     	return array(
+    			'participle' => 'pp',
+    			'aux' => array(
+    					'av' => 'avoir',
+    					'êt' => 'être',
+    					'aê' => 'avoir',
+    			),
     			'pc' => array(
-    					'participle' => 'pp',
     					'auxTense' => 'p',
     					'progAuxTense' => 'i'
     			),
     			'pq' => array(
-    					'participle' => 'pp',
     					'auxTense' => 'i',
     					'progAuxTense' => 'i'
     			),
     			'spa' => array(
-    					'participle' => 'pp',
     					'auxTense' => 's',
     					'progAuxTense' => 'i'
     			),
     			'spq' => array(
-    					'participle' => 'pp',
     					'auxTense' => 'si',
     					'progAuxTense' => 'i'
     			),
     			'cp' => array(
-    					'participle' => 'pp',
     					'auxTense' => 'c',
     					'progAuxTense' => 'c'
     			),
     			'fa' => array(
-    					'participle' => 'pp',
     					'auxTense' => 'f',
     					'progAuxTense' => 'f'
     			)
@@ -453,7 +455,7 @@ class JSRealFrService extends JSRealService
     private function getPropositionalRule()
     {
         return 	array('base' => 'que',
-        				'sujet' => 'qui',
+        				'subject' => 'qui',
     					'pronoun' => 
         					array('alias' => 'pro',
     							'type' => 'Pro'
@@ -462,5 +464,42 @@ class JSRealFrService extends JSRealService
         					array('alias' => 'cdInfo'
     						) 
     );
+    }
+    
+    private function getVerbOptionsRule()
+    {
+    	return array(
+    			'neg' => array(
+    					'prep1' => 'ne',
+    					'prep2' => 'pas',
+    					'autres' => array( //Les mots en commentaires sont des adverbes négatifs possibles, mais pas dans le lexique
+    							'pas',
+    							'jamais',
+    							//'point',
+    							'plus',
+    							//'aucun',
+    							'guère',
+    							//'nul',
+    							'nullement',
+    							'rien',
+    							'que',
+    							//'personne',
+    							//'aucunement',   							
+    					)
+    			),
+    			'prog' => array(
+    					'aux' => 'être',
+    					'keyword' => 'en train de',
+    			)
+    	);
+    }
+    
+    private function getPronounRule()
+    {
+    	return array(	
+    			'S' => 'je',
+    			'VP' => 'le',
+    			'PP' => 'moi',	
+    	);
     }
 }

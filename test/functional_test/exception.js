@@ -12,14 +12,15 @@ JSrealLoader({
         assert.raises(function() { throw N("pas").g("f").toString(); }, 
                 function(err) { return err === "[[pas]]"; }, "2. Exception");
                 
-        assert.raises(function() { throw V("manger").t("pc").toString(); }, 
-                function(err) { return err === "[[manger]]"; }, "3. Exception");
-                
         assert.raises(function() { throw N("KHFOUYFLKDJL").toString(); }, 
-                function(err) { return err === "[[KHFOUYFLKDJL]]"; }, "4. Exception");
+                function(err) { return err === "[[KHFOUYFLKDJL]]"; }, "3. Exception");
                 
         assert.raises(function() { throw N("jouet").a("isNotPunctuationMark").toString(); }, 
-                function(err) { return err === "[[jouet]]"; }, "5. Exception");
+                function(err) { return err === "[[jouet]]"; }, "4. Exception");
+
+        assert.raises(function() { throw V("manger").t("ip").pe(3).toString(); }, 
+                function(err) { return err === "[[manger]]"; }, "5. Exception");
+
     });
 });
 

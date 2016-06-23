@@ -2338,33 +2338,33 @@
         }
     },
     "compound": {
+        "participle": "pp",
+        "aux": {
+            "av": "avoir",
+            "êt": "être",
+            "aê": "avoir"
+        },
         "pc": {
-            "participle": "pp",
             "auxTense": "p",
             "progAuxTense": "i"
         },
         "pq": {
-            "participle": "pp",
             "auxTense": "i",
             "progAuxTense": "i"
         },
         "spa": {
-            "participle": "pp",
             "auxTense": "s",
             "progAuxTense": "i"
         },
         "spq": {
-            "participle": "pp",
             "auxTense": "si",
             "progAuxTense": "i"
         },
         "cp": {
-            "participle": "pp",
             "auxTense": "c",
             "progAuxTense": "c"
         },
         "fa": {
-            "participle": "pp",
             "auxTense": "f",
             "progAuxTense": "f"
         }
@@ -4128,7 +4128,7 @@
     },
     "propositional": {
         "base": "que",
-        "sujet": "qui",
+        "subject": "qui",
         "pronoun": {
             "alias": "pro",
             "type": "Pro"
@@ -4166,6 +4166,22 @@
                 "val": "'"
             }]
         }
+    },
+    "verb_option": {
+        "neg": {
+            "prep1": "ne",
+            "prep2": "pas",
+            "autres": ["pas","jamais","plus","guère","nullement","rien","que"]
+        },
+        "prog": {
+            "aux": "être",
+            "keyword": "en train de"
+        }
+    },
+    "usePronoun": {
+        "S": "je",
+        "VP": "le",
+        "PP": "moi"
     },
     "date": {
         "format": {

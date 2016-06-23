@@ -269,11 +269,18 @@ class DmFormatter
             $sUnit = $aRawRule[0];
             $sTableId = $aRawRule[1];
             $sCategory = $this->oDmConverter->getProperName($aRawRule[2]);
-            
+
             //Ajout Francis pour obtenir information sur les auxiliaires
             if($sCategory == "V" && count($aRawRule)>3){
             	$sAuxiliaire = $aRawRule[3];
             }
+            if($sCategory == "A"){
+            	for($i = 3; $i < count($aRawRule); $i++){
+            		if($aRawRule[$i] == "pre");
+            			$aPosition = $aRawRule[3];
+            		}
+            	}
+            
 //            if(!isset($aFormatedRule[$sUnit]))
 //            {
 //                // Additional Information
@@ -321,6 +328,10 @@ class DmFormatter
                 if($sCategory == "V"){
                 	$aFormatedRule[$sUnit]['aux'][] = $sAuxiliaire;
                 }
+                if($sCategory == "A" && isset($aPosition)){
+                	$aFormatedRule[$sUnit]['pos'][] = $aPosition;
+                }
+                
             }
         }
 

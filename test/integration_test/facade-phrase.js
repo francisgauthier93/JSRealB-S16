@@ -49,9 +49,9 @@ JSrealLoader({
         assert.equal( CP(NP(D("le"), N("garçon")), NP(D("le"), N("fille"))).c("et"), "le garçon et la fille", "9. CP" );
         
         // SP : Propositional Phrase
-        assert.equal(NP(D('le'), N('chose'), SP(Pro('dont'), S(NP(Pro('je').pe(2)), VP(V('parler').t("p"))))), "la chose dont tu parles", "1. SP" );
-        assert.equal( NP(D('le'), N('souris'), SP(C('que'), S(NP(D('le'), N('chat')), VP(V('manger')).t("p")))), "la souris que le chat mange", "2. SP" );
-        assert.equal( NP(Pro('ce'), SP(Pro('dont'),S(NP(Pro('je').pe(2)),VP(V('parler')).t("p")))), "ce dont tu parles", "3. SP" );
+        assert.equal(NP(D('le'), N('chose'), SP(Pro('dont'), NP(Pro('je').pe(2)), VP(V('parler').t("p")))), "la chose dont tu parles", "1. SP" );
+        assert.equal( NP(D('le'),N('souris'),SP(Pro('que'),NP(D('le'), N('chat')), VP(V('manger')).t("p"))), "la souris que le chat mange", "2. SP" );
+        assert.equal( NP(Pro('ce'), SP(Pro('dont'),NP(Pro('je').pe(2)),VP(V('parler')).t("p"))), "ce dont tu parles", "3. SP" );
 
         // Composition
         assert.equal( NP(D("le"), A("petit"), N("chien").g("f"), A("blanc"), PP(P("de"), NP( D("mon").pe(1), N("voisin").g("f").n("p")) ) ), "la petite chienne blanche de mes voisines", "1. NP + PP" );

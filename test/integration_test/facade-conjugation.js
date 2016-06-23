@@ -16,6 +16,14 @@ JSrealLoader({
         assert.equal( V("manger").t("i").pe(1).n("p"), "mangions", "Nous mangions" );
         assert.equal( V("manger").t("i").pe(3).n("p"), "mangeaient", "Ils mangeaient" );
         
+        assert.equal( V("manger").t("pc").pe(1), "ai mangé", "J'ai mangé" );
+        assert.equal( V("manger").t("pc").pe(1).n("s"), "ai mangé", "J'ai mangé" );
+        assert.equal( V("manger").t("pc").pe(1).n("p"), "avons mangé", "Nous avons mangé" );
+        assert.equal( V("manger").t("pc").pe(3).n("p"), "ont mangé", "Ils ont mangé" );
+
+        assert.equal( V("manger").t("ip").pe(2).n("s"), "mange", "Mange" );
+        assert.equal( V("manger").t("ip").pe(1).n("p"), "mangeons", "Mangeons" );
+        assert.equal( V("manger").t("ip").pe(2).n("p"), "mangez", "Mangez" );
 //        assert.equal( , "", "" );
     });
 
@@ -38,6 +46,8 @@ JSrealLoader({
             assert.equal( V("be").t("ps").pe(2), "were", "You were" );
             assert.equal( V("be").t("ps").pe(3), "was", "He was" );
             assert.equal( V("be").t("ps").pe(3).n("p"), "were", "They were" );
+
+            assert.equal( V("be").t("ip"), "be", "Be");
         });
     });
 });
