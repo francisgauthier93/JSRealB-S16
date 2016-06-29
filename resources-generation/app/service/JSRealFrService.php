@@ -260,6 +260,7 @@ class JSRealFrService extends JSRealService
             ':' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc2'))),
             '!' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc4'))),
             '?' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc4'))),
+        	'?!'=> array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc4'))),
             '-' => array(Config::get('jsreal.feature.category.word.punctuation') => array('tab' => array('pc1'))),
 //            '-' => array(Config::get('jsreal.feature.category.word.punctuation') => array(Config::get('jsreal.feature.typography.complementary') => '-', 'tab' => array('pc7', 'pc8'))),
             '"' => array(Config::get('jsreal.feature.category.word.punctuation') => array(Config::get('jsreal.feature.typography.complementary') => '"', 'tab' => array('pc5', 'pc6'))),
@@ -443,7 +444,17 @@ class JSRealFrService extends JSRealService
     			'int' => array(
     					'type' => 'interrogative',
     					'punctuation' => '?',
-    					'prefix' => 'Est-ce que'
+    					'prefix' => array(
+    							'base' => 'est-ce que',
+    							'yon' => 'est-ce que',
+    							'wos' => 'qui est-ce qui',
+    							'wod' => "qui est-ce que",
+    							'woi' => 'à qui est-ce que',
+    							'wad' => "qu'est-ce que",
+    							'whe' => 'où est-ce que',
+    							'how' => 'comment est-ce que',
+    							'muc' => 'combien',
+    					)
     			),
     			'dec' => array(
     					'type' => 'declarative',

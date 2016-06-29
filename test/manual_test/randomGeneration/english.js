@@ -4,17 +4,8 @@
 
 var lexique;
 
-function expressionNP(det,nom,adj,adjForm,pluriel,pronom){
-    // console.log("expressionNP",det,nom,adj,adjAnt,pluriel,pronom);
-    if (pronom!=null){
-        var nm=lexique[nom];
-        if (nm && nm["N"]){
-            // return "Pro('"+pronom+"').pe(3).g('"+nm["N"]["g"]+"')"+(pluriel?".n('p')":"");
-            // étrangement le lexique anglais ne semble pas avoir de "genre"
-            return "Pro('"+pronom+"').pe(3)"+(pluriel?".n('p')":"");
-        }
-        return null;
-    }
+function expressionNP(det,nom,adj,adjForm,pluriel,pronom, genderNeuter = false){
+
     if(nom!=""){
         var np="NP(";
         if(det!="nil")np+="D('"+det+"'),";
@@ -28,6 +19,8 @@ function expressionNP(det,nom,adj,adjForm,pluriel,pronom){
         np+="N(\""+nom+"\")";
         np+=")";// fin du NP
         if(pluriel)np+=".n('p')";
+        if(pronom)np+=".pro()";
+        if(genderNeuter)np+=".g('n')";
         return np;
     } 
     return null;
@@ -70,11 +63,6 @@ var codesTemps={
     // perf:{prp:"present",pap:"past",fup:"future"},
     // perfcont:{prpc:"present",papc:"past",fupc:"future"}
     };
-// var codesTemps={
-//         ind:{p:"présent",i:"imparfait",ps:"passé simple", f:"futur"},
-//         cond:{c:"présent"},
-//         sub:{s:"présent",si:"imparfait"},
-//     };
 
 function changeTemps(){
     // console.log("appel de changeTemps");
@@ -96,7 +84,8 @@ function realiser(){
                            $("#adj").val(),
                            $("#adjForm").val(),
                            $("#pluriel").is(":checked"),
-                           $("#est-pronom").is(":checked")?"I":null);
+                           $("#est-pronom").is(":checked"),
+                           $("#neuterSub").is(":checked"));
     if(sujet==null){
         var personne=$("#personne").val();
         var nombre=$("#nombre").val();
@@ -104,20 +93,21 @@ function realiser(){
             sujet="Pro('I').pe("+personne+").n('"+nombre+"')";
     }
     var verbe=expressionVerbe();
-    var objDirNominalise=$("#est-pronomOD").is(":checked")?"me":null;
     var objetDirect=expressionNP($("#detOD").val(),
                                  $("#nomOD").val(),
                                  $("#adjOD").val(),
                                  $("#adjODForm").val(),
                                  $("#plurielOD").is(":checked"),
-                                 objDirNominalise);
+                                 $("#est-pronomOD").is(":checked"),
+                                 $("#neuterOD").is(":checked"));
     var prepOI=$("#prepOI").val();
     var objetIndirect=expressionNP($("#detOI").val(),
                                    $("#nomOI").val(),
                                    $("#adjOI").val(),
                                    $("#adjOIForm").val(),
                                    $("#plurielOI").is(":checked"),
-                                   $("#est-pronomOI").is(":checked")?"me":null);
+                                   $("#est-pronomOI").is(":checked"),
+                                   $("#neuterOI").is(":checked"));
     var theForm = document.forms[0];
     for(var i =0; i< theForm.length;i++){
       if(theForm[i].checked){
@@ -129,7 +119,6 @@ function realiser(){
         var expr="S(";
         if(sujet!=null)expr+=sujet;
         if(verbe!=null){
-            // if(objDirNominalise!=null)expr+=",\n  Pro(\""+objDirNominalise+"\").pe(3).n('s')";
             if(sujet!=null)expr+=",\n  ";
             expr+="VP("+verbe;
             if(objetDirect!=null)expr+=",\n     "+objetDirect;
@@ -143,7 +132,6 @@ function realiser(){
             }
             expr+=")"; // fin de VP(
         }
-        // console.log("expr",expr);
         expr+=")"+((sType!=undefined)?".typ('"+sType+"')":"") //fin du S
         $("#jsreal").val(expr);
         $("#realisation").val(eval(expr+".real()"));

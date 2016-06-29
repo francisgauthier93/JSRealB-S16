@@ -5,22 +5,7 @@
 var lexique;
 
 function expressionNP(det,nom,adj,adjAnt,pluriel,pronom){
-    // console.log("expressionNP",det,nom,adj,adjAnt,pluriel,pronom);
-    // var temps =$("#temps").val();
-    // if(temps == "ip"){
-    //   var personne=$("#personne").val();
-    //   var nombre=$("#nombre").val();
-    //   console.log("param", personne, nombre)
-    //   if(personne!="nil" && nombre!="nil")
-    //     return "NP(Pro('je').pe('"+personne+"')"+".n('"+nombre+"'))";
-    // }
-    if (pronom!=null){        
-      var nm=lexique[nom];
-      if (nm && nm["N"]){
-        return "NP(Pro('"+pronom+"').pe(3).g('"+nm["N"]["g"]+"')"+(pluriel?".n('p'))":")");
-      }
-      return null; 
-    }
+
     if(nom!=""){
         var np="NP(";
         if(det!="nil")np+="D('"+det+"'),";
@@ -29,6 +14,7 @@ function expressionNP(det,nom,adj,adjAnt,pluriel,pronom){
         np+=")";// fin du NP
         if(adj!="")np+=(adjAnt=="")?"":".ant('"+adjAnt+"')";
         if(pluriel)np+=".n('p')";
+        if(pronom)np+=".pro()";
         return np;
     } 
     return null;
@@ -115,7 +101,7 @@ function realiser(){
                            $("#adj").val(),
                            $("#adjAnt").val(),
                            $("#pluriel").is(":checked"),
-                           $("#est-pronom").is(":checked")?"je":null);
+                           $("#est-pronom").is(":checked"));
     if(sujet==null){
         var personne=$("#personne").val();
         var nombre=$("#nombre").val();
@@ -123,20 +109,20 @@ function realiser(){
             sujet="NP(Pro('je').pe("+personne+").n('"+nombre+"'))";
     }
     var verbe=expressionVerbe();
-    var objDirNominalise=$("#est-pronomOD").is(":checked")?"me":null;
+    var objDirNominalise=$("#est-pronomOD").is(":checked");
     var objetDirect=expressionNP($("#detOD").val(),
                                  $("#nomOD").val(),
                                  $("#adjOD").val(),
                                  $("#adjAntOD").val(),
                                  $("#plurielOD").is(":checked"),
-                                 objDirNominalise);
+                                 $("#est-pronomOD").is(":checked"));
     var prepOI=$("#prepOI").val();
     var objetIndirect=expressionNP($("#detOI").val(),
                                    $("#nomOI").val(),
                                    $("#adjOI").val(),
                                    $("#adjAntOI").val(),
                                    $("#plurielOI").is(":checked"),
-                                   $("#est-pronomOI").is(":checked")?"moi":null); 
+                                   $("#est-pronomOI").is(":checked")); 
     var theForm = document.forms[0];
     for(var i =0; i< theForm.length;i++){
       if(theForm[i].checked){
@@ -148,10 +134,10 @@ function realiser(){
         var expr="S(";
         if(sujet!=null)expr+=sujet;
         if(verbe!=null){
-            if(objDirNominalise!=null)expr+=",\n  Pro(\""+objDirNominalise+"\").pe(3).n('s')";
+            //if(objDirNominalise!=null)expr+=",\n  Pro(\""+objDirNominalise+"\").pe(3).n('s')";
             if(sujet!=null)expr+=",\n  ";
             expr+="VP("+verbe;
-            if(objetDirect!=null && objDirNominalise==null)expr+=",\n     "+objetDirect;
+            if(objetDirect!=null)expr+=",\n     "+objetDirect;
             if(prepOI!=""||objetIndirect!=null){
                 if(prepOI!="" && objetIndirect!=null){
                    expr+=",\n        PP(P(\""+prepOI+"\"),"+objetIndirect+")"; 

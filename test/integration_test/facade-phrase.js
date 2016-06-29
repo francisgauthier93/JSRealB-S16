@@ -52,6 +52,11 @@ JSrealLoader({
         assert.equal(NP(D('le'), N('chose'), SP(Pro('dont'), NP(Pro('je').pe(2)), VP(V('parler').t("p")))), "la chose dont tu parles", "1. SP" );
         assert.equal( NP(D('le'),N('souris'),SP(Pro('que'),NP(D('le'), N('chat')), VP(V('manger')).t("p"))), "la souris que le chat mange", "2. SP" );
         assert.equal( NP(Pro('ce'), SP(Pro('dont'),NP(Pro('je').pe(2)),VP(V('parler')).t("p"))), "ce dont tu parles", "3. SP" );
+        assert.equal( S( NP( D("le"), N("maison").n("p"), SP( Pro("que"), Pro("je").pe("1").n("p"), VP( V("rencontrer").t("pc"))))), "Les maisons que nous avons rencontrées.", "4. SP + pp(avoir)");
+        assert.equal( S( NP( D("le"), N("fleur").n("p"), SP( Pro("que"), NP( D("le"), N("garçon").n("p")), 
+            VP( Pro("je").pe(1).n("p"), V("offrir").t("pc")))), VP( V("être").t("pc"), A("joli"))), "Les fleurs que les garçons nous ont offertes ont été jolies.", "5. SP + pp(avoir) + pp(être)");
+        assert.equal(S( NP( N("pierre").n("p"), SP( Pro("qui"), VP( V("rouler").t("p")))), VP( V("amuser").t("p").vOpt({neg:true}), NP( N("mousse")))),"Pierres qui roulent n'amusent pas mousse.", "6. SP(qui)");
+        assert.equal(S( NP( D("le"), N("dame").n("p"), SP( P("à"), Pro("qui"), Pro("je").pe("1").n("s"), VP( V("parler").t("pc")))), VP(V("être").t("pc"), A("joli"))), "Les dames à qui j'ai parlé ont été jolies.", "7. SP(à qui)");
 
         // Composition
         assert.equal( NP(D("le"), A("petit"), N("chien").g("f"), A("blanc"), PP(P("de"), NP( D("mon").pe(1), N("voisin").g("f").n("p")) ) ), "la petite chienne blanche de mes voisines", "1. NP + PP" );
@@ -106,9 +111,9 @@ JSrealLoader({
         assert.equal( CP(C(","), NP(N("cat")), NP(N("dog")), NP(N("snake"))), "cat, dog, snake", "3. CP" );
 
         // SP : Propositional Phrase
-//        assert.equal( SP(), "", "1. SP" );
-//        assert.equal( SP(), "", "2. SP" );
-//        assert.equal( SP(), "", "3. SP" );
+        assert.equal( S( NP(D("the"), N("mouse"), SP( Adv("that"), NP( D("the"), N("cat")), VP( V("eat").t("ps"))))), "The mouse that the cat ate.", "1. SP");
+        assert.equal( NP(D("a"), N("girl"), SP( Pro("who"), VP( V("play").t("p"), NP(N("soccer"))))), "a girl who plays soccer", "2. SP(who)");
+        assert.equal( NP(D("the"), N("girl").n("p"), SP( Pro("who"), VP( V("play").t("p"), NP(N("soccer"))))), "the girls who play soccer", "2. SP(who)")
         });
     });
 });

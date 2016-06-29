@@ -111,7 +111,7 @@ JSrealE.prototype.initUnitProperty = function() {
         }
         else
         {
-            this.defaultProp[JSrealB.Config.get("feature.person.alias")] = JSrealB.Config.get("feature.person.p3");
+            this.defaultProp[JSrealB.Config.get("feature.person.alias")] = JSrealB.Config.get("feature.person.p3");        
         }
 
         //adjective position
@@ -131,7 +131,7 @@ JSrealE.prototype.initUnitProperty = function() {
 
 JSrealE.prototype.initContext = function(naturalDisplay) {
     this.ctx[JSrealB.Config.get("feature.display_option.alias")] = {};
-    //this.ctx[JSrealB.Config.get("feature.verb_option.alias")] = {};
+    this.ctx[JSrealB.Config.get("feature.sentence_type.alias")] = {};
     this.defaultCtx[JSrealB.Config.get("feature.display_option.alias")] = {};
     this.defaultCtx[JSrealB.Config.get("feature.display_option.alias")][JSrealB.Config.get("feature.display_option.natural")] = naturalDisplay;
     this.defaultCtx[JSrealB.Config.get("feature.display_option.alias")][JSrealB.Config.get("feature.display_option.relative_time")] = false;
@@ -476,10 +476,23 @@ JSrealE.prototype.lier = function() {
     return this.setCtx(JSrealB.Config.get("feature.liaison.alias"),true);
 };
 //Ajout Francis pour les types de phrases
-JSrealE.prototype.typ = function(type){
-    return this.setCtx(JSrealB.Config.get("feature.sentence_type.alias"),type);
+// JSrealE.prototype.typ = function(type){
+//     return this.setCtx(JSrealB.Config.get("feature.sentence_type.alias"),type);
+// }
+JSrealE.prototype.typ = function(optionList){
+    if(optionList !== undefined && isObject(optionList))
+    {
+        var optionKeyList = Object.keys(optionList);
+        for(var i = 0, length = optionKeyList.length; i < length; i++)
+        {
+            this.setCtx(JSrealB.Config.get("feature.sentence_type.alias") 
+                    + "." + optionKeyList[i], optionList[optionKeyList[i]]);
+        }        
+        return this;
+    }
+    
+    return null;
 }
-
 //end
 //Verb options (neg,pas,prog)
 JSrealE.prototype.vOpt = function(optionList){
@@ -664,7 +677,9 @@ JSrealE.prototype.deleteElement = function(elemIndex) {
 
 
 JSrealE.prototype.addNewElement = function(elemIndex, elementAdd) {
-    elementAdd.parent = this;
+    if(elementAdd instanceof JSrealE){
+        elementAdd.parent = this;
+    }
     var imax = this.elements.length;
     var temp = this.elements[elemIndex];
     this.elements[elemIndex] = elementAdd;
@@ -674,7 +689,6 @@ JSrealE.prototype.addNewElement = function(elemIndex, elementAdd) {
         temp = temp2;
     }
     this.elements.length +=1;
-
 }
 
 
@@ -719,6 +733,40 @@ JSrealE.prototype.resetProp = function(recursive) {
     }
 }
 
+var getSubject = function(sObject){
+    if(sObject.category == JSrealB.Config.get("feature.category.phrase.sentence") 
+        || sObject.category == JSrealB.Config.get("feature.category.phrase.propositional")){
+        var elemList = sObject.elements;
+        var imax = elemList.length;
+        var SubjPos = -1;
+        for(var i = 0; i < imax; i++){
+            if(elemList[i].category == JSrealB.Config.get("feature.category.phrase.noun")
+                    || (elemList[i].category == JSrealB.Config.get("feature.category.word.pronoun") && elemList[i].unit == JSrealB.Config.get("rule.usePronoun.S"))){
+                SubjPos = i;
+            }
+            if(elemList[i].category == JSrealB.Config.get("feature.category.phrase.verb")){
+                //on essaie de trouver le sujet avant le VP. Évite d'effacer un complément de phrase qui serait un NP
+                break;
+            }
+        }
+        return SubjPos;
+    }
+    else{
+        throw "Not a Sentence type, could not find subject";
+    }
+}
+    
+var getGroup = function(sObject,groupAlias){
+    var elemList = sObject.elements;
+    var imax = elemList.length;
+    var gPos = -1;
+    for(var i = 0; i < imax; i++){
+        if(elemList[i].category == groupAlias){
+            gPos = i;
+        }
+    }
+    return gPos;
+}
 
 JSrealE.prototype.modifyStructure = function() {
 
@@ -726,44 +774,18 @@ JSrealE.prototype.modifyStructure = function() {
     var change = false;
     var imax = elemList.length;
     //console.log(this)
-    var getSubject = function(sObject){
-        if(sObject.category == JSrealB.Config.get("feature.category.phrase.sentence") 
-            || sObject.category == JSrealB.Config.get("feature.category.phrase.propositional")){
-            var elemList = sObject.elements;
-            var imax = elemList.length;
-            var SubjPos = -1;
-            for(var i = 0; i < imax; i++){
-                if(elemList[i].category == JSrealB.Config.get("feature.category.phrase.noun")
-                        || (elemList[i].category == JSrealB.Config.get("feature.category.word.pronoun") && elemList[i].unit == JSrealB.Config.get("rule.usePronoun.S"))){
-                    SubjPos = i;
-                }
-                if(elemList[i].category == JSrealB.Config.get("feature.category.phrase.verb")){
-                    //on essaie de trouver le sujet avant le VP. Évite d'effacer un complément de phrase qui serait un NP
-                    break;
-                }
-            }
-            return SubjPos;
-        }
-        else{
-            throw "Not a Sentence type, could not find subject";
-        }
-    }
-    var getGroup = function(sObject,groupAlias){
-        var elemList = sObject.elements;
-        var imax = elemList.length;
-        var gPos = -1;
-        for(var i = 0; i < imax; i++){
-            if(elemList[i].category == groupAlias){
-                gPos = i;
-            }
-        }
-        return gPos;
-    }
+    
     //Passif (inversion du sujet et de l'objet direct)
     if(this.getChildrenProp(JSrealB.Config.get("feature.verb_option.alias")+".pas") == true){
         if(this.category == JSrealB.Config.get("feature.category.phrase.verb")){
             var parent = this.getTreeRoot();
             var verbe = this.constituents.head;
+            this.recursion = (this.recursion == null)?1:this.recursion+1; //help to debug infinite recursion
+            if(this.recursion != null && this.recursion > 10){
+                JSrealB.Logger.alert("Could not resolve the passive tense of "+verbe.unit);
+                this.childrenProp[JSrealB.Config.get("feature.verb_option.alias")+".pas"] = false;
+                return ""; // probably infinite recursion 
+            } 
 
             //get subject
             var subjectPos = getSubject(parent);
@@ -781,7 +803,7 @@ JSrealE.prototype.modifyStructure = function() {
                 elemList[CDpos] = suj;
                 verbe.setInitProp("vOpt.hasSubject",true);
                 
-                this.parent.resetProp(true);
+                parent.resetProp(true);
                 change = true;
             }
             else if(subjectPos != -1){
@@ -798,7 +820,6 @@ JSrealE.prototype.modifyStructure = function() {
             }
             else if(CDpos != -1){
                 var VPpos = getGroup(parent,JSrealB.Config.get("feature.category.phrase.verb"));
-                console.log(VPpos)
                 parent.addNewElement(VPpos,elemList[CDpos]);//will bump the verb and place the cd just before
                 this.deleteElement(CDpos);
 
@@ -827,11 +848,17 @@ JSrealE.prototype.modifyStructure = function() {
                 break;
                 case JSrealB.Config.get("feature.category.phrase.verb"):
                     //Objet direct
-                    var vp = getGroup(parent,JSrealB.Config.get("feature.category.word.verb"));
-                    parent.addNewElement(vp,pronoun);
-                    parent.resetProp(true);
-                    var vp = getGroup(parent,JSrealB.Config.get("feature.category.word.verb"));
-                    parent.elements[vp].setProp(JSrealB.Config.get("feature.cdInfo.alias"),cdInfo);
+                    if(JSrealB.Config.get("language")==JSrealE.language.english){
+                        parent.addNewElement(np,pronoun);
+                        parent.resetProp(true);
+                    }
+                    else{
+                        var vp = getGroup(parent,JSrealB.Config.get("feature.category.word.verb"));
+                        parent.addNewElement(vp,pronoun);
+                        parent.resetProp(true);
+                        var vp = getGroup(parent,JSrealB.Config.get("feature.category.word.verb"));
+                        parent.elements[vp].setProp(JSrealB.Config.get("feature.cdInfo.alias"),cdInfo);
+                    }                    
                 break;
             }
             change =true;
@@ -849,6 +876,18 @@ JSrealE.prototype.modifyStructure = function() {
                 change = true;     
             }
         }
+    }
+
+    //Interrogatif (français)
+    var int = this.getCtx(JSrealB.Config.get("feature.sentence_type.alias"))[JSrealB.Config.get("feature.sentence_type.interrogative")];
+    if(int!= undefined){
+        if(int!= false){
+            if(!contains(JSrealB.Config.get("feature.sentence_type.interro_prefix"),int) || int == true)int = 'base';
+
+            this.interrogationForm(int);
+
+            change = true;
+        }
     }    
 
     if(change){
@@ -858,6 +897,7 @@ JSrealE.prototype.modifyStructure = function() {
     }
     return "";
 };
+
 
 //Ajout fonction pour ordonner les groupes du nom avec adjectifs
 JSrealE.prototype.adjPositioning = function(adj, nom){
@@ -896,23 +936,14 @@ JSrealE.prototype.arrangeNP = function (elemList) {
         var adj = elemList[adjIndex];
         if(elemList[adjIndex].getProp(JSrealB.Config.get("feature.antepose.alias")) == JSrealB.Config.get("feature.antepose.before")){
             if(adjIndex > nounIndex){
-                //placement de l'adjectif avant le nom
-                // elemList[nounIndex] = elemList[adjIndex];
-                // elemList[adjIndex] = noun;
                 this.deleteElement(adjIndex);
                 this.addNewElement(nounIndex-1,adj);
-                //return elemList;
             }
         }
         else if(elemList[adjIndex].getProp(JSrealB.Config.get("feature.antepose.alias")) == JSrealB.Config.get("feature.antepose.after")){
             if(adjIndex < nounIndex){
-                //placement de l'adjectif après le nom
-                // var noun = elemList[nounIndex];
-                // elemList[nounIndex] = elemList[adjIndex];
-                // elemList[adjIndex] = noun;
                 this.deleteElement(adjIndex);
                 this.addNewElement(nounIndex,adj);
-                //return elemList;
             }
         }
     }
@@ -967,18 +998,16 @@ JSrealE.prototype.printElements = function() {
     {
         addFullStop = (this.getCtx(JSrealB.Config.get("feature.typography.surround")) === null);
         upperCaseFirstLetter = (this.getCtx(JSrealB.Config.get("feature.typography.ucfist")) === null);
-        var punctuationTag = this.getCtx(JSrealB.Config.get("feature.sentence_type.alias"));
-        if(punctuationTag == undefined){
-            var lastPunctuation = ".";
+
+        var lastPunctuation = "";
+        var interro = this.getCtx(JSrealB.Config.get("feature.sentence_type.interrogative"));
+        if(interro == true) lastPunctuation += JSrealB.Config.get("rule.sentence_type.int.punctuation");
+        var exclama = this.getCtx(JSrealB.Config.get("feature.sentence_type.alias"))[JSrealB.Config.get("feature.sentence_type.exclamative")];
+        if(exclama == true) lastPunctuation += JSrealB.Config.get("rule.sentence_type.exc.punctuation");
+        if(lastPunctuation == undefined){
+            lastPunctuation += JSrealB.Config.get("rule.sentence_type.dec.punctuation");
         }
-        else{
-            //we are dealing with a special type of sentence
-            var lastPunctuation = JSrealB.Config.get("rule.sentence_type")[punctuationTag]["punctuation"];
-            if(JSrealB.Config.get("rule.sentence_type")[punctuationTag]["prefix"]!=undefined){
-                //there is a prefix specified (ex: Est-ce que)
-                return phraseFormatting(result, upperCaseFirstLetter, addFullStop, lastPunctuation, JSrealB.Config.get("rule.sentence_type")[punctuationTag]["prefix"]);
-        }
-        }
+
     }
     
     result = phraseFormatting(result, upperCaseFirstLetter, addFullStop, lastPunctuation);
@@ -1074,6 +1103,9 @@ JSrealE.prototype.realizeTerminalElement = function() {
 
 JSrealE.prototype.realizeConjugation = function() {
     var tense = this.getProp(JSrealB.Config.get("feature.tense.alias"));
+    if( tense == JSrealB.Config.get("feature.tense.imperative.present")){
+        this.defaultProp[JSrealB.Config.get("feature.person.alias")] = JSrealB.Config.get("feature.person.p2");
+    }
     var person = this.getProp(JSrealB.Config.get("feature.person.alias"));
     var number = this.getProp(JSrealB.Config.get("feature.number.alias"));
 
@@ -1339,7 +1371,7 @@ var voyelles="aeiou"+voyellesAccentuées;
 var elidables = ["la","ma","ta","sa",
                  "le","me","te","se","ce","de","ne","je",
                  "si",
-                 "qui","que","jusque","lorsque","puisque","quoique"];
+                 "que","jusque","lorsque","puisque","quoique"];
 
 // règles de http://www.aidenet.eu/grammaire01b.htm
 // Tokn au lieu de Token utilisé dans IDE...
@@ -1531,9 +1563,15 @@ var C = function(unit) {
 var S = function(childrenElt) {
     if(!(this instanceof S))
     {
-        return new S(arguments);
-    }
-    
+        if(JSrealB.Config.get("language") === JSrealE.language.french)
+        {
+            return new S_FR(arguments);
+        }
+        else
+        {
+            return new S_EN(arguments);
+        }
+    }    
     JSrealE.call(this, childrenElt, JSrealB.Config.get("feature.category.phrase.sentence"));
 };
 extend(JSrealE, S);
@@ -1570,6 +1608,7 @@ S.prototype.sortWord = function() {
 
     return this;
 };
+
 ///Propositional phrase
 var SP = function(childrenElt) {
     if(!(this instanceof SP))
@@ -1613,6 +1652,115 @@ SP.prototype.sortWord = function() {
     }
 
 }
+var S_FR = function(childrenElt) {
+    S.call(this, childrenElt);
+};
+extend(S, S_FR);
+
+var S_EN = function(childrenElt) {
+    S.call(this, childrenElt);
+};
+extend(S, S_EN);
+
+S_FR.prototype.interrogationForm = function(int) {
+    switch(int){
+    case JSrealB.Config.get("feature.sentence_type.interro_prefix.default"):
+    case JSrealB.Config.get("feature.sentence_type.interro_prefix.yesOrNo"):
+    case JSrealB.Config.get("feature.sentence_type.interro_prefix.where"):
+    case JSrealB.Config.get("feature.sentence_type.interro_prefix.how"):
+        break;
+    case JSrealB.Config.get("feature.sentence_type.interro_prefix.whoSubject"):
+        var sujP = getSubject(this); //subject position
+        if(sujP != -1){
+            this.deleteElement(sujP);
+            // change = true;
+        }
+        break;
+    case JSrealB.Config.get("feature.sentence_type.interro_prefix.whoDirect"):
+    case JSrealB.Config.get("feature.sentence_type.interro_prefix.whatDirect"):
+        var vP = getGroup(this,JSrealB.Config.get("feature.category.phrase.verb"));
+        var cdP = getGroup(this.elements[vP],JSrealB.Config.get("feature.category.phrase.noun"));
+        if(vP != -1 && cdP != -1){
+            this.elements[vP].deleteElement(cdP);
+            // change = true; 
+        } 
+        break;
+    case JSrealB.Config.get("feature.sentence_type.interro_prefix.whoIndirect"):
+        var vP = getGroup(this,JSrealB.Config.get("feature.category.phrase.verb"));
+        var ciP = getGroup(this.elements[vP],JSrealB.Config.get("feature.category.phrase.prepositional"));
+        if(vP != -1 && ciP != -1){
+            this.elements[vP].deleteElement(ciP);
+            // change = true; 
+        } 
+        break;
+    }
+    this.addNewElement(0,JSrealB.Config.get("rule.sentence_type.int.prefix")[int]);
+    fetchFromObject(this.ctx, JSrealB.Config.get("feature.sentence_type.alias")
+        +"."+JSrealB.Config.get("feature.sentence_type.interrogative"), false); // set int:false (end recursion)
+    this.setCtx(JSrealB.Config.get("feature.sentence_type.interrogative"),true); //for later use in punctuation
+}
+
+S_EN.prototype.interrogationForm = function(int) {
+    switch(int){
+        //remove specific part of phrase
+        case JSrealB.Config.get("feature.sentence_type.interro_prefix.where"):
+        case JSrealB.Config.get("feature.sentence_type.interro_prefix.how"):
+            break;
+        case JSrealB.Config.get("feature.sentence_type.interro_prefix.whoSubject"):
+            var sujP = getSubject(this); //subject position
+            if(sujP != -1){
+                this.deleteElement(sujP);
+                // change = true;
+            }
+            break;
+        case JSrealB.Config.get("feature.sentence_type.interro_prefix.whoDirect"):
+        case JSrealB.Config.get("feature.sentence_type.interro_prefix.whatDirect"):
+            var vP = getGroup(this,JSrealB.Config.get("feature.category.phrase.verb"));
+            var cdP = getGroup(this.elements[vP],JSrealB.Config.get("feature.category.phrase.noun"));
+            if(vP != -1 && cdP != -1){
+                this.elements[vP].deleteElement(cdP);
+                // change = true; 
+            } 
+            break;
+        case JSrealB.Config.get("feature.sentence_type.interro_prefix.whoIndirect"):
+            var vP = getGroup(this,JSrealB.Config.get("feature.category.phrase.verb"));
+            var ciP = getGroup(this.elements[vP],JSrealB.Config.get("feature.category.phrase.prepositional"));
+            if(vP != -1 && ciP != -1){
+                this.elements[vP].deleteElement(ciP);
+                // change = true; 
+            } 
+            break;
+    }
+
+    if(int == JSrealB.Config.get("feature.sentence_type.interro_prefix.whoSubject")){
+        this.addNewElement(0,JSrealB.Config.get("rule.sentence_type.int.prefix")[int]);
+    }
+    else{
+        var vP = getGroup(this,JSrealB.Config.get("feature.category.phrase.verb"));
+        var verbP = getGroup(this.elements[vP],JSrealB.Config.get("feature.category.word.verb"));
+        var verb = this.elements[vP].elements[verbP];
+        var vUnit = verb.unit; 
+        verb.unit = JSrealB.Config.get("rule.sentence_type.int.prefix.base");
+        this.elements[vP].deleteElement(verbP);
+        this.elements[vP].addNewElement(verbP,new V(vUnit));
+        this.addNewElement(0,verb);
+    }
+    //Add prefix
+    switch(int){
+        case JSrealB.Config.get("feature.sentence_type.interro_prefix.whoDirect"):
+        case JSrealB.Config.get("feature.sentence_type.interro_prefix.whatDirect"):
+        case JSrealB.Config.get("feature.sentence_type.interro_prefix.whoIndirect"):
+        case JSrealB.Config.get("feature.sentence_type.interro_prefix.where"):
+        case JSrealB.Config.get("feature.sentence_type.interro_prefix.how"):
+            this.addNewElement(0,JSrealB.Config.get("rule.sentence_type.int.prefix")[int]);
+            break;
+    }
+
+    fetchFromObject(this.ctx, JSrealB.Config.get("feature.sentence_type.alias")
+        +"."+JSrealB.Config.get("feature.sentence_type.interrogative"), false); // set int:false (end recursion)
+    this.setCtx(JSrealB.Config.get("feature.sentence_type.interrogative"),true); //for later use in punctuation
+}
+    
 
 /// Coordinated Phrase
 var CP = function(childrenElt) {
@@ -1869,7 +2017,7 @@ NP.prototype.elementToElementPropagation = function(element) {
     }
 };
 
-NP_FR.prototype.pro = function() {
+NP.prototype.pro = function() {
     return this.setCtx(JSrealB.Config.get("feature.toPronoun.alias"),true);
 }
 
@@ -2014,12 +2162,7 @@ AdvP_EN.prototype.sortWord = function() {
         
         switch (e.category)
         {
-            case JSrealB.Config.get("feature.category.word.adverb"):
-//                if(this.constituents.head === undefined)
-//                {
-//                    this.constituents.degree = e; // Degree
-//                }
-                
+            case JSrealB.Config.get("feature.category.word.adverb"):                
                 this.addConstituent(e, JSrealE.grammaticalFunction.head); // Manner
             break;
             case JSrealB.Config.get("feature.category.phrase.adverb"):
@@ -2080,70 +2223,11 @@ var PP_EN = function(childrenElt) {
 };
 extend(PP, PP_EN);
 
-/// SP : Propositional Phrase
-// var SP = function(childrenElt) {
-//     if(!(this instanceof SP))
-//     {
-//         if(JSrealB.Config.get("language") === JSrealE.language.french)
-//         {
-//             return new SP_FR(arguments);
-//         }
-//         else
-//         {
-//             return new SP_EN(arguments);
-//         }
-//     }
-    
-//     JSrealE.call(this, childrenElt, JSrealB.Config.get("feature.category.phrase.propositional"));
-// };
-// extend(JSrealE, SP);
-
-// SP.prototype.sortWord = function() {
-//     this.constituents.head = null;
-    
-//     for (var i = 0, imax = this.elements.length; i < imax; i++)
-//     {
-//         var e = this.elements[i];
-        
-//         switch (e.category)
-//         {
-//             case JSrealB.Config.get("feature.category.phrase.sentence"):
-//             case JSrealB.Config.get("feature.category.phrase.verb"):
-//                 this.addConstituent(e, JSrealE.grammaticalFunction.head);
-//             break;
-//             case JSrealB.Config.get("feature.category.phrase.noun"):
-//             case JSrealB.Config.get("feature.category.phrase.coordinated"):
-//                 if(this.constituents.head === null) // before verb
-//                 {
-//                         this.addConstituent(e, JSrealE.grammaticalFunction.modifier);
-//                     break;
-//                 }
-//             case JSrealB.Config.get("feature.category.phrase.adjective"):
-//             case JSrealB.Config.get("feature.category.phrase.adverb"):
-//                 this.addConstituent(e, JSrealE.grammaticalFunction.subordinate);
-//             break;
-//             default:
-//                 this.addConstituent(e, JSrealE.grammaticalFunction.complement);
-//         }
-//     }
-
-//     return this;
-// };
-
-// var SP_FR = function(childrenElt) {
-//     SP.call(this, childrenElt);
-// };
-// extend(SP, SP_FR);
-
-// var SP_EN = function(childrenElt) {
-//     SP.call(this, childrenElt);
-// };
-// extend(SP, SP_EN);
-
 //// Date
 var DT = function(date) {
     if(!(this instanceof DT))
     {
+        console.log(JSrealB.Config.get("language"));
         return new DT(date);
     }
     

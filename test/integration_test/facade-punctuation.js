@@ -30,8 +30,11 @@ JSrealLoader({
         assert.equal( S(N("cadeau").n("p")).a("!").en("[").cap(), "[Cadeaux!]", "Entourer la phrase de crochets" );
         assert.equal( S(N("cadeau").n("p")).a("!").en("]").cap(), "[Cadeaux!]", "Entourer la phrase de crochets" );
         assert.equal( S(A("grand").g("f"), N("maison"), N("cadeau").n("p").a("!").en("]")).cap(), "Grande maison [cadeaux!].", "Entourer la phrase de crochets" );
-        
-        //        assert.equal( , "", "" );
+
+        //liaison forcée
+        assert.equal( S(VP( V("rejoindre").t("ip").pe("2").lier(), Pro("le"))), "Rejoins-le.", "Trait d'union entre les mots");
+        assert.equal( S(VP( V("rejoindre").t("ip").lier(), Pro("le"))), "Rejoins-le.", "Trait d'union entre les mots");
+        assert.equal( S(NP(D("le").lier(),N("horloge"))),"La-horloge.", "Trait d'union empêchant l'élision");
     });
 
     JSrealLoader({
@@ -58,6 +61,9 @@ JSrealLoader({
             assert.equal( S(N("gift").n("p")).a("!").en("[").cap(), "[Gifts!]", "Entourer la phrase de crochets" );
             assert.equal( S(N("gift").n("p")).a("!").en("]").cap(), "[Gifts!]", "Entourer la phrase de crochets" );
             assert.equal( S(A("big").f("su"), N("house"), N("gift").n("p").a("!").en("]")).cap(), "Biggest house [gifts!].", "Entourer la phrase de crochets" );
+
+            //liaison forcée
+            assert.equal( NP(N("mother").lier(), Adv("in").lier(), N("law")), "mother-in-law", "Traits d'union entre les mots");
         });
     });
 });

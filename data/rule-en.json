@@ -2864,7 +2864,17 @@
         "int": {
             "type": "interrogative",
             "punctuation": "?",
-            "prefix": "Do"
+            "prefix": {
+                "base": "do",
+                "yon": "do",
+                "wos": "who",
+                "wod": "who",
+                "woi": "to who",
+                "wad": "what",
+                "whe": "where",
+                "how": "how",
+                "muc": "how many"
+            }
         },
         "dec": {
             "type": "declarative",
@@ -2891,8 +2901,8 @@
     },
     "usePronoun": {
         "S": "I",
-        "VP": "I",
-        "PP": "I",
+        "VP": "me",
+        "PP": "me",
         "Pro": "me"
     },
     "date": {

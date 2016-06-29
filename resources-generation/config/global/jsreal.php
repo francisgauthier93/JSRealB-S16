@@ -260,6 +260,17 @@ return array(
     		'declarative' => 'dec',
     		'exclamative' => 'exc',
     		'interrogative' => 'int',
+    		'interro_prefix' => array(
+    					'default' => 'base',
+    					'yesOrNo' => 'yon',
+    					'whoSubject' => 'wos',
+    					'whoDirect' => 'wod',
+    					'whoIndirect' => 'woi',
+    					'whatDirect' => 'wad',
+    					'where' => 'whe',
+    					'how' => 'how',
+    					'howMuch' => 'muc',
+    			)
     	),
     	'verb_option' => array(
     		'alias' => 'vOpt',

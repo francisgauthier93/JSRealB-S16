@@ -32,6 +32,7 @@ JSrealLoader({
         QUnit.test( "Verb options EN", function( assert ) {
         	assert.equal(S(Pro("I"),VP(V("find").t("p"))), "He finds.", "No option"); //1
             assert.equal(S(Pro("I"),VP(V("find").t("p").vOpt({neg:true}))), "He does not find.", "Negative");  //2
+            assert.equal(S(Pro("I").pe("1"),VP(V("be").t("p").vOpt({neg:true}))), "I am not.", "Negative"); //2.5
             assert.equal(S(Pro("I"),VP(V("find").t("p").vOpt({pas:true}))), "Is found by him.", "Passive");  //3
             assert.equal(S(Pro("I"),VP(V("find").t("p").vOpt({neg:true,pas:true}))), "Is not found by him.", "Negative-passive");  //4
             assert.equal(S(Pro("I"),VP(V("find").t("p").vOpt({prog:true}))), "He is finding.", "Continuous");  //5

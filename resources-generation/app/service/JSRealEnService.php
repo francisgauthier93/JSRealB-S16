@@ -281,7 +281,17 @@ class JSRealEnService extends JSRealService
     			'int' => array(
     					'type' => 'interrogative',
     					'punctuation' => '?',
-    					'prefix' => 'Do'
+    					'prefix' => array(
+    							'base' => 'do',
+    							'yon' => 'do',
+    							'wos' => 'who',
+    							'wod' => 'who',
+    							'woi' => 'to who',
+    							'wad' => 'what',
+    							'whe' => 'where',
+    							'how' => 'how',
+    							'muc' => 'how many',
+    					)
     			),
     			'dec' => array(
     					'type' => 'declarative',
@@ -316,8 +326,8 @@ class JSRealEnService extends JSRealService
     {
     	return array(
     			'S' => 'I',
-    			'VP' => 'I',
-    			'PP' => 'I',
+    			'VP' => 'me',
+    			'PP' => 'me',
     			'Pro' => 'me'
     			
     	);

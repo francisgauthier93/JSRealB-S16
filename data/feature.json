@@ -141,7 +141,18 @@
         "alias": "typ",
         "declarative": "dec",
         "exclamative": "exc",
-        "interrogative": "int"
+        "interrogative": "int",
+        "interro_prefix": {
+            "default": "base",
+            "yesOrNo": "yon",
+            "whoSubject": "wos",
+            "whoDirect": "wod",
+            "whoIndirect": "woi",
+            "whatDirect": "wad",
+            "where": "whe",
+            "how": "how",
+            "howMuch": "muc"
+        }
     },
     "verb_option": {
         "alias": "vOpt",
