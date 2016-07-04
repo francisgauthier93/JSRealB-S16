@@ -472,13 +472,9 @@ JSrealE.prototype.en = function(punctuation) {
 };
 //Liaison forçée en français
 JSrealE.prototype.lier = function() {
-    // this.setCtx(JSrealB.Config.get("feature.typography.after"), "-");
     return this.setCtx(JSrealB.Config.get("feature.liaison.alias"),true);
 };
 //Ajout Francis pour les types de phrases
-// JSrealE.prototype.typ = function(type){
-//     return this.setCtx(JSrealB.Config.get("feature.sentence_type.alias"),type);
-// }
 JSrealE.prototype.typ = function(optionList){
     if(optionList !== undefined && isObject(optionList))
     {
@@ -547,7 +543,6 @@ JSrealE.prototype.tag = function(elt, attr) {
     this.setCtx(JSrealB.Config.get("feature.html.attribute"), attr);
     return this;
 };
-
 //// Agreement
 JSrealE.prototype.sortWord = function() {}; // Abstract
 
@@ -900,18 +895,6 @@ JSrealE.prototype.modifyStructure = function() {
 
 
 //Ajout fonction pour ordonner les groupes du nom avec adjectifs
-JSrealE.prototype.adjPositioning = function(adj, nom){
-    //version simpliste du positionnement de l'adjectif et du nom en français, à modifier -> Grevisse page 62
-    var numSylNom = numSyllab(nom);
-    var numSylAdj = numSyllab(adj);
-    if(numSylAdj == 1){
-        this.setProp(JSrealB.Config.get("feature.antepose.alias"), 'b');
-    }
-    else{
-        this.setProp(JSrealB.Config.get("feature.antepose.alias"), 'a');
-    }
-}
-
 JSrealE.prototype.arrangeNP = function (elemList) {
     var nounIndex = -1;
     var adjIndexes = [];
@@ -932,12 +915,12 @@ JSrealE.prototype.arrangeNP = function (elemList) {
         return elemList;
     }
     for(var i=0; i < adjIndexes.length; i++){
-        adjIndex = adjIndexes[i];
+        var adjIndex = adjIndexes[i];
         var adj = elemList[adjIndex];
         if(elemList[adjIndex].getProp(JSrealB.Config.get("feature.antepose.alias")) == JSrealB.Config.get("feature.antepose.before")){
             if(adjIndex > nounIndex){
                 this.deleteElement(adjIndex);
-                this.addNewElement(nounIndex-1,adj);
+                this.addNewElement(nounIndex,adj);
             }
         }
         else if(elemList[adjIndex].getProp(JSrealB.Config.get("feature.antepose.alias")) == JSrealB.Config.get("feature.antepose.after")){
@@ -1292,7 +1275,6 @@ JSrealE.prototype.phonetic = function(content) {
     if(length2>=2){
          // crée des Tokens qui devraient venir d'ailleurs...
         var tokens=mots.map(function(mot){return new Tokn(mot)});
-        //avant d'élider, je vais essayer de gérer le cas d'inversion de mots (en commencant par l'imperatif)
             
         if(JSrealB.Config.get("language")=="fr"){
             tokens = eliderMots([tokens.shift()],tokens);
@@ -1314,7 +1296,7 @@ JSrealE.prototype.phonetic = function(content) {
 };
 
 //// Utils
-var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop, lastPunctuation, prefix=null) {
+var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop, lastPunctuation = ".", prefix=null) {
     // replace multiple spaces with a single space
     var newString = str.replace(/\s{2,}/g, ' ');
     
@@ -1497,24 +1479,32 @@ function eliderMots(prevTokens,tokens){
             lastToken.mot=lastToken.mot.charAt(0)+"on";
             prevTokens.push(tokens.shift());
         } else if (lastToken.mot=="ce"){// ce => cet (On vérifie que le mot suivant n'est pas un verbe...)
-            var verbNext = false;
-            for(cat in tokens[0].lex){
-                if(cat=='V'){verbNext=true;}
-            }
-            if(!verbNext){
-                lastToken.mot="cet";
+            
+            if(JSrealB.Config.get("rule.elisionEtre.verbe").includes(tokens[0].mot) ||
+                JSrealB.Config.get("rule.elisionEtre.aux").includes(tokens[0].mot) &&
+                        JSrealB.Config.get("rule.elisionEtre.pp").includes(tokens[1].mot)){
+                tokens[0].mot=removeLastLetter(lastToken.mot)+"'"+tokens[0].mot;  //"ce" => "c'"
+                tokens[0].capitalized=lastToken.capitalized;
+                prevTokens.splice(lastTokenId, 1);
                 prevTokens.push(tokens.shift());
             }
+            else{
+                lastToken.mot = "cet";
+                prevTokens.push(tokens.shift());
+            }
+            
+        
         } else {// remplace la dernière lettre par ' et on colle le prochain mot
-//            lastToken.mot=removeLastLetter(lastToken.mot)+"'"+tokens.shift(); // Edit by Paul
-//            lastToken.elidable=false;                                 // Edit by Paul
-            tokens[0].mot=removeLastLetter(lastToken.mot)+"'"+tokens[0];
+    //            lastToken.mot=removeLastLetter(lastToken.mot)+"'"+tokens.shift(); // Edit by Paul
+    //            lastToken.elidable=false;                                 // Edit by Paul
+            tokens[0].mot=removeLastLetter(lastToken.mot)+"'"+tokens[0].mot;
             tokens[0].capitalized=lastToken.capitalized;
             prevTokens.splice(lastTokenId, 1);
             prevTokens.push(tokens.shift());
         }
+
     } else {
-        prevTokens.push(tokens.shift());
+    prevTokens.push(tokens.shift());
     }
     return eliderMots(prevTokens,tokens);
 }
@@ -1673,17 +1663,21 @@ S_FR.prototype.interrogationForm = function(int) {
         var sujP = getSubject(this); //subject position
         if(sujP != -1){
             this.deleteElement(sujP);
-            // change = true;
         }
         break;
     case JSrealB.Config.get("feature.sentence_type.interro_prefix.whoDirect"):
     case JSrealB.Config.get("feature.sentence_type.interro_prefix.whatDirect"):
         var vP = getGroup(this,JSrealB.Config.get("feature.category.phrase.verb"));
         var cdP = getGroup(this.elements[vP],JSrealB.Config.get("feature.category.phrase.noun"));
+        var vvP = getGroup(this.elements[vP],JSrealB.Config.get("feature.category.word.verb"));
+        var proP = getGroup(this.elements[vP],JSrealB.Config.get("feature.category.word.pronoun"));
         if(vP != -1 && cdP != -1){
             this.elements[vP].deleteElement(cdP);
-            // change = true; 
         } 
+        if(vP != -1 && proP != -1 && vvP != -1 && proP < vvP){
+            //object direct pronominalisé
+            this.elements[vP].deleteElement(proP);
+        }
         break;
     case JSrealB.Config.get("feature.sentence_type.interro_prefix.whoIndirect"):
         var vP = getGroup(this,JSrealB.Config.get("feature.category.phrase.verb"));
@@ -2227,7 +2221,6 @@ extend(PP, PP_EN);
 var DT = function(date) {
     if(!(this instanceof DT))
     {
-        console.log(JSrealB.Config.get("language"));
         return new DT(date);
     }
     
@@ -2571,7 +2564,13 @@ JSrealB.Module.Conjugation = (function(){
                     (typeof verbOptions.neg == "string" && contains(JSrealB.Config.get("rule.verb_option.neg.autres"),verbOptions.neg)))
                 {
                     var verb = JSrealB.Config.get("rule.verb_option.neg.prep1")+" ";
-                    if(verbOptions.neg == true)verbOptions.neg = JSrealB.Config.get("rule.verb_option.neg.prep2");
+                    if(verbOptions.neg == true && tense != JSrealB.Config.get("feature.tense.base")){
+                        verbOptions.neg = JSrealB.Config.get("rule.verb_option.neg.prep2");
+                    }
+                    else if(tense == JSrealB.Config.get("feature.tense.base")){
+                        verb += JSrealB.Config.get("rule.verb_option.neg.prep2")+" ";
+                        verbOptions.neg = "";
+                    }
                 }
                 else{
                     var verb = verbOptions.neg = "";
@@ -2646,8 +2645,8 @@ JSrealB.Module.Conjugation = (function(){
         else{
             verb = applySimpleEnding(unit, tense, person, conjugationTable);
         }
-        verb += (verbOptions.neg != "")?" ":""
-        verb += verbOptions.neg 
+        verb += (verbOptions.neg != "")?" ":"";
+        verb += (tense != JSrealB.Config.get("feature.tense.base"))?verbOptions.neg:""; 
         verb += (verbOptions.prog == true)?" "+JSrealB.Config.get("rule.verb_option.prog.keyword"):"";
         verb += (verbOptions.pas == true && verbOptions.prog == true)?" être":"";
         
@@ -3953,8 +3952,7 @@ JSrealB.Logger = (function() {
  * 
  * Initialization
  */
- //ajout db
-var JSrealBResource = {en: {}, fr: {}, common: {},db:{}};
+var JSrealBResource = {en: {}, fr: {}, common: {}};
 
 var JSrealLoader = function(resource, done, fail) {
     
@@ -3982,7 +3980,6 @@ var JSrealLoader = function(resource, done, fail) {
     var lexiconUrl = resource.lexiconUrl;
     var ruleUrl = resource.ruleUrl;
     var featureUrl = resource.featureUrl;
-    var dbAEDIROUMUrl = resource.dbAEDIROUM; //dbAEDIROUM.json
     
     JSrealB.Request.getJson(
         lexiconUrl,
@@ -4004,16 +4001,13 @@ var JSrealLoader = function(resource, done, fail) {
                     {
                         JSrealB.Request.getJson(
                             featureUrl,
-                            //dbAEDIROUMUrl,
                             function(feature)
                             {
                                 JSrealBResource.common.feature = feature;
 
                                 JSrealB.init(language, lexicon, rule, feature);
-                                                               
+
                                 done();
-
-
                             }, 
                             function(status, error) {
                                 JSrealB.Logger.alert("Dictionary loading : " 
@@ -4021,24 +4015,6 @@ var JSrealLoader = function(resource, done, fail) {
                                 if(fail) fail(error);
                             }
                         );
-                        //ajout Francis
-                        if(dbAEDIROUMUrl!=undefined){
-                        JSrealB.Request.getJson(
-                            dbAEDIROUMUrl,
-                            function(data){
-
-                                //JSrealB.Config.set({db:data})
-
-                                        //done();
-                                },
-                                function(status,error){
-                                     JSrealB.Logger.alert("DB loading : " 
-                                             + status + " : " + error);
-                                    if(fail) fail(error);
-                                        //console.log("Could not load AEDIROUMdb : "+status+" : "+error);
-                                }
-
-                        );}
                     }
                 }, 
                 function(status, error) {

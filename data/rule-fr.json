@@ -2369,6 +2369,11 @@
             "progAuxTense": "f"
         }
     },
+    "elisionEtre": {
+        "verbe": ["en","est","était"],
+        "aux": ["a","aura","avait","ait","eût","aurait"],
+        "pp": ["été","étés","étées"]
+    },
     "declension": {
         "nI": {
             "ending": "",

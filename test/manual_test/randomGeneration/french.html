@@ -206,9 +206,18 @@
                     <td><fieldset>
                         <legend>Forme de la phrase</legend>
                         <form>
-                            <input type="radio" name="Form" value="dec" checked>Déclarative</input>
-                            <input type="radio" id="excForm" name="Form" value="exc">Exclamative</input>
-                            <input type="radio" id="queForm" name="Form" value="int">Interrogative</input>
+                            <input type="checkbox" id="excForm" name="Form" value="exc">Exclamative</input>
+                            <input type="checkbox" id="queForm" name="Form" value="int">Interrogative</input>
+                            <select name="intSpec" id="intSpec" onchange="" size="1">
+                                <option value="base"></option>
+                                <option value="yon">Oui/non</option>
+                                <option value="wos">Qui(sujet)</option>
+                                <option value="wod">Qui(objet direct)</option>
+                                <option value="wad">Quoi(objet direct)</option>
+                                <option value="woi">Qui(objet indirect)</option>
+                                <option value="whe">Où</option>
+                                <option value="how">Comment</option>
+                            </select>
                         </form>
                         </fieldset>
                     </td>

@@ -226,16 +226,25 @@
             </td>
         </tr>
         <tr>
-                    <tr><fieldset>
-                        <legend>Sentence type</legend>
-                        <form>
-                            <input type="radio" name="Form" value="dec" checked>Declarative</input>
-                            <input type="radio" id="excForm" name="Form" value="exc">Exclamatory</input>
-                            <input type="radio" id="queForm" name="Form" value="int">Interrogative</input>
-                        </form>
-
-                    </fieldset></tr>
-                </tr>
+            <td><fieldset>
+                <legend>Sentence type</legend>
+                <form>
+                    <input type="checkbox" id="excForm" name="Form" value="exc">Exclamative</input>
+                    <input type="checkbox" id="queForm" name="Form" value="int">Interrogative</input>
+                    <select name="intSpec" id="intSpec" onchange="" size="1">
+                        <option value="base"></option>
+                        <option value="yon">Yes/no</option>
+                        <option value="wos">Who(subject)</option>
+                        <option value="wod">Who(direct object)</option>
+                        <option value="wad">What(direct object)</option>
+                        <option value="woi">Who(indirect object)</option>
+                        <option value="whe">Where</option>
+                        <option value="how">How</option>
+                    </select>
+                </form>
+                </fieldset>
+            </td>
+        </tr>
     </tbody></table>
     <table>
         <tbody><tr>

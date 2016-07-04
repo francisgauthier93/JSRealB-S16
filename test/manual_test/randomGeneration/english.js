@@ -1,6 +1,7 @@
 //
 //  JSrealBDemo
-//
+
+
 
 var lexique;
 
@@ -58,10 +59,7 @@ function option(code,nom){
 
 var codesTemps={
     ind:{p:"present",ps:"past",f:"future"},
-    imp:{ip:"present"},
-    // cont:{prc:"present",pac:"past",fuc:"future"},
-    // perf:{prp:"present",pap:"past",fup:"future"},
-    // perfcont:{prpc:"present",papc:"past",fupc:"future"}
+    imp:{ip:"present"}
     };
 
 function changeTemps(){
@@ -108,12 +106,7 @@ function realiser(){
                                    $("#plurielOI").is(":checked"),
                                    $("#est-pronomOI").is(":checked"),
                                    $("#neuterOI").is(":checked"));
-    var theForm = document.forms[0];
-    for(var i =0; i< theForm.length;i++){
-      if(theForm[i].checked){
-        var sType = theForm[i].value; 
-      }
-    }
+
 
     if(sujet!=null || verbe!=null){
         var expr="S(";
@@ -132,7 +125,21 @@ function realiser(){
             }
             expr+=")"; // fin de VP(
         }
-        expr+=")"+((sType!=undefined)?".typ('"+sType+"')":"") //fin du S
+        expr+=")"
+        //Ajout type de phrase
+        var sType = {};
+        sType.int=$("#queForm").is(":checked");
+        if(sType.int == true){
+          for(i in $("#intSpec")[0]){
+            if($("#intSpec")[0][i] != null && $("#intSpec")[0][i].selected == true){
+              console.log($("#intSpec")[0][i].selected);
+              sType.int = "\""+$("#intSpec")[0][i].value+"\"";
+            }
+          }
+        }
+        sType.exc=$("#excForm").is(":checked");
+        if(sType.int != false || sType.exc == true) expr+=".typ({int:"+sType.int+",exc:"+sType.exc+"})";
+
         $("#jsreal").val(expr);
         $("#realisation").val(eval(expr+".real()"));
     } else

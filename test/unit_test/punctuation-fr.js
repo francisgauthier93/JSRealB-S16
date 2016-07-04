@@ -27,7 +27,7 @@ $.getJSON(URL.lexicon.fr, function(lexicon) {
         assert.equal( JSrealB.Module.Punctuation.before(" - il était une fois", "*"), " *- il était une fois", " *- il était une fois" );
         assert.equal( JSrealB.Module.Punctuation.before(" , il était une fois", "."), ". il était une fois", ". il était une fois" );
         assert.equal( JSrealB.Module.Punctuation.after("il était une fois ", "."), "il était une fois. ", "il était une fois. " );
-        assert.equal( JSrealB.Module.Punctuation.after("il était une fois ", "!"), "il était une fois ! ", "il était une fois ! " );
+        assert.equal( JSrealB.Module.Punctuation.after("il était une fois ", "!"), "il était une fois! ", "il était une fois! " );
         assert.equal( JSrealB.Module.Punctuation.after("il était une fois ", ";"), "il était une fois ; ", "il était une fois ; " );
         assert.equal( JSrealB.Module.Punctuation.after("il était une fois.", ";"), "il était une fois ; ", "il était une fois ; " );
         assert.equal( JSrealB.Module.Punctuation.surround(" il était une fois ", '"'), " \"il était une fois\" ", ' "il était une fois" ' );

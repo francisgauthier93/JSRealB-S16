@@ -1,4 +1,4 @@
-JSrealLoader({
+JSrealLoader( {
         language: "fr",
         lexiconUrl: URL.lexicon.fr,
         ruleUrl: URL.rule.fr,
@@ -113,7 +113,7 @@ JSrealLoader({
         // SP : Propositional Phrase
         assert.equal( S( NP(D("the"), N("mouse"), SP( Adv("that"), NP( D("the"), N("cat")), VP( V("eat").t("ps"))))), "The mouse that the cat ate.", "1. SP");
         assert.equal( NP(D("a"), N("girl"), SP( Pro("who"), VP( V("play").t("p"), NP(N("soccer"))))), "a girl who plays soccer", "2. SP(who)");
-        assert.equal( NP(D("the"), N("girl").n("p"), SP( Pro("who"), VP( V("play").t("p"), NP(N("soccer"))))), "the girls who play soccer", "2. SP(who)")
+        assert.equal( NP(D("the"), N("girl").n("p"), SP( Pro("who"), VP( V("play").t("p"), NP(N("soccer"))))), "the girls who play soccer", "2. SP(who)");
         });
-    });
-});
+    } ) ;
+} ) ; 

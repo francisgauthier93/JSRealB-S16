@@ -87,6 +87,7 @@ class JSRealFrService extends JSRealService
         $aRuleTable = array();
         $aRuleTable['conjugation'] = $aConjugation;
         $aRuleTable['compound'] = $this->getAuxRule();
+        $aRuleTable['elisionEtre'] = $this->getElisionEtre();
 //        $aRuleTable['declension'] = $aDeclensionRule;
 //        $aRuleTable['pronoun'] = $aPronounRule;
 //        $aRuleTable['punctuation'] = $aPunctuationRule;
@@ -512,6 +513,30 @@ class JSRealFrService extends JSRealService
     			'VP' => 'le',
     			'PP' => 'moi',
     			'Pro' => 'moi'
+    	);
+    }
+    
+    private function  getElisionEtre()
+    {
+    	return array(
+    			'verbe' => array(
+    					'en',
+    					'est',
+    					'était',
+    			),
+    			'aux' => array(
+    					'a',
+    					'aura',
+    					'avait',
+    					'ait',
+    					'eût',
+    					'aurait',
+    			),
+    			'pp' => array(
+    					'été',
+    					'étés',
+    					'étées'
+    			),
     	);
     }
 }
