@@ -1,0 +1,211 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+JSRealB, un réalisateur de texte multilingue: maintenant à jour en français
+ et en anglais
+\end_layout
+
+\begin_layout Author
+Francis Gauthier
+\end_layout
+
+\begin_layout Author
+Département d'Informatique et de Recherche Opérationnelle
+\end_layout
+
+\begin_layout Author
+Université de Montréal
+\end_layout
+
+\begin_layout Author
+2016
+\end_layout
+
+\begin_layout Verse
+Sous la direction de Guy Lapalme, professeur au département d'informatique
+ et de recherche opérationnelle de l'Université de Montréal.
+\end_layout
+
+\begin_layout Description
+Résumé:
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Section
+Modifications apportées aux syntagmes
+\end_layout
+
+\begin_layout Subsection
+Syntagme nominal
+\end_layout
+
+\begin_layout Subsection
+Syntagme verbal
+\end_layout
+
+\begin_layout Subsubsection
+Temps composés
+\end_layout
+
+\begin_layout Standard
+Au moment de sa reprise, JSRealB était en mesure de conjuguer les verbes
+ dans leurs formes simples, c'est à dire dans les temps du présent de l'indicati
+f, de l'imparfait, du futur simple, du passé simple, du conditionnel présent
+ et du subjonctif présent en français.
+ En anglais, c'est au 'present' et au 'past tense' que les déclinaisons
+ étaient possibles.
+ Les conjugaisons étaient directement tirées du lexique et des tables de
+ règles fournies.
+ Il était évident que la continuité de JSRealB passerait par la conjugaison
+ des temps composés.
+ Cela impliquait d'ajouter un ou plusieurs auxiliaires et un participe qui
+ devrait aussi s'accorder (en français).
+\end_layout
+
+\begin_layout Subsubsection
+Accord du participe passé
+\end_layout
+
+\begin_layout Subsubsection
+Les verbes impératifs
+\end_layout
+
+\begin_layout Subsubsection
+Les options (forme négative, passive et progressive)
+\end_layout
+
+\begin_layout Subsection
+Syntagme adjectival
+\end_layout
+
+\begin_layout Subsection
+Syntagme propositionnel
+\end_layout
+
+\begin_layout Subsubsection
+Utilisation
+\end_layout
+
+\begin_layout Subsubsection
+Propagation
+\end_layout
+
+\begin_layout Subsection
+Syntagme adverbial, prépositionnel et coordonné
+\end_layout
+
+\begin_layout Section
+Modifications apportées à la mise en forme
+\end_layout
+
+\begin_layout Subsection
+Les différents types de phrase
+\end_layout
+
+\begin_layout Subsubsection
+Exclamative
+\end_layout
+
+\begin_layout Subsubsection
+Interrogative
+\end_layout
+
+\begin_layout Subsection
+Liaison par le trait d'union
+\end_layout
+
+\begin_layout Section
+Autres modifications
+\end_layout
+
+\begin_layout Subsection
+Clone et déréférencement
+\end_layout
+
+\begin_layout Section
+Résultats
+\end_layout
+
+\begin_layout Section
+Limitations et travail futur
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\end_body
+\end_document

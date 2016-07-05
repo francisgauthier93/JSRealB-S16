@@ -2,12 +2,12 @@ Nouveau feature à rajouter à la documentation
 
 *bref aperçu de la construction de l'arbre syntaxique
 
-*types de phrases
- **exclamative
- **interrogative
+*types de phrases --
+ **exclamative --
+ **interrogative --
 
-*temps composés
-*impératif
+*temps composés --
+*impératif --
 *options de verbes
  **negation
   ***negation personnalisée
@@ -15,15 +15,15 @@ Nouveau feature à rajouter à la documentation
  **progressif
  **parfait
 
-*liaison forçée
+*liaison forçée --
 
-*groupe subordonné
+*groupe subordonné --
 
-*placement de l'adjectif
+*placement de l'adjectif --?
 
 *clone
 
-*pronominalisation
+*pronominalisation --
 
 *Limitations du programme - futur
  **Structure de phrase complexe
@@ -31,3 +31,4 @@ Nouveau feature à rajouter à la documentation
  **Inversion de sujet-verbe
  **Déterminer le complément d'objet direct
  **Pronominalisation + negation
+ **Dénombrabilité en anglais (a milk->the milk)

@@ -16,9 +16,9 @@ JSrealLoader( {
         assert.equal( S(NP(Pro("je").pe(3).n("p")), VP(V("arrêter"), AdvP(Adv("rapidement")), NP(D("le"), N("discussion"))).t("ps")), "Ils arrêtèrent rapidement la discussion.", "8. VP" );
         assert.equal( S(NP(D("le"), N("petit")).g("f"), VP(V("garder"), NP(D("le"), N("montre"))).t("p")), "La petite garde la montre.", "9. VP" );
         assert.equal( S(NP(Pro("je")).pe(3), VP(V("refuser")).t("f")), "Il refusera.", "10. VP" );
-//        assert.equal( S(CP(), VP(V("refuser")).t("f")), "", "11. VP" );
-//        assert.equal( S(NP(Pro("je")).pe(3), VP(V("refuser")).t("f")), "", "12. VP" );
-        
+        assert.equal( S(Pro("je"),VP(V("manger").t("p"),NP(D("un"),N("pomme"),V("laisser").t("pp"),PP(P("par"),N("terre"))))),"Il mange une pomme laissée par terre.","11.VP + NP(avec pp accordé seul) + PP");
+        assert.equal( NP(D("le"),N("fenêtre").n("p"),V("ouvrir").t("pp")),"les fenêtres ouvertes","12. NP(avec pp accordé seul)");
+
         // AP : Adjective Phrase
         assert.equal( AP(A("grand").g("f")), "grande", "1. AP" );
         assert.equal( AP(A("content").g("f")), "contente", "2. AP" );

@@ -448,7 +448,6 @@ JSrealE.prototype.pos = function(antepose) {
     }
     return this.setProp(JSrealB.Config.get("feature.antepose.alias"), antepose);
 }
-
 //// Typography / Html / Context
 // first char in upper case
 JSrealE.prototype.cap = function(ucf) {
@@ -758,6 +757,7 @@ var getGroup = function(sObject,groupAlias){
     for(var i = 0; i < imax; i++){
         if(elemList[i].category == groupAlias){
             gPos = i;
+            return gPos;
         }
     }
     return gPos;
@@ -1948,6 +1948,8 @@ NP_FR.prototype.sortWord = function() {
             case JSrealB.Config.get("feature.category.word.adjective"):
             case JSrealB.Config.get("feature.category.phrase.adjective"):
             case JSrealB.Config.get("feature.category.phrase.propositional"): // only gender of head word in french?
+            //ajout pour accord du participe passé employé seul
+            case JSrealB.Config.get("feature.category.word.verb"):
                 this.addConstituent(e, JSrealE.grammaticalFunction.subordinate);
             break;
             default:
@@ -2639,20 +2641,37 @@ JSrealB.Module.Conjugation = (function(){
     var conjugSimpleFR = function(unit, tense, person, gender, conjugationTable, verbOptions= {}, cdProp = {}){
 
         if(verbOptions.pas == true || verbOptions.prog == true){
-            var verb = conjugate("être", tense, person, conjugationTable)
-            if(!verbOptions.prog == true) var aux = "être";
+            var verb = conjugate(JSrealB.Config.get("rule.verb_option.prog.aux"), tense, person, conjugationTable)
+            if(!verbOptions.prog == true) var aux = JSrealB.Config.get("rule.verb_option.prog.aux");
         }
         else{
-            verb = applySimpleEnding(unit, tense, person, conjugationTable);
+            if(tense == JSrealB.Config.get("feature.tense.participle.past")){ // accord pp seul
+                verb = applySimpleEnding(unit, tense, person, conjugationTable);
+                var declTable = JSrealB.Config.get("rule.declension")["n28"];
+                var featureAux = {"g":gender,"n":(person>3)?"p":"s"};
+                var declension = getValueByFeature(declTable.declension, featureAux);
+                if(declension !== null)
+                {
+                    var verb = stem(verb, declTable.ending) + declension;
+                }
+                else{
+                    return verb;
+                }
+            }
+            else{
+                verb = applySimpleEnding(unit, tense, person, conjugationTable);
+            }
+            
         }
         verb += (verbOptions.neg != "")?" ":"";
         verb += (tense != JSrealB.Config.get("feature.tense.base"))?verbOptions.neg:""; 
         verb += (verbOptions.prog == true)?" "+JSrealB.Config.get("rule.verb_option.prog.keyword"):"";
-        verb += (verbOptions.pas == true && verbOptions.prog == true)?" être":"";
+        verb += (verbOptions.pas == true && verbOptions.prog == true)?" "+JSrealB.Config.get("rule.verb_option.prog.aux"):"";
         
         if(verbOptions.pas == true || verbOptions.prog == true){
-            if(verbOptions.pas == true) verb += " "+conjugatePPAvecAvoirEtre(unit, person, gender,"pp", {},"être");
-            else verb += " "+applySimpleEnding(unit, "b", person, conjugationTable);
+            if(verbOptions.pas == true) verb += " "+conjugatePPAvecAvoirEtre(unit, person, gender,JSrealB.Config.get("feature.tense.participle.past"),
+                                                    {},JSrealB.Config.get("rule.verb_option.prog.aux"));
+            else verb += " "+applySimpleEnding(unit, JSrealB.Config.get("feature.tense.base"), person, conjugationTable);
         }
 
         return verb;
@@ -2668,12 +2687,12 @@ JSrealB.Module.Conjugation = (function(){
         verb += verbOptions.neg 
         verb += (verbOptions.prog == true)?" "+JSrealB.Config.get("rule.verb_option.prog.keyword"):"";
         if(verbOptions.pas == true){
-            verb +=" "+conjugate("être",(verbOptions.prog == true)?"b":"pp",person);
+            verb +=" "+conjugate("être",(verbOptions.prog == true)?JSrealB.Config.get("feature.tense.base"):JSrealB.Config.get("feature.tense.participle.past"),person);
             aux = "être";
         }
         //participe
-        if(verbOptions.prog == true && !verbOptions.pas == true){ verb += " "+applySimpleEnding(unit,"b",person, conjugationTable)}
-        else{ verb += " "+conjugatePPAvecAvoirEtre(unit, person, gender, "pp", cdProp, aux);}
+        if(verbOptions.prog == true && !verbOptions.pas == true){ verb += " "+applySimpleEnding(unit,JSrealB.Config.get("feature.tense.base"),person, conjugationTable)}
+        else{ verb += " "+conjugatePPAvecAvoirEtre(unit, person, gender, JSrealB.Config.get("feature.tense.participle.past"), cdProp, aux);}
 
         return verb;
 
