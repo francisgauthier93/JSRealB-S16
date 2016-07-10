@@ -27,6 +27,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -75,20 +76,13 @@ JSRealB, un réalisateur de texte multilingue: maintenant à jour en français
  et en anglais
 \end_layout
 
-\begin_layout Date
+\begin_layout Author
 Francis Gauthier
 \end_layout
 
-\begin_layout Date
-Département d'Informatique et de Recherche Opérationnelle
-\end_layout
-
-\begin_layout Date
-Université de Montréal
-\end_layout
-
-\begin_layout Date
-2016
+\begin_layout Address
+Département d'Informatique et de Recherche Opérationnelle,Université de
+ Montréal
 \end_layout
 
 \begin_layout Verse
@@ -98,6 +92,15 @@ Sous la direction de Guy Lapalme, professeur au département d'informatique
 
 \begin_layout Description
 Résumé:
+\end_layout
+
+\begin_layout Verse
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -811,7 +814,7 @@ Réalisation Fr
 \begin_layout Plain Layout
 
 \size footnotesize
-S( NP( D("le"), N("maison").n("p"), 
+1.S( NP( D("le"), N("maison").n("p"), 
 \series bold
 SP( Pro("que"), Pro("je").pe(1).n("p"), VP( V("rencontrer").t("pc")))
 \series default
@@ -843,7 +846,7 @@ que nous avons rencontrées
 \begin_layout Plain Layout
 
 \size footnotesize
-S(NP(D("le"),N("gens").n("p"), 
+2.S(NP(D("le"),N("gens").n("p"), 
 \series bold
 SP(Pro("qui"),VP(V("danser").t("p")))
 \series default
@@ -875,7 +878,7 @@ qui dansent
 \begin_layout Plain Layout
 
 \size footnotesize
-S(NP(D("le"),N("fleur"),
+3.S(NP(D("le"),N("fleur"),
 \series bold
 SP(Pro("dont"),Pro("je").pe(2),VP(Pro("me").pe(1),V("parler").t("pq")))
 \series default
@@ -905,7 +908,7 @@ dont tu m'avais parlé.
 \begin_layout Plain Layout
 
 \size footnotesize
-S(Pro("je").pe(1),VP(V("vouloir").t("p"),
+4.S(Pro("je").pe(1),VP(V("vouloir").t("p"),
 \series bold
 SP(Pro("que"),Pro("je").pe(2),VP(V("partir").t("s")))
 \series default
@@ -972,7 +975,7 @@ Réalisation En
 \begin_layout Plain Layout
 
 \size footnotesize
-S(NP(D("the"),N("house").n("p"),
+1.S(NP(D("the"),N("house").n("p"),
 \series bold
 SP(Adv("that"),Pro("I").pe(1).n("p"),VP(V("meet").t("ps")))
 \series default
@@ -1004,7 +1007,7 @@ that we met
 \begin_layout Plain Layout
 
 \size footnotesize
-S(NP(D("the"),N("people").n("p"), 
+2.S(NP(D("the"),N("people").n("p"), 
 \series bold
 SP(Pro("who"),VP(V("dance").t("p")))
 \series default
@@ -1036,7 +1039,7 @@ who dance
 \begin_layout Plain Layout
 
 \size footnotesize
-S(NP(D("the"),N("car"),
+3.S(NP(D("the"),N("car"),
 \series bold
 SP(D("which"),Pro("I").pe(2),VP(V("buy").t("ps")))
 \series default
@@ -1070,6 +1073,88 @@ which you bought.
 Propagation
 \end_layout
 
+\begin_layout Standard
+Dans une structure JSRealB, le syntagme propositionnel ressemble à une structure
+ de phrase, c'est-à-dire que la propagation entre les éléments intérieurs
+ du syntagme se fait essentiellement entre le groupe sujet et le groupe
+ verbal.
+ Par exemple, dans les syntagmes prépositionnels 
+\emph on
+dont tu m'avais parlé 
+\emph default
+et 
+\emph on
+that we wet
+\emph default
+, le verbe s'accorde avec le pronom qui le précède, tout comme dans une
+ phrase.
+ En fait, la propagation entre ses éléments est identique à celle d'une
+ phrase.
+ La propagation est plus intéressante au niveau du parent du syntagme propositio
+nnel.
+ Dans le cas où le syntagme en question est complément du nom, il sera alors
+ enfant d'un syntagme nominal.
+ Alors, plusieurs cas de figure peuvent subvenir.
+ 
+\end_layout
+
+\begin_layout Enumerate
+(
+\emph on
+français)
+\emph default
+Le mot introduisant la proposition est 
+\series bold
+\emph on
+que
+\series default
+\emph default
+, alors le noyau du syntagme nominal est le complément d'objet direct de
+ la proprosition qui devrait normalement contenir un verbe.
+ JSRealB créera un nouvel objet avec les propriétés du noyau et les donnera
+ au syntagme prépositionnel enfant comme étant les informations sur le complémen
+t d'objet direct.
+ Ces informations seront utilisées pour accorder le participe passé avec
+ auxiliaire avoir, si c'est le cas.
+\end_layout
+
+\begin_layout Enumerate
+(
+\emph on
+français/
+\emph default
+anglais)Le mot introduisant la proposition est 
+\series bold
+\emph on
+qui/who
+\series default
+\emph default
+.
+ Dans ce cas, la proposition introduit une action qui est effectué par le
+ noyau du syntagme nominal, dans ce cas, les propriétés du noyau sont transmises
+ au verbe de la même manière qu'habituellement entre sujet et verbe, donc
+ le syntagme propositionnel recevra les informations de genre et de nombre
+ du noyau.
+\end_layout
+
+\begin_layout Enumerate
+(
+\emph on
+français/anglais
+\emph default
+)Le mot introduisant la proposition est autre que les précédents cités (cas
+ par défaut).
+ Dans ce cas, il n'y a pas de propagation entre le syntagme nominal et le
+ syntagme propositionnel enfant.
+ 
+\end_layout
+
+\begin_layout Standard
+Il est aussi possible que le syntagme parent soit un syntagme verbal, auquel
+ cas il ne semble pas y avoir de propagation à faire, comme dans le cas
+ no.3 précédent.
+\end_layout
+
 \begin_layout Subsection
 Syntagme adverbial, prépositionnel et coordonné
 \end_layout
@@ -1099,6 +1184,115 @@ Interrogative
 
 \begin_layout Subsection
 Liaison par le trait d'union
+\end_layout
+
+\begin_layout Standard
+Parfois, dans la langue française ou anglaise, la mise en forme de la phrase
+ nécessite des traits d'union entre certains mots.
+ C'est plus fréquent en français, majoritairement lorsque le sujet et le
+ verbe sont inversés.
+ Dans JSRealB, il semblait assez complexe de devoir gérer ces inversions.
+ Celles-ci sont utiles pour plusieurs phrases interrogatives, mais l'approche
+ utilisée et décrite dans la section précédente permet de former des questions
+ sans inversion du sujet et du verbe.
+ Il y a aussi des cas où on pronominalisera le complément d'objet direct
+ avec un verbe impératif, par exemple: 
+\emph on
+Mange-la!, Retrouve-moi là-bas.
+ 
+\emph default
+Dans ces cas précis, JSRealB ne fait pas encore la liaison et l'inversion,
+ mais il est possible de le faire manuellement avec une option 
+\emph on
+.lier()
+\emph default
+, disponible avec tous les mots.
+ En appelant cette option, l'élément qui appelera la méthode 
+\emph on
+lier
+\emph default
+ sera connecté avec le prochain mot par un trait d'union.
+ C'est un ajout simple à JSRealB qui comble un manque en français, mais
+ qui permet aussi de créer des liaisons dans certains mots anglais aussi
+ qui le nécessite, notamment: 
+\emph on
+mother-in-law.
+
+\emph default
+ Voici les exemples précédents en code:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Code JSRealB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Réalisation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VP(V("rejoindre").t("ip").lier(),Pro("moi").pe(1),Adv("là-bas"))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rejoins-moi là-bas
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NP(N("mother").lier(),Adv("in").lier(),N("law"))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mother-in-law
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

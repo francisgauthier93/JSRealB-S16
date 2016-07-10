@@ -600,7 +600,7 @@ JSrealE.prototype.real = function() {
         if(this.constituents.head !== undefined)
         {
             var eltList = this.createRealizationList();          
-            
+
             this.realizeGroup(eltList);
 
             this.modifyStructure();
@@ -839,7 +839,8 @@ JSrealE.prototype.modifyStructure = function() {
                 case JSrealB.Config.get("feature.category.phrase.prepositional"):    
                     //Sujet ou objet indirect
                     parent.addNewElement(np,pronoun);
-                    parent.resetProp(true);
+                    this.ctx[JSrealB.Config.get("feature.toPronoun.alias")] = false;
+                    //parent.resetProp(true);
                 break;
                 case JSrealB.Config.get("feature.category.phrase.verb"):
                     //Objet direct

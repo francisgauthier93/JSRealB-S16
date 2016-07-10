@@ -104,6 +104,40 @@ Résumé:
 Introduction
 \end_layout
 
+\begin_layout Standard
+Au fil de son dévelloppement, JSRealB a connu plusieurs étapes.
+ En 2014, Nicolas Daoust a débuté le projetn en créant JSReal.
+ Il dévellopa un réalisateur de texte facilement adaptable au web en language
+ javascript.
+ Cette version n'était que francophone.
+ L'année suivante, Paul Molins a repris le projet et en a fait une version
+ bilingue, en français et en anglais.
+ À l'aide d'une utilisation systématique de table de règle et de lexiques
+ annexes au programme, JSReal devint JSRealB.
+ Le réalisateur de texte devint alors bilingue et prêt à accueillir d'autres
+ langues similaires au français et à l'anglais.
+ Après 2015 et les modifications de Paul, le projet est laissé sur la glace
+ avec plusieurs options à rajouter au programme.
+ Entre autres, plusieurs déclinaisons de phrase telles que les phrases interroga
+tives et négatives n'étaient pas implémentées, dans les deux langues.
+ L'élision avait besoin d'être revu et les verbes aux temps composés n'étaient
+ pas pris en charge, entre autres.
+ Francis Gauthier a donc repris le projet à l'été 2016.
+ Ce rapport fait état des modifications qu'il a apporté à JSRealB.
+\end_layout
+
+\begin_layout Standard
+Que fait JSRealB? JSRealB est un réalisateur de texte bilingue, soit français
+ et anglais.
+ La fonction première du programme est de prendre en entrée une chaine de
+ string qui représente une structure d'arbre syntaxique.
+ JSRealB donnera en sortie la phrase correspondante à l'arbre donné en entrée.
+ Parmi les parties complexes de la réalisation, on retrouve les accords
+ en genre et en nombre entre les différents constituants de la phrase, l'applica
+tion des différentes options prescrites par l'utilisateur, ainsi que la
+ mise en forme de la phrase.
+\end_layout
+
 \begin_layout Section
 Modifications apportées aux syntagmes
 \end_layout
@@ -145,11 +179,165 @@ Appliquer des règles de phonétique et de ponctuation sur sa réalisation
 \begin_layout Standard
 Lors d'ajout aux possibilités de JSRealB, il est rapidement devenu clair
  que plusieurs fonctions du réalisateur de texte nécessiteraient de déconstruire
- certaines sections de l'arbre 
+ certaines sections de l'arbre syntaxique et possiblement de rajouter des
+ éléments à cet arbre.
+ Quatres options principales ont été classées comme nécessitant la restructurati
+on de certaines sections de l'arbre et ont été regroupé dans une fonction
+ qui est appelée entre l'étape 3 et 4 de la liste précédente.
+ Ces quatres options sont: la phrase passive, la pronominalisation d'un
+ syntagme nominal, la phrase impérative et la phrase interrogative.
+ Ces options demandent de revoir la structure de l'arbre.
+ Par exemple, pour la phrase impérative, il faut s'assurer de retirer le
+ sujet, si l'utilisateur ne l'a pas fait lui-même.
+ Les différentes étapes précédentes seront interrompues dans le fil d'éxécution
+ après l'étape 3 pour réajuster la structure de l'arbre.
+ Ensuite, on retournera à la racine de l'arbre pour recommencer la réalisation
+ de départ.
+ Cette étape est nécessaire, car, dans la phrase passive, le sujet et le
+ complément d'objet direct sont inversés et il est utile de laisser JSRealB
+ refaire la propagation du nouveau sujet du nouvel arbre pour éviter les
+ conflits qui pourraient résulter d'une modification manuelle.
+ Il est donc important de comprendre que pour une phrase avec peu d'options,
+ soit une phrase assez simple, l'arbre sera traversé en profondeur pour
+ accomplir la réalisation, mais que si les options précédentes sont présentes,
+ la réalisation d'un arbre peut prendre jusqu'à plusieurs passages de l'arbre.
+ Même une phrase assez complexe ne prendra que peu de passages, car les
+ options sont assez limitées et certaines options sont incompatibles avec
+ d'autres, notamment la phrase impérative, interrogative ou passive, qui
+ sont incompatibles entre elles.
 \end_layout
 
 \begin_layout Subsection
 Syntagme nominal
+\end_layout
+
+\begin_layout Subsubsection
+Pronominalisation
+\end_layout
+
+\begin_layout Standard
+La principale modification apportée à JSRealB dans le syntagme nominal est
+ l'option de pronominaliser celui-ci.
+ Par la pronominalisation, on veut faire l'action de prendre un groupe du
+ nom complet et le transformer en un pronom.
+ Par exemple, 
+\emph on
+le garçon => il
+\emph default
+.
+ Dans JSRealB, la pronominalisation se fait essentiellement par la création
+ d'un nouvel objet JSReal de type pronom qui héritera des propriétés qu'avait
+ anciennement le syntagme nominal.
+ Ensuite, le positionnement de ce nouvel objet dans l'arbre syntaxique dépend
+ de sa fonction dans la phrase.
+ C'est-à-dire que si le syntagme original avait une fonction de 
+\series bold
+sujet
+\series default
+ dans la phrase, il sera remplacé par un pronom personnel; 
+\emph on
+je 
+\emph default
+ou
+\emph on
+ I, 
+\emph default
+décliné à la bonne personne.
+
+\emph on
+ 
+\emph default
+Si le syntagme original était 
+\series bold
+complément d'objet indirect
+\series default
+, on le remplace par un pronom personnel; 
+\emph on
+moi 
+\emph default
+ou 
+\emph on
+me, 
+\emph default
+décliné à la bonne personne
+\emph on
+.
+ 
+\emph default
+Dans les deux cas précédents, les pronoms remplaçants prennent exactement
+ la place de leur prédécesseur.
+ De manière générale, la pronominalisation du sujet offre de beaux résultats
+ pour le sujet, par contre on observe des irrégularités pour l'objet indirect.
+ Les phrases obtenues sont syntaxiquement correctes, mais diffère un peu
+ du résultat attendu.
+ Par exemple, en pronominalisant l'objet indirect de cette phrase: 
+\emph on
+allons à la maison
+\emph default
+ ou 
+\emph on
+go to the house, 
+\emph default
+on obtiendra 
+\emph on
+allons à elle 
+\emph default
+et 
+\emph on
+go to him
+\emph default
+.
+ On s'attendrait à un pronom
+\emph on
+ 
+\emph default
+neutre en anglais comme 
+\emph on
+it
+\emph default
+, mais le genre par défaut est toujours masculin.
+ En français, on pourrait préférer 
+\emph on
+allons-y ou allons là-bas.
+ 
+\emph default
+L'utilisation de là-bas demanderait une connaissance sémantique, soit de
+ savoir qu'on parle d'un lieu et l'utilisation du pronom 
+\emph on
+y
+\emph default
+ est restreint à certain préposition du complément d'objet indirect.
+ La deuxième option est faisable, mais on parle alors plutôt de cas par
+ cas, donc n'a pas été pris en compte.
+\end_layout
+
+\begin_layout Standard
+Pour ce qui est de la pronominalisation du 
+\series bold
+complément d'objet direct
+\series default
+, la méthode est similaire.
+ En fait, en anglais, elle est identique, avec le pronom 
+\emph on
+me
+\emph default
+, décliné selon la personne voule.
+ En français, c'est un peu plus complexe.
+ On doit changer pour le pronom 
+\emph on
+le, 
+\emph default
+décliné selon la personne, mais on doit placer le pronom avant le verbe.
+ JSRealB devra donc modifier les éléments du syntagme verbal associé pour
+ y changer la position du complément d'objet direct.
+ Ce faisant, le complément d'objet direct se déplace avant le verbe et peut
+ causer l'accord d'un participe passé employé avec 
+\emph on
+avoir.
+ 
+\emph default
+La modification à la structure demandera de recommencer la réalisation de
+ l'arbre initial pour le nouveau.
 \end_layout
 
 \begin_layout Subsection
@@ -490,12 +678,83 @@ pour plus de détails.
 Les verbes impératifs
 \end_layout
 
+\begin_layout Standard
+L'utilisation du verbe à l'impératif était disponible dans la dernière version
+ de JSRealB, mais peu complétée.
+ Tout d'abord, un verbe appelé sans option précisée par l'utilisateur recevra
+ la troisième personne du singulier comme valeur par défaut.
+ Suite à une légère modification, celle-ci a été changé pour la deuxième
+ personne du singulier dans le cas d'un appel à l'impératif pour éviter
+ de générer des erreurs fréquentes.
+\end_layout
+
+\begin_layout Standard
+Par la suite, un retrait du groupe sujet a été ajouté au programme.
+ L'ajout a été fait dans l'optique d'un appel de l'impératif automatisé
+ sur une phrase qui contenait auparavant un sujet.
+ Le retrait du sujet de la structure de l'arbre syntaxique requiert de recommenc
+er la réalisation de l'arbre, car cela pourrait entrainer un accord du verbe
+ différent.
+\end_layout
+
 \begin_layout Subsubsection
 Les options (forme négative, passive et progressive)
 \end_layout
 
 \begin_layout Subsection
 Syntagme adjectival
+\end_layout
+
+\begin_layout Subsubsection
+Positionnement de l'adjectif francophone
+\end_layout
+
+\begin_layout Standard
+En anglais, le positionnement de l'adjectif est toujours avant le nom.
+ Aucune modification à JSRealB n'a été apporté de ce côté là.
+ 
+\end_layout
+
+\begin_layout Standard
+En français, le positionnement de l'adjectif se fait majoritairement après
+ le nom.
+ Par contre, avec plusieurs adjectifs communs, le placement se fait avant.
+ Une première approche à ce problème a été de faire une fonction qui compterait
+ les syllabes des adjectifs pour en déterminer la position, car des adjectifs
+ monosyllabiques se placent habituellement avant le nom, comme 
+\emph on
+long, court, gros ou vrai.
+
+\emph default
+ Par contre, cette approche n'était pas prometteuse, car plusieurs adjectifs
+ ayant plusieurs syllabes se placent avant, comme 
+\emph on
+premier
+\emph default
+, et d'autres courts se placent après, notamment les adjectifs de couleur.
+ Une solution, moins systématique, mais fonctionnant beaucoup mieux a été
+ de dresser une liste des adjectifs à placer avant le nom.
+ Ensuite, un attribut 
+\emph on
+'pre' a
+\emph default
+ été manuellement a ajouté à ces mots dans le fichier 
+\emph on
+dmf-lex.txt 
+\emph default
+utilisé pour générer le lexique.
+ Les dits adjectifs ont donc eu un nouvel attribut dans le lexique français
+ de JSRealB.
+ Ensuite, en ajoutant l'option 
+\emph on
+pos
+\emph default
+ à placer sur un adjectif, l'utilisateur peut modifier la position de l'adjectif
+ à l'intérieur même du syntagme nominal associé.
+ Si aucune option n'a été dictée par l'utilisateur, le programme choisira
+ comme option par défaut de mettre l'adjectif après, à moins que celui-ci
+ soit annoté comme étant un adjectif préposé dans le lexique.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -506,12 +765,320 @@ Syntagme propositionnel
 Utilisation
 \end_layout
 
+\begin_layout Standard
+Le syntagme propositionnel est utilisé pour exprimer une proposition relative.
+ Dans JSRealB, les syntagmes propositionnels sont appelés à l'intérieur
+ même d'un syntagme nominal lorsqu'ils sont complément du nom ou à l'intérieur
+ d'un sytagme verbal comme complément du verbe.
+ Voici quelques exemples d'utilisation du nouveau syntagme et comment il
+ s'inclut dans la structure syntaxique JSRealB.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Appel JSRealB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Réalisation Fr
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+S( NP( D("le"), N("maison").n("p"), 
+\series bold
+SP( Pro("que"), Pro("je").pe(1).n("p"), VP( V("rencontrer").t("pc")))
+\series default
+))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Les maisons 
+\series bold
+que nous avons rencontrées
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+S(NP(D("le"),N("gens").n("p"), 
+\series bold
+SP(Pro("qui"),VP(V("danser").t("p")))
+\series default
+))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Les gens 
+\series bold
+qui dansent
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+S(NP(D("le"),N("fleur"),
+\series bold
+SP(Pro("dont"),Pro("je").pe(2),VP(Pro("me").pe(1),V("parler").t("pq")))
+\series default
+))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+La fleur 
+\series bold
+dont tu m'avais parlé.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+S(Pro("je").pe(1),VP(V("vouloir").t("p"),
+\series bold
+SP(Pro("que"),Pro("je").pe(2),VP(V("partir").t("s")))
+\series default
+))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Je veux 
+\series bold
+que tu partes.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Appel JSRealB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Réalisation En
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+S(NP(D("the"),N("house").n("p"),
+\series bold
+SP(Adv("that"),Pro("I").pe(1).n("p"),VP(V("meet").t("ps")))
+\series default
+))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+The houses 
+\series bold
+that we met
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+S(NP(D("the"),N("people").n("p"), 
+\series bold
+SP(Pro("who"),VP(V("dance").t("p")))
+\series default
+))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+The people 
+\series bold
+who dance
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+S(NP(D("the"),N("car"),
+\series bold
+SP(D("which"),Pro("I").pe(2),VP(V("buy").t("ps")))
+\series default
+))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+The car 
+\series bold
+which you bought.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Propagation
 \end_layout
 
 \begin_layout Subsection
 Syntagme adverbial, prépositionnel et coordonné
+\end_layout
+
+\begin_layout Standard
+Les syntagmes adverbial, prépositionnel et coordonné avaient bien été implémenté
+ jusqu'à maintenant.
+ Au cours de mon stage, je n'ai pas eu à effectuer de changement sur ces
+ syntagmes.
 \end_layout
 
 \begin_layout Section

@@ -75,19 +75,19 @@ JSRealB, un réalisateur de texte multilingue: maintenant à jour en français
  et en anglais
 \end_layout
 
-\begin_layout Date
+\begin_layout Author
 Francis Gauthier
 \end_layout
 
-\begin_layout Date
+\begin_layout Author
 Département d'Informatique et de Recherche Opérationnelle
 \end_layout
 
-\begin_layout Date
+\begin_layout Author
 Université de Montréal
 \end_layout
 
-\begin_layout Date
+\begin_layout Author
 2016
 \end_layout
 
@@ -771,13 +771,15 @@ Le syntagme propositionnel est utilisé pour exprimer une proposition relative.
  même d'un syntagme nominal lorsqu'ils sont complément du nom ou à l'intérieur
  d'un sytagme verbal comme complément du verbe.
  Voici quelques exemples d'utilisation du nouveau syntagme et comment il
- s'inclut dans la structure syntaxique JSRealB.
+ s'inclut dans l'arbre syntaxique.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
+<lyxtabular version="3" rows="5" columns="4">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -785,169 +787,24 @@ Le syntagme propositionnel est utilisé pour exprimer une proposition relative.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\size small
 Appel JSRealB
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\size small
 Réalisation Fr
 \end_layout
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-S( NP( D("le"), N("maison").n("p"), 
-\series bold
-SP( Pro("que"), Pro("je").pe(1).n("p"), VP( V("rencontrer").t("pc")))
-\series default
-))
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-Les maisons 
-\series bold
-que nous avons rencontrées
-\series default
-.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-S(NP(D("le"),N("gens").n("p"), 
-\series bold
-SP(Pro("qui"),VP(V("danser").t("p")))
-\series default
-))
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-Les gens 
-\series bold
-qui dansent
-\series default
-.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-S(NP(D("le"),N("fleur"),
-\series bold
-SP(Pro("dont"),Pro("je").pe(2),VP(Pro("me").pe(1),V("parler").t("pq")))
-\series default
-))
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-La fleur 
-\series bold
-dont tu m'avais parlé.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\size footnotesize
-S(Pro("je").pe(1),VP(V("vouloir").t("p"),
-\series bold
-SP(Pro("que"),Pro("je").pe(2),VP(V("partir").t("s")))
-\series default
-))
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-Je veux 
-\series bold
-que tu partes.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
 Appel JSRealB
 \end_layout
 
@@ -957,8 +814,6 @@ Appel JSRealB
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\size small
 Réalisation En
 \end_layout
 
@@ -970,13 +825,33 @@ Réalisation En
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\size footnotesize
-S(NP(D("the"),N("house").n("p"),
+S( NP( D("le"), N("maison").n("p"), 
 \series bold
-SP(Adv("that"),Pro("I").pe(1).n("p"),VP(V("meet").t("ps")))
+SP( Pro("que"), Pro("je").pe(1).n("p"), VP( V("rencontrer").t("pc")))
 \series default
 ))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Les maisons 
+\series bold
+que nous avons rencontrées
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -986,12 +861,6 @@ SP(Adv("that"),Pro("I").pe(1).n("p"),VP(V("meet").t("ps")))
 
 \begin_layout Plain Layout
 
-\size footnotesize
-The houses 
-\series bold
-that we met
-\series default
-.
 \end_layout
 
 \end_inset
@@ -1002,13 +871,33 @@ that we met
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\size footnotesize
-S(NP(D("the"),N("people").n("p"), 
+S(NP(D("le"),N("gens").n("p"), 
 \series bold
-SP(Pro("who"),VP(V("dance").t("p")))
+SP(Pro("qui"),VP(V("danser").t("p")))
 \series default
 ))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Les gens 
+\series bold
+qui dansent
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1018,12 +907,50 @@ SP(Pro("who"),VP(V("dance").t("p")))
 
 \begin_layout Plain Layout
 
-\size footnotesize
-The people 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S(NP(D("le"),N("fleur"),
 \series bold
-who dance
+SP(Pro("dont"),Pro("je").pe(2),VP(Pro("me").pe(1),V("parler").t("pq")))
 \series default
-.
+))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+La fleur 
+\series bold
+dont tu m'avais parlé.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1034,13 +961,31 @@ who dance
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\size footnotesize
-S(NP(D("the"),N("car"),
+S(Pro("je").pe(1),VP(V("vouloir").t("p"),
 \series bold
-SP(D("which"),Pro("I").pe(2),VP(V("buy").t("ps")))
+SP(Pro("que"),Pro("je").pe(2),VP(V("partir").t("s")))
 \series default
 ))
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Je veux 
+\series bold
+que tu partes.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1050,10 +995,6 @@ SP(D("which"),Pro("I").pe(2),VP(V("buy").t("ps")))
 
 \begin_layout Plain Layout
 
-\size footnotesize
-The car 
-\series bold
-which you bought.
 \end_layout
 
 \end_inset
@@ -1064,6 +1005,33 @@ which you bought.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+En français, on pourrait avoir comme exemple: 
+\emph on
+Les maisons 
+\series bold
+que nous avons rencontrées
+\series default
+ étaient jolies, Les gens 
+\series bold
+qui dansaient
+\series default
+ ne bougent plus, Je veux 
+\series bold
+que tu partes
+\series default
+ 
+\emph default
+ou encore 
+\emph on
+Ce sont les fleurs 
+\series bold
+dont tu m'avais parlé
+\series default
+.
+ 
 \end_layout
 
 \begin_layout Subsubsection
