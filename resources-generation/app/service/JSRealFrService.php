@@ -402,6 +402,7 @@ class JSRealFrService extends JSRealService
     private  function getAuxRule()
     {
     	return array(
+    			'alias' => 'aux',
     			'participle' => 'pp',
     			'aux' => array(
     					'av' => 'avoir',

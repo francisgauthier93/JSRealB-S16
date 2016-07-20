@@ -122,6 +122,11 @@ function declinerNom(mot){
                 addLigne("Superlative: ",A(mot).f("su"));
             }
         }
+        $("#messErreur")[0].innerHTML="";
+    }
+    else{
+        $("#messErreur")[0].innerHTML="n'appartient pas au lexique, désolé.";
+        $("#messErreur").css('color','red');
     }
 }
 

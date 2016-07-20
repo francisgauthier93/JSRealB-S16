@@ -87,7 +87,7 @@ JSrealE.prototype.initUnitProperty = function() {
         if(this.category === JSrealB.Config.get("feature.category.word.verb")
                 || this.category === JSrealB.Config.get("feature.category.phrase.verb"))
         {
-            this.defaultProp[JSrealB.Config.get("feature.tense.alias")] = JSrealB.Config.get("feature.tense.base"); // Infinitif present ou base form
+            this.defaultProp[JSrealB.Config.get("feature.tense.alias")] = JSrealB.Config.get("feature.tense.indicative.present"); // Indicatif présent ou present tense
             this.defaultProp[JSrealB.Config.get("feature.cdInfo.alias")] = {};
         }
     
@@ -473,7 +473,7 @@ JSrealE.prototype.en = function(punctuation) {
 JSrealE.prototype.lier = function() {
     return this.setCtx(JSrealB.Config.get("feature.liaison.alias"),true);
 };
-//Ajout Francis pour les types de phrases
+//Ajout types de phrases
 JSrealE.prototype.typ = function(optionList){
     if(optionList !== undefined && isObject(optionList))
     {
@@ -488,7 +488,6 @@ JSrealE.prototype.typ = function(optionList){
     
     return null;
 }
-//end
 //Verb options (neg,pas,prog)
 JSrealE.prototype.vOpt = function(optionList){
     if(optionList !== undefined && isObject(optionList))
@@ -505,6 +504,16 @@ JSrealE.prototype.vOpt = function(optionList){
     }
     
     return null;
+}
+//Auxiliaires forcés
+JSrealE.prototype.aux = function(a){
+    try{
+        if(!contains(JSrealB.Config.get("rule.compound.aux"), a)){
+            throw JSrealB.Exception.invalidInput(a, "auxiliary");
+        }
+        return this.setProp(JSrealB.Config.get("rule.compound.alias"),a);
+    }
+    catch(e){return this;}//english
 }
 // Coordination
 JSrealE.prototype.c = function(wordOrPunctuation) {
@@ -686,7 +695,8 @@ JSrealE.prototype.addNewElement = function(elemIndex, elementAdd) {
 }
 
 
-JSrealE.prototype.getTreeRoot = function(strict = true) {
+JSrealE.prototype.getTreeRoot = function(strict) {
+    strict = strict || true;
     if(this.category == JSrealB.Config.get("feature.category.phrase.sentence"))
         return this;
     else if(!strict && this.category == JSrealB.Config.get("feature.category.phrase.propositional")){
@@ -1099,7 +1109,14 @@ JSrealE.prototype.realizeConjugation = function() {
                         prog:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".prog"),
                         perf:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".perf"),
                         hasSubject:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".hasSubject")};
-    //À revoir
+    var aux = this.getProp(JSrealB.Config.get("rule.compound.alias"));
+    try{
+        if(contains(JSrealB.Config.get("rule.compound.aux"),aux)){
+            var auxF=aux;
+            console.log(auxF);
+        }
+    }
+    catch(e){/*english doesn't have rule.compund.aux*/}
     var cdProp = this.getProp(JSrealB.Config.get("feature.cdInfo.alias"));
     if(this.getInitProp("vOpt.pas") == true){
         verbOptions.pas = true;
@@ -1111,7 +1128,7 @@ JSrealE.prototype.realizeConjugation = function() {
     {
         person += 3;
     }
-    return JSrealB.Module.Conjugation.conjugate(this.unit, tense, person, gender, verbOptions, cdProp);
+    return JSrealB.Module.Conjugation.conjugate(this.unit, tense, person, gender, verbOptions, cdProp, auxF);
 };
 
 JSrealE.prototype.getFirst = function(alias) {
@@ -1297,7 +1314,9 @@ JSrealE.prototype.phonetic = function(content) {
 };
 
 //// Utils
-var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop, lastPunctuation = ".", prefix=null) {
+var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop, lastPunctuation, prefix) {
+    lastPunctuation = lastPunctuation || ".";
+    prefix = prefix || null;
     // replace multiple spaces with a single space
     var newString = str.replace(/\s{2,}/g, ' ');
     
@@ -1578,6 +1597,7 @@ S.prototype.sortWord = function() {
         switch(e.category)
         {
             case JSrealB.Config.get("feature.category.phrase.verb"):
+            case JSrealB.Config.get("feature.category.word.verb"): // essai pour rendre le programme pour souple.
                 this.addConstituent(e, JSrealE.grammaticalFunction.head);
             break;
             case JSrealB.Config.get("feature.category.phrase.noun"):
@@ -1727,6 +1747,7 @@ S_EN.prototype.interrogationForm = function(int) {
             break;
     }
 
+
     if(int == JSrealB.Config.get("feature.sentence_type.interro_prefix.whoSubject")){
         this.addNewElement(0,JSrealB.Config.get("rule.sentence_type.int.prefix")[int]);
     }
@@ -1734,10 +1755,15 @@ S_EN.prototype.interrogationForm = function(int) {
         var vP = getGroup(this,JSrealB.Config.get("feature.category.phrase.verb"));
         var verbP = getGroup(this.elements[vP],JSrealB.Config.get("feature.category.word.verb"));
         var verb = this.elements[vP].elements[verbP];
-        var vUnit = verb.unit; 
-        verb.unit = JSrealB.Config.get("rule.sentence_type.int.prefix.base");
+        var vUnit = verb.unit;        
+        if(verb.getProp(JSrealB.Config.get("feature.tense.alias")) == JSrealB.Config.get("feature.tense.indicative.simple_future")){
+            verb.unit = JSrealB.Config.get("rule.sentence_type.int.future");
+            verb.prop[JSrealB.Config.get("feature.tense.alias")]=JSrealB.Config.get("feature.tense.base");
+        }else{
+            verb.unit = JSrealB.Config.get("rule.sentence_type.int.prefix.base");            
+        }
         this.elements[vP].deleteElement(verbP);
-        this.elements[vP].addNewElement(verbP,new V(vUnit));
+        this.elements[vP].addNewElement(verbP,new V(vUnit).t("b"));
         this.addNewElement(0,verb);
     }
     //Add prefix
@@ -2554,15 +2580,22 @@ JSrealB.Module.Declension = (function() {
 
 //// Conjugation Module (Verbs)
 JSrealB.Module.Conjugation = (function(){
-    var applyEnding = function(unit, tense, person, gender, conjugationTable, verbOptions = {}, cdProp = {}) {
+    var applyEnding = function(unit, tense, person, gender, conjugationTable, verbOptions, cdProp, auxF) {
+        verbOptions = verbOptions || {};
+        cdProp = cdProp || {};
         
         //français
         try{
             if(JSrealB.Config.get("language")==JSrealE.language.french){
                 //francais
+                if(auxF != undefined){
+                    var aux = auxF;
+                }
+                else{
                 var auxTab = JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'))["aux"]; //av,êt ou aê
                 var aux = JSrealB.Config.get("rule.compound.aux")[auxTab];
-                if(aux == "être") verbOptions.pas = false; //un verbe d'état ne se met pas au passif
+                }
+                //if(aux == "être") verbOptions.pas = false; //un verbe d'état ne se met pas au passif
                 if(verbOptions.neg == true ||
                     (typeof verbOptions.neg == "string" && contains(JSrealB.Config.get("rule.verb_option.neg.autres"),verbOptions.neg)))
                 {
@@ -2639,7 +2672,9 @@ JSrealB.Module.Conjugation = (function(){
         }
     };
 
-    var conjugSimpleFR = function(unit, tense, person, gender, conjugationTable, verbOptions= {}, cdProp = {}){
+    var conjugSimpleFR = function(unit, tense, person, gender, conjugationTable, verbOptions, cdProp){
+        verbOptions = verbOptions || {};
+        cdProp = cdProp || {};
 
         if(verbOptions.pas == true || verbOptions.prog == true){
             var verb = conjugate(JSrealB.Config.get("rule.verb_option.prog.aux"), tense, person, conjugationTable)
@@ -2649,7 +2684,7 @@ JSrealB.Module.Conjugation = (function(){
             if(tense == JSrealB.Config.get("feature.tense.participle.past")){ // accord pp seul
                 verb = applySimpleEnding(unit, tense, person, conjugationTable);
                 var declTable = JSrealB.Config.get("rule.declension")["n28"];
-                var featureAux = {"g":gender,"n":(person>3)?"p":"s"};
+                var featureAux = {"g":gender,"n":(person>3)?JSrealB.Config.get("feature.number.plural"):JSrealB.Config.get("feature.number.singular")};
                 var declension = getValueByFeature(declTable.declension, featureAux);
                 if(declension !== null)
                 {
@@ -2679,7 +2714,9 @@ JSrealB.Module.Conjugation = (function(){
     };
 
 
-    var conjugFR = function(unit, aux, tense, person, gender, conjugationTable, verbOptions =  {}, cdProp = {}){
+    var conjugFR = function(unit, aux, tense, person, gender, conjugationTable, verbOptions, cdProp){
+        verbOptions = verbOptions || {};
+        cdProp = cdProp || {};
 
         var verb = (verbOptions.prog == true)?conjugate(JSrealB.Config.get("rule.verb_option.prog.aux"),JSrealB.Config.get('rule.compound')[tense]["progAuxTense"],person)
                                                 :conjugate(aux,JSrealB.Config.get('rule.compound')[tense]["auxTense"],person);
@@ -2699,7 +2736,8 @@ JSrealB.Module.Conjugation = (function(){
 
     };
 
-    var conjugatePPAvecAvoirEtre = function(unit, person, gender, tense, cdProp = {}, aux){
+    var conjugatePPAvecAvoirEtre = function(unit, person, gender, tense, cdProp, aux){
+        cdProp = cdProp || {};
         var pp = conjugate(unit,tense,person);
         var declTable = JSrealB.Config.get("rule.declension")["n28"];
         if(aux == "être"){
@@ -2719,7 +2757,8 @@ JSrealB.Module.Conjugation = (function(){
         return ppConjugue;
     };
 
-    var conjugSimpleEN = function(unit, tense, person, conjugationTable, verbOptions = {}){
+    var conjugSimpleEN = function(unit, tense, person, conjugationTable, verbOptions){
+        verbOptions = verbOptions || {};
         //temps simple - present, past ou future
         if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined)
         {
@@ -2746,7 +2785,8 @@ JSrealB.Module.Conjugation = (function(){
 
     }
 
-    var conjugEN = function(unit, tense, person, conjugationTable, verbOptions = {}){
+    var conjugEN = function(unit, tense, person, conjugationTable, verbOptions){
+        verbOptions = verbOptions || {};
         
         var sub = (verbOptions.hasSubject == true);
         verbOptions.hasSubject = false;
@@ -2787,7 +2827,12 @@ JSrealB.Module.Conjugation = (function(){
         return verb;
     }
 
-    var conjugate = function(unit, tense, person, gender = "", verbOptions = {}, cdProp = {}) {
+    var conjugate = function(unit, tense, person, gender, verbOptions, cdProp, auxF) {
+        gender = gender || "";
+        verbOptions = verbOptions || {};
+        cdProp = cdProp || {};
+        auxF = auxF || undefined;
+
         var verbInfo = JSrealB.Module.Common.getWordFeature(unit, JSrealB.Config.get('feature.category.word.verb'));
         var conjugationTable = JSrealB.Config.get("rule").conjugation[verbInfo.tab];
 
@@ -2795,7 +2840,7 @@ JSrealB.Module.Conjugation = (function(){
         {   
             if(tense == 'ip') verbOptions.prog = false;//cause une erreur pour l'impératif au passif 
 
-            return applyEnding(unit, tense, person, gender, conjugationTable, verbOptions, cdProp);
+            return applyEnding(unit, tense, person, gender, conjugationTable, verbOptions, cdProp, auxF);
             // }
             
         }
@@ -2806,12 +2851,12 @@ JSrealB.Module.Conjugation = (function(){
     };
 
     return {
-        conjugate: function(verb, tense, person, gender, verbOptions, cdProp) {
+        conjugate: function(verb, tense, person, gender, verbOptions, cdProp, auxF) {
             var conjugatedVerb = null;
 
             try
             {
-                conjugatedVerb = conjugate(verb, tense, person, gender, verbOptions, cdProp);
+                conjugatedVerb = conjugate(verb, tense, person, gender, verbOptions, cdProp, auxF);
             }
             catch(err)
             {
@@ -3662,7 +3707,7 @@ function extend(base, sub) {
 //   dataDir: relative or absolute path to the data directory
 //   language: "en" | "fr"
 //   fn : function to call once loading is completed
-function loadLanguage(dataDir,language,fn,dbLoad=false){
+function loadLanguage(dataDir,language,fn){
     JSrealLoader({
         language: language,
         lexiconUrl: dataDir+"lex-"+language+".json",
@@ -3673,12 +3718,7 @@ function loadLanguage(dataDir,language,fn,dbLoad=false){
     function(mess){
         alert(mess)
     })
-    if(dbLoad){
-        JSrealLoader["aediroumUrl"]= "dbAEDIROUM.json";
-    }
 }
-
-
 /**
  * HTTP Request
  */
@@ -3757,8 +3797,6 @@ JSrealB.Config = (function() {
         lexicon: {},
         rule: {},
         feature: {},
-        //ajout db
-        db : {}
     };
     
     return {

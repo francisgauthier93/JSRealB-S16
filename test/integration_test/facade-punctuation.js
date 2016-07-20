@@ -22,7 +22,7 @@ JSrealLoader({
         assert.equal( S(N("cadeau").n("p")).a(",").cap(), "Cadeaux,", "1 virgule d'exclamation en fin de phrase" );
         assert.equal( S(N("cadeau").n("p")).a("!").cap(), "Cadeaux!", "1 point d'exclamation en fin de phrase" );
         assert.equal( S(N("cadeau").n("p")).a("...").cap(), "Cadeaux...", "3 points en fin de phrase" );
-        assert.equal( S(N("cadeau").n("p").a("..."), V("dormir").t("p").pe(3), V("manger").t("p").pe(1)).cap(), "Cadeaux... dort mange.", "Ponctuation sur des éléments à l'intérieur de la phrase" );
+        assert.equal( S(N("cadeau").n("p").a("..."), V("dormir").pe(3), V("manger").pe(1)).cap(), "Cadeaux... dort mange.", "Ponctuation sur des éléments à l'intérieur de la phrase" );
         
         // surround
         assert.equal( S(N("cadeau").n("p")).en("(").cap(), "(Cadeaux)", "Entourer la phrase de parenthèses" );
@@ -53,7 +53,7 @@ JSrealLoader({
             assert.equal( S(N("gift").n("p")).a(",").cap(), "Gifts,", "1 virgule d'exclamation en fin de phrase" );
             assert.equal( S(N("gift").n("p")).a("!").cap(), "Gifts!", "1 point d'exclamation en fin de phrase" );
             assert.equal( S(N("gift").n("p")).a("...").cap(), "Gifts...", "3 points en fin de phrase" );
-            assert.equal( S(N("gift").n("p").a("..."), V("sleep").t("p").pe(3), V("eat").t("p").pe(1)).cap(), "Gifts... sleeps eat.", "Ponctuation sur des éléments à l'intérieur de la phrase" );
+            assert.equal( S(N("gift").n("p").a("..."), V("sleep").pe(3), V("eat").pe(1)).cap(), "Gifts... sleeps eat.", "Ponctuation sur des éléments à l'intérieur de la phrase" );
 
             // surround
             assert.equal( S(N("gift").n("p")).en("(").cap(), "(Gifts)", "Entourer la phrase de parenthèses" );

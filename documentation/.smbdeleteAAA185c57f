@@ -1,0 +1,351 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{letterpaper} % or letterpaper (US) or a5paper or....
+% \geometry{margins=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+%\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%%MACROS!
+
+\newcommand{\quo}[1]{'#1'}
+\newcommant{
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{JSRealB, un réalisateur de texte multilingue: maintenant à jour en
+français et en anglais}
+\author{Francis Gauthier\\Département d'Informatique et de Recherche Opérationnelle\\Université de Montréal}
+
+\begin{document}
+\maketitle
+
+%%RÉSUMÉ
+
+\begin{verse}
+Sous la direction de Guy Lapalme, professeur au département d'informatique
+et de recherche opérationnelle de l'Université de Montréal.
+\end{verse}
+\begin{description}
+\item [{Résumé:}] Ce document est un rapport de stage écrit par Francis
+Gauthier au sujet de son stage d'été au laboratoire RALI de l'Université
+de Montréal, sous la tutelle de Guy Lapalme. Francis a travaillé sur
+la reprise du projet JSRealB qui avait été auparavant commencé par
+deux autres étudiants du RALI. Le but du stage était de peaufiner
+le programme et de lui ajouter plusieurs fonctionnalités qui n'avaient
+pas été implémentées encore. 
+\end{description}
+
+%%TABLE DES MATIÈRES
+
+\pagebreak
+\begin{verse}
+\tableofcontents{}
+\end{verse}
+\pagebreak
+
+%%DÉBUT
+
+\section{Introduction}
+
+Au fil de son développement, JSRealB a connu plusieurs étapes. En
+2014, Nicolas Daoust a commencé le projet en créant JSReal. Il développa
+un réalisateur de texte facilement adaptable au web en langage JavaScript.
+Cette version n'était que francophone. L'année suivante, Paul Molins
+a repris le projet et en a fait une version bilingue, en français
+et en anglais. À l'aide d'une utilisation systématique de table de
+règle et de lexiques annexes au programme, JSReal devint JSRealB.
+Le réalisateur de texte devint alors bilingue et prêt à accueillir
+d'autres langues semblables au français et à l'anglais. Après 2015
+et après les modifications de Paul, le projet est laissé sur la glace
+avec plusieurs options à rajouter au programme. Entre autres, plusieurs
+déclinaisons de phrase telles que les phrases interrogatives et négatives
+n'étaient pas implémentées, dans les deux langues. L'élision avait
+besoin d'être revue et les verbes aux temps composés n'étaient pas
+pris en charge, entre autres. Francis Gauthier a donc repris le projet
+à l'été 2016. Ce rapport fait état des modifications qu'il a apportées
+à JSRealB.
+
+\section{Qu'est-ce que JSRealB?}
+
+La présente section vous présentera le prototype de JSRealB tel qu'il
+était jusqu'en mai 2015. Le fonctionnement général du programme vous
+sera expliqué. Dans les sections suivantes(de 3 à 7) seront décrits
+les changements apportés au prototype.
+
+JSRealB est un réalisateur de texte réalisant des phrases en français
+et en anglais. La fonction première du programme est de prendre en
+entrée une chaine de string qui représente une structure d'arbre syntaxique.
+JSRealB donnera en sortie la phrase correspondante à l'arbre donné
+en entrée. Parmi les parties complexes de la réalisation, on retrouve
+les accords en genre et en nombre entre les différents constituants
+de la phrase, l'application des différentes options prescrites par
+l'utilisateur, ainsi que la mise en forme de la phrase. 
+
+\subsection{Les objets JSRealB}
+
+Voici un exemple d'appel à JSRealB: S(NP(D(\quo{le}),
+N(\quo{chat})), VP(V(\quo{aimer}),
+NP(D(\quo{le}), N(\quo{jouet}))))
+, qui sera réalisé(mis en sortie) comme ci: \emph{Le chat aime le
+jouet.}
+
+Les appel en majuscule représente des objets JSRealB. Ceux-ci sont
+classés en deux catégories. 
+
+\paragraph{Syntagmes}
+
+Les syntagmes sont des groupes d'éléments de la phrase. Ceux-ci sont
+des éléments passifs qui ne peuvent qu'exister s'ils ont des enfants.
+Ils sont essentiels à la réalisation car ils fournissent l'information
+nécessaire pour comprendre les interactions entre les différents constituants
+de la phrase. Si on pense à un arbre syntaxique, ces syntagmes représente
+les noeuds internes de l'arbre. Voici une courte liste des syntagmes
+disponibles.
+
+\begin{tabular}{|c|c|c|}
+\hline 
+Appel JSRealB & Syntagme & Exemple\tabularnewline
+\hline 
+\hline 
+S & Phrase & Le chat aime le jouet.\tabularnewline
+\hline 
+NP & Syntagme nominal & le chat\tabularnewline
+\hline 
+VP & Syntagme verbal & aime le jouet\tabularnewline
+\hline 
+AP & Syntagme adjectival & très beau\tabularnewline
+\hline 
+AdvP & Syntagme adverbial & bien heureusement\tabularnewline
+\hline 
+PP & Syntagme prépositionnele & à la maison\tabularnewline
+\hline 
+CP & Syntagme coordonné & la pomme, la poire et la pêche\tabularnewline
+\hline 
+\end{tabular}
+
+\paragraph{Éléments terminaux}
+
+Les éléments terminaux font partie des syntagmes. Ils peuvent être
+appelés sans syntagme, auquel cas leur réalisation sera simplifiée.
+Chaque mot de la phrase est un élément terminal et ils sont classés
+dépendant de leur classe de mots, selon les lexiques inclut dans le
+programme. Voici les différents éléments terminaux utilisés:
+
+\begin{tabular}{|c|c|c|}
+\hline 
+Appel JSRealB & Classe de mot & Exemple\tabularnewline
+\hline 
+\hline 
+V & Verbe & aimer\tabularnewline
+\hline 
+N & Nom & chat\tabularnewline
+\hline 
+D & Déterminant & le\tabularnewline
+\hline 
+A & Adjectif & beau\tabularnewline
+\hline 
+Pro & Pronom & je\tabularnewline
+\hline 
+P & Préposition & de\tabularnewline
+\hline 
+Adv & Adverbe & très\tabularnewline
+\hline 
+C & Conjonction & et\tabularnewline
+\hline 
+\end{tabular}
+
+\subsection{Les transformations}
+
+Chaque syntagme et élément terminal est un objet Javascript, ce qui
+lui permet d'avoir des propriétés propres. Ces propriétés sont principalement:
+\begin{itemize}
+\item Le genre
+\item Le nombre
+\item La personne
+\item Le temps
+\end{itemize}
+Certains éléments recevront des propriétés par défaut du programme
+lors de l'exécution. C'est-à-dire qu'un nom aura comme genre par défaut
+le masculin et le nombre singulier. Un verbe recevra comme temps par
+défaut l''infinitif. Outre la valeur par défaut, il est aisé pour
+l'utilisateur d'en précifier d'autres. Les méthodes spécifiant les
+propriétés voulues sont appelées directement sur les éléments terminaux
+en question. Le tableau suivant vous montre quelques exemples d'utilisation.
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Propriété & Appel JSRealB & Exemple d'appel & Réalisation\tabularnewline
+\hline 
+\hline 
+Genre & g & A(``absent'').g(``f'') & absente\tabularnewline
+\hline 
+Nombre & n & N(``jeu'').n(``p'') & jeux\tabularnewline
+\hline 
+Personne & pe & Pro(``je'').pe(2) & tu\tabularnewline
+\hline 
+Temps & t & V(``aimer'').t(``i'') & aimait\tabularnewline
+\hline 
+\end{tabular}
+
+Pour réaliser les différentes déclinaisons, le programme se base sur
+deux fichiers JSON préalablement généré automatiquement. Le premier
+est un lexique contenant les mots disponibles et le sigle de la table
+de déclinaison correspondante au mot. Le deuxième regroupe les tables
+de règles décrivant les différentes déclinaisons en genre et en nombre
+de chaque sigle, ou les conjugaisons en fonction des temps et des
+personnes pour les verbes.
+
+Les syntagmes aussi peuvent subir des transformations. Par exemple,
+si on désire modifier le genre de tous les éléments d'un syntagme,
+il est possible de le spécifier sur le syntagme en tant que tel et
+le programme propagera ces propriétés sur ses contituants enfants
+durant l'exécution. Nous aborderons justement la propagation dans
+la section suivante.
+
+\subsection{La propagation}
+
+Une des parties les plus importantes du programme est la propagation.
+La propagation est le fait que certains constituants de la phrase
+auront des propriétés dictées par l'utilisateur ou par défaut et que
+ces propriétés doivent être partagées avec d'autres constituants de
+la phrase pour fair en sorte de bien accorder les différentes sections
+de la phrase. On note trois types de propagation différente:
+
+\paragraph{Propagation parent->enfant}
+
+Lorsqu'une propriété est attribuée à un syntagme, on croit que l'utilisateur
+désire que cette propriété soit partagée entre tous ses constituants.
+Donc, pour chacun des enfants d'un syntagme parent, ils recevront
+les propriétés de leur parent immédiat.
+
+\paragraph{Propagation frère/soeur}
+
+À l'intérieur même d'un syntagme, on retrouve des éléments qui forme
+le noyau ou des éléments subordonnés au noyau. Dans ce cas, les propriétés
+du noyau seront propagés vers les éléments subordonnés pour que les
+éléments formés dans le syntagme soient tous accordés de la même façon.
+C'est cette propagation qui passera les informations du syntagme nominal
+sujet au syntagme verbal principal pour l'accord du verbe, par exemple. 
+
+\paragraph{Propagation enfant->parent}
+
+Certains noyaux nécessite de transmettre leurs informations à leur
+parent pour que ceux-ci transmettent ensuite l'information ailleurs.
+C'est la cas pour le noyau du syntagme nominal(le nom) qui transmettra
+ses propriétés à son parent.
+
+À noter que la propagation arrive en second plan face aux propriétés
+dictées par l'utilisateur. C'est-à-dire que les éléments possèdent
+en général des propriétés par défaut, qui peuvent être supplantées
+par les propriétés imposées par l'utilisateur. Ensuite, la propagation
+peut changer les valeurs par défaut, mais ne pourra pas changer une
+valeur imposée. Le schéma suivant démontre un peu l'effet de la propagation
+sur les éléments et leurs réalisations.
+
+\begin{figure}
+
+\caption{}
+\end{figure}
+
+On voit dans le schéma les trois types de propagation, représenté
+par les flèches de couleurs. Il est intéressant de noter que la propagation
+du genre du nom vers l'adjectif n'aura pas lieu, car dans l'appel
+JSRealB, l'utilisateur a spécifié que le genre de l'adjectif devait
+être masculin. Cette spécification de l'utlisateur a priorité sur
+la propagation.
+
+\subsection{Autres fonctionnalités}
+
+JSrealB a quelques autres fonctionnalités. Il s'occupe notamment de
+la mise en forme des phrases. Il est possible de contrôler la mise
+en majuscule au début des mots, de rajouter de la ponctuation additionnelle
+et le programme comprend deux modules complémentaires très utiles,
+soit \emph{Date} et \emph{Number}. Ces deux modules permettent l'intégration
+des dates plus facilement à l'intérieur même des phrases, ainsi que
+pour les nombres. 
+
+Aussi, JSrealB permet l'intégration des balises HTML, donc son intégration
+est aisée sur le web.
+
+N(\quo{joueur}).tag(\quo{i},\quo{style}:\quo{text-decoration:underline})
+-> joueur(underline)
+
+\subsection{Exécution}
+
+Il est intéressant de comprendre le fonctionnement de JSRealB et quelles
+sont les étapes principales de l'appel à la réalisation finale.
+
+Voici brièvement les étapes suivies pour chaque noeud interne(syntagme).
+Comme la structure JSrealB peut être représenter comme un arbre, les
+étapes qui seront décrites sont appelés de manière récursive sur les
+enfants de chaque noeud. La réalisation de l'arbre se fait par un
+passage en profondeur (enfant d'abord). Les étapes en question sont:
+\begin{enumerate}
+\item Classer ses différents constituants (modificateur, noyau, subordonnée
+ou complément)
+\item Créer une liste ordonnée de ces constituants à réaliser
+\item Réaliser chacun de ces constituants dans l'ordre prédéfini précédemment
+\item Concaténer chaque réalisation pour former sa propre réalisation
+\item Appliquer des règles de phonétique et de ponctuation sur sa réalisation
+\end{enumerate}
+
+\subsection{SimpleNLG-EnFr}
+
+Il existe un réalisateur de texte anglais et français précuseur à
+JSrealB. SimpleNLG-EnFr est une adaption de SimpleNLG faite par Pierre-Luc
+Vaudry au cours de ses études au RALI du département d'informatique
+de l'Université de Montréal. Le réalisateur SimpleNLG est capable
+de générer un exemplaire plus vaste que JSrealB. Son implémentation
+a été faite en Java. À la fin du projet de JSrealB, on espérait que
+les deux réalisateurs soient de même calibre. À cette fin, plusieurs
+des fonctionnalités de SimpleNLG-EnFr qui n'existaient pas dans JSrealB
+ont été travaillées. Le travail de Pierre-Luc Vaudry a servi de phare
+pour orienter les modifications apportées à JSrealB.
+
+\end{document}

@@ -8,12 +8,12 @@ JSrealLoader({
         
         assert.equal( Adv("justement"), "justement", "justement => justement" );
         assert.equal( Adv("ne"), "ne", "ne => ne" );
-        assert.equal( VP(Adv("ne"),V("avoir").t("p").n("p")) , "n'ont", "(elision) ne ont => n'ont" );
+        assert.equal( VP(Adv("ne"),V("avoir").n("p")) , "n'ont", "(elision) ne ont => n'ont" );
         
         assert.equal( P("jusque"), "jusque", "jusque => jusque" );
         assert.equal( PP(P("jusque"),P("à")), "jusqu'à", "(elision) jusque à => jusqu'à" );
         assert.equal( P("de"), "de", "de => de" );
-        assert.equal( PP(P("de"),V("arriver")), "d'arriver", "(elision) de arriver => d'arriver" );
+        assert.equal( PP(P("de"),V("arriver").t("b")), "d'arriver", "(elision) de arriver => d'arriver" );
         assert.equal( PP(P("de"),NP(D("le"),N("lac"))), "du lac", "(elision) de le lac => du lac" );
 //        assert.equal( P("dans").el(true), "dans", "(pas elision possible) dans => dans" );
         assert.equal( P("parmi"), "parmi", "parmi => parmi" );

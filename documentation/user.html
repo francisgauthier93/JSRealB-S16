@@ -160,7 +160,7 @@
                 <p id="example-extend-lexicon">
                     JSrealB.Config.get("lexicon")["JSrealB"] = { "N": { "g": "m", "pe": 3, "tab": ["nI"] } };
                     alert(
-                        S(NP(N("JSrealB")), VP(V("être").t("p"), NP(D("un"), N("programme"))))
+                        S(NP(N("JSrealB")), VP(V("être"), NP(D("un"), N("programme"))))
                     );
                 </p>
                 <p>2. L'alternative est de le faire durablement en l'ajoutant au lexique,
@@ -317,9 +317,9 @@
                   <tr>
                     <td class="lalign">Phrase</td>
                     <td>S(...)</td>
-                    <td class="example-fr">S(NP(Pro("je")), VP(V("dormir").t("p")))</td>
+                    <td class="example-fr">S(NP(Pro("je")), VP(V("dormir")))</td>
                     <td></td>
-                    <td class="example-en">S(NP(Pro("I")), VP(V("sleep").t("p")))</td>
+                    <td class="example-en">S(NP(Pro("I")), VP(V("sleep")))</td>
                     <td></td>
                   </tr>
                   <tr>
@@ -349,7 +349,7 @@
                   <tr>
                     <td class="lalign">Syntagme verbal</td>
                     <td>VP(...)</td>
-                    <td class="example-fr">VP(V("apprendre").t("p"), NP(D("le"), N("course")))</td>
+                    <td class="example-fr">VP(V("apprendre"), NP(D("le"), N("course")))</td>
                     <td></td>
                     <td class="example-en">VP(V("enjoy"), NP(D("a"), N("meal")))</td>
                     <td></td>
@@ -434,15 +434,23 @@
                   </tr>
                   <tr class="groupe">
                       <td>Temps</td>
-                      <td>.t("p")</td>
-                      <td colspan="4">Le temps par défaut est l'infinitif</td>
+                      <td></td>
+                      <td colspan="4">Le temps par défaut est le présent</td>
+                  </tr>
+                  <tr>
+                    <td class="lalign">b</td>
+                    <td class="description">infinitif</td>
+                    <td class="example-fr">V("avoir").t("b")</td>
+                    <td></td>
+                    <td class="example-en">V("have").t("b")</td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">p</td>
                     <td class="description">présent</td>
-                    <td class="example-fr">V("avoir").t("p")</td>
+                    <td class="example-fr">V("avoir")</td>
                     <td></td>
-                    <td class="example-en">V("have").t("p")</td>
+                    <td class="example-en">V("have")</td>
                     <td></td>
                   </tr>
                   <tr>
@@ -573,49 +581,49 @@
                   <tr>
                     <td class="lalign">1</td>
                     <td class="description">Verbe à la première personne du singulier</td>
-                    <td class="example-fr">V("avoir").t("p").pe(1)</td>
+                    <td class="example-fr">V("avoir").pe(1)</td>
                     <td></td>
-                    <td class="example-en">V("be").t("p").pe(1)</td>
+                    <td class="example-en">V("be").pe(1)</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">2</td>
                     <td class="description">Verbe à la deuxième personne du singulier</td>
-                    <td class="example-fr">V("avoir").t("p").pe(2)</td>
+                    <td class="example-fr">V("avoir").pe(2)</td>
                     <td></td>
-                    <td class="example-en">V("be").t("p").pe(2)</td>
+                    <td class="example-en">V("be").pe(2)</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">3</td>
                     <td class="description">Verbe à la troisième personne du singulier</td>
-                    <td class="example-fr">V("avoir").t("p").pe(3)</td>
+                    <td class="example-fr">V("avoir").pe(3)</td>
                     <td></td>
-                    <td class="example-en">V("be").t("p").pe(3)</td>
+                    <td class="example-en">V("be").pe(3)</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">1</td>
                     <td class="description">Verbe à la première personne du pluriel</td>
-                    <td class="example-fr">V("avoir").t("p").pe(1).n("p")</td>
+                    <td class="example-fr">V("avoir").pe(1).n("p")</td>
                     <td></td>
-                    <td class="example-en">V("be").t("p").pe(1).n("p")</td>
+                    <td class="example-en">V("be").pe(1).n("p")</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">2</td>
                     <td class="description">Verbe à la deuxième personne du pluriel</td>
-                    <td class="example-fr">V("avoir").t("p").pe(2).n("p")</td>
+                    <td class="example-fr">V("avoir").pe(2).n("p")</td>
                     <td></td>
-                    <td class="example-en">V("be").t("p").pe(2).n("p")</td>
+                    <td class="example-en">V("be").pe(2).n("p")</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">3</td>
                     <td class="description">Verbe à la troisième personne du pluriel</td>
-                    <td class="example-fr">V("avoir").t("p").pe(3).n("p")</td>
+                    <td class="example-fr">V("avoir").pe(3).n("p")</td>
                     <td></td>
-                    <td class="example-en">V("be").t("p").pe(3).n("p")</td>
+                    <td class="example-en">V("be").pe(3).n("p")</td>
                     <td></td>
                   </tr>
                   <tr class="groupe">
@@ -626,9 +634,9 @@
                   <tr>
                     <td class="lalign">s</td>
                     <td class="description">Verbe au singulier</td>
-                    <td class="example-fr">V("manger").t("p").n("s")</td>
+                    <td class="example-fr">V("manger").n("s")</td>
                     <td></td>
-                    <td class="example-en">V("eat").t("p").n("s")</td>
+                    <td class="example-en">V("eat").n("s")</td>
                     <td></td>
                   </tr>
                   <tr>
@@ -658,9 +666,9 @@
                   <tr>
                     <td class="lalign">p</td>
                     <td class="description">Verbe au pluriel</td>
-                    <td class="example-fr">V("manger").t("p").n("p")</td>
+                    <td class="example-fr">V("manger").n("p")</td>
                     <td></td>
-                    <td class="example-en">V("have").t("p").n("p")</td>
+                    <td class="example-en">V("have").n("p")</td>
                     <td></td>
                   </tr>
                   <tr>
@@ -750,48 +758,86 @@
                   <tr>
                     <td class="lalign">.vOpt({neg:true})</td>
                     <td class="description">Négation</td>
-                    <td class="example-fr">V("aimer").t("p").vOpt({neg:true})</td>
+                    <td class="example-fr">V("aimer").vOpt({neg:true})</td>
                     <td></td>
-                    <td class="example-en">V("love").t("p").vOpt({neg:true})</td>
+                    <td class="example-en">V("love").vOpt({neg:true})</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">.vOpt({neg:'plus'})</td>
                     <td class="description">Négation personnalisée</td>
-                    <td class="example-fr">V("aimer").t("p").vOpt({neg:'plus'})</td>
+                    <td class="example-fr">V("aimer").vOpt({neg:'plus'})</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">.vOpt({pas:true})</td>
                     <td class="description">Forme passive</td>
-                    <td class="example-fr">V("aimer").t("p").vOpt({pas:true})</td>
+                    <td class="example-fr">V("aimer").vOpt({pas:true})</td>
                     <td></td>
-                    <td class="example-en">V("love").t("p").vOpt({pas:true})</td>
+                    <td class="example-en">V("love").vOpt({pas:true})</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">.vOpt({prog:true})</td>
                     <td class="description">Forme progressive</td>
-                    <td class="example-fr">V("aimer").t("p").vOpt({prog:true})</td>
+                    <td class="example-fr">V("aimer").vOpt({prog:true})</td>
                     <td></td>
-                    <td class="example-en">V("love").t("p").vOpt({prog:true})</td>
+                    <td class="example-en">V("love").vOpt({prog:true})</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">.vOpt({perf:true})</td>
                     <td class="description">Temps "perfect" (anglais seulement)</td>
-                    <td class="example-fr">V("aimer").t("p").vOpt({perf:true})</td>
+                    <td class="example-fr">V("aimer").vOpt({perf:true})</td>
                     <td></td>
-                    <td class="example-en">V("love").t("p").vOpt({perf:true})</td>
+                    <td class="example-en">V("love").vOpt({perf:true})</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">.vOpt({neg:true,pas:true,prog:true})</td>
                     <td class="description">Options multiples</td>
-                    <td class="example-fr">V("aimer").t("p").vOpt({neg:true,pas:true,prog:true})</td>
+                    <td class="example-fr">V("aimer").vOpt({neg:true,pas:true,prog:true})</td>
                     <td></td>
-                    <td class="example-en">V("love").t("p").vOpt({neg:true,pas:true,prog:true})</td>
+                    <td class="example-en">V("love").vOpt({neg:true,pas:true,prog:true})</td>
                     <td></td>
+                  </tr>
+                  <tr class="groupe">
+                    <td>Changement de l'auxiliaire</td>
+                    <td>.aux()</td>
+                    <td>L'auxiliaire par défaut provient du lexique</td>
+                    <td colspan="3">Les verbes à double auxiliaire ont 'avoir' comme auxiliaire par défaut. (Exemple:'changer')</td>                      
+                  </tr>
+                  <tr>
+                    <td class="lalign"></td>
+                    <td>Par défaut</td>
+                    <td class="example-fr">V("aller").t("pc")</td>
+                    <td></td>
+                    <td class="example-en"></td>
+                    <td></td>  
+                  </tr>
+                  <tr>
+                    <td class="lalign"></td>
+                    <td>Par défaut</td>
+                    <td class="example-fr">V("changer").t("pc")</td>
+                    <td></td>
+                    <td class="example-en"></td>
+                    <td></td>  
+                  </tr>
+                  <tr>
+                    <td class="lalign">.aux("avoir")</td>
+                    <td>Auxiliaire avoir</td>
+                    <td class="example-fr">V("aller").t("pc").aux("avoir")</td>
+                    <td></td>
+                    <td class="example-en"></td>
+                    <td></td>  
+                  </tr>
+                  <tr>
+                    <td class="lalign">.aux("être")</td>
+                    <td>Auxiliaire être</td>
+                    <td class="example-fr">V("changer").t("pc").aux("être")</td>
+                    <td></td>
+                    <td class="example-en"></td>
+                    <td></td>  
                   </tr>
                 </tbody>
                 </table>                
@@ -1051,6 +1097,61 @@
                 </tbody>
                 </table>
             </article>
+            
+            <article>
+                <h3>Casse</h3>
+                <table cellspacing="0" cellpadding="0">
+                <thead>
+                  <tr>
+                    <th><span>Option</span></th>
+                    <th><span>Description</span></th>
+                    <th><span>Cas d'utilisation en français</span></th>
+                    <th><span>Réalisation</span></th>
+                    <th><span>Cas d'utilisation en anglais</span></th>
+                    <th><span>Réalisation</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="lalign">.cap()</td>
+                    <td>Première lettre en majuscule</td>
+                    <td class="example-fr">N("joueur").cap()</td>
+                    <td></td>
+                    <td class="example-en">N("player").cap()</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                </table>
+            </article>
+            <article>
+                <h3>HTML</h3>
+                <table cellspacing="0" cellpadding="0">
+                <thead>
+                  <tr>
+                    <th><span>Option</span></th>
+                    <th><span>Description</span></th>
+                    <th><span>Cas d'utilisation en français</span></th>
+                    <th><span>Réalisation</span></th>
+                    <th><span>Cas d'utilisation en anglais</span></th>
+                    <th><span>Réalisation</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="lalign">tag(<em>nom</em>,<em>{attributs}</em>)</td>
+                    <td>Balise HTML autour d'une construction</td>
+                    <td class="example-fr">N("joueur").tag("i",{"style":"text-decoration:underline"})</td>
+                    <td></td>
+                    <td class="example-en">N("player").tag("b",{"title":"the best",style:"color:blue"})</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                </table>
+            </article>
+        </section>
+
+        <section>
+            <h2>Modifications sur le syntagme nominal</h2>
             <article>
                 <h3>Placement de l'adjectif</h3>
                 <p>*Attention* Le placement de l'adjectif diffère selon la langue.</p>
@@ -1119,83 +1220,61 @@
                   <tr>
                     <td class="lalign" rowspan="7">.pro()</td>
                     <td>Cas par défaut</td>
-                    <td class="example-fr">S(NP(D("le"),N("joueur")),VP(V("jouer").t("p")))</td>
+                    <td class="example-fr">S(NP(D("le"),N("joueur")),VP(V("jouer")))</td>
                     <td></td>
-                    <td class="example-en">S(NP(D("the"),N("player")),VP(V("play").t("p")))</td>
+                    <td class="example-en">S(NP(D("the"),N("player")),VP(V("play")))</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>Pronominalisation du sujet</td>
-                    <td class="example-fr">S(NP(D("le"),N("joueur")).pro(),VP(V("jouer").t("p")))</td>
+                    <td class="example-fr">S(NP(D("le"),N("joueur")).pro(),VP(V("jouer")))</td>
                     <td></td>
-                    <td class="example-en">S(NP(D("the"),N("player")).pro(),VP(V("play").t("p")))</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>Cas par défaut</td>
-                    <td class="example-fr">S(Pro("je"),VP(V("aimer").t("p"),NP(D("le"),N("pomme"))))</td>
-                    <td></td>
-                    <td class="example-en">S(Pro("I"),VP(V("love").t("p"),NP(D("a"),N("apple"))))</td>
+                    <td class="example-en">S(NP(D("the"),N("player")).pro(),VP(V("play")))</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>Cas par défaut</td>
-                    <td class="example-fr">S(Pro("je"),VP(V("aimer").t("p"),NP(D("le"),N("pomme"))))</td>
+                    <td class="example-fr">S(Pro("je"),VP(V("aimer"),NP(D("le"),N("pomme"))))</td>
                     <td></td>
-                    <td class="example-en">S(Pro("I"),VP(V("love").t("p"),NP(D("a"),N("apple"))))</td>
+                    <td class="example-en">S(Pro("I"),VP(V("love"),NP(D("a"),N("apple"))))</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Cas par défaut</td>
+                    <td class="example-fr">S(Pro("je"),VP(V("aimer"),NP(D("le"),N("pomme"))))</td>
+                    <td></td>
+                    <td class="example-en">S(Pro("I"),VP(V("love"),NP(D("a"),N("apple"))))</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>Pronominalisation de l'objet direct</td>
-                    <td class="example-fr">S(Pro("je"),VP(V("aimer").t("p"),NP(D("le"),N("pomme")).pro()))</td>
+                    <td class="example-fr">S(Pro("je"),VP(V("aimer"),NP(D("le"),N("pomme")).pro()))</td>
                     <td></td>
-                    <td class="example-en">S(Pro("I"),VP(V("love").t("p"),NP(D("a"),N("apple").g("n")).pro()))</td>
+                    <td class="example-en">S(Pro("I"),VP(V("love"),NP(D("a"),N("apple").g("n")).pro()))</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>Cas par défaut</td>
-                    <td class="example-fr">S(Pro("je"),VP(V("aller").t("p"),PP(P("à"),NP(D("le"),N("maison")))))</td>
+                    <td class="example-fr">S(Pro("je"),VP(V("aller"),PP(P("à"),NP(D("le"),N("maison")))))</td>
                     <td></td>
-                    <td class="example-en">S(Pro("I"),VP(V("go").t("p"),PP(P("to"),NP(D("a"),N("house").g("n")))))</td>
+                    <td class="example-en">S(Pro("I"),VP(V("go"),PP(P("to"),NP(D("a"),N("house").g("n")))))</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>Pronominalisation de l'objet indirect</td>
-                    <td class="example-fr">S(Pro("je"),VP(V("aller").t("p"),PP(P("à"),NP(D("le"),N("maison")).pro())))</td>
+                    <td class="example-fr">S(Pro("je"),VP(V("aller"),PP(P("à"),NP(D("le"),N("maison")).pro())))</td>
                     <td></td>
-                    <td class="example-en">S(Pro("I"),VP(V("go").t("p"),PP(P("to"),NP(D("a"),N("house").g("n")).pro())))</td>
-                    <td></td>
-                  </tr>
-                </tbody>
-                </table>
-            </article>
-            <article>
-                <h3>Casse</h3>
-                <table cellspacing="0" cellpadding="0">
-                <thead>
-                  <tr>
-                    <th><span>Option</span></th>
-                    <th><span>Description</span></th>
-                    <th><span>Cas d'utilisation en français</span></th>
-                    <th><span>Réalisation</span></th>
-                    <th><span>Cas d'utilisation en anglais</span></th>
-                    <th><span>Réalisation</span></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="lalign">.cap()</td>
-                    <td>Première lettre en majuscule</td>
-                    <td class="example-fr">N("joueur").cap()</td>
-                    <td></td>
-                    <td class="example-en">N("player").cap()</td>
+                    <td class="example-en">S(Pro("I"),VP(V("go"),PP(P("to"),NP(D("a"),N("house").g("n")).pro())))</td>
                     <td></td>
                   </tr>
                 </tbody>
                 </table>
             </article>
+        </section>
+
+        <section>
+            <h2>Type de phrase</h2>
             <article>
-                <h3>Type de phrase</h3>
                 <table cellspacing="0" cellpadding="0">
                 <thead>
                   <tr>
@@ -1211,50 +1290,25 @@
                   <tr>
                     <td class="lalign">.typ({exc:true})</td>
                     <td>Phrase exclamative</td>
-                    <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer").t("p"))).typ({exc:true})</td>
+                    <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer"))).typ({exc:true})</td>
                     <td></td>
-                    <td class="example-en">S(Pro("I"),VP(V("love").t("p"),Pro("me"))).typ({exc:true})</td>
+                    <td class="example-en">S(Pro("I"),VP(V("love"),Pro("me"))).typ({exc:true})</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">.typ({int:true})</td>
                     <td>Phrase interrogative</td>
-                    <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer").t("p"))).typ({int:true})</td>
+                    <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer"))).typ({int:true})</td>
                     <td></td>
-                    <td class="example-en">S(Pro("I"),VP(V("love").t("p"),Pro("me"))).typ({int:true})</td>
+                    <td class="example-en">S(Pro("I"),VP(V("love"),Pro("me"))).typ({int:true})</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">.typ({int:true, exc:true})</td>
                     <td>Phrase interrogative et exclamative</td>
-                    <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer").t("p"))).typ({int:true, exc:true})</td>
+                    <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer"))).typ({int:true, exc:true})</td>
                     <td></td>
                     <td class="example-en"></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-                </table>
-            </article>
-            <article>
-                <h3>HTML</h3>
-                <table cellspacing="0" cellpadding="0">
-                <thead>
-                  <tr>
-                    <th><span>Option</span></th>
-                    <th><span>Description</span></th>
-                    <th><span>Cas d'utilisation en français</span></th>
-                    <th><span>Réalisation</span></th>
-                    <th><span>Cas d'utilisation en anglais</span></th>
-                    <th><span>Réalisation</span></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="lalign">tag(<em>nom</em>,<em>{attributs}</em>)</td>
-                    <td>Balise HTML autour d'une construction</td>
-                    <td class="example-fr">N("joueur").tag("i",{"style":"text-decoration:underline"})</td>
-                    <td></td>
-                    <td class="example-en">N("player").tag("b",{"title":"the best",style:"color:blue"})</td>
                     <td></td>
                   </tr>
                 </tbody>
@@ -1736,15 +1790,33 @@
                 </thead>
                 <tbody>
                   <tr>
-                      <td class="example-fr">var pom = NP(D("le"),N("pomme")); S(pom.a(","),pom.clone().n("p").a(","),pom.clone().pro())</td>
+                      <td class="example-fr">var pom = NP(D("le"),N("pomme"));
+                      pom</td>
                       <td></td>
-                      <td class="example-en">var pom = NP(D("a"),N("apple").g("n")); S(pom.a(","),pom.clone().n("p").a(","),pom.clone().pro())</td>
+                      <td class="example-en">var pom = NP(D("a"),N("apple").g("n")); 
+                      pom</td>
                       <td></td>
                   </tr>
                   <tr>
-                      <td class="example-fr">var pom = NP(D("le"),N("pomme").n("p")); S(pom.a(","),Pro("je"),VP(V("manger").t("p"),pom))</td>
+                      <td class="example-fr">var pom = NP(D("le"),N("pomme"));
+                      pom.clone()</td>
                       <td></td>
-                      <td class="example-en">var pom = NP(D("a"),N("apple").g("n")); S(pom.a(","),Pro("I"),VP(V("eat").t("p"),pom.clone().pro()))</td>
+                      <td class="example-en">var pom = NP(D("a"),N("apple").g("n")); 
+                      pom.clone()</td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td class="example-fr">var pom = NP(D("le"),N("pomme"));
+                      S(pom.a(","),pom.clone().n("p").a(","), "quelle différence").a("?")</td>
+                      <td></td>
+                      <td class="example-en">var pom = NP(D("a"),N("apple").g("n")); 
+                      S(pom.a(","),pom.clone().n("p").a(","), "what's the difference").a("?")</td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td class="example-fr">var pom = NP(D("le"),N("pomme").n("p")); S(pom.a(","),Pro("je"),VP(V("manger"),pom.clone().pro()))</td>
+                      <td></td>
+                      <td class="example-en">var pom = NP(D("a"),N("apple").g("n")); S(pom.a(","),Pro("I"),VP(V("eat"),pom.clone().pro()))</td>
                       <td></td>
                   </tr>                  
                 </tbody>

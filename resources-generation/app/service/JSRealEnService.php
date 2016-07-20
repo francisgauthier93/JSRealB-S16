@@ -253,7 +253,7 @@ class JSRealEnService extends JSRealService
     private  function getAuxRule()
     {
     	return array(
-    			//second implementation (more concise)
+    			'alias' => 'aux',
     			'continuous' => array(
     					'aux' => 'be',
     					'participle' => 'pr'
@@ -291,7 +291,8 @@ class JSRealEnService extends JSRealService
     							'whe' => 'where',
     							'how' => 'how',
     							'muc' => 'how many',
-    					)
+    					),
+    					"future" => "will",
     			),
     			'dec' => array(
     					'type' => 'declarative',

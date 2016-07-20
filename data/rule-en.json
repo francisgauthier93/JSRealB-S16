@@ -2874,7 +2874,8 @@
                 "whe": "where",
                 "how": "how",
                 "muc": "how many"
-            }
+            },
+            "future": "will"
         },
         "dec": {
             "type": "declarative",
@@ -2986,6 +2987,7 @@
         "number": ["zero"]
     },
     "compound": {
+        "alias": "aux",
         "continuous": {
             "aux": "be",
             "participle": "pr"
