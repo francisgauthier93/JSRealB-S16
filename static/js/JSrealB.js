@@ -480,31 +480,55 @@ JSrealE.prototype.typ = function(optionList){
         var optionKeyList = Object.keys(optionList);
         for(var i = 0, length = optionKeyList.length; i < length; i++)
         {
-            this.setCtx(JSrealB.Config.get("feature.sentence_type.alias") 
+            console.log(optionKeyList[i]);
+            if(JSrealB.Config.get("feature.sentence_type.context_wise").indexOf(optionKeyList[i])>=0){
+                this.setCtx(JSrealB.Config.get("feature.sentence_type.alias") 
                     + "." + optionKeyList[i], optionList[optionKeyList[i]]);
+            }
+            else{
+                this.setProp(JSrealB.Config.get("feature.verb_option.alias") 
+                        + "." + optionKeyList[i], optionList[optionKeyList[i]]);
+                this.setInitProp(JSrealB.Config.get("feature.verb_option.alias") 
+                        + "." + optionKeyList[i], optionList[optionKeyList[i]]);
+            }
+            
         }        
         return this;
     }
     
     return null;
 }
-//Verb options (neg,pas,prog)
-JSrealE.prototype.vOpt = function(optionList){
-    if(optionList !== undefined && isObject(optionList))
-    {
-        var optionKeyList = Object.keys(optionList);
-        for(var i = 0, length = optionKeyList.length; i < length; i++)
-        {
-            this.setProp(JSrealB.Config.get("feature.verb_option.alias") 
-                    + "." + optionKeyList[i], optionList[optionKeyList[i]]);
-            this.setInitProp(JSrealB.Config.get("feature.verb_option.alias") 
-                    + "." + optionKeyList[i], optionList[optionKeyList[i]]);
-        }        
-        return this;
-    }
+//Verb options (neg,pas,prog, perf)  A été intégré aux types de phrases
+// JSrealE.prototype.vOpt = function(optionList){
+//     if(optionList !== undefined && isObject(optionList))
+//     {
+//         var optionKeyList = Object.keys(optionList);
+//         for(var i = 0, length = optionKeyList.length; i < length; i++)
+//         {
+//             this.setProp(JSrealB.Config.get("feature.verb_option.alias") 
+//                     + "." + optionKeyList[i], optionList[optionKeyList[i]]);
+//             this.setInitProp(JSrealB.Config.get("feature.verb_option.alias") 
+//                     + "." + optionKeyList[i], optionList[optionKeyList[i]]);
+//         }        
+//         return this;
+//     }
     
-    return null;
-}
+//     return null;
+// }
+
+//temps perfect (anglais)
+JSrealE.prototype.perf = function(t_f){
+    if(typeof t_f != "boolean"){
+        throw JSrealB.Exception.invalidInput(t_f, "perfect tense");
+    }
+    if(t_f){
+        this.setProp(JSrealB.Config.get("feature.verb_option.alias") 
+                + "." + JSrealB.Config.get("feature.verb_option.perfect"), true);
+        this.setInitProp(JSrealB.Config.get("feature.verb_option.alias") 
+                + "." + JSrealB.Config.get("feature.verb_option.perfect"), true);
+    }
+    return this;
+}   
 //Auxiliaires forcés
 JSrealE.prototype.aux = function(a){
     try{
@@ -806,6 +830,8 @@ JSrealE.prototype.modifyStructure = function() {
                 //inversion
                 parent.elements[subjectPos] = cd;
                 elemList[CDpos] = suj;
+
+                verbe.setInitProp("vOpt.pas",true);
                 verbe.setInitProp("vOpt.hasSubject",true);
                 
                 parent.resetProp(true);
@@ -817,6 +843,7 @@ JSrealE.prototype.modifyStructure = function() {
                 this.addNewElement(VPos+1,parent.elements[subjectPos]);
                 parent.deleteElement(subjectPos);
 
+                verbe.setInitProp("vOpt.pas",true);
                 verbe.setInitProp("vOpt.hasSubject",true);
                 
                 parent.resetProp(true);
@@ -827,6 +854,8 @@ JSrealE.prototype.modifyStructure = function() {
                 var VPpos = getGroup(parent,JSrealB.Config.get("feature.category.phrase.verb"));
                 parent.addNewElement(VPpos,elemList[CDpos]);//will bump the verb and place the cd just before
                 this.deleteElement(CDpos);
+
+                verbe.setInitProp("vOpt.pas",true);
 
                 parent.resetProp(true);
                 change = true;
@@ -1105,7 +1134,8 @@ JSrealE.prototype.realizeConjugation = function() {
 
     var gender = this.getProp(JSrealB.Config.get("feature.gender.alias"));
     var verbOptions = { neg: this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".neg"),
-                        pas: this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".pas"),
+                        pas: this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".pas") || 
+                            this.getInitProp(JSrealB.Config.get("feature.verb_option.alias")+".pas"),
                         prog:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".prog"),
                         perf:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".perf"),
                         hasSubject:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".hasSubject")};
@@ -1116,7 +1146,8 @@ JSrealE.prototype.realizeConjugation = function() {
             console.log(auxF);
         }
     }
-    catch(e){/*english doesn't have rule.compund.aux*/}
+    catch(e){var auxF="";/*english doesn't have rule.compund.aux*/}
+
     var cdProp = this.getProp(JSrealB.Config.get("feature.cdInfo.alias"));
     if(this.getInitProp("vOpt.pas") == true){
         verbOptions.pas = true;

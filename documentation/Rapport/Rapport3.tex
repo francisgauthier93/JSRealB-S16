@@ -63,8 +63,6 @@
 \newcommand*{\exampleautorefname}{Exemple}
 \renewcommand{\tablename}{Tableau}
 \renewcommand*{\tableautorefname}{Tableau}
-\renewcommand*{\subsectionautorefname}{Sous-section}
-\renewcommand*{\subsubsectionautorefname}{Sous-section}
 
 
 \newcommand{\simpleExample}[2]{\begin{center}
@@ -165,7 +163,7 @@ l'utilisateur, ainsi que la mise en forme de la phrase.
 
 \subsection{Les objets \JSB{}}
 
-L'\autoref{exempleUn} démontrent des appels à \JSB{} et leur réalisations. À noter que
+L'\autoref{num1} démontrent des appels à \JSB{} et leur réalisations. À noter que
 \JSB{} utilise une représentation de la structure d'une phrase en terme
 de ses constituants syntaxiques.\newline
 \begin{example}
@@ -188,7 +186,7 @@ S(NP(D('le'),
 \end{alltt} \\
 \real{Le chat aime le jouet.} & \real{La souris partira avant les chats.} \\
 \end{tabular}
-\label{exempleUn}
+\label{num1}
 \end{example}
 
 Les appels en majuscule représentent des fonctions qui créent des objets \JSB{}. Ceux-ci sont
@@ -371,7 +369,7 @@ sur les éléments et leurs réalisations.
 \centering
 \caption{La propagation}
 \label{fig:propag}
-\includegraphics[scale=0.8]{Propagation}
+%\includegraphics[scale=0.8]{Propagation}
 \end{figure}
 
 L'encadré du haut représente l'appel \JSB{}. Les éléments du bas sont ceux
@@ -964,7 +962,7 @@ de verbe initialement activées.
 \begin{figure}
 \centering
 \caption{}
-\includegraphics[scale=0.7]{love-conjOptions}
+%\includegraphics[scale=0.7]{love-conjOptions}
 \label{figvOptEn}
 \end{figure}
 
@@ -1018,6 +1016,13 @@ du nom ou à l'intérieur d'un syntagme verbal comme complément du verbe.
 Voici quelques exemples d'utilisation du nouveau syntagme et comment
 il s'inclut dans la structure syntaxique \JSB{}.
 
+ % \simpleExample{S(NP(D("le"),
+%           N("fleur"),
+%           SP(Pro("dont"),
+%             Pro("je").pe(2),
+%             VP(Pro("me").pe(1),
+%               V("parler").t("pq")))))}{La fleur dont tu m'avais parlé.}
+
 \begin{example}
 \caption{Utilisation du syntagme propositonnel}
 \begin{tabular}{p{7cm} | p{7cm}}
@@ -1058,33 +1063,32 @@ il s'inclut dans la structure syntaxique \JSB{}.
 \hline 
 \textbf{Anglais} \\
 \hline
- \begin{alltt}
- 1.S(NP(D("the"),
-        N("house").n("p"),
-        SP(Adv("that"),
-           Pro("I").pe(1).n("p"),
-           VP(V("meet").t("ps")))))
- \end{alltt} &
- \begin{alltt}
- 2.S(NP(D("the"),
-        N("people").n("p"),
-        SP(Pro("who"),
-           VP(V("dance").t("p")))))
- \end{alltt} \\
+\begin{alltt}
+1.S(NP(D("the"),
+       N("house").n("p"),
+       SP(Adv("that"),
+          Pro("I").pe(1).n("p"),
+          VP(V("meet").t("ps")))))
+\end{alltt} &
+\begin{alltt}
+2.S(NP(D("the"),
+       N("people").n("p"),
+       SP(Pro("who"),
+          VP(V("dance").t("p")))))
+\end{alltt} \\
 \real{The house \textbf{that we met}.} & \real{The people \textbf{who dance}.} \\
- \hline
- \begin{alltt}
- 3.S(NP(D("the"),
-        N("car"),
-        SP(D("which"),
-           Pro("I").pe(2),
-           VP(V("buy").t("ps")))))
- \end{alltt} \\
+\hline
+\begin{alltt}
+3.S(NP(D("the"),
+       N("car"),
+       SP(D("which"),
+          Pro("I").pe(2),
+          VP(V("buy").t("ps")))))
+\end{alltt} \\
 \real{The car \textbf{which you bought}.}
 \end{tabular}
 \label{propEx}
 \end{example}
-
 \subsubsection{Propagation}
 
 Dans une structure \JSB{}, le syntagme propositionnel ressemble à
@@ -1431,7 +1435,7 @@ syllabe qui sonne comme une voyelle. Donc, devant le mot \emph{unique} par exemp
 le \emph{a} devrait rester tel quel. \\
 \begin{example}
 \caption{}
-\begin{tabular}{p{5cm} p{8cm}}
+\begin{tabular}{p{4.5cm} p{8cm}}
 \begin{alltt}
 NP(D("a"),
    A("unique"),
@@ -1439,7 +1443,7 @@ NP(D("a"),
 \end{alltt} &
 \begin{alltt}
 \end{alltt} \\
-\real{*an unique scene} (\JSB{}) & \real{a unique scene}(correct)
+\real{*an unique scene} (\JSB{}) & \real{a unique scene}
 \end{tabular}
 \end{example}
 \\
@@ -1471,7 +1475,6 @@ une autre langue future et ne requerront que peu ou pas de changements.
 Il reste tout de même plusieurs fonctionnalités qui n'ont pas été
 implémentées dans \JSB{}, soit parce que leur utilisation est moindre,
 ou que l'implémentation semblait complexe. On y retrouve:
-
 \begin{itemize}
 \item Le passage automatique de \emph{he/she} vers \emph{it} en anglais
 lors de la pronominalisation d'un objet ou d'un animal.
@@ -1485,13 +1488,16 @@ même temps: \emph{Je n'ai pas aimé le jeu $\rightarrow$ Je ne l'ai pas aimé.
 }En ce moment, \emph{n'ai pas aimé} est la réalisation directe du
 verbe. Par la pronominalisation, on ajoute le pronom avant, alors
 qu'on devrait l'insérer quelque part à l'intérieur même de cette réalisation.
+\item Permettre d'avoir l'auxiliaire de son choix (avoir ou être) pour les
+verbes à deux auxiliaires en français. \emph{Je suis changé vs J'ai
+changé}
+
 \item La contraction en anglais: \emph{do not $\rightarrow$ don't , I am $\rightarrow$ I'm , etc.}
 \item L'élision de \emph{a} vers \emph{an} dans les cas où la première syllabe sonne comme une voyelle,
 mais ne commence pas par une voyelle. Aussi dans le cas où ce n'est pas une voyelle, mais que la syllabe
 sonne comme une voyelle.
 \item La phrase interrogative avec \emph{combien}
 \end{itemize}
-
 \section{Conclusion}
 \JSB{} est désormais un réalisateur de texte qui réalise bien plus
 qu'il ne le faisait avant. L'apport fait a été une légère

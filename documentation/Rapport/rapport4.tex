@@ -165,7 +165,7 @@ l'utilisateur, ainsi que la mise en forme de la phrase.
 
 \subsection{Les objets \JSB{}}
 
-L'\autoref{exempleUn} démontrent des appels à \JSB{} et leur réalisations. À noter que
+L'\autoref{num1} démontrent des appels à \JSB{} et leur réalisations. À noter que
 \JSB{} utilise une représentation de la structure d'une phrase en terme
 de ses constituants syntaxiques.\newline
 \begin{example}
@@ -188,7 +188,7 @@ S(NP(D('le'),
 \end{alltt} \\
 \real{Le chat aime le jouet.} & \real{La souris partira avant les chats.} \\
 \end{tabular}
-\label{exempleUn}
+\label{num1}
 \end{example}
 
 Les appels en majuscule représentent des fonctions qui créent des objets \JSB{}. Ceux-ci sont
@@ -371,7 +371,7 @@ sur les éléments et leurs réalisations.
 \centering
 \caption{La propagation}
 \label{fig:propag}
-\includegraphics[scale=0.8]{Propagation}
+%\includegraphics[scale=0.8]{Propagation}
 \end{figure}
 
 L'encadré du haut représente l'appel \JSB{}. Les éléments du bas sont ceux
@@ -414,6 +414,7 @@ est aisée sur le web. \\
 \end{example}
 
 \subsection{Exécution}
+\label{subsec:exec}
 
 Il est intéressant de comprendre le fonctionnement de \JSB{} et quelles
 sont les étapes principales de l'appel à la réalisation finale.
@@ -451,17 +452,19 @@ Après le développement de \JSB{} jusqu'en 2015, la structure du programme
 Vous trouverez dans la section suivante quelques modifications qui
 ont été faites au niveau des syntagmes.
 
-Lors d'ajout aux possibilités de \JSB{}, il est rapidement devenu
-clair que certaines fonctionnalités allaient demander des ajouts mineurs,
-alors que plusieurs nouvelles fonctions du réalisateur de texte nécessiteraient
+Lors d'ajout aux possibilités de \JSB{}, il était évident
+que certaines fonctionnalités allaient demander des ajouts mineurs,
+alors que plusieurs autres nouvelles fonctions du réalisateur de texte nécessiteraient
 de déconstruire certaines sections de l'arbre syntaxique et possiblement
 de rajouter des éléments à cet arbre. Quatre options principales ont
 demandé à réarranger la structure de l'arbre syntaxique en cours d'exécution:
 la \textbf{phrase passive}, la \textbf{pronominalisation} d'un syntagme
 nominal, la \textbf{phrase impérative} et la \textbf{phrase interrogative}.
+
+
 Par exemple, pour la phrase impérative, il faut s'assurer de retirer
 le sujet, si l'utilisateur ne l'a pas fait lui-même. Les différentes
-étapes citées à la section 2.5 seront interrompues dans le fil d'exécution
+étapes citées à la \autoref{subsec:exec} seront interrompues dans le fil d'exécution
 après l'étape 3 pour réajuster la structure de l'arbre. Ensuite, on
 retournera à la racine de l'arbre pour recommencer la réalisation
 de départ. Cette étape est nécessaire, car, dans la phrase passive,
@@ -964,7 +967,7 @@ de verbe initialement activées.
 \begin{figure}
 \centering
 \caption{}
-\includegraphics[scale=0.7]{love-conjOptions}
+%\includegraphics[scale=0.7]{love-conjOptions}
 \label{figvOptEn}
 \end{figure}
 
@@ -1019,7 +1022,7 @@ Voici quelques exemples d'utilisation du nouveau syntagme et comment
 il s'inclut dans la structure syntaxique \JSB{}.
 
 \begin{example}
-\caption{Utilisation du syntagme propositonnel}
+\caption{Utilisation du syntagme propositonnel en français}
 \begin{tabular}{p{7cm} | p{7cm}}
 \hline 
 \textbf{Français} \\
@@ -1055,31 +1058,36 @@ il s'inclut dans la structure syntaxique \JSB{}.
           VP(V('partir').t('s')))))
 \end{alltt} \\
 \real{La fleur \textbf{dont tu m'avais parlé}.} & \real{Je veux \textbf{que tu partes}.} \\
-\hline 
+\end{tabular}
+\end{example}
+\begin{example}
+\caption{Utilisation du syntagme propositonnel en anglais}
+\begin{tabular}{p{7cm} | p{7cm}}
+\hline
 \textbf{Anglais} \\
 \hline
- \begin{alltt}
- 1.S(NP(D("the"),
-        N("house").n("p"),
-        SP(Adv("that"),
-           Pro("I").pe(1).n("p"),
-           VP(V("meet").t("ps")))))
- \end{alltt} &
- \begin{alltt}
- 2.S(NP(D("the"),
-        N("people").n("p"),
-        SP(Pro("who"),
-           VP(V("dance").t("p")))))
- \end{alltt} \\
+\begin{alltt}
+1.S(NP(D("the"),
+       N("house").n("p"),
+       SP(Adv("that"),
+          Pro("I").pe(1).n("p"),
+          VP(V("meet").t("ps")))))
+\end{alltt} &
+\begin{alltt}
+2.S(NP(D("the"),
+       N("people").n("p"),
+       SP(Pro("who"),
+          VP(V("dance").t("p")))))
+\end{alltt} \\
 \real{The house \textbf{that we met}.} & \real{The people \textbf{who dance}.} \\
- \hline
- \begin{alltt}
- 3.S(NP(D("the"),
-        N("car"),
-        SP(D("which"),
-           Pro("I").pe(2),
-           VP(V("buy").t("ps")))))
- \end{alltt} \\
+\hline
+\begin{alltt}
+3.S(NP(D("the"),
+       N("car"),
+       SP(D("which"),
+          Pro("I").pe(2),
+          VP(V("buy").t("ps")))))
+\end{alltt} \\
 \real{The car \textbf{which you bought}.}
 \end{tabular}
 \label{propEx}

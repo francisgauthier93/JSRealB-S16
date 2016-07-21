@@ -19,9 +19,9 @@ JSrealLoader({
 
         //Action passive
         assert.equal(S(NP(D("le"),N("soldat").n("p")),VP(V("trouver").t("pc"),NP(D("le"),N("fille")))),"Les soldats ont trouvé la fille.", "Phrase simple");
-        assert.equal(S(NP(D("le"),N("soldat").n("p")),VP(V("trouver").t("pc").vOpt({pas:true}),NP(D("le"),N("fille")))),"La fille a été trouvée par les soldats.", "Phrase passive avec sujet et cd");
-        assert.equal(S(NP(D("le"),N("soldat").n("p")),VP(V("trouver").t("pc").vOpt({pas:true}))),"A été trouvé par les soldats.", "Phrase passive avec sujet, sans cd");
-        assert.equal(S(VP(V("trouver").t("pc").vOpt({pas:true}),NP(D("le"),N("fille")))),"La fille a été trouvée.", "Phrase passive avec cd, sans sujet");
+        assert.equal(S(NP(D("le"),N("soldat").n("p")),VP(V("trouver").t("pc"),NP(D("le"),N("fille")))).typ({pas:true}),"La fille a été trouvée par les soldats.", "Phrase passive avec sujet et cd");
+        assert.equal(S(NP(D("le"),N("soldat").n("p")),VP(V("trouver").t("pc"))).typ({pas:true}),"A été trouvé par les soldats.", "Phrase passive avec sujet, sans cd");
+        assert.equal(S(VP(V("trouver").t("pc"),NP(D("le"),N("fille")))).typ({pas:true}),"La fille a été trouvée.", "Phrase passive avec cd, sans sujet");
 
     });
 
@@ -48,9 +48,9 @@ JSrealLoader({
 
             //Passive action
             assert.equal(S(NP(D("the"),N("soldier").n("p")),VP(V("find").t("ps"),NP(D("a"),N("girl")))),"The soldiers found a girl.", "Simple sentence");
-            assert.equal(S(NP(D("the"),N("soldier").n("p")),VP(V("find").t("ps").vOpt({pas:true}),NP(D("a"),N("girl")))),"A girl was found by the soldiers.", "Passive sentence, with subject and cd");
-            assert.equal(S(NP(D("the"),N("soldier").n("p")),VP(V("find").t("ps").vOpt({pas:true}))),"Was found by the soldiers.", "Passive sentence, no cd");
-            assert.equal(S(VP(V("find").t("ps").vOpt({pas:true}),NP(D("a"),N("girl")))), "A girl was found.", "Passive sentence, no subject");
+            assert.equal(S(NP(D("the"),N("soldier").n("p")),VP(V("find").t("ps"),NP(D("a"),N("girl")))).typ({pas:true}),"A girl was found by the soldiers.", "Passive sentence, with subject and cd");
+            assert.equal(S(NP(D("the"),N("soldier").n("p")),VP(V("find").t("ps"))).typ({pas:true}),"Was found by the soldiers.", "Passive sentence, no cd");
+            assert.equal(S(VP(V("find").t("ps"),NP(D("a"),N("girl")))).typ({pas:true}), "A girl was found.", "Passive sentence, no subject");
 
         
         });

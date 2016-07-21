@@ -1,7 +1,7 @@
 \contentsline {section}{\numberline {1}Introduction}{4}{section.1}
 \contentsline {section}{\numberline {2}Qu'est-ce que \textsf {JSrealB}{}?}{4}{section.2}
 \contentsline {subsection}{\numberline {2.1}Les objets \textsf {JSrealB}{}}{4}{subsection.2.1}
-\contentsline {paragraph}{Syntagmes}{5}{section*.2}
+\contentsline {paragraph}{Syntagmes}{4}{section*.2}
 \contentsline {paragraph}{\IeC {\'E}l\IeC {\'e}ments terminaux}{5}{section*.4}
 \contentsline {subsection}{\numberline {2.2}Les transformations}{6}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}La propagation}{7}{subsection.2.3}
@@ -19,40 +19,40 @@
 \contentsline {paragraph}{Commun aux deux langues}{12}{section*.11}
 \contentsline {paragraph}{Fran\IeC {\c c}ais}{12}{section*.12}
 \contentsline {paragraph}{Anglais}{13}{section*.13}
-\contentsline {subsubsection}{\numberline {3.2.2}Accord du participe pass\IeC {\'e}}{13}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2}Accord du participe pass\IeC {\'e}}{14}{subsubsection.3.2.2}
 \contentsline {paragraph}{Accord\IeC {\'e} seul}{14}{section*.14}
 \contentsline {paragraph}{Accord\IeC {\'e} avec \emph {\IeC {\^e}tre}}{14}{section*.15}
 \contentsline {paragraph}{Accord\IeC {\'e} avec \emph {avoir}}{14}{section*.16}
 \contentsline {subsubsection}{\numberline {3.2.3}Les verbes imp\IeC {\'e}ratifs}{15}{subsubsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.4}Les options}{15}{subsubsection.3.2.4}
-\contentsline {paragraph}{Commun aux deux langues}{15}{section*.17}
+\contentsline {subsubsection}{\numberline {3.2.4}Les options}{16}{subsubsection.3.2.4}
+\contentsline {paragraph}{Commun aux deux langues}{16}{section*.17}
 \contentsline {paragraph}{Fran\IeC {\c c}ais}{16}{section*.18}
 \contentsline {subparagraph}{N\IeC {\'e}gation}{16}{section*.19}
 \contentsline {subparagraph}{Passif}{16}{section*.20}
-\contentsline {subparagraph}{Progressif}{17}{section*.21}
-\contentsline {paragraph}{Anglais}{17}{section*.22}
-\contentsline {subparagraph}{N\IeC {\'e}gation}{17}{section*.23}
+\contentsline {subparagraph}{Progressif}{18}{section*.21}
+\contentsline {paragraph}{Anglais}{18}{section*.22}
+\contentsline {subparagraph}{N\IeC {\'e}gation}{18}{section*.23}
 \contentsline {subparagraph}{Passif, progressif et parfait}{18}{section*.24}
 \contentsline {subsection}{\numberline {3.3}Syntagme adjectival}{19}{subsection.3.3}
 \contentsline {subsubsection}{\numberline {3.3.1}Positionnement de l'adjectif en fran\IeC {\c c}ais}{19}{subsubsection.3.3.1}
-\contentsline {paragraph}{Anglais}{19}{section*.26}
-\contentsline {paragraph}{Fran\IeC {\c c}ais}{20}{section*.27}
-\contentsline {subsection}{\numberline {3.4}Syntagme propositionnel}{20}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}Utilisation}{20}{subsubsection.3.4.1}
+\contentsline {paragraph}{Anglais}{19}{section*.27}
+\contentsline {paragraph}{Fran\IeC {\c c}ais}{19}{section*.28}
+\contentsline {subsection}{\numberline {3.4}Syntagme propositionnel}{21}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Utilisation}{21}{subsubsection.3.4.1}
 \contentsline {subsubsection}{\numberline {3.4.2}Propagation}{21}{subsubsection.3.4.2}
 \contentsline {subsection}{\numberline {3.5}Syntagme adverbial, pr\IeC {\'e}positionnel et coordonn\IeC {\'e}}{22}{subsection.3.5}
 \contentsline {section}{\numberline {4}Les diff\IeC {\'e}rents types de phrases}{22}{section.4}
 \contentsline {subsection}{\numberline {4.1}Exclamative}{22}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Interrogative}{23}{subsection.4.2}
-\contentsline {paragraph}{Commun aux deux langues}{23}{section*.28}
-\contentsline {paragraph}{Fran\IeC {\c c}ais}{23}{section*.29}
-\contentsline {paragraph}{Anglais}{24}{section*.30}
-\contentsline {section}{\numberline {5}Autres modifications}{24}{section.5}
-\contentsline {subsection}{\numberline {5.1}Liaison par le trait d'union}{24}{subsection.5.1}
+\contentsline {subsection}{\numberline {4.2}Interrogative}{22}{subsection.4.2}
+\contentsline {paragraph}{Commun aux deux langues}{23}{section*.30}
+\contentsline {paragraph}{Fran\IeC {\c c}ais}{24}{section*.31}
+\contentsline {paragraph}{Anglais}{24}{section*.33}
+\contentsline {section}{\numberline {5}Autres modifications}{25}{section.5}
+\contentsline {subsection}{\numberline {5.1}Liaison par le trait d'union}{25}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Clone et d\IeC {\'e}r\IeC {\'e}f\IeC {\'e}rencement}{25}{subsection.5.2}
 \contentsline {subsection}{\numberline {5.3}\IeC {\'E}lision}{26}{subsection.5.3}
-\contentsline {paragraph}{Fran\IeC {\c c}ais}{26}{section*.31}
-\contentsline {paragraph}{Anglais}{26}{section*.32}
+\contentsline {paragraph}{Fran\IeC {\c c}ais}{26}{section*.36}
+\contentsline {paragraph}{Anglais}{26}{section*.37}
 \contentsline {section}{\numberline {6}R\IeC {\'e}sultats}{26}{section.6}
 \contentsline {section}{\numberline {7}Limitations et travail futur}{27}{section.7}
 \contentsline {section}{\numberline {8}Conclusion}{27}{section.8}

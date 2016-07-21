@@ -142,6 +142,7 @@
         "declarative": "dec",
         "exclamative": "exc",
         "interrogative": "int",
+        "context_wise": ["dec","exc","int"],
         "interro_prefix": {
             "default": "base",
             "yesOrNo": "yon",

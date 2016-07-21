@@ -260,6 +260,11 @@ return array(
     		'declarative' => 'dec',
     		'exclamative' => 'exc',
     		'interrogative' => 'int',
+    		'context_wise' => array(
+    				'dec',
+    				'exc',
+    				'int'
+    		),
     		'interro_prefix' => array(
     					'default' => 'base',
     					'yesOrNo' => 'yon',
@@ -270,7 +275,7 @@ return array(
     					'where' => 'whe',
     					'how' => 'how',
     					'howMuch' => 'muc',
-    			)
+    			),
     	),
     	'verb_option' => array(
     		'alias' => 'vOpt',
