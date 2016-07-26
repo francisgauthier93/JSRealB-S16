@@ -35,7 +35,7 @@ function addTable(verbe,temps){
                     var perfect = false;
                 } 
                 
-                var v=V(verbe).t(temps[t][1]).pe(p).n(nb).vOpt({neg:negation,pas:passive,prog:progressive,perf:perfect});
+                var v=V(verbe).t(temps[t][1]).pe(p).n(nb).typ({neg:negation,pas:passive,prog:progressive,perf:perfect});
 
                 if (temps[t][0].substr(0,10)=="Subjonctif")
                     $row.append("<td style='padding-right:10px'>"+S("que",pronom,v).a(" ")+"</td>");
@@ -76,7 +76,7 @@ function conjuguer(verbe){
                 //Ajout imperative
                 $("#tableau").append($("<tr/>").append("<th style='padding-top:10px'>Imperative</th>"));
                 var negation = $("#negationButton").is(':checked');
-                var v=V(verbe).t('b').vOpt({neg:negation});
+                var v=V(verbe).t('b').typ({neg:negation});
                 $("#tableau").append($("<tr/>").append("<td style='padding-right:10px'>"+S(v).a(" ")+"</td>"));
             }
         }

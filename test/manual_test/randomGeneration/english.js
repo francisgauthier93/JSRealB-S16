@@ -30,24 +30,11 @@ function expressionNP(det,nom,adj,adjForm,pluriel,pronom, genderNeuter = false){
 function expressionVerbe(){
     var verbe=$("#verbe").val();
     var temps=$("#temps").val();
-    var negation=$("#negation").is(':checked');
-    var passive =$("#passive").is(':checked');
-    var progressive =$("#progressive").is(':checked');
-    var perfect =$("#perfect").is(":checked");
+    
     if(verbe!=""){
-      var vopt = ".vOpt({";
-      vopt += (negation)?"neg:true,":"";
-      vopt +=(passive)?"pas:true,":"";
-      vopt +=(progressive)?"prog:true,":"";
-      vopt +=(perfect)?"perf:true,":"";
-      if(vopt == ".vOpt({"){
-        vopt = "";
-      }
-      else{
-        vopt = vopt.slice(0,-1);
-        vopt += "})"
-      }
-      var v="V(\""+verbe+"\").t('"+temps+"')"+vopt;
+      var perfect =$("#perfect").is(':checked');
+      var v="V(\""+verbe+"\").t('"+temps+"')"
+      v += (perfect==true)?".perf(true)":"";
       return v;
     }
     return null;
@@ -125,20 +112,39 @@ function realiser(){
             }
             expr+=")"; // fin de VP(
         }
-        expr+=")"
+        expr+="\n )"
         //Ajout type de phrase
-        var sType = {};
-        sType.int=$("#queForm").is(":checked");
-        if(sType.int == true){
+        var typP = ".typ({";
+
+        var negation=$("#negation").is(':checked');
+        var passive =$("#passive").is(':checked');
+        var progressive =$("#progressive").is(':checked');
+        var question =$("#queForm").is(":checked");
+        if(question == true){
           for(i in $("#intSpec")[0]){
             if($("#intSpec")[0][i] != null && $("#intSpec")[0][i].selected == true){
-              console.log($("#intSpec")[0][i].selected);
-              sType.int = "\""+$("#intSpec")[0][i].value+"\"";
+              //console.log($("#intSpec")[0][i].selected);
+              question = "\""+$("#intSpec")[0][i].value+"\"";
             }
           }
         }
-        sType.exc=$("#excForm").is(":checked");
-        if(sType.int != false || sType.exc == true) expr+=".typ({int:"+sType.int+",exc:"+sType.exc+"})";
+        var exclamation =$("#excForm").is(":checked");
+
+        typP += (negation)?"neg:true,":"";
+        typP +=(passive)?"pas:true,":"";
+        typP +=(progressive)?"prog:true,":"";
+        typP += (question!=false)?"int:"+question+",":"";
+        typP +=(exclamation)?"exc:true,":"";
+
+        if(typP == ".typ({"){
+          typP = "";
+        }
+        else{
+          typP = typP.slice(0,-1);
+          typP += "})"
+        }
+
+        expr += typP;
 
         $("#jsreal").val(expr);
         $("#realisation").val(eval(expr+".real()"));
@@ -156,7 +162,7 @@ function aleatoire() {
   motAleatoire($('#nom'),lesNoms);
   aleatoireBinaire($('#adjAnt'));
   motAleatoire($('#adj'),lesAdjectifs);
-  aleatoireBinaire($('#pluriel'));
+  //aleatoireBinaire($('#pluriel'));
   // aleatoireBinaire($('#est-pronom'));
   deroulantAleatoire($('#personne'));
   deroulantAleatoire($("#nombre"));
@@ -165,7 +171,7 @@ function aleatoire() {
   motAleatoire($('#nomOD'),lesNoms)
   aleatoireBinaire($('#adjAntOD'));
   motAleatoire($('#adjOD'),lesAdjectifs);
-  aleatoireBinaire($('#plurielOD'));
+  //aleatoireBinaire($('#plurielOD'));
   // aleatoireBinaire($('#est-pronomOD'));
 
   motAleatoire($('#verbe'),lesVerbes);
@@ -178,7 +184,7 @@ function aleatoire() {
   motAleatoire($('#nomOI'),lesNoms);
   aleatoireBinaire($('#adjAntOI'));
   motAleatoire($('#adjOI'),lesAdjectifs);
-  aleatoireBinaire($('#plurielOI'));
+  //aleatoireBinaire($('#plurielOI'));
   aleatoireBinaire($('#negation'));
   // aleatoireBinaire($('#est-pronomOI'));
 

@@ -23,22 +23,22 @@ function expressionNP(det,nom,adj,adjAnt,pluriel,pronom){
 function expressionVerbe(){
     var verbe=$("#verbe").val();
     var temps=$("#temps").val();
-    var negation=$("#negation").is(':checked');
-    var passive =$("#passive").is(':checked');
-    var progressive =$("#progressive").is(':checked');
+    // var negation=$("#negation").is(':checked');
+    // var passive =$("#passive").is(':checked');
+    // var progressive =$("#progressive").is(':checked');
     if(verbe!=""){
-      var vopt = ".vOpt({";
-      vopt += (negation)?"neg:true,":"";
-      vopt +=(passive)?"pas:true,":"";
-      vopt +=(progressive)?"prog:true,":"";
-      if(vopt == ".vOpt({"){
-        vopt = "";
-      }
-      else{
-        vopt = vopt.slice(0,-1);
-        vopt += "})"
-      }
-      var v="V(\""+verbe+"\").t('"+temps+"')"+vopt;
+    //   var vopt = ".typ({";
+    //   vopt += (negation)?"neg:true,":"";
+    //   vopt +=(passive)?"pas:true,":"";
+    //   vopt +=(progressive)?"prog:true,":"";
+    //   if(vopt == ".typ({"){
+    //     vopt = "";
+    //   }
+    //   else{
+    //     vopt = vopt.slice(0,-1);
+    //     vopt += "})"
+    //   }
+    var v="V(\""+verbe+"\").t('"+temps+"')"//+vopt;
       v += (temps == "ip")?".pe('"+$("#personne").val()+"')"+".n('"+$("#nombre").val()+"')":"";
       return v;
     }
@@ -55,17 +55,17 @@ var codesTemps={
         cond:{c:"présent",cp:"passé"},
         sub:{s:"présent",si:"imparfait",spa:"passé",spq:"plus-que-parfait"},
         imp:{ip:"présent"},
-    };
+};
 
 var codesPersonne={
   imp:{p:[1,2],s:[2]},
   aut:{p:[1,2,3],s:[1,2,3]}
-}
+};
 var tagPersonne={
   1:"1ière",
   2:"2ième",
   3:"3ième"
-}
+};
 
 function changeTemps(){
     // console.log("appel de changeTemps");
@@ -140,7 +140,7 @@ function realiser(){
             if(objetDirect!=null)expr+=",\n     "+objetDirect;
             if(prepOI!=""||objetIndirect!=null){
                 if(prepOI!="" && objetIndirect!=null){
-                   expr+=",\n        PP(P(\""+prepOI+"\"),"+objetIndirect+")"; 
+                   expr+=",\n     PP(P(\""+prepOI+"\"),"+objetIndirect+")"; 
                 } else {
                     $("#jsreal").val("objet indirect exige une préposition et un objet");
                     return;
@@ -149,20 +149,39 @@ function realiser(){
             expr+=")"; // fin de VP(
         }
 
-        expr+=")"
+        expr+="\n )"
         //Ajout type de phrase
-        var sType = {};
-        sType.int=$("#queForm").is(":checked");
-        if(sType.int == true){
+        var typP = ".typ({";
+
+        var negation=$("#negation").is(':checked');
+        var passive =$("#passive").is(':checked');
+        var progressive =$("#progressive").is(':checked');
+        var question =$("#queForm").is(":checked");
+        if(question == true){
           for(i in $("#intSpec")[0]){
             if($("#intSpec")[0][i] != null && $("#intSpec")[0][i].selected == true){
-              console.log($("#intSpec")[0][i].selected);
-              sType.int = "\""+$("#intSpec")[0][i].value+"\"";
+              //console.log($("#intSpec")[0][i].selected);
+              question = "\""+$("#intSpec")[0][i].value+"\"";
             }
           }
         }
-        sType.exc=$("#excForm").is(":checked");
-        if(sType.int != false || sType.exc == true) expr+=".typ({int:"+sType.int+",exc:"+sType.exc+"})";
+        var exclamation =$("#excForm").is(":checked");
+
+        typP += (negation)?"neg:true,":"";
+        typP +=(passive)?"pas:true,":"";
+        typP +=(progressive)?"prog:true,":"";
+        typP += (question!=false)?"int:"+question+",":"";
+        typP +=(exclamation)?"exc:true,":"";
+
+        if(typP == ".typ({"){
+          typP = "";
+        }
+        else{
+          typP = typP.slice(0,-1);
+          typP += "})"
+        }
+
+        expr += typP;
         
         $("#jsreal").val(expr);
         $("#realisation").val(eval(expr+".real()"));

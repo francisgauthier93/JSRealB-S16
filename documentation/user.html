@@ -750,55 +750,33 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="groupe">
-                    <td>Options de verbe</td>
-                    <td>.vOpt({})</td>
-                    <td colspan="4">Par défaut: {neg:false,pas:false,prog:false,perf:false}</td>                      
+                    <tr class="groupe">
+                    <td>Perfect tense</td>
+                    <td>.perf()</td>
+                    <td colspan="4">Par défaut:false</td>                      
                   </tr>
                   <tr>
-                    <td class="lalign">.vOpt({neg:true})</td>
-                    <td class="description">Négation</td>
-                    <td class="example-fr">V("aimer").vOpt({neg:true})</td>
+                    <td class="lalign">.perf(true)</td>
+                    <td class="description">Present perfect</td>
+                    <td class="example-fr"></td>
                     <td></td>
-                    <td class="example-en">V("love").vOpt({neg:true})</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td class="lalign">.vOpt({neg:'plus'})</td>
-                    <td class="description">Négation personnalisée</td>
-                    <td class="example-fr">V("aimer").vOpt({neg:'plus'})</td>
+                    <td class="example-en">V("love").perf(true)</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td class="lalign">.vOpt({pas:true})</td>
-                    <td class="description">Forme passive</td>
-                    <td class="example-fr">V("aimer").vOpt({pas:true})</td>
+                    <td class="lalign">.perf(true)</td>
+                    <td class="description">Past perfect</td>
+                    <td class="example-fr"></td>
                     <td></td>
-                    <td class="example-en">V("love").vOpt({pas:true})</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td class="lalign">.vOpt({prog:true})</td>
-                    <td class="description">Forme progressive</td>
-                    <td class="example-fr">V("aimer").vOpt({prog:true})</td>
-                    <td></td>
-                    <td class="example-en">V("love").vOpt({prog:true})</td>
+                    <td class="example-en">V("love").t("ps").perf(true)</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td class="lalign">.vOpt({perf:true})</td>
-                    <td class="description">Temps "perfect" (anglais seulement)</td>
-                    <td class="example-fr">V("aimer").vOpt({perf:true})</td>
+                    <td class="lalign">.perf(true)</td>
+                    <td class="description">Future perfect</td>
+                    <td class="example-fr"></td>
                     <td></td>
-                    <td class="example-en">V("love").vOpt({perf:true})</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td class="lalign">.vOpt({neg:true,pas:true,prog:true})</td>
-                    <td class="description">Options multiples</td>
-                    <td class="example-fr">V("aimer").vOpt({neg:true,pas:true,prog:true})</td>
-                    <td></td>
-                    <td class="example-en">V("love").vOpt({neg:true,pas:true,prog:true})</td>
+                    <td class="example-en">V("love").t("f").perf(true)</td>
                     <td></td>
                   </tr>
                   <tr class="groupe">
@@ -809,7 +787,7 @@
                   </tr>
                   <tr>
                     <td class="lalign"></td>
-                    <td>Par défaut</td>
+                    <td class="description">Par défaut</td>
                     <td class="example-fr">V("aller").t("pc")</td>
                     <td></td>
                     <td class="example-en"></td>
@@ -817,7 +795,7 @@
                   </tr>
                   <tr>
                     <td class="lalign"></td>
-                    <td>Par défaut</td>
+                    <td class="description">Par défaut</td>
                     <td class="example-fr">V("changer").t("pc")</td>
                     <td></td>
                     <td class="example-en"></td>
@@ -825,7 +803,7 @@
                   </tr>
                   <tr>
                     <td class="lalign">.aux("avoir")</td>
-                    <td>Auxiliaire avoir</td>
+                    <td class="description">Auxiliaire avoir</td>
                     <td class="example-fr">V("aller").t("pc").aux("avoir")</td>
                     <td></td>
                     <td class="example-en"></td>
@@ -833,7 +811,7 @@
                   </tr>
                   <tr>
                     <td class="lalign">.aux("être")</td>
-                    <td>Auxiliaire être</td>
+                    <td class="description">Auxiliaire être</td>
                     <td class="example-fr">V("changer").t("pc").aux("être")</td>
                     <td></td>
                     <td class="example-en"></td>
@@ -1015,14 +993,14 @@
                 <tbody>
                   <tr>
                     <td class="lalign" rowspan="2">.b()</td>
-                    <td>Ajouter un tiret avant</td>
+                    <td class="description">Ajouter un tiret avant</td>
                     <td class="example-fr">N("homme").b("-")</td>
                     <td></td>
                     <td class="example-en">N("man").b("-")</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Ajouter une étoile avant</td>
+                    <td class="description">Ajouter une étoile avant</td>
                     <td class="example-fr">N("homme").b("*")</td>
                     <td></td>
                     <td class="example-en">N("man").b("*")</td>
@@ -1030,28 +1008,28 @@
                   </tr>
                   <tr>
                     <td class="lalign" rowspan="4">.a()</td>
-                    <td>Ajouter un point après</td>
+                    <td class="description">Ajouter un point après</td>
                     <td class="example-fr">N("homme").a(".")</td>
                     <td></td>
                     <td class="example-en">N("man").a(".")</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Ajouter un point d'exclamation après</td>
+                    <td class="description">Ajouter un point d'exclamation après</td>
                     <td class="example-fr">N("homme").a("!")</td>
                     <td></td>
                     <td class="example-en">N("man").a("!")</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Ajouter un point virgule après un mot</td>
+                    <td class="description">Ajouter un point virgule après un mot</td>
                     <td class="example-fr">NP(D("un").a(";"), N("homme"))</td>
                     <td></td>
                     <td class="example-en">NP(D("a").a(";"), N("man"))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Ajouter des points de suspension après un mot</td>
+                    <td class="description">Ajouter des points de suspension après un mot</td>
                     <td class="example-fr">N("homme").a("...")</td>
                     <td></td>
                     <td class="example-en">N("man").a("...")</td>
@@ -1059,28 +1037,28 @@
                   </tr>
                   <tr>
                     <td class="lalign" rowspan="4">.en()</td>
-                    <td>Entourer de parenthèses</td>
+                    <td class="description">Entourer de parenthèses</td>
                     <td class="example-fr">N("homme").en("(")</td>
                     <td></td>
                     <td class="example-en">N("man")</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Entourer de parenthèses (alternative)</td>
+                    <td class="description">Entourer de parenthèses (alternative)</td>
                     <td class="example-fr">N("homme").en(")")</td>
                     <td></td>
                     <td class="example-en">N("man").en(")")</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Entourer de crochets</td>
+                    <td class="description">Entourer de crochets</td>
                     <td class="example-fr">N("homme").en("[")</td>
                     <td></td>
                     <td class="example-en">N("man").en("[")</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Entourer d'étoiles</td>
+                    <td class="description">Entourer d'étoiles</td>
                     <td class="example-fr">N("homme").en("*")</td>
                     <td></td>
                     <td class="example-en">N("man").en("*")</td>
@@ -1088,7 +1066,7 @@
                   </tr>
                   <tr>
                     <td class="lalign">.lier()</td>
-                    <td>Lier deux mots par un trait d'union</td>
+                    <td class="description">Lier deux mots par un trait d'union</td>
                     <td class="example-fr">VP(V("lier").t("ip").lier(),Pro("le"))</td>
                     <td></td>
                     <td class="example-en">NP(N("mother").lier(),P("in").lier(),N("law"))</td>
@@ -1114,7 +1092,7 @@
                 <tbody>
                   <tr>
                     <td class="lalign">.cap()</td>
-                    <td>Première lettre en majuscule</td>
+                    <td class="description">Première lettre en majuscule</td>
                     <td class="example-fr">N("joueur").cap()</td>
                     <td></td>
                     <td class="example-en">N("player").cap()</td>
@@ -1139,7 +1117,7 @@
                 <tbody>
                   <tr>
                     <td class="lalign">tag(<em>nom</em>,<em>{attributs}</em>)</td>
-                    <td>Balise HTML autour d'une construction</td>
+                    <td class="description">Balise HTML autour d'une construction</td>
                     <td class="example-fr">N("joueur").tag("i",{"style":"text-decoration:underline"})</td>
                     <td></td>
                     <td class="example-en">N("player").tag("b",{"title":"the best",style:"color:blue"})</td>
@@ -1169,7 +1147,7 @@
                 <tbody>
                   <tr>
                     <td></td>
-                    <td>Par défaut</td>
+                    <td class="description">Par défaut</td>
                     <td class="example-fr">NP(D("le"),A("petit"),N("jouet"))</td>
                     <td></td>
                     <td class="example-en">NP(D("the"),A("small"),N("toy"))</td>
@@ -1177,7 +1155,7 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>Par défaut</td>
+                    <td class="description">Par défaut</td>
                     <td class="example-fr">NP(D("le"),A("bleu"),N("jouet"))</td>
                     <td></td>
                     <td class="example-en">NP(D("the"),N("toy"),A("blue"))</td>
@@ -1185,7 +1163,7 @@
                   </tr>
                   <tr>
                     <td class="lalign">.pos("pre")</td>
-                    <td>Positionnement avant</td>
+                    <td class="description">Positionnement avant</td>
                     <td class="example-fr">NP(D("le"),A("bleu").pos("pre"),N("jouet"))</td>
                     <td></td>
                     <td class="example-en"></td>
@@ -1193,7 +1171,7 @@
                   </tr>
                   <tr>
                     <td class="lalign">.pos("post")</td>
-                    <td>Positionnement après</td>
+                    <td class="description">Positionnement après</td>
                     <td class="example-fr">NP(D("le"),A("petit").pos("post"),N("jouet"))</td>
                     <td></td>
                     <td class="example-en"></td>
@@ -1219,49 +1197,42 @@
                 <tbody>
                   <tr>
                     <td class="lalign" rowspan="7">.pro()</td>
-                    <td>Cas par défaut</td>
+                    <td class="description">Cas par défaut</td>
                     <td class="example-fr">S(NP(D("le"),N("joueur")),VP(V("jouer")))</td>
                     <td></td>
                     <td class="example-en">S(NP(D("the"),N("player")),VP(V("play")))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Pronominalisation du sujet</td>
+                    <td class="description">Pronominalisation du sujet</td>
                     <td class="example-fr">S(NP(D("le"),N("joueur")).pro(),VP(V("jouer")))</td>
                     <td></td>
                     <td class="example-en">S(NP(D("the"),N("player")).pro(),VP(V("play")))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Cas par défaut</td>
+                    <td class="description">Cas par défaut</td>
                     <td class="example-fr">S(Pro("je"),VP(V("aimer"),NP(D("le"),N("pomme"))))</td>
                     <td></td>
                     <td class="example-en">S(Pro("I"),VP(V("love"),NP(D("a"),N("apple"))))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Cas par défaut</td>
-                    <td class="example-fr">S(Pro("je"),VP(V("aimer"),NP(D("le"),N("pomme"))))</td>
-                    <td></td>
-                    <td class="example-en">S(Pro("I"),VP(V("love"),NP(D("a"),N("apple"))))</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>Pronominalisation de l'objet direct</td>
+                    <td class="description">Pronominalisation de l'objet direct</td>
                     <td class="example-fr">S(Pro("je"),VP(V("aimer"),NP(D("le"),N("pomme")).pro()))</td>
                     <td></td>
                     <td class="example-en">S(Pro("I"),VP(V("love"),NP(D("a"),N("apple").g("n")).pro()))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Cas par défaut</td>
+                    <td class="description">Cas par défaut</td>
                     <td class="example-fr">S(Pro("je"),VP(V("aller"),PP(P("à"),NP(D("le"),N("maison")))))</td>
                     <td></td>
                     <td class="example-en">S(Pro("I"),VP(V("go"),PP(P("to"),NP(D("a"),N("house").g("n")))))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Pronominalisation de l'objet indirect</td>
+                    <td class="description">Pronominalisation de l'objet indirect</td>
                     <td class="example-fr">S(Pro("je"),VP(V("aller"),PP(P("à"),NP(D("le"),N("maison")).pro())))</td>
                     <td></td>
                     <td class="example-en">S(Pro("I"),VP(V("go"),PP(P("to"),NP(D("a"),N("house").g("n")).pro())))</td>
@@ -1287,9 +1258,14 @@
                   </tr>
                 </thead>
                 <tbody>
+                <tr class="groupe">
+                    <td>Types de phrase</td>
+                    <td>.typ({})</td>
+                    <td colspan="4">Par défaut: {exc:false, int:false, neg:false, pas:false, prog:false}</td>                
+                  </tr>
                   <tr>
                     <td class="lalign">.typ({exc:true})</td>
-                    <td>Phrase exclamative</td>
+                    <td class="description">Phrase exclamative</td>
                     <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer"))).typ({exc:true})</td>
                     <td></td>
                     <td class="example-en">S(Pro("I"),VP(V("love"),Pro("me"))).typ({exc:true})</td>
@@ -1297,7 +1273,7 @@
                   </tr>
                   <tr>
                     <td class="lalign">.typ({int:true})</td>
-                    <td>Phrase interrogative</td>
+                    <td class="description">Phrase interrogative</td>
                     <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer"))).typ({int:true})</td>
                     <td></td>
                     <td class="example-en">S(Pro("I"),VP(V("love"),Pro("me"))).typ({int:true})</td>
@@ -1305,10 +1281,48 @@
                   </tr>
                   <tr>
                     <td class="lalign">.typ({int:true, exc:true})</td>
-                    <td>Phrase interrogative et exclamative</td>
+                    <td class="description">Phrase interrogative et exclamative</td>
                     <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer"))).typ({int:true, exc:true})</td>
                     <td></td>
                     <td class="example-en"></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="lalign">.typ({neg:true})</td>
+                    <td class="description">Négation</td>
+                    <td class="example-fr">V("aimer").typ({neg:true})</td>
+                    <td></td>
+                    <td class="example-en">V("love").typ({neg:true})</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="lalign">.typ({neg:'plus'})</td>
+                    <td class="description">Négation personnalisée</td>
+                    <td class="example-fr">V("aimer").typ({neg:'plus'})</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="lalign">.typ({pas:true})</td>
+                    <td class="description">Forme passive</td>
+                    <td class="example-fr">V("aimer").typ({pas:true})</td>
+                    <td></td>
+                    <td class="example-en">V("love").typ({pas:true})</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="lalign">.typ({prog:true})</td>
+                    <td class="description">Forme progressive</td>
+                    <td class="example-fr">V("aimer").typ({prog:true})</td>
+                    <td></td>
+                    <td class="example-en">V("love").typ({prog:true})</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="lalign">.typ({neg:true,pas:true,prog:true})</td>
+                    <td class="description">Options multiples</td>
+                    <td class="example-fr">V("aimer").typ({neg:true,pas:true,prog:true})</td>
+                    <td></td>
+                    <td class="example-en">V("love").typ({neg:true,pas:true,prog:true})</td>
                     <td></td>
                   </tr>
                 </tbody>
@@ -1407,21 +1421,21 @@
                   <tr>
                     <td class="lalign" rowspan="3">ISO 8601</td>
                     <td>YYYY-MM-DDTHH:mm(:ss)+TZ</td>
-                    <td>Heure selon le fuseau horaire choisi en entrée, heure locale en sortie</td>
+                    <td class="description">Heure selon le fuseau horaire choisi en entrée, heure locale en sortie</td>
                     <td class="example-fr example-en">DT("2015-01-02T00:00:00+00:00")</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>aaaa-mm-jj</td>
-                    <td>Si l'heure n'est pas indiquée, ce sera minuit GMT et l'heure locale en sortie</td>
+                    <td class="description">Si l'heure n'est pas indiquée, ce sera minuit GMT et l'heure locale en sortie</td>
                     <td class="example-fr example-en">DT("2015-01-02")</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>aaaa-mm-jjThh:ii:ss</td>
-                    <td><strong>Attention:</strong> Par défaut, le fuseau horaire en entrée est le fuseau horaire du système (sous firefox)
+                    <td class="description"><strong>Attention:</strong> Par défaut, le fuseau horaire en entrée est le fuseau horaire du système (sous firefox)
                         alors que pour Safari ce sera l'heure GMT par défaut, 
                         dans tous les cas, c'est l'heure locale en sortie</td>
                     <td class="example-fr example-en">DT("2015-01-02T00:00:00")</td>
@@ -1431,21 +1445,21 @@
                   <tr>
                     <td class="lalign" rowspan="3">RFC 2822</td>
                     <td>YYYY/MM/DD HH:mm(:ss) +ZZZZ</td>
-                    <td>Heure selon le fuseau horaire choisi en entrée, heure locale en sortie</td>
+                    <td class="description">Heure selon le fuseau horaire choisi en entrée, heure locale en sortie</td>
                     <td class="example-fr example-en">DT("2015/01/02 00:00:00 +0000")</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>YYYY/MM/DD</td>
-                    <td>Si l'heure n'est pas indiquée, ce sera minuit heure système (heure locale)</td>
+                    <td class="description">Si l'heure n'est pas indiquée, ce sera minuit heure système (heure locale)</td>
                     <td class="example-fr example-en">DT("2015/01/02")</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>YYYY/MM/DD HH:mm(:ss)</td>
-                    <td>Par défaut, le fuseau horaire en entrée est le fuseau horaire du système, 
+                    <td class="description">Par défaut, le fuseau horaire en entrée est le fuseau horaire du système, 
                         heure locale en sortie</td>
                     <td class="example-fr example-en">DT("2015/01/02 00:00:00")</td>
                     <td></td>
@@ -1469,88 +1483,88 @@
                 <tbody>
                   <tr>
                     <td class="lalign" rowspan="2">.dOpt({nat: true}) ou nat()</td>
-                    <td>Date en toutes lettres</td>
+                    <td class="description">Date en toutes lettres</td>
                     <td class="example-fr example-en">DT(new Date()).nat()</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Dates en chiffres</td>
+                    <td class="description">Dates en chiffres</td>
                     <td class="example-fr example-en">DT(new Date()).nat(false)</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign" rowspan="7">.dOpt({year: true, month: true, date: true, day: true, hour: true, minute: true, second: true})</td>
-                    <td>Affichage de la date sans l'heure</td>
+                    <td class="description">Affichage de la date sans l'heure</td>
                     <td class="example-fr example-en">DT().dOpt({hour: false, minute: false, second: false})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Affichage de l'heure</td>
+                    <td class="description">Affichage de l'heure</td>
                     <td class="example-fr example-en">DT().dOpt({year: false, month: false, date: false, day: false})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Affichage de l'heure et des minutes</td>
+                    <td class="description">Affichage de l'heure et des minutes</td>
                     <td class="example-fr example-en">DT().dOpt({year: false, month: false, date: false, day: false, second: false})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Affichage de l'heure et des minutes (en chiffres)</td>
+                    <td class="description">Affichage de l'heure et des minutes (en chiffres)</td>
                     <td class="example-fr example-en">DT().dOpt({year: false, month: false, date: false, day: false, second: false, nat:false})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Affichage de la date sans le jour de la semaine</td>
+                    <td class="description">Affichage de la date sans le jour de la semaine</td>
                     <td class="example-fr example-en">DT().dOpt({day: false, hour: false, minute: false, second: false})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Affichage du jour et du mois seulement</td>
+                    <td class="description">Affichage du jour et du mois seulement</td>
                     <td class="example-fr example-en">DT().dOpt({year: false, day: false, hour: false, minute: false, second: false})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Affichage de l'heure uniquement</td>
+                    <td class="description">Affichage de l'heure uniquement</td>
                     <td class="example-fr example-en">DT().dOpt({year: false, month: false, date: false, day: false, minute: false, second: false})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign" rowspan="2">.dOpt({det: true})</td>
-                    <td>Non affichage des déterminants de la date</td>
+                    <td class="description">Non affichage des déterminants de la date</td>
                     <td class="example-fr example-en">DT(new Date()).dOpt({det: false})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Affichage du déterminant</td>
+                    <td class="description">Affichage du déterminant</td>
                     <td class="example-fr example-en">DT(new Date()).dOpt({det: true})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign" rowspan="3">.dOpt({rtime: false})</td>
-                    <td>Affichage du temps relatif<br />(aujourd'hui)</td>
+                    <td class="description">Affichage du temps relatif<br />(aujourd'hui)</td>
                     <td class="example-fr example-en">DT(new Date()).dOpt({rtime: true})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Affichage du temps relatif<br />(il y a 4 jours)</td>
+                    <td class="description">Affichage du temps relatif<br />(il y a 4 jours)</td>
                     <td class="example-fr">var d = new Date(); d.setDate(d.getDate()-4); DT(d).dOpt({rtime: true});</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Affichage du temps relatif<br />(dans 10 jours)</td>
+                    <td class="description">Affichage du temps relatif<br />(dans 10 jours)</td>
                     <td class="example-fr">var d = new Date(); d.setDate(d.getDate()+10); DT(d).dOpt({rtime: true});</td>
                     <td></td>
                     <td></td>
@@ -1635,38 +1649,38 @@
                 <tbody>
                   <tr>
                     <td class="lalign" rowspan="4">.dOpt({mprecision: 2})</td>
-                    <td>Obtenir un nombre entier</td>
+                    <td class="description">Obtenir un nombre entier</td>
                     <td class="example-fr example-en">NO(1.847584).dOpt({mprecision: 0})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Au maximum 4 décimales</td>
+                    <td class="description">Au maximum 4 décimales</td>
                     <td class="example-fr example-en">NO(1.847544).dOpt({mprecision: 4})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Au maximum 2 décimales</td>
+                    <td class="description">Au maximum 2 décimales</td>
                     <td class="example-fr example-en">NO(1.8).dOpt({mprecision: 2})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Au maximum 2 décimales</td>
+                    <td class="description">Au maximum 2 décimales</td>
                     <td class="example-fr example-en">NO(1.844957)</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign" rowspan="3">.dOpt({raw: false})</td>
-                    <td>Affichage du nombre brut sans formattage</td>
+                    <td class="description">Affichage du nombre brut sans formattage</td>
                     <td class="example-fr example-en">NO("1 023,84").dOpt({raw: true})</td>
                     <td></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Formattage du nombre</td>
+                    <td class="description">Formattage du nombre</td>
                     <td class="example-fr example-en">NO(1.847544).dOpt({raw: false})</td>
                     <td></td>
                     <td></td>
@@ -1690,42 +1704,42 @@
                 <tbody>
                   <tr>
                     <td class="lalign" rowspan="6">Accord du nom</td>
-                    <td>avec un entier (zéro)</td>
+                    <td class="description">avec un entier (zéro)</td>
                     <td class="example-fr">NP(NO(0), N("avion"))</td>
                     <td></td>
                     <td class="example-en">NP(NO(0), N("bottle"))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>avec un entier (un)</td>
+                    <td class="description">avec un entier (un)</td>
                     <td class="example-fr">NP(NO(1), N("avion"))</td>
                     <td></td>
                     <td class="example-en">NP(NO(1), N("bottle"))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>avec un entier (deux)</td>
+                    <td class="description">avec un entier (deux)</td>
                     <td class="example-fr">NP(NO(2), N("avion"))</td>
                     <td></td>
                     <td class="example-en">NP(NO(2), N("bottle"))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>avec un réel (zéro)</td>
+                    <td class="description">avec un réel (zéro)</td>
                     <td class="example-fr">NP(NO(0.24), N("part"))</td>
                     <td></td>
                     <td class="example-en">NP(NO(0.24), N("litre"))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>avec un réel (un)</td>
+                    <td class="description">avec un réel (un)</td>
                     <td class="example-fr">NP(NO(1.94), N("part"))</td>
                     <td></td>
                     <td class="example-en">NP(NO(1.94), N("litre"))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>avec un réel (deux)</td>
+                    <td class="description">avec un réel (deux)</td>
                     <td class="example-fr">NP(NO(2.01), N("part"))</td>
                     <td></td>
                     <td class="example-en">NP(NO(2.01), N("litre"))</td>
@@ -1733,21 +1747,21 @@
                   </tr>
                   <tr>
                     <td class="lalign" rowspan="3">Accord du nom et de l'adjectif</td>
-                    <td>avec un entier (zéro)</td>
+                    <td class="description">avec un entier (zéro)</td>
                     <td class="example-fr">NP(NO(0), N("avion"), AP(A("rouge")))</td>
                     <td></td>
                     <td class="example-en">NP(NO(0),A("red"),N("bottle"))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>avec un entier (deux)</td>
+                    <td class="description">avec un entier (deux)</td>
                     <td class="example-fr">NP(NO(2), N("avion"), AP(A("rouge")))</td>
                     <td></td>
                     <td class="example-en">NP(NO(2),A("red"),N("bottle"))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>avec un réel (1)</td>
+                    <td class="description">avec un réel (1)</td>
                     <td class="example-fr">NP(NO(1.93), N("avion"), AP(A("rouge")))</td>
                     <td></td>
                     <td class="example-en">NP(NO(1.93),A("red"),N("bottle"))</td>
@@ -1755,14 +1769,14 @@
                   </tr>
                   <tr>
                     <td class="lalign" rowspan="3">Utilisation des options d'affichage</td>
-                    <td>précision de 3 décimales</td>
+                    <td class="description">précision de 3 décimales</td>
                     <td class="example-fr">NP(NO(2.847544).dOpt({mprecision: 3}), N("part"))</td>
                     <td></td>
                     <td class="example-en">NP(NO(2.847544).dOpt({mprecision: 3}), N("litre"))</td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td>précision de 0 décimales (arrondi)</td>
+                    <td class="description">précision de 0 décimales (arrondi)</td>
                     <td class="example-fr">NP(NO(1.847544).dOpt({mprecision: 0}), AP(A("vieux")), N("personne"))</td>
                     <td></td>
                     <td class="example-en">NP(NO(1.847544).dOpt({mprecision: 0}), AP(A("old")), N("person"))</td>

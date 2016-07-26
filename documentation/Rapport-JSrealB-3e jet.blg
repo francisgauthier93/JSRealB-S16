@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Rapport-JSrealB-3e jet.aux
+The style file: plain.bst
+Database file #1: rapBib.bib
+Warning--there's a number but no series in nicRapport
+Warning--empty journal in paulRapport
+Warning--empty publisher in simpleNLGVaudry
+You've used 5 entries,
+            2118 wiz_defined-function locations,
+            538 strings with 4949 characters,
+and the built_in function-call counts, 1612 in all, are:
+= -- 162
+> -- 47
+< -- 4
++ -- 19
+- -- 14
+* -- 87
+:= -- 257
+add.period$ -- 19
+call.type$ -- 5
+change.case$ -- 20
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 81
+empty$ -- 143
+format.name$ -- 14
+if$ -- 364
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 8
+newline$ -- 30
+num.names$ -- 10
+pop$ -- 33
+preamble$ -- 1
+purify$ -- 17
+quote$ -- 0
+skip$ -- 56
+stack$ -- 0
+substring$ -- 81
+swap$ -- 24
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 14
+warning$ -- 3
+while$ -- 14
+width$ -- 6
+write$ -- 62
+(There were 3 warnings)

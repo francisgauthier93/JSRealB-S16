@@ -480,7 +480,6 @@ JSrealE.prototype.typ = function(optionList){
         var optionKeyList = Object.keys(optionList);
         for(var i = 0, length = optionKeyList.length; i < length; i++)
         {
-            console.log(optionKeyList[i]);
             if(JSrealB.Config.get("feature.sentence_type.context_wise").indexOf(optionKeyList[i])>=0){
                 this.setCtx(JSrealB.Config.get("feature.sentence_type.alias") 
                     + "." + optionKeyList[i], optionList[optionKeyList[i]]);
