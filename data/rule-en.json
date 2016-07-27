@@ -2986,6 +2986,7 @@
         },
         "number": ["zero"]
     },
+    "union": "or",
     "compound": {
         "alias": "aux",
         "continuous": {

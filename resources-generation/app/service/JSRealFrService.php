@@ -107,8 +107,7 @@ class JSRealFrService extends JSRealService
         $aRuleTable['usePronoun'] = $this->getPronounRule();
         $aRuleTable['date'] = $this->getDateRule();
         $aRuleTable['number'] = $this->getNumberRule();
-        //Ajout auxiliaire et participle pour temps composés
-        
+        $aRuleTable['union'] = $this->getUnionConjunction();
         
         $aExportedFile = array_merge(
                 $this->exportLexicon(array_merge($aPunctuation, $aLexicon)),
@@ -539,5 +538,9 @@ class JSRealFrService extends JSRealService
     					'étées'
     			),
     	);
+    }
+    private function getUnionConjunction()
+    {
+    	return "ou";
     }
 }

@@ -90,7 +90,7 @@ class JSRealEnService extends JSRealService
         $aRuleTable['usePronoun'] = $this->getPronounRule();
         $aRuleTable['date'] = $this->getDateRule();
         $aRuleTable['number'] = $this->getNumberRule();
-        //Ajout auxiliaire et participle pour temps composés
+        $aRuleTable['union'] = $this->getUnionConjunction();
         $aRuleTable['compound'] = $this->getAuxRule();
 
         /// Export to files
@@ -332,5 +332,9 @@ class JSRealEnService extends JSRealService
     			'Pro' => 'me'
     			
     	);
+    }
+    private function getUnionConjunction()
+    {
+    	return "or";
     }
 }

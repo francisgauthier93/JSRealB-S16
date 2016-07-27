@@ -4278,5 +4278,6 @@
             "decimal": ","
         },
         "number": ["zéro"]
-    }
+    },
+    "union": "ou"
 }

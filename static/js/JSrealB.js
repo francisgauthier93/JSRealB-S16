@@ -1132,11 +1132,11 @@ JSrealE.prototype.realizeConjugation = function() {
     var number = this.getProp(JSrealB.Config.get("feature.number.alias"));
 
     var gender = this.getProp(JSrealB.Config.get("feature.gender.alias"));
-    var verbOptions = { neg: this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".neg"),
-                        pas: this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".pas") || 
-                            this.getInitProp(JSrealB.Config.get("feature.verb_option.alias")+".pas"),
-                        prog:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".prog"),
-                        perf:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".perf"),
+    var verbOptions = { neg: this.getProp(JSrealB.Config.get("feature.verb_option.alias")+"."+JSrealB.Config.get("feature.verb_option.negation")),
+                        pas: this.getProp(JSrealB.Config.get("feature.verb_option.alias")+"."+JSrealB.Config.get("feature.verb_option.passive")) || 
+                            this.getInitProp(JSrealB.Config.get("feature.verb_option.alias")+"."+JSrealB.Config.get("feature.verb_option.passive")),
+                        prog:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+"."+JSrealB.Config.get("feature.verb_option.progressive")),
+                        perf:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+"."+JSrealB.Config.get("feature.verb_option.perfect")),
                         hasSubject:this.getProp(JSrealB.Config.get("feature.verb_option.alias")+".hasSubject")};
     var aux = this.getProp(JSrealB.Config.get("rule.compound.alias"));
     try{
@@ -1785,16 +1785,25 @@ S_EN.prototype.interrogationForm = function(int) {
         var vP = getGroup(this,JSrealB.Config.get("feature.category.phrase.verb"));
         var verbP = getGroup(this.elements[vP],JSrealB.Config.get("feature.category.word.verb"));
         var verb = this.elements[vP].elements[verbP];
-        var vUnit = verb.unit;        
+        var vUnit = verb.unit;
+        var aux= new V(JSrealB.Config.get("rule.sentence_type.int.prefix.base"))
+                            .t(verb.getProp(JSrealB.Config.get("feature.tense.alias")))
+                            .pe(verb.getProp(JSrealB.Config.get("feature.person.alias")))
+                            .n(verb.getProp(JSrealB.Config.get("feature.number.alias")))
+                            .typ({neg:false});//empêche l'auxiliaire d'être négatif        
+        //auxiliaire do/will
         if(verb.getProp(JSrealB.Config.get("feature.tense.alias")) == JSrealB.Config.get("feature.tense.indicative.simple_future")){
-            verb.unit = JSrealB.Config.get("rule.sentence_type.int.future");
+            aux.unit = JSrealB.Config.get("rule.sentence_type.int.future");
+            aux.prop[JSrealB.Config.get("feature.tense.alias")]=JSrealB.Config.get("feature.tense.base");
             verb.prop[JSrealB.Config.get("feature.tense.alias")]=JSrealB.Config.get("feature.tense.base");
-        }else{
-            verb.unit = JSrealB.Config.get("rule.sentence_type.int.prefix.base");            
+            //verb.unit = JSrealB.Config.get("rule.sentence_type.int.future"); //will
+            //verb.prop[JSrealB.Config.get("feature.tense.alias")]=JSrealB.Config.get("feature.tense.base");
         }
-        this.elements[vP].deleteElement(verbP);
-        this.elements[vP].addNewElement(verbP,new V(vUnit).t("b"));
-        this.addNewElement(0,verb);
+        console.log(aux);
+        if(verb.getProp(JSrealB.Config.get("feature.verb_option.alias")+"."+JSrealB.Config.get("feature.verb_option.perfect"))!=true){
+            verb.prop[JSrealB.Config.get("feature.tense.alias")]=JSrealB.Config.get("feature.tense.base");
+        }
+        this.addNewElement(0,aux);
     }
     //Add prefix
     switch(int){
@@ -1883,7 +1892,14 @@ CP.prototype.elementToPhrasePropagation = function(element) {
     }
     else
     {
+        var conjunction = this.getCtx(JSrealB.Config.get("feature.category.word.conjunction"));
+        if(conjunction == JSrealB.Config.get("rule.union")){
+            element.bottomUpFeaturePropagation(this, [JSrealB.Config.get("feature.number.alias")], [JSrealB.Config.get("feature.number.singular")]);
+        }
+        else{
         element.bottomUpFeaturePropagation(this, [JSrealB.Config.get("feature.number.alias")], [JSrealB.Config.get("feature.number.plural")]);
+
+        }
     }
     
     // Gender
@@ -2793,7 +2809,7 @@ JSrealB.Module.Conjugation = (function(){
         if(conjugationTable[(JSrealB.Config.get('feature.tense.alias'))][tense] !== undefined)
         {
             if(verbOptions.neg == true){
-                var verb = conjugate("do",tense,person);
+                var verb = (tense==JSrealB.Config.get("feature.tense.base"))?"":conjugate("do",tense,person);
                 verb += " "+JSrealB.Config.get("rule.verb_option.neg.prep1")+" "+conjugate(unit, "b", person);
                 return verb;
             }
@@ -4000,7 +4016,7 @@ JSrealB.Logger = (function() {
     };
     
     var warning = function(message) {
-        console.warn(message);
+        if(message!="rule.compound.aux is not defined!")console.warn(message);
 
         if(JSrealB.Config.get("printTrace"))
         {

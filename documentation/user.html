@@ -113,13 +113,13 @@
                     ruleUrl: URL.rule.fr,
                     featureUrl: URL.feature
                 }, function() {
-                    <!-- alert( -->
+                    alert(
                         S(
                             NP(N("madame").cap().a(","), N("monsieur").cap().a(",")),
                             NP(Pro("je").pe(1)),
                             VP(V("vouloir").t("c"), NP(Pro("me").n("p").pe(2)), SP(VP(V("présenter")), NP(D("le"), N("programme"), "JSrealB")))
                         ).a("!")
-                    <!-- ); -->
+                    );
                 }, function(errorMessage) {
                     alert(errorMessage);
                 });
@@ -1290,39 +1290,57 @@
                   <tr>
                     <td class="lalign">.typ({neg:true})</td>
                     <td class="description">Négation</td>
-                    <td class="example-fr">V("aimer").typ({neg:true})</td>
+                    <td class="example-fr">S(NP(D("le"),N("chat")),
+                        VP(V("aimer"),NP(D("le"),N("souris")))
+                        ).typ({neg:true})</td>
                     <td></td>
-                    <td class="example-en">V("love").typ({neg:true})</td>
+                    <td class="example-en">S(NP(D("the"),N("cat")),
+                        VP(V("love"),NP(D("the"),N("mouse")))
+                        ).typ({neg:true})</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">.typ({neg:'plus'})</td>
                     <td class="description">Négation personnalisée</td>
-                    <td class="example-fr">V("aimer").typ({neg:'plus'})</td>
+                    <td class="example-fr">S(NP(D("le"),N("chat")),
+                        VP(V("aimer"),NP(D("le"),N("souris")))
+                        ).typ({neg:'plus'})</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">.typ({pas:true})</td>
                     <td class="description">Forme passive</td>
-                    <td class="example-fr">V("aimer").typ({pas:true})</td>
+                    <td class="example-fr">S(NP(D("le"),N("chat")),
+                        VP(V("aimer"),NP(D("le"),N("souris")))
+                        ).typ({pas:true})</td>
                     <td></td>
-                    <td class="example-en">V("love").typ({pas:true})</td>
+                    <td class="example-en">S(NP(D("the"),N("cat")),
+                        VP(V("love"),NP(D("the"),N("mouse")))
+                        ).typ({pas:true})</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">.typ({prog:true})</td>
                     <td class="description">Forme progressive</td>
-                    <td class="example-fr">V("aimer").typ({prog:true})</td>
+                    <td class="example-fr">S(NP(D("le"),N("chat")),
+                        VP(V("aimer"),NP(D("le"),N("souris")))
+                        ).typ({prog:true})</td>
                     <td></td>
-                    <td class="example-en">V("love").typ({prog:true})</td>
+                    <td class="example-en">S(NP(D("the"),N("cat")),
+                        VP(V("love"),NP(D("the"),N("mouse")))
+                        ).typ({prog:true})</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="lalign">.typ({neg:true,pas:true,prog:true})</td>
                     <td class="description">Options multiples</td>
-                    <td class="example-fr">V("aimer").typ({neg:true,pas:true,prog:true})</td>
+                    <td class="example-fr">S(NP(D("le"),N("chat")),
+                        VP(V("aimer"),NP(D("le"),N("souris")))
+                        ).typ({neg:true,pas:true,prog:true})</td>
                     <td></td>
-                    <td class="example-en">V("love").typ({neg:true,pas:true,prog:true})</td>
+                    <td class="example-en">S(NP(D("the"),N("cat")),
+                        VP(V("love"),NP(D("the"),N("mouse")))
+                        ).typ({neg:true,pas:true,prog:true})</td>
                     <td></td>
                   </tr>
                 </tbody>
