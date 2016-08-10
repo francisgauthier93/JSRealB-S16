@@ -209,6 +209,58 @@ class JSRealService extends BaseService
     		}
     	}
     }
+    protected function addHProperties(array &$aList,array &$aRefLexicon)
+    {
+    	foreach ($aRefLexicon as $sUnit => $aInfoList)
+    	{	
+    		//sUnit => "abbey" par exemple
+    		echo "aInfolist:" . "</br>";
+    		foreach ($aInfoList as $key /*=>$value*/){
+	    		foreach ($key as $dkey =>$value){
+	    			echo $dkey . "->" . $value . "</br>";
+	    		}
+	    		
+       		}
+       		echo "end</br>";
+    		if(isset($aList[$sUnit])){
+    			$sCategory = $aList[$sUnit]["c"];
+    			//echo $sCategory;
+    		}
+    		if(isset($sCategory) && isset($aRefLexicon[$sUnit][$sCategory])){
+	    		//$sCategory = $aList[$sUnit]["c"];
+// 	    		foreach ($aList[$sUnit] as $key => $value){
+// 	    			echo $key . "</br>";
+// 	    		}
+// 	    		$sCategory = "c";
+				//echo "infolist: $aInfoList ". "</br>";
+ 	    		$uWordInfo = $aList[$sUnit];
+ 	    		//$blabla = $aRefLexicon[$sUnit][$sCategory];
+  	    		if(isset($aRefLexicon[$sUnit][$sCategory])){
+  	    			//echo $aRefLexicon[$sUnit][$sCategory];
+  	    			foreach ($aRefLexicon[$sUnit][$sCategory] as $key /*=>$value*/){
+  	    				echo $key /*. "->" . $value */. "</br>";
+  	    				echo "ohlala</br>";
+  	    			}
+  	    			echo "ohlhla</br>";
+  	    		}
+  	    		echo "uWordInfo :</br>";
+				foreach ($uWordInfo as $key =>$value){
+					echo $key . "->" . $value . "</br>";
+				}
+				echo "end</br>";
+				//echo $uWordInfo['N']
+ 	    		//echo $uWordInfo;
+//  	    		echo '<script>';
+//  	    		echo 'console.log(';
+//  	    		echo '</script>';
+//  	    		foreach ($blabla as $key){
+//  	    			echo $key . "</br>";
+//  	    		}
+	    		//$aRefLexicon[$sUnit][$sCategory]['an'] = $uWordInfo['an'];
+    		}
+    	}
+    }
+        
     
     protected function addTableIdToLexicon(array &$aSpecificLexiconList, array &$aLexicon)
     {

@@ -44,6 +44,8 @@ JSrealLoader({
         assert.equal( D("notre").n("p").pe(3), "leurs", "8. D" );
         assert.equal( D("notre").n("p").pe(2), "vos", "9. D" );
         assert.equal( D("notre").pe(3), "leur", "10. D" );
+
+        assert.equal( S(Pro("ce"), VP(V("être").t("p"),Adv("bien"),A("difficile"))),"C'est bien difficile.", "Accord pronom-adjectif")
         
 //        assert.equal( , "", "" );
     });

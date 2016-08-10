@@ -116,13 +116,16 @@ JSrealE.prototype.initUnitProperty = function() {
 
         //adjective position
         if(this.category === JSrealB.Config.get("feature.category.word.adjective")){
-            var adjLex = JSrealB.Config.get("lexicon")[this.unit][JSrealB.Config.get("feature.category.word.adjective")];
-            if(adjLex[JSrealB.Config.get("feature.antepose.alias")] != undefined &&
-                 adjLex[JSrealB.Config.get("feature.antepose.alias")] == JSrealB.Config.get("feature.antepose.before")){
-                this.defaultProp[JSrealB.Config.get("feature.antepose.alias")] = JSrealB.Config.get("feature.antepose.before");
-            }
-            else{
-                this.defaultProp[JSrealB.Config.get("feature.antepose.alias")] = JSrealB.Config.get("feature.antepose.default");
+            var adjLex = JSrealB.Config.get("lexicon")[this.unit];
+            if(adjLex != undefined){
+                adjLex= adjLex[JSrealB.Config.get("feature.category.word.adjective")];
+                if(adjLex[JSrealB.Config.get("feature.antepose.alias")] != undefined &&
+                     adjLex[JSrealB.Config.get("feature.antepose.alias")] == JSrealB.Config.get("feature.antepose.before")){
+                    this.defaultProp[JSrealB.Config.get("feature.antepose.alias")] = JSrealB.Config.get("feature.antepose.before");
+                }
+                else{
+                    this.defaultProp[JSrealB.Config.get("feature.antepose.alias")] = JSrealB.Config.get("feature.antepose.default");
+                }
             }
         }
         
@@ -1010,6 +1013,7 @@ JSrealE.prototype.printElements = function() {
         } 
         var exclama = this.getCtx(JSrealB.Config.get("feature.sentence_type.alias"))[JSrealB.Config.get("feature.sentence_type.exclamative")];
         if(exclama == true) lastPunctuation += JSrealB.Config.get("rule.sentence_type.exc.punctuation");
+        if(JSrealB.Config.get("language")=="en" && lastPunctuation=="?!")lastPunctuation="?"; //No double punctuation un English
         if(lastPunctuation == undefined){
             lastPunctuation += JSrealB.Config.get("rule.sentence_type.dec.punctuation");
         }
@@ -1448,6 +1452,7 @@ function Tokn(mot){ // normalement on aurait besoin du lemme et de la catégorie
     this.voyelleOuHmuet=false;
     if(voyelles.indexOf(c)>=0){
         this.voyelleOuHmuet=true;
+        this.hAn=true;
         return;
     }
     //Ajout d'un attribut pour avoir accès au lexique du mot
@@ -1463,6 +1468,10 @@ function Tokn(mot){ // normalement on aurait besoin du lemme et de la catégorie
             // ici on cherche dans la première en supposant que le mot est un lemme 
 
             for (cat in this.lex){
+                if(this.lex[cat].hAn){ // herb, hour ,honor... en anglais
+                    this.hAn=true;
+                    break;
+                }
                 if (!this.lex[cat].h){
                     this.voyelleOuHmuet=true;
                     break;
@@ -1493,8 +1502,9 @@ function aToAn(prevTokens, tokens){
     }
     var lastTokenId=((prevTokens[prevTokens.length-1]).mot.charAt(0) !== "<") ? prevTokens.length-1 : prevTokens.length-2;
     var lastToken=prevTokens[lastTokenId];
-    if (lastToken.mot == "a" && tokens[0].voyelleOuHmuet){
+    if (lastToken.mot == "a" && tokens[0].hAn){
         lastToken.mot = "an";
+        if(this)
         prevTokens.push(tokens.shift());
     }
     else{
@@ -1902,7 +1912,7 @@ CP.prototype.elementToPhrasePropagation = function(element) {
     {
         var conjunction = this.getCtx(JSrealB.Config.get("feature.category.word.conjunction"));
         if(conjunction == JSrealB.Config.get("rule.union")){
-            element.bottomUpFeaturePropagation(this, [JSrealB.Config.get("feature.number.alias")], [JSrealB.Config.get("feature.number.singular")]);
+            element.bottomUpFeaturePropagation(this, [JSrealB.Config.get("feature.number.alias")], [this.getProp(JSrealB.Config.get("feature.number.alias")) || JSrealB.Config.get("feature.number.singular")]);
         }
         else{
         element.bottomUpFeaturePropagation(this, [JSrealB.Config.get("feature.number.alias")], [JSrealB.Config.get("feature.number.plural")]);
@@ -2549,9 +2559,9 @@ JSrealB.Module.Punctuation = (function() {
 JSrealB.Module.Declension = (function() {
     var applyEnding = function(unit, feature, declensionTable) {
         
-        if(feature.g == 'x'){
+        if(feature.g == JSrealB.Config.get("feature.gender.either")){ 
             //quelques mots français du lexique peuvent s'accorder dans les deux genres.
-            feature.g = 'm';
+            feature.g = JSrealB.Config.get("feature.gender.masculine");
         }
 
         var declension = getValueByFeature(declensionTable.declension, feature);
@@ -2588,6 +2598,11 @@ JSrealB.Module.Declension = (function() {
                 feature[JSrealB.Config.get("feature.gender.alias")] = JSrealB.Config.get("feature.gender.masculine");
             }
         }
+        if(JSrealB.Config.get("language")=="fr" && feature.g == JSrealB.Config.get("feature.gender.neuter")
+                && category!= JSrealB.Config.get("feature.category.word.pronoun")) //Cas spécial avec les pronoms neutres en français
+            {
+                feature[JSrealB.Config.get("feature.gender.alias")] = JSrealB.Config.get("feature.gender.masculine");
+            }
         
         if(declensionTable.length > 0)
         {

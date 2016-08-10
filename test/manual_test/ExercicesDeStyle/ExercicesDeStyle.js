@@ -49,7 +49,7 @@ function composer(t,g,n){
       CP(
        C("puis"),
         VP(V("aller").tag("span", {"class": "nombre temps"}),
-           VP("se",V("asseoir"),
+           VP("se",V("asseoir").t("b"),
               PP(P("à"),
                  NP(D("un"),N("place"),A("libre")))))
       )
@@ -71,7 +71,7 @@ function composer(t,g,n){
        VP(V("être").t(t).tag("span", {"class": "temps"}),
        Adv("alors"),
        "en train de",
-       VP(V("discuter"),
+       VP(V("discuter").t("b"),
           P("avec"),NP(D("un"),ami).tag("span", {"class": "genre nombre"}))).n(n)
   );
 
@@ -83,7 +83,7 @@ function composer(t,g,n){
     VP(V("conseiller").n(n).t(t).tag("span", {"class": "nombre temps"}),
        PP(P("de"),
           VP(V("faire"),
-             VP(V("remonter"),
+             VP(V("remonter").t("b"),
                 NP(D("le"),N("bouton"),A("supérieur"),
                    PP(P("de"),D("mon"),N("pardessus").n(n))))))
        )

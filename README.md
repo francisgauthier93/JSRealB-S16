@@ -26,7 +26,7 @@ live demos.
 [An IDE](https://rawgit.com/rali-udem/JSrealB/master/IDE.html) is available to test and develop with JSrealB.
 
 ## Credits
-
+JSrealB was updated, developed and brought to its current version by [Francis Gauthier](http://www-etud.iro.umontreal.ca/~gauthif) as part of his summer internship at RALI in 2016. 
 JSrealB was developed in 2015 by [Paul Molins](http://paul-molins.fr/) as part of an internship from INSA Lyon spent at RALI, University of Montreal. He built on the
 JSreal realizer created by [Nicolas Daoust](mailto:n@daou.st).
 

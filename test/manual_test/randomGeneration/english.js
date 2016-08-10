@@ -5,7 +5,8 @@
 
 var lexique;
 
-function expressionNP(det,nom,adj,adjForm,pluriel,pronom, genderNeuter = false){
+function expressionNP(det,nom,adj,adjForm,pluriel,pronom, genderNeuter){
+    genderNeuter = genderNeuter || false;
 
     if(nom!=""){
         var np="NP(";

@@ -33,6 +33,12 @@ class JSRealEnService extends JSRealService
 
         /// Upgrade Lexicon
         $this->addTableIdToVerb($aVerbList, $aRefLexicon); // Verb Only
+        // Add h properties (a->an)
+        $this->addHProperties($aNounList,$aRefLexicon);
+        $this->addHProperties($aAdjectiveList,$aRefLexicon);
+        $this->addHProperties($aPronounList,$aRefLexicon);
+        $this->addHProperties($aDeterminerList,$aRefLexicon);
+        
         $aDmLexiconList = array(
                     Config::get('jsreal.feature.category.word.noun') => $aNounList,
                     Config::get('jsreal.feature.category.word.adjective') => $aAdjectiveList,

@@ -23,8 +23,8 @@
                 // console.log(date);
                 return S(
                         CP(C(voc.alt),
-                                NP(D(voc.det), AP(A(voc.magn)), N(voc.averse)),
-                                NP(D(voc.det), N(voc.orage))).n(nombre),
+                            NP(D(voc.det), AP(A(voc.magn)), N(voc.averse)),
+                            NP(D(voc.det), N(voc.orage))).n(nombre),
                         VP(V(voc.arret).t(temps),
                                 date)
                         );
@@ -32,11 +32,13 @@
             var frVoc = {alt: "ou", det: "un", magn: "fort", averse: "averse", orage: "orage", arret: "cesser"};
             var enVoc = {alt: "or", det: "a", magn: "heavy", averse: "shower", orage: "storm", arret: "end"};
             var nombres = ["s", "p"];
-            var temps = ["p", "pr", "c", "s", "i", "f"];
+            var tempsFr = ["p", "pr", "c", "s", "i", "f"];
+            var tempsEn = ["p", "pr", "ps", "f"]
 
             function generate(language) {
                 return function(){
                     voc = language == "fr" ? frVoc : enVoc;
+                    temps = (language == "fr")? tempsFr : tempsEn;
                     for (var i = 0; i < nombres.length; i++) {
                         for (var j = 0; j < temps.length; j++) {
                             var $tr = $("<tr/>");

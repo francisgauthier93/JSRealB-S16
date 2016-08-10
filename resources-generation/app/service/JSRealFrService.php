@@ -43,7 +43,7 @@ class JSRealFrService extends JSRealService
 //        $this->addTableIdToNounAndAdjective($aSimplifiedDmLexicon, $aLexicon); // Nouns, Adjectives, Ordinals, Quantifiers
         $this->addTableIdToVerb($aVerbList, $aLexicon); // Verb Only
         
-        //Ajout Francis (auxiliaires)
+        //Ajout auxiliaires
         $aVerbList2 = $this->getDmLexicon('; Verbs:', '; New words by Laurent');
         $this->addAuxToVerb($aVerbList2, $aLexicon);
         

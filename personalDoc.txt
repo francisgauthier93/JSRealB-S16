@@ -1,7 +1,0 @@
-Quelques fonctions:
-
-812: JSrealE.prototype.html (content)
-
-En bref, prend le content et le met entre balises html. À partir de feature.html.element (balise) et de feature.html.attribute (les attributs) à partir de la fonction getCtx
-
-

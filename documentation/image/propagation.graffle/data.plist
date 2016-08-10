@@ -46,7 +46,7 @@
 	<key>Creator</key>
 	<string>Francis Gauthier</string>
 	<key>DisplayScale</key>
-	<string>1 0/72 in = 1 0/72 in</string>
+	<string>1 0/72 in = 1.0000 in</string>
 	<key>GraphDocumentVersion</key>
 	<integer>8</integer>
 	<key>GraphicsList</key>
@@ -766,7 +766,7 @@ t:"f"}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{338.75472071950196, 327.81177927509145}, {39, 52}}</string>
+			<string>{{338.70105219819249, 327.8122304724543}, {39, 52}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -970,7 +970,7 @@ g:"f"}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{240.24524893501291, 334.31934638628309}, {39, 38}}</string>
+			<string>{{240.18928792931439, 334.31952789039951}, {39, 38}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -1167,7 +1167,7 @@ g:"f"}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{108.22269767613938, 288.20984569671458}, {36, 38}}</string>
+			<string>{{108.22269567851941, 288.20918458303379}, {36, 38}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -1256,8 +1256,8 @@ g:"f"}</string>
 			<integer>1</integer>
 			<key>Points</key>
 			<array>
-				<string>{145.28209175260832, 306.82395002562549}</string>
-				<string>{91.999898613973755, 307.90275492340112}</string>
+				<string>{145.28209156779792, 306.82364830057259}</string>
+				<string>{91.999897800501714, 307.90144840639732}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1292,7 +1292,7 @@ g:"f"}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{57.114603113247654, 335.08988551872693}, {36, 38}}</string>
+			<string>{{57.094481431585706, 335.08987403633546}, {36, 38}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -1369,7 +1369,7 @@ g:"f"}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{144.33796655930263, 335.98364018672703}, {36, 38}}</string>
+			<string>{{144.32739634868216, 335.98364637539999}, {36, 38}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -1632,8 +1632,8 @@ g:"f"}</string>
 			<integer>1</integer>
 			<key>Points</key>
 			<array>
-				<string>{347.86425907978293, 324.47131840471144}</string>
-				<string>{371.93535474986112, 392.44298945302512}</string>
+				<string>{347.84387216482645, 324.47148696909886}</string>
+				<string>{371.83786589676606, 392.4438127799848}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1669,8 +1669,8 @@ g:"f"}</string>
 			<integer>1</integer>
 			<key>Points</key>
 			<array>
-				<string>{256.20834125383129, 324.49627749324196}</string>
-				<string>{264.42045258599592, 391.41864924291303}</string>
+				<string>{256.18683133503214, 324.49634891997397}</string>
+				<string>{264.31895297376002, 391.41897625102229}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1706,8 +1706,8 @@ g:"f"}</string>
 			<integer>1</integer>
 			<key>Points</key>
 			<array>
-				<string>{161.67402804284657, 324.49988146750246}</string>
-				<string>{163.13145404610432, 391.41544899863163}</string>
+				<string>{161.67010378116223, 324.49988380981074}</string>
+				<string>{163.11294111610846, 391.41545978417946}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1743,8 +1743,8 @@ g:"f"}</string>
 			<integer>1</integer>
 			<key>Points</key>
 			<array>
-				<string>{75.65252145664094, 326.22491295771113}</string>
-				<string>{74.394052849047654, 391.41546399613924}</string>
+				<string>{75.644624595181782, 326.22490867547765}</string>
+				<string>{74.357555824296725, 391.41544286902035}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1854,8 +1854,8 @@ g:"f"}</string>
 			<integer>1</integer>
 			<key>Points</key>
 			<array>
-				<string>{156.45268973798784, 213.49930107989684}</string>
-				<string>{160.42245156796554, 288.50056911513877}</string>
+				<string>{156.43815042467293, 213.49932222224567}</string>
+				<string>{160.34732811460103, 288.50067276745415}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1891,8 +1891,8 @@ g:"f"}</string>
 			<integer>1</integer>
 			<key>Points</key>
 			<array>
-				<string>{142.87767276931822, 213.4086891749476}</string>
-				<string>{88.67158503440254, 290.31685031617224}</string>
+				<string>{142.87012636007609, 213.40860746201622}</string>
+				<string>{88.631630890184496, 290.31641765816693}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1990,7 +1990,7 @@ g:"f"}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{18, 62}, {527, 42}}</string>
+			<string>{{7, 69}, {547, 35}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -2003,7 +2003,7 @@ g:"f"}</string>
 			<dict>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
-\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 Consolas;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
@@ -2318,7 +2318,7 @@ g:"f"}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2016-07-13 15:23:31 +0000</string>
+	<string>2016-08-01 14:57:09 +0000</string>
 	<key>Modifier</key>
 	<string>Francis Gauthier</string>
 	<key>NotesVisible</key>
