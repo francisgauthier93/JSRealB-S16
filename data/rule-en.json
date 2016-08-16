@@ -2417,6 +2417,62 @@
                 "val": "wagons-lit","n": "p"
             }]
         },
+        "n85": {
+            "ending": "",
+            "declension": [{
+                "val": "","g": "m","n": "s"
+            },{
+                "val": "s","g": "m","n": "p"
+            }]
+        },
+        "n86": {
+            "ending": "",
+            "declension": [{
+                "val": "","g": "m","n": "s"
+            },{
+                "val": "es","g": "m","n": "p"
+            }]
+        },
+        "n87": {
+            "ending": "",
+            "declension": [{
+                "val": "","g": "f","n": "s"
+            },{
+                "val": "s","g": "f","n": "p"
+            }]
+        },
+        "n88": {
+            "ending": "",
+            "declension": [{
+                "val": "","g": "f","n": "s"
+            },{
+                "val": "es","g": "f","n": "p"
+            }]
+        },
+        "n89": {
+            "ending": "an",
+            "declension": [{
+                "val": "an","g": "m","n": "s"
+            },{
+                "val": "en","g": "m","n": "p"
+            }]
+        },
+        "n90": {
+            "ending": "an",
+            "declension": [{
+                "val": "an","g": "f","n": "s"
+            },{
+                "val": "en","g": "f","n": "p"
+            }]
+        },
+        "n91": {
+            "ending": "fe",
+            "declension": [{
+                "val": "fe","g": "f","n": "s"
+            },{
+                "val": "ves","g": "f","n": "p"
+            }]
+        },
         "a1": {
             "ending": "",
             "declension": [{

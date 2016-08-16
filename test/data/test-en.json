@@ -1533,7 +1533,7 @@
         },
         "hero": {
             "N": {
-                "p": "heroes"
+                "mp": "heroes"
             }
         },
         "hot": {
@@ -1596,7 +1596,7 @@
         },
         "man": {
             "N": {
-                "p": "men"
+                "mp": "men"
             }
         },
         "management": {
@@ -1808,7 +1808,7 @@
         },
         "wife": {
             "N": {
-                "p": "wives"
+                "fp": "wives"
             }
         },
         "wolf": {
@@ -1818,7 +1818,7 @@
         },
         "woman": {
             "N": {
-                "p": "women"
+                "fp": "women"
             }
         },
         "wrong": {

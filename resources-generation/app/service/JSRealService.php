@@ -190,7 +190,6 @@ class JSRealService extends BaseService
             {
                 // en/fr formats support
                 $uVerbInfo = $aVerbList[$sUnit];
-                //uVerbInfo is basically the verbId (ex: v36)
                 $aLexicon[$sUnit]['V']['tab'] = (Arr::isValid($uVerbInfo) ? $uVerbInfo['tab'][0] : $uVerbInfo);
             }
         }
@@ -204,8 +203,8 @@ class JSRealService extends BaseService
     		if(isset($aLexicon[$sUnit]['V']) && isset($aVerbList[$sUnit]))
     		{
     			$uVerbInfo = $aVerbList[$sUnit];
-    			//uVerbInfo is basically the verbId (ex: v36)
-    			$aLexicon[$sUnit]['V']['aux'] = $uVerbInfo['aux'];//(Arr::isValid($uVerbInfo) ? $uVerbInfo['aux'][0] : $uVerbInfo);
+
+    			$aLexicon[$sUnit]['V']['aux'] = $uVerbInfo['aux'];
     		}
     	}
     }
@@ -213,51 +212,41 @@ class JSRealService extends BaseService
     {
     	foreach ($aRefLexicon as $sUnit => $aInfoList)
     	{	
-    		//sUnit => "abbey" par exemple
-    		echo "aInfolist:" . "</br>";
-    		foreach ($aInfoList as $key /*=>$value*/){
-	    		foreach ($key as $dkey =>$value){
-	    			echo $dkey . "->" . $value . "</br>";
-	    		}
-	    		
-       		}
-       		echo "end</br>";
-    		if(isset($aList[$sUnit])){
-    			$sCategory = $aList[$sUnit]["c"];
-    			//echo $sCategory;
-    		}
-    		if(isset($sCategory) && isset($aRefLexicon[$sUnit][$sCategory])){
-	    		//$sCategory = $aList[$sUnit]["c"];
-// 	    		foreach ($aList[$sUnit] as $key => $value){
-// 	    			echo $key . "</br>";
-// 	    		}
-// 	    		$sCategory = "c";
-				//echo "infolist: $aInfoList ". "</br>";
- 	    		$uWordInfo = $aList[$sUnit];
- 	    		//$blabla = $aRefLexicon[$sUnit][$sCategory];
-  	    		if(isset($aRefLexicon[$sUnit][$sCategory])){
-  	    			//echo $aRefLexicon[$sUnit][$sCategory];
-  	    			foreach ($aRefLexicon[$sUnit][$sCategory] as $key /*=>$value*/){
-  	    				echo $key /*. "->" . $value */. "</br>";
-  	    				echo "ohlala</br>";
-  	    			}
-  	    			echo "ohlhla</br>";
-  	    		}
-  	    		echo "uWordInfo :</br>";
-				foreach ($uWordInfo as $key =>$value){
-					echo $key . "->" . $value . "</br>";
+    		if(isset($aRefLexicon[$sUnit]) && isset($aList[$sUnit]))
+    		{
+    			$uInfo = $aList[$sUnit];
+
+    			$uCat = $uInfo[Config::get('jsreal.feature.category.alias')];
+
+				if(isset($uInfo["h"])){
+					$aRefLexicon[$sUnit][$uCat][Config::get('jsreal.feature.phonetic.hVoyelle')] = $uInfo["h"];
 				}
-				echo "end</br>";
-				//echo $uWordInfo['N']
- 	    		//echo $uWordInfo;
-//  	    		echo '<script>';
-//  	    		echo 'console.log(';
-//  	    		echo '</script>';
-//  	    		foreach ($blabla as $key){
-//  	    			echo $key . "</br>";
-//  	    		}
-	    		//$aRefLexicon[$sUnit][$sCategory]['an'] = $uWordInfo['an'];
     		}
+
+    	}
+    }
+    
+    protected function addGenderProperties(array &$aList,array &$aRefLexicon)
+    {
+    	foreach ($aRefLexicon as $sUnit => $aInfoList)
+    	{
+    		if(isset($aRefLexicon[$sUnit]) && isset($aList[$sUnit]))
+    		{
+    			$uInfo = $aList[$sUnit];
+    			$uCat = $uInfo[Config::get('jsreal.feature.category.alias')];
+    			
+    			$mTab = array('n85','n86','n89');
+    			$fTab = array('n87','n88','n90','n91');
+    			if(isset($uInfo['tab'])){
+    				if(in_array($uInfo['tab'][0], $mTab)){
+    					$aRefLexicon[$sUnit][$uCat][Config::get('jsreal.feature.gender.alias')] = 'm';
+    				}
+    				elseif (in_array($uInfo['tab'][0], $fTab)){
+    					$aRefLexicon[$sUnit][$uCat][Config::get('jsreal.feature.gender.alias')] = 'f';
+    				}  				
+    			}
+    		}
+    
     	}
     }
         

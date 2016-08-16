@@ -304,9 +304,9 @@ return array(
 //	'éeux' => '',   // eux -> eil'(un vieil homme),
 //	'étou' => ''    // ou'-> ol' (un fol espoir),
 //    ),
-   'Elider' => array(   // word which causes elision (homme),
-       'méd' => ''
-   ),
+//    'Elider' => array(   // word which causes elision (homme),
+//        'méd' => ''
+//    ),
 //    'Elidee' => array(   // word in which elision has occurred (l'),
 //	'mér' => ''
 //    ),

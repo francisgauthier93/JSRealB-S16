@@ -51,8 +51,6 @@ JSrealLoader({
             assert.equal( P("unlike"), "unlike", "unlike => unlike" );
 
             assert.equal( D("a"), "a", "a => a");
-            assert.equal( NP(D("a"),N("school")),"a school", "a school => a school");
-            assert.equal( NP(D("a"),N("apple")),"an apple", "a apple => an apple");
 
             //assert.equal( NP(D("a"),A("unique"),N("school"),"a unique school"), "a unique school => a unique school");   //Ne fonctionne pas, dépend de la phonétique...
                         

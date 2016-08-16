@@ -33,6 +33,8 @@ class JSRealEnService extends JSRealService
 
         /// Upgrade Lexicon
         $this->addTableIdToVerb($aVerbList, $aRefLexicon); // Verb Only
+        // Add few noun gender(english)
+        $this->addGenderProperties($aNounList, $aRefLexicon);
         // Add h properties (a->an)
         $this->addHProperties($aNounList,$aRefLexicon);
         $this->addHProperties($aAdjectiveList,$aRefLexicon);

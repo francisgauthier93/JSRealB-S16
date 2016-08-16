@@ -39,14 +39,12 @@ JSrealLoader( {
         // CP : Coordinated Phrase
         assert.equal( CP(C("ou"), Pro('moi').pe(2), Pro('je').pe(3).g("f")), "toi ou elle", "0. CP" );
         assert.equal( CP(C("ou"), Pro('moi').pe(1), Pro('moi').pe(2), Pro('je').pe(3).g("f")), "moi, toi ou elle", "1. CP" );
-        assert.equal( CP(Pro('moi').pe(1), Pro('moi').pe(2), Pro('je').pe(3).g("f")).c("et"), "moi, toi et elle", "2. CP" );
         assert.equal( CP(C(";"), N("jeu").n("p"), N("jouet").n("p"), N("cadeau").n("p")), "jeux ; jouets ; cadeaux", "3. CP" );
         assert.equal( NP(D('le'), CP(C('-'), N('vaisseau'), N('mère'))).n('p'), "les vaisseaux-mères", "4. CP" );
         assert.equal( NP(D('un'), N('mur'), CP(A('rouge'), C('-'), A('orange'))), "un mur rouge-orange", "5. CP" );
         assert.equal( CP(NP(D("le"), N("garçon")), NP(D("le"), N("fille")), C("et")), "le garçon et la fille", "6. CP" );
         assert.equal( CP(NP(D("le"), N("garçon")), C("et"), NP(D("le"), N("fille"))), "le garçon et la fille", "7. CP" );
         assert.equal( CP(C("et"), NP(D("le"), N("garçon")), NP(D("le"), N("fille"))), "le garçon et la fille", "8. CP" );
-        assert.equal( CP(NP(D("le"), N("garçon")), NP(D("le"), N("fille"))).c("et"), "le garçon et la fille", "9. CP" );
         
         // SP : Propositional Phrase
         assert.equal(NP(D('le'), N('chose'), SP(Pro('dont'), NP(Pro('je').pe(2)), VP(V('parler')))), "la chose dont tu parles", "1. SP" );
@@ -65,6 +63,9 @@ JSrealLoader( {
         assert.equal( AP(AdvP(Adv("très")), A("fier"), PP(P("de"), NP(D("mon").pe(3), N("famille")))), "très fier de sa famille", "3. AP + AdvP + PP + NP" );
         assert.equal( AdvP(Adv("conformément"), PP(P("à"), NP(D("le"), N("loi")))), "conformément à la loi", "4. AdvP + PP + NP" );
         assert.equal( S( NP(D("le"), N("peintre")), VP(V("réparer"), NP(D("le"), N("mur"))), PP(P("dans"), NP(D("le"), N("cour"))) ), "Le peintre répare le mur dans la cour.", "5. S + NP + VP + PP");
+
+        assert.equal( S(NP(D("le"),N("pomme").n("p")),VP(V("être"),A("beau"))),"Les pommes sont belles.","Les pommes sont belles.")
+        assert.equal( S(NP(D("le"),N("pomme")),VP(V("être"),CP(A("beau"),C("et"),A("joli")))),"La pomme est belle et jolie.","La pomme est belle et jolie")
     });
 
     JSrealLoader({

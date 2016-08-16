@@ -301,7 +301,8 @@ return array(
         ),
         'phonetic' => array(
             'alias' => 'phon',
-            'elision' => 'ev'
+            'elision' => 'ev',
+        	'hVoyelle' => 'hAn'
         ),
         'date' => array(
             'alias' => 'DT'
@@ -322,7 +323,8 @@ return array(
             'minute' => 'minute',
             'second' => 'second',
             'relative_time' => 'rtime',
-            'determiner' => 'det'
+            'determiner' => 'det',
+        	'natural_language' => 'nl'
         )
 //        'punctuation' => array(
 //            'alias' => 'pc',

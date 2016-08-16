@@ -46,6 +46,9 @@ JSrealLoader({
             assert.equal(S(NP(D("the"),N("chicken")).pro(),VP(V("bite").t("p"),
                 NP(D("a"),N("kid").n("p")).pro(),PP(P("at"),NP(D("my").pe(1),N("house").g("n")).pro()))), "He bites them at it.", "Subject, cd and ci as pronoun");
 
+            assert.equal(S(Pro("I").pe(1),VP(V("give"),PP(P("to"),NP(D("a"),N("woman"))))),"I give to a woman.", "woman -> feminine noun")
+            assert.equal(S(Pro("I").pe(1),VP(V("give"),PP(P("to"),NP(D("a"),N("woman")).pro()))),"I give to her.", "woman -> feminine pronoun");
+
             //Passive action
             assert.equal(S(NP(D("the"),N("soldier").n("p")),VP(V("find").t("ps"),NP(D("a"),N("girl")))),"The soldiers found a girl.", "Simple sentence");
             assert.equal(S(NP(D("the"),N("soldier").n("p")),VP(V("find").t("ps"),NP(D("a"),N("girl")))).typ({pas:true}),"A girl was found by the soldiers.", "Passive sentence, with subject and cd");

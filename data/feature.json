@@ -178,7 +178,8 @@
     },
     "phonetic": {
         "alias": "phon",
-        "elision": "ev"
+        "elision": "ev",
+        "hVoyelle": "hAn"
     },
     "date": {
         "alias": "DT"
@@ -199,6 +200,7 @@
         "minute": "minute",
         "second": "second",
         "relative_time": "rtime",
-        "determiner": "det"
+        "determiner": "det",
+        "natural_language": "nl"
     }
 }

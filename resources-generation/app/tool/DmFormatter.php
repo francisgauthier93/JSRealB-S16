@@ -274,18 +274,19 @@ class DmFormatter
             if($sCategory == "V" && count($aRawRule)>3){
             	$sAuxiliaire = $aRawRule[3];
             }
-//             if($sCategory == "A"){
-//             	for($i = 3; $i < count($aRawRule); $i++){
-//             		if($aRawRule[$i] == "pre");
-//             			$aPosition = $aRawRule[3];
-//             		}
-//             }
+            if($sCategory == "A"){
+            	for($i = 3; $i < count($aRawRule); $i++){
+            		if($aRawRule[$i] == "pre"){
+            			$aPosition = $aRawRule[3];
+
+            		}
+            	}
+            }
             $hPosition = -1;
             for($i = 3; $i < count($aRawRule); $i++){
             	//echo $aRawRule[$i]. "</br>";
             	if($aRawRule[$i] == "med"){
             		$hPosition = $aRawRule[$i];
-            		echo $aRawRule[0] . $aRawRule[1] . $aRawRule[2] . $aRawRule[$i]. "hPosition:$hPosition" ."</br>";
             	}
             }
             
@@ -334,18 +335,17 @@ class DmFormatter
                 }
                 
                 $aFormatedRule[$sUnit]['tab'][] = $sTableId;
+                
                 if($sCategory == "V"){
                 	$aFormatedRule[$sUnit]['aux'][] = $sAuxiliaire;
                 }
-//                 if($sCategory == "A" && isset($aPosition)){
-//                 	$aFormatedRule[$sUnit]['pos'][] = $aPosition;
-//                 	echo $aPosition . "</br>";
-//                 }
-                if(isset($hPosition) && $hPosition != -1){
-                	$aFormatedRule[$sUnit]['h'][] = 1;
-                	echo $hPosition . "</br>";
+                if($sCategory == "A" && isset($aPosition)){
+                	$aFormatedRule[$sUnit][Config::get('jsreal.feature.antepose.alias')][] = 'pre';//$aPosition;
+                	
                 }
-                
+                if(isset($hPosition) && $hPosition != -1){
+                	$aFormatedRule[$sUnit]['h']= 1;
+                }
             }
         }
 
