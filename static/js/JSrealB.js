@@ -10,6 +10,11 @@
  * Version bilingue, approche systématique à base de tables de règles
  * Université de Montréal
  * 2015
+ *
+ * v3 Par Francis Gauthier, sous la direction de Guy Lapalme
+ * Améliorations apportées à JSrealB
+ * Université de Montréal
+ * 2016
  */
 
 /*
@@ -1134,11 +1139,9 @@ JSrealE.prototype.putAuxInFront = function(conjug) {
     if(length2>=2){
         var tokens=mots.map(function(mot){return new Tokn(mot)});
     }
-    console.log(mots);
     var roote = this.getTreeRoot();
     
     roote.setCtx("firstAux",tokens[0].toString());
-    console.log(tokens[0].toString());
     tokens.shift();
     newMots = "";
         for(var j = 0, length3 = tokens.length; j < length3; j++)
@@ -1147,7 +1150,6 @@ JSrealE.prototype.putAuxInFront = function(conjug) {
                     || (j+1 < length3 && tokens[j+1].mot.slice(0, 2) === "</")
                     || j+1 >= length3) ? "" : " ");
         }
-    console.log(newMots);
     return newMots;
     
 };
@@ -1178,7 +1180,6 @@ JSrealE.prototype.realizeConjugation = function() {
     try{
         if(contains(JSrealB.Config.get("rule.compound.aux"),aux)){
             var auxF=aux;
-            console.log(auxF);
         }
     }
     catch(e){var auxF="";/*english doesn't have rule.compund.aux*/}
@@ -1277,10 +1278,17 @@ JSrealE.prototype.realizeNumber = function() {
     {   
         try{
 
+            var noyau = this.parent.constituents.head;
+            if(noyau !== null){
+                var numGender = noyau.getProp(JSrealB.Config.get("feature.gender.alias"));
+            }else{var numGender = "m"}
+
         return JSrealB.Module.Number.toWord(number, 
                 this.getCtx(JSrealB.Config.get("feature.display_option.alias")
                 + "." + JSrealB.Config.get("feature.display_option.max_precision")), 
-                updateGrammaticalNumber).toString();
+                updateGrammaticalNumber,
+                JSrealB.Config.get("language"), 
+                numGender).toString();
         }
         catch(e){
             console.warn("Error with number to word:"+e)
@@ -1327,12 +1335,12 @@ JSrealE.prototype.typography = function(str) {
 JSrealE.prototype.html = function(content) {
     var output = content;
     
-    var elt = this.getCtx(JSrealB.Config.get("feature.html.element"));
-    var attr = this.getCtx(JSrealB.Config.get("feature.html.attribute"));
-    if(elt !== null)
-    {
+    var elts = this.getCtx(JSrealB.Config.get("feature.html.element"));
+    var attrs = this.getCtx(JSrealB.Config.get("feature.html.attribute"));
+    
+    var addTag = function(elt, attr){
         var attrStr = "";
-        if(attr !== null)
+        if(attr !== null && attr !== undefined)
         {
             var attrKeyList = Object.keys(attr);
             var length = attrKeyList.length;
@@ -1341,7 +1349,25 @@ JSrealE.prototype.html = function(content) {
                 attrStr += " " + attrKeyList[i] + '="' + attr[attrKeyList[i]] + '"';
             }
         }
-        output = "<" + elt + attrStr + ">" + output + "</" + elt + ">";
+        return "<" + elt + attrStr + ">" + output + "</" + elt + ">";
+
+    }
+
+    if(elts !== null)
+    {
+        if(Array.isArray(elts)){
+            var attrs = attrs || [];
+            //this.setCtx("htmlTags",elt.length);
+            while(elts.length > 0){
+                var elt = elts.pop();
+                var attr = attrs.pop();
+                output = addTag(elt, attr);
+            }
+        }
+        else{
+            output = addTag(elts, attrs);                
+        }
+        
     }
     return output;
 };
@@ -2068,6 +2094,13 @@ NP.prototype.elementToElementPropagation = function(element) {
     }
     else if(element.fct === JSrealE.grammaticalFunction.head)
     {
+        if(this.constituents.modifier.length > 0)
+        {
+            for(var i = 0, length = this.constituents.modifier.length; i < length; i++){
+                element.siblingFeaturePropagation(this.constituents.modifier[i]);    
+            }            
+        }
+           
         for(var i = 0, length = this.constituents.subordinate.length; i < length; i++)
         {
             if(this.constituents.subordinate[i].category == "SP"){
@@ -3372,30 +3405,12 @@ JSrealB.Module.Date = (function() {
 
 // Fonctions importées de JSreal
 
-Array.prototype.has = function (e) {
-// renvoie true si tableau contient e
-  // for (i=0; i<this.length; i++)
-  //   if (e == this[i]) return true
-  // return false
-  return (this.indexOf(e) >= 0)? true:false;
-}
-String.prototype.end = function(list) {
-  if (typeof list == 'string')
-    return this.checkEnd(list)
-  else
-    for (var i=0; i<list.length; i++)
-      if (this.checkEnd(list[i]))
-        return true
-    return false
-}
-String.prototype.checkEnd = function(l) {
-  if (this.substring(this.length-l.length) == l) return true
-  else return false
-}
+
 
 JSrealB.Module.Number = (function() {
-    var toWord = function(rawNumber, maxPrecision, grammaticalNumber) {
+    var toWord = function(rawNumber, maxPrecision, grammaticalNumber,lang, gender) {
         // throw "TODO";
+        var lang = lang || "fr";
         
         if(grammaticalNumber !== undefined)
         {
@@ -3404,9 +3419,13 @@ JSrealB.Module.Number = (function() {
 
         var formattedNumber = formatter(rawNumber, maxPrecision, grammaticalNumber);
 
-        var numberLet = flexNumLet(formattedNumber,"",false, ",");
+        var numberLettres = enToutesLettres(parseInt(rawNumber),lang == "en", gender)
 
-        return numberLet;
+        if( lang == "fr" && numberLettres == "un" && gender == "f"){
+            numberLettres += "e";
+        }
+
+        return numberLettres;
 
     };
     
@@ -3468,111 +3487,237 @@ JSrealB.Module.Number = (function() {
 
     //Fonctions pour la sortie en lettres:
 
-    var natPart = function(n,separator) { //retourne partie entière
-      var separator = separator || '.';
-      if (!n) return false
-      var i = n.indexOf(separator)
-      return i > -1? n.slice(0, i) : n
-    }
-    var decPart = function(n,separator) { //retourne partie décimale
-      var separator = separator || '.';
-      if (!n) return false 
-      var i = n.indexOf(separator)
-      return i > -1? n.slice(i+1) : false
-    }
-    var splitThou = function(n, dec) { 
-      var s = []
-      if (!n) return s
-      var i = dec? 3 : (n.length-1)%3+1
-      s.push(n.slice(0, i))
-      n = n.slice(i)
-      while (n) {
-        s.push(n.slice(0, 3))
-        n = n.slice(3)
-      }
-      return s
-    }
 
-    var tensPowerDec = ['dixième','centième','millième','dix-millième','cent-millième','millionnième','dix-millionnième','cent-millionnième','milliardième','dix-milliardième','cent-milliardième']
-    var thouPower = ['','mille','million','milliard','billion','billiard','trillion','trilliard','quadrillion','quadrilliard']
+    //Fonction EnToutesLettres par Guy Lapalme , légèrement modifiée par Francis pour accomoder le genre
 
-    var flexNumLet = function(n, g, newO, sep) {
-      var nat = splitThou(natPart(n, sep))
-      var p = 0, cur, r = '', s, one
-      while (nat.length) {
-        cur = nat.pop() 
-        if (cur == '000') { p++; continue }
-        if (r) r = ' '+r
-        one = ['001','01','1'].has(cur)
-        s = (one || p == 1)? '' : 's'
-        if (p) {
-          r = thouPower[p]+s+r
-          if (!one || p != 1) r = ' '+r 
+    function enToutesLettres(s,en){
+        var trace=false; // utile pour la mise au point
+
+        // expressions des unités pour les "grands" nombres >1000 
+        // expressions donnent les formes [{singulier, pluriel}...]
+        //  noms de unités selon l'échelle courte présentée dans le Guide Antidote
+        // elle diffère de celle présentée dans http://villemin.gerard.free.fr/TABLES/NbLettre.htm
+        var unitesM=[ {sing:"mille"         ,plur:"mille"}        // 10^3
+                     ,{sing:"un million"    ,plur:"millions"}     // 10^6
+                     ,{sing:"un milliard"   ,plur:"milliards"}    // 10^9
+                     ,{sing:"un trillion"   ,plur:"trillions"}    // 10^12
+                     ,{sing:"un quatrillion",plur:"quatrillions"} // 10^15
+                     ,{sing:"un quintillion",plur:"quintillions"} // 10^18
+                    ];
+        var unitsM =[ {sing:"one thousand"      ,plur:"thousand"}    // 10^3
+                     ,{sing:"one million"       ,plur:"million"}     // 10^6
+                     ,{sing:"one billion"       ,plur:"billion"}     // 10^9
+                     ,{sing:"one trillion"      ,plur:"trillion"}    // 10^12
+                     ,{sing:"one quatrillion"   ,plur:"quatrillion"} // 10^15
+                     ,{sing:"one quintillion"   ,plur:"quintillion"} // 10^18
+                    ];
+
+        var maxLong=21;  // longueur d'une chaîne de chiffres traitable (fixé par la liste unitesM)
+
+        // séparer une chaine en groupes de trois et complétant le premier groupe avec des 0 au début
+        function splitS(s){
+            if(s.length>3)
+                return splitS(s.slice(0,s.length-3)).concat([s.slice(s.length-3)]);
+            else if (s.length==1)s="00"+s;
+            else if (s.length==2)s="0"+s
+            return [s];
         }
-        if (!one || p != 1) r = subThouLet(cur)+r
-        p++
-      }
-      var dec = decPart(n, sep)
-      if (newO) r = r.replace(/\s/g, '-')
-      if (dec.length)
-        if (dec-0) {
-          r += ' et '+flexNumLet(dec, '', newO)
-            +' '+tensPowerDec[dec.length-1]
-          if ((dec-0) != 1) r += 's'
+        // est-ce que tous les triplets d'une liste correspondent Ã  0 ?
+        function tousZero(ns){
+            if(ns.length==0)return true;
+            return (ns[0]=="000")&&tousZero(ns.slice(1));
         }
-      if (r == 'un' && g == 'f') return 'une'
-      if (r == 'zéro')
-        if (g == 'f') return 'aucune'
-        else return 'aucun'
-      return r
+
+        // création d'une liste de triplets de chiffres
+        function grouper(ns){ // ns est une liste de chaines de 3 chiffres
+            var l=ns.length;
+            if(trace)console.log("grouper:"+l+":"+ns);
+            var head=ns[0];
+            if(l==1)return centaines(head);
+            var tail=ns.slice(1);
+            if(head=="000")return grouper(tail);
+            var uM=en?unitsM:unitesM;
+            return (head=="001"?uM[l-2].sing:(grouper([head])+" "+uM[l-2].plur))+" "
+                   +(tousZero(tail)?"":grouper(tail));
+        }
+
+        // traiter un nombre entre 0 et 999
+        function centaines(ns){ // ns est une chaine d'au plus trois chiffres
+            if(trace)console.log("centaines:"+ns);
+            if(ns.length==1)return unites(ns);
+            if(ns.length==2)return dizaines(ns);
+            var c=ns[0];        // centaines
+            var du=ns.slice(1); // dizaines+unités
+            if(c=="0") return dizaines(du);
+            var cent=en?"hundred":"cent"
+            if(du=="00"){
+                if(c=="1") return (en?"one ":"")+cent;
+                return unites(c)+" "+cent+(en?"":"s");
+            }
+            if(c=="1") return (en?"one ":"")+cent+" "+dizaines(du);
+            return unites(c)+" "+cent+(en?" and ":" ")+dizaines(du);
+        }
+
+        // traiter un nombre entre 10 et 99
+        function dizaines(ns){// ns est une chaine de deux chiffres
+            if(trace)console.log("dizaines:",ns);
+            var d=ns[0]; // dizaines
+            var u=ns[1]; // unités
+            switch  (d){
+                case "0": return unites(u);
+                case "1":
+                    return (en?["ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"]
+                              :["dix","onze","douze","treize","quatorze","quinze","seize","dix-sept","dix-huit","dix-neuf"])[+u];
+                case "2": case "3": case "4": case "5": case "6":
+                    var tens = (en?["twenty","thirty","forty","fifty","sixty"]
+                    :["vingt","trente","quarante","cinquante","soixante"])[d-2];
+                    if (u==0) return tens;
+                    return tens + (u=="1" ? (en?"-one":" et un"): ("-"+unites(u)));
+                case "7":
+                    if(u==0) return en?"seventy":"soixante-dix"
+                    return en?("seventy-"+unites(u)):("soixante-"+dizaines("1"+u));
+                case "8":
+                    if(u==0) return en?"eighty":"quatre-vingts";
+                    return (en?"eighty-":"quatre-vingt-")+unites(u);
+                case "9":
+                    if(u==0) return en?"ninety":"quatre-vingt-dix";
+                    return en?("ninety-"+unites(u)):("quatre-vingt-"+dizaines("1"+u));
+            }
+        }
+
+        // traiter un chiffre entre 0 et 10
+        function unites(u){ // u est une chaine d'un chiffre
+            return (en?["zero","one","two","three","four","five","six","seven","eight","nine"]
+                      :["zéro","un","deux","trois","quatre","cinq","six","sept","huit","neuf"])[+u];// conversion
+        }
+        
+    /// début de l'exécution de la fonction
+        if(typeof s=="number")s=""+s; // convertir un nombre en chaÃ®ne
+        if(!/^-?\d+$/.test(s))
+            throw "nombreChaineEnLettres ne traite que des chiffres:"+s;
+        var neg=false;
+        if(s[0]=="-"){
+            neg=true;
+            s=s.slice(1);
+        }
+        if(s.length>maxLong)
+            throw "nombreChaineEnLettres ne traite que les nombres d'au plus "+maxLong+" chiffres:"+s;
+        return (neg?(en?"minus ":"moins "):"")+grouper(splitS(s)).trim();
     }
 
-    var subThouLet = function(n, s100omit) {
-      if (n.length == 1) return sub17Let(n)
-      if (n.length == 2) return subHunLet(n)
-      var s100 = true? '' : 's'
-      var h = n[0], du = n.slice(1), r
-      if (h == '0') return subHunLet(n.slice(1))
-      if (h == '1') r = 'cent'
-      else {
-        r = sub17Let(h)+' cent'+(du == '00'? s100 : '')
-      }
-      if (du != '00') r += ' '+subHunLet(du)
-      return r
+    // si l'orthographe française rectifiée est demandée, appliquer cette fonction à la sortie
+    // de enToutesLettres() pour mettre des tirets à la place des espaces partout dans le nombre...
+    function rectifiee(s){
+        return s.replace(/ /g,"-");
     }
 
-    var sub17Let = function(n) {
-        var onesList = ['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize']; 
-        return onesList[n-0] 
-    }
-    var tensList = ['vingt','trente','quarante','cinquante','soixante'] 
-    var tensLet = function(d) { return tensList[d-2] }
-    var subHunLet = function(n, s80omit) {
-      var u = n[1], d = n[0], r
-      var s80 = true? '' : 's' // si déterminant?
-      if (['0','1'].has(d))
-        if (d == '0' || u < '7') return sub17Let(n)
-        else return 'dix-'+sub17Let(u)
-      if (['2','3','4','5','6'].has(d)) {
-        r = tensLet(d)
-        r += u == '0'? '' : u == '1'? ' et un' : '-'+sub17Let(u)
-        return r
-      }
-      if (d == '7')
-        return 'soixante-'+(u == '1'? 'et-onze' : subHunLet('1'+u))
-      if (d == '8') {
-        return 'quatre-vingt'+(u == '0'? s80 : '-'+sub17Let(u))
-      }
-      if (d == '9')
-        return 'quatre-vingt-'+subHunLet('1'+u)
-    }
-    // var flexNumOrd = function(r, g, n) {
-    //   if (r == 'un') return A('premier').g(g).n(n)
-    //   if (r.end('e')) r = r.bs(1)
-    //   else if (r.end('q')) r = r+'u'
-    //   else if (r.end('f')) r = r.bs(1)+'v'
-    //   return A(r+'ième').n(n)
+    //Il y a quelques bogues dans la version de Nicolas Daoust et elle ne supporte que la langue française
+
+    // var natPart = function(n,separator) { //retourne partie entière
+    //   var separator = separator || '.';
+    //   if (!n) return false
+    //   var i = n.indexOf(separator)
+    //   return i > -1? n.slice(0, i) : n
     // }
+    // var decPart = function(n,separator) { //retourne partie décimale
+    //   var separator = separator || '.';
+    //   if (!n) return false 
+    //   var i = n.indexOf(separator)
+    //   return i > -1? n.slice(i+1) : false
+    // }
+    // var splitThou = function(n, dec) { 
+    //   var s = []
+    //   if (!n) return s
+    //   var i = dec? 3 : (n.length-1)%3+1
+    //   s.push(n.slice(0, i))
+    //   n = n.slice(i)
+    //   while (n) {
+    //     s.push(n.slice(0, 3))
+    //     n = n.slice(3)
+    //   }
+    //   return s
+    // }
+
+    // var tensPowerDec = ['dixième','centième','millième','dix-millième','cent-millième','millionnième','dix-millionnième','cent-millionnième','milliardième','dix-milliardième','cent-milliardième']
+    // var thouPower = ['','mille','million','milliard','billion','billiard','trillion','trilliard','quadrillion','quadrilliard']
+
+    // var flexNumLet = function(n, g, newO, sep) {
+    //   var nat = splitThou(natPart(n, sep))
+    //   var p = 0, cur, r = '', s, one
+    //   while (nat.length) {
+    //     cur = nat.pop() 
+    //     if (cur == '000') { p++; continue }
+    //     if (r) r = ' '+r
+    //     one = ['001','01','1'].has(cur)
+    //     s = (one || p == 1)? '' : 's'
+    //     if (p) {
+    //       r = thouPower[p]+s+r
+    //       if (!one || p != 1) r = ' '+r 
+    //     }
+    //     if (!one || p != 1) r = subThouLet(cur)+r
+    //     p++
+    //   }
+    //   var dec = decPart(n, sep)
+    //   if (newO) r = r.replace(/\s/g, '-')
+    //   if (dec.length)
+    //     if (dec-0) {
+    //       r += ' et '+flexNumLet(dec, '', newO)
+    //         +' '+tensPowerDec[dec.length-1]
+    //       if ((dec-0) != 1) r += 's'
+    //     }
+    //   if (r == 'un' && g == 'f') return 'une'
+    //   if (r == 'zéro')
+    //     if (g == 'f') return 'aucune'
+    //     else return 'aucun'
+    //   return r
+    // }
+
+    // var subThouLet = function(n, s100omit) {
+    //   if (n.length == 1) return sub17Let(n)
+    //   if (n.length == 2) return subHunLet(n)
+    //   var s100 = true? '' : 's'
+    //   var h = n[0], du = n.slice(1), r
+    //   if (h == '0') return subHunLet(n.slice(1))
+    //   if (h == '1') r = 'cent'
+    //   else {
+    //     r = sub17Let(h)+' cent'+(du == '00'? s100 : '')
+    //   }
+    //   if (du != '00') r += ' '+subHunLet(du)
+    //   return r
+    // }
+
+    // var sub17Let = function(n) {
+    //     var onesList = ['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize']; 
+    //     return onesList[n-0] 
+    // }
+    // var tensList = ['vingt','trente','quarante','cinquante','soixante'] 
+    // var tensLet = function(d) { return tensList[d-2] }
+    // var subHunLet = function(n, s80omit) {
+    //   var u = n[1], d = n[0], r
+    //   var s80 = true? '' : 's' // si déterminant?
+    //   if (['0','1'].has(d))
+    //     if (d == '0' || u < '7') return sub17Let(n)
+    //     else return 'dix-'+sub17Let(u)
+    //   if (['2','3','4','5','6'].has(d)) {
+    //     r = tensLet(d)
+    //     r += u == '0'? '' : u == '1'? ' et un' : '-'+sub17Let(u)
+    //     return r
+    //   }
+    //   if (d == '7')
+    //     return 'soixante-'+(u == '1'? 'et-onze' : subHunLet('1'+u))
+    //   if (d == '8') {
+    //     return 'quatre-vingt'+(u == '0'? s80 : '-'+sub17Let(u))
+    //   }
+    //   if (d == '9')
+    //     return 'quatre-vingt-'+subHunLet('1'+u)
+    // }
+    // // var flexNumOrd = function(r, g, n) {
+    // //   if (r == 'un') return A('premier').g(g).n(n)
+    // //   if (r.end('e')) r = r.bs(1)
+    // //   else if (r.end('q')) r = r+'u'
+    // //   else if (r.end('f')) r = r.bs(1)+'v'
+    // //   return A(r+'ième').n(n)
+    // // }
     
     return {
         formatter: function(rawNumber, maxPrecision, grammaticalNumber) {
@@ -3596,14 +3741,14 @@ JSrealB.Module.Number = (function() {
                 return "[[" + rawNumber + "]]";
             }
         },
-        toWord: function(rawNumber, maxPrecision, grammaticalNumber) {
+        toWord: function(rawNumber, maxPrecision, grammaticalNumber, language, gender) {
             var numberToWord = null;
 
             try
             {
                 if(isValid(rawNumber))
                 {
-                    numberToWord = toWord(rawNumber, maxPrecision, grammaticalNumber);
+                    numberToWord = toWord(rawNumber, maxPrecision, grammaticalNumber, language, gender);
                 }
                 else
                 {

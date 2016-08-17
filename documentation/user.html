@@ -409,14 +409,6 @@
                         <td colspan="5">C(" ") | .c(" ")</td>
                     </tr>
                   <tr>
-                    <td>.c(" ")</td>
-                    <td></td>
-                    <td class="example-fr">CP(N("mademoiselle"), N("madame"), N("monsieur")).c("ou")</td>
-                    <td></td>
-                    <td class="example-en">CP(N("boy"), N("girl")).c("or")</td>
-                    <td></td>
-                  </tr>
-                  <tr>
                     <td>C(" ")</td>
                     <td></td>
                     <td class="example-fr">CP(C("ou"), N("madame"), N("monsieur"))</td>
@@ -1121,6 +1113,14 @@
                     <td class="example-fr">N("joueur").tag("i",{"style":"text-decoration:underline"})</td>
                     <td></td>
                     <td class="example-en">N("player").tag("b",{"title":"the best",style:"color:blue"})</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="lalign">tag(<em>nom</em>,<em>{attributs}</em>)</td>
+                    <td class="description">Balise HTML autour d'une construction</td>
+                    <td class="example-fr">N("maison").tag(["b","i"])</td>
+                    <td></td>
+                    <td class="example-en">N("home").tag("a",{"href":"http://www.google.ca",style:"color:blue"})</td>
                     <td></td>
                   </tr>
                 </tbody>

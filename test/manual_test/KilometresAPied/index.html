@@ -6,10 +6,10 @@
         <script src="../../static/js/jquery-latest.min.js"></script>
         <script src="../../../static/js/JSrealB.js" charset="UTF-8"></script>
         <script>
-        var max=3;
+        var max=4;
 
         function kmsAPied(n){
-            return NP(NO(n),N('kilomètre'),
+            return NP(NO(n).nat().cap(),N('kilomètre'),
                       PP(P("à"),NP(N("pied"))));
         }
 
@@ -32,6 +32,7 @@
                    );
             return $("<p/>").append(ligne(s1)).append(ligne(s2));
         }
+        //.tag("i")
 
         function generer() {
             var $body=$("body");
@@ -45,7 +46,7 @@
             for(var i=1;i<=max;i++){
                 map=kmsAPied(i);
                 var $lignes=$("<b/>").append("<p/>");
-                $lignes.append(ligne(S(CP(map,s1,s1).c(",")))).append(ligne(S(CP(map,s2).c(","))));
+                $lignes.append(ligne(S(CP(map,s1,s1,C(","))))).append(ligne(S(CP(map,s2,C(",")))));
                 $body.append($lignes);
                 $body.append(refrain());
             };
@@ -58,5 +59,6 @@
         </script>
     </head>
     <body>
+        
     </body>
 </html>
