@@ -1028,7 +1028,7 @@
                     <td></td>
                   </tr>
                   <tr>
-                    <td class="lalign" rowspan="4">.en()</td>
+                    <td class="lalign" rowspan="5">.en()</td>
                     <td class="description">Entourer de parenthèses</td>
                     <td class="example-fr">N("homme").en("(")</td>
                     <td></td>
@@ -1054,6 +1054,13 @@
                     <td class="example-fr">N("homme").en("*")</td>
                     <td></td>
                     <td class="example-en">N("man").en("*")</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="description">Entourer de plusieurs ponctuations</td>
+                    <td class="example-fr">N("homme").en("*").en(")")</td>
+                    <td></td>
+                    <td class="example-en">N("man").en("*").en("]")</td>
                     <td></td>
                   </tr>
                   <tr>
@@ -1691,7 +1698,7 @@
                     <td></td>
                   </tr>
                   <tr>
-                    <td class="lalign" rowspan="3">.dOpt({raw: false})</td>
+                    <td class="lalign" rowspan="2">.dOpt({raw: false})</td>
                     <td class="description">Affichage du nombre brut sans formattage</td>
                     <td class="example-fr example-en">NO("1 023,84").dOpt({raw: true})</td>
                     <td></td>
@@ -1700,6 +1707,20 @@
                   <tr>
                     <td class="description">Formattage du nombre</td>
                     <td class="example-fr example-en">NO(1.847544).dOpt({raw: false})</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="lalign">.dOpt({nat: false})</td>
+                    <td class="description">Affichage du nombre en langue naturelle</td>
+                    <td class="example-fr example-en">NO(1023.84).dOpt({nat: true})</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="lalign">.nat()</td>
+                    <td class="description">Affichage du nombre en langue naturelle</td>
+                    <td class="example-fr example-en">NO(540).nat()</td>
                     <td></td>
                     <td></td>
                   </tr>

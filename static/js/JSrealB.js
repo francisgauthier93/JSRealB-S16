@@ -1288,10 +1288,11 @@ JSrealE.prototype.realizeNumber = function() {
             + "." + JSrealB.Config.get("feature.display_option.natural")))
     {   
         try{
-
-            var noyau = this.parent.constituents.head;
-            if(noyau !== null){
-                var numGender = noyau.getProp(JSrealB.Config.get("feature.gender.alias"));
+            if(this.parent != null){
+                var noyau = this.parent.constituents.head;
+                if(noyau !== null){
+                    var numGender = noyau.getProp(JSrealB.Config.get("feature.gender.alias"));
+                }else{var numGender = "m"}
             }else{var numGender = "m"}
 
         return JSrealB.Module.Number.toWord(number, 
@@ -1337,7 +1338,7 @@ JSrealE.prototype.typography = function(str) {
     var pcSurround = this.getCtx(JSrealB.Config.get("feature.typography.surround")); //liste de surround
     if(pcSurround.length > 0){
         for(var i=0; i < pcSurround.length; i++){
-            result = JSrealB.Module.Punctuation.surround(result, pcSurround);    
+            result = JSrealB.Module.Punctuation.surround(result, pcSurround[i]);    
         }        
     }
     
@@ -3621,114 +3622,6 @@ JSrealB.Module.Number = (function() {
     function rectifiee(s){
         return s.replace(/ /g,"-");
     }
-
-    //Il y a quelques bogues dans la version de Nicolas Daoust et elle ne supporte que la langue française
-
-    // var natPart = function(n,separator) { //retourne partie entière
-    //   var separator = separator || '.';
-    //   if (!n) return false
-    //   var i = n.indexOf(separator)
-    //   return i > -1? n.slice(0, i) : n
-    // }
-    // var decPart = function(n,separator) { //retourne partie décimale
-    //   var separator = separator || '.';
-    //   if (!n) return false 
-    //   var i = n.indexOf(separator)
-    //   return i > -1? n.slice(i+1) : false
-    // }
-    // var splitThou = function(n, dec) { 
-    //   var s = []
-    //   if (!n) return s
-    //   var i = dec? 3 : (n.length-1)%3+1
-    //   s.push(n.slice(0, i))
-    //   n = n.slice(i)
-    //   while (n) {
-    //     s.push(n.slice(0, 3))
-    //     n = n.slice(3)
-    //   }
-    //   return s
-    // }
-
-    // var tensPowerDec = ['dixième','centième','millième','dix-millième','cent-millième','millionnième','dix-millionnième','cent-millionnième','milliardième','dix-milliardième','cent-milliardième']
-    // var thouPower = ['','mille','million','milliard','billion','billiard','trillion','trilliard','quadrillion','quadrilliard']
-
-    // var flexNumLet = function(n, g, newO, sep) {
-    //   var nat = splitThou(natPart(n, sep))
-    //   var p = 0, cur, r = '', s, one
-    //   while (nat.length) {
-    //     cur = nat.pop() 
-    //     if (cur == '000') { p++; continue }
-    //     if (r) r = ' '+r
-    //     one = ['001','01','1'].has(cur)
-    //     s = (one || p == 1)? '' : 's'
-    //     if (p) {
-    //       r = thouPower[p]+s+r
-    //       if (!one || p != 1) r = ' '+r 
-    //     }
-    //     if (!one || p != 1) r = subThouLet(cur)+r
-    //     p++
-    //   }
-    //   var dec = decPart(n, sep)
-    //   if (newO) r = r.replace(/\s/g, '-')
-    //   if (dec.length)
-    //     if (dec-0) {
-    //       r += ' et '+flexNumLet(dec, '', newO)
-    //         +' '+tensPowerDec[dec.length-1]
-    //       if ((dec-0) != 1) r += 's'
-    //     }
-    //   if (r == 'un' && g == 'f') return 'une'
-    //   if (r == 'zéro')
-    //     if (g == 'f') return 'aucune'
-    //     else return 'aucun'
-    //   return r
-    // }
-
-    // var subThouLet = function(n, s100omit) {
-    //   if (n.length == 1) return sub17Let(n)
-    //   if (n.length == 2) return subHunLet(n)
-    //   var s100 = true? '' : 's'
-    //   var h = n[0], du = n.slice(1), r
-    //   if (h == '0') return subHunLet(n.slice(1))
-    //   if (h == '1') r = 'cent'
-    //   else {
-    //     r = sub17Let(h)+' cent'+(du == '00'? s100 : '')
-    //   }
-    //   if (du != '00') r += ' '+subHunLet(du)
-    //   return r
-    // }
-
-    // var sub17Let = function(n) {
-    //     var onesList = ['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize']; 
-    //     return onesList[n-0] 
-    // }
-    // var tensList = ['vingt','trente','quarante','cinquante','soixante'] 
-    // var tensLet = function(d) { return tensList[d-2] }
-    // var subHunLet = function(n, s80omit) {
-    //   var u = n[1], d = n[0], r
-    //   var s80 = true? '' : 's' // si déterminant?
-    //   if (['0','1'].has(d))
-    //     if (d == '0' || u < '7') return sub17Let(n)
-    //     else return 'dix-'+sub17Let(u)
-    //   if (['2','3','4','5','6'].has(d)) {
-    //     r = tensLet(d)
-    //     r += u == '0'? '' : u == '1'? ' et un' : '-'+sub17Let(u)
-    //     return r
-    //   }
-    //   if (d == '7')
-    //     return 'soixante-'+(u == '1'? 'et-onze' : subHunLet('1'+u))
-    //   if (d == '8') {
-    //     return 'quatre-vingt'+(u == '0'? s80 : '-'+sub17Let(u))
-    //   }
-    //   if (d == '9')
-    //     return 'quatre-vingt-'+subHunLet('1'+u)
-    // }
-    // // var flexNumOrd = function(r, g, n) {
-    // //   if (r == 'un') return A('premier').g(g).n(n)
-    // //   if (r.end('e')) r = r.bs(1)
-    // //   else if (r.end('q')) r = r+'u'
-    // //   else if (r.end('f')) r = r.bs(1)+'v'
-    // //   return A(r+'ième').n(n)
-    // // }
     
     return {
         formatter: function(rawNumber, maxPrecision, grammaticalNumber) {
