@@ -16,7 +16,7 @@
             }
         </style>
         <script src="../../static/js/jquery-latest.min.js"></script>
-        <script src="../../../static/js/JSrealB.js" charset="UTF-8"></script>
+        <script src="http://www-etud.iro.umontreal.ca/%7Egauthif/web_page_gauthif/JSrealB-EnFr-min.js" charset="UTF-8"></script>
         <script>
             function meteo(voc, nombre, temps, heure) {
                 var date = DT(new Date(heure)).dOpt({year: false, month: false, date: false, day: false, minute: false, second: false, nat: true});
@@ -36,7 +36,7 @@
             var tempsEn = ["p", "pr", "ps", "f"]
 
             function generate(language) {
-                return function(){
+                //return function(){
                     voc = language == "fr" ? frVoc : enVoc;
                     temps = (language == "fr")? tempsFr : tempsEn;
                     for (var i = 0; i < nombres.length; i++) {
@@ -49,16 +49,21 @@
                             $tr.append($("<td/>").text(meteo(voc, nombres[i], temps[j], "2015/07/17 0" + j + ":00")));
                             $viewer.append($tr);
                         }
-                    }
+                    //}
                 }
+                return;
             }
             ;
 
             var $viewer;
             $(document).ready(function () {
                 $viewer = $("#JSrealB-viewer");
-                loadLanguage("../../../data/","fr",generate("fr"));
-                loadLanguage("../../../data/","en",generate("en"));
+                //loadLanguage("../../../data/","fr",generate("fr"));
+                loadFr();
+                generate("fr");
+                //loadLanguage("../../../data/","en",generate("en"));
+                loadEn();
+                generate("en");
             });
         </script>
         <style type="text/css"></style></head>

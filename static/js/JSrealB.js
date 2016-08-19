@@ -140,6 +140,8 @@ JSrealE.prototype.initUnitProperty = function() {
 JSrealE.prototype.initContext = function(naturalDisplay) {
     this.ctx[JSrealB.Config.get("feature.display_option.alias")] = {};
     this.ctx[JSrealB.Config.get("feature.sentence_type.alias")] = {};
+    this.ctx[JSrealB.Config.get("feature.html.alias")] = [];
+    this.ctx[JSrealB.Config.get("feature.typography.surround")] = [];
     this.defaultCtx[JSrealB.Config.get("feature.display_option.alias")] = {};
     this.defaultCtx[JSrealB.Config.get("feature.display_option.alias")][JSrealB.Config.get("feature.display_option.natural")] = naturalDisplay;
     this.defaultCtx[JSrealB.Config.get("feature.display_option.alias")][JSrealB.Config.get("feature.display_option.relative_time")] = false;
@@ -230,6 +232,13 @@ JSrealE.prototype.setCtx = function(ctxName, ctxValue) {
     
     return this;
 };
+
+JSrealE.prototype.addCtx = function(ctxName, ctxValue) {
+    if(Array.isArray(fetchFromObject(this.ctx, ctxName))){
+        fetchFromObject(this.ctx, ctxName).push(ctxValue);
+    }
+    return this;
+}
 
 JSrealE.prototype.addConstituent = function(element, grammaticalFunction) {
     switch(grammaticalFunction)
@@ -475,7 +484,7 @@ JSrealE.prototype.a = function(punctuation) {
 };
 // punctuation around an element
 JSrealE.prototype.en = function(punctuation) {
-    return this.setCtx(JSrealB.Config.get("feature.typography.surround"), punctuation);
+    return this.addCtx(JSrealB.Config.get("feature.typography.surround"), punctuation);
 };
 //Liaison forçée en français
 JSrealE.prototype.lier = function() {
@@ -556,8 +565,10 @@ JSrealE.prototype.dOpt = function(optionList) {
     return null;
 };
 JSrealE.prototype.tag = function(elt, attr) {
-    this.setCtx(JSrealB.Config.get("feature.html.element"), elt);
-    this.setCtx(JSrealB.Config.get("feature.html.attribute"), attr);
+    var tag = [elt,attr];
+    //this.addCtx(JSrealB.Config.get("feature.html.element"), elt);
+    //this.addCtx(JSrealB.Config.get("feature.html.attribute"), attr);
+    this.addCtx(JSrealB.Config.get("feature.html.alias"), tag);
     return this;
 };
 //// Agreement
@@ -1011,7 +1022,7 @@ JSrealE.prototype.printElements = function() {
     if(this.parent === null
         && this.category === JSrealB.Config.get("feature.category.phrase.sentence"))
     {
-        addFullStop = (this.getCtx(JSrealB.Config.get("feature.typography.surround")) === null);
+        addFullStop = (this.getCtx(JSrealB.Config.get("feature.typography.surround")).length == 0);
         upperCaseFirstLetter = (this.getCtx(JSrealB.Config.get("feature.typography.ucfist")) === null);
 
         var lastPunctuation = "";
@@ -1323,10 +1334,11 @@ JSrealE.prototype.typography = function(str) {
         result = JSrealB.Module.Punctuation.after(result, pcAfter);
     }
     
-    var pcSurround = this.getCtx(JSrealB.Config.get("feature.typography.surround"));
-    if(pcSurround !== null)
-    {
-        result = JSrealB.Module.Punctuation.surround(result, pcSurround);
+    var pcSurround = this.getCtx(JSrealB.Config.get("feature.typography.surround")); //liste de surround
+    if(pcSurround.length > 0){
+        for(var i=0; i < pcSurround.length; i++){
+            result = JSrealB.Module.Punctuation.surround(result, pcSurround);    
+        }        
     }
     
     return trim(result);
@@ -1335,8 +1347,7 @@ JSrealE.prototype.typography = function(str) {
 JSrealE.prototype.html = function(content) {
     var output = content;
     
-    var elts = this.getCtx(JSrealB.Config.get("feature.html.element"));
-    var attrs = this.getCtx(JSrealB.Config.get("feature.html.attribute"));
+    var htmltags = this.getCtx(JSrealB.Config.get("feature.html.alias")); //liste de paires elm/attr
     
     var addTag = function(elt, attr){
         var attrStr = "";
@@ -1353,14 +1364,14 @@ JSrealE.prototype.html = function(content) {
 
     }
 
-    if(elts !== null)
+    if(htmltags.length > 0)
     {
-        if(Array.isArray(elts)){
-            var attrs = attrs || [];
+        if(Array.isArray(htmltags)){
             //this.setCtx("htmlTags",elt.length);
-            while(elts.length > 0){
-                var elt = elts.pop();
-                var attr = attrs.pop();
+            for(var i=0; i < htmltags.length; i++){
+            
+                var elt = htmltags[i][0];
+                var attr = htmltags[i][1];
                 output = addTag(elt, attr);
             }
         }
