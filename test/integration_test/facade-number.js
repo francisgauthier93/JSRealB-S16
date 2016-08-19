@@ -31,6 +31,12 @@ JSrealLoader({
         assert.equal( NP(NO(2), N("kilomètre")), "2 kilomètres", "3. NO is a numerical adjective");
         assert.equal( NP(NO(3), N("avion"), AP(A("blanc"))), "3 avions blancs", "4. NO is a numerical adjective");
         assert.equal( NP(NO(1), N("avion"), AP(A("blanc"))), "1 avion blanc", "5. NO is a numerical adjective");
+
+        //Conversion en langue naturelle
+        assert.equal( NO(1).nat(), "un", "1 -> un");
+        assert.equal( NO(1).nat().g("f"), "une", "1 -> une");
+        assert.equal( NO(47).nat(), "quarante-sept", "47 -> quarante-sept");
+        assert.equal( NO(13579086).nat(), "treize millions cinq cent soixante-dix-neuf mille quatre-vingt-six", "gros nombre (langue naturelle)"); 
     });
 
     JSrealLoader({
@@ -58,6 +64,10 @@ JSrealLoader({
             assert.equal( NP(NO(2), N("balloon")), "2 balloons", "3. NO is a numerical adjective");
             assert.equal( NP(NO(3), AP(A("white")), N("balloon")), "3 white balloons", "4. NO is a numerical adjective");
             assert.equal( NP(NO(1), AP(A("white")), N("balloon")), "1 white balloon", "5. NO is a numerical adjective");
+
+            assert.equal( NO(1).nat(), "one", "1 -> one");
+            assert.equal( NO(47).nat(), "forty-seven", "47 -> forty-seven");
+            assert.equal( NO(13579086).nat(), "thirteen million five hundred and seventy-nine thousand eighty-six", "big number (langue naturelle)");
         });
     });
 });

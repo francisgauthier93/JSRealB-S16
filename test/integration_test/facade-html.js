@@ -21,6 +21,11 @@ JSrealLoader({
         assert.equal( S(NP(D("un"), A("beau").tag("span"), N("femme").tag("span"))), "Une <span>belle</span> <span>femme</span>.", "3. HTML + elision" );
         assert.equal( S(NP(D("le"), N("ours").tag("b"))), "<b>L'ours</b>.", "4. HTML + elision" );
         assert.equal( S(CP(C("et"), NP(D("le"), N("boulanger").g("f")).tag("span"), NP(D("le"), N("client").g("f").tag("span"))), VP(V("parler")).tag("span")), "<span>La boulangère</span> et la <span>cliente</span> <span>parlent</span>.", "5. HTML + elision" );
+
+        //tag multiples
+        assert.equal( S(NP(D("un"), A("beau").tag("b").tag("i"), N("femme").tag("span")).t("p")), "Une <i><b>belle</b></i> <span>femme</span>.", "3. HTML(multiples)" );
+        assert.equal( S(NP(D("un"), N("femme").tag("span").tag("b",{"style":"text-decoration:underline"})).tag("i")), "<i>Une <b style='text-decoration:underline'><span>femme</span></b></i>.", "3. HTML(multiples)" );
+
     });
 
     JSrealLoader({
@@ -40,6 +45,11 @@ JSrealLoader({
             assert.equal( S(NP(Pro("I").pe(1)), VP(V("be"), NP(D("a"), N("player").tag("a", {"href": "#player"})))).tag("p"), '<p>I am a <a href="#player">player</a>.</p>', "1. HTML p and link" );
             assert.equal( S(NP(D("a"), N("woman").tag("strong"))), 'A <strong>woman</strong>.', "1. HTML strong" );
             assert.equal( S(NP(D("a"), N("woman").tag("em"))), 'A <em>woman</em>.', "1. HTML em" );
+
+            //tag multiples
+            assert.equal( S(NP(D("a"), A("nice").tag("b").tag("i"), N("woman").tag("span")).t("p")), "A <i><b>nice</b></i> <span>woman</span>.", "3. HTML(multiples)" );
+            assert.equal( S(NP(D("a"), N("woman").tag("span").tag("b",{"style":"text-decoration:underline"})).tag("i")), "<i>A <b style='text-decoration:underline'><span>woman</span></b></i>.", "3. HTML(multiples)" );
+
         });
     });
 });

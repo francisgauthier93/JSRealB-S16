@@ -695,6 +695,8 @@ JSrealE.prototype.add = function(childElement, pos){
     this.addNewElement(pos,childElement);
 
     this.sortWord();
+
+    return this;
 }
 
 JSrealE.prototype.deleteElement = function(elemIndex) {
@@ -1595,9 +1597,9 @@ function eliderMots(prevTokens,tokens){
             prevTokens.push(tokens.shift());
         } else if (lastToken.mot=="ce"){// ce => cet (On vérifie que le mot suivant n'est pas un verbe...)
             
-            if(JSrealB.Config.get("rule.elisionEtre.verbe").includes(tokens[0].mot) ||
-                JSrealB.Config.get("rule.elisionEtre.aux").includes(tokens[0].mot) &&
-                        JSrealB.Config.get("rule.elisionEtre.pp").includes(tokens[1].mot)){
+            if(contains(JSrealB.Config.get("rule.elisionEtre.verbe"),tokens[0].mot) ||
+                contains(JSrealB.Config.get("rule.elisionEtre.aux"),tokens[0].mot) &&
+                        contains(JSrealB.Config.get("rule.elisionEtre.pp"),tokens[1].mot)) {
                 tokens[0].mot=removeLastLetter(lastToken.mot)+"'"+tokens[0].mot;  //"ce" => "c'"
                 tokens[0].capitalized=lastToken.capitalized;
                 prevTokens.splice(lastTokenId, 1);
