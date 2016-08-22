@@ -1923,14 +1923,14 @@
                   <tr>
                       <td>CP(C('et'),NP(D('le'),N('fruit'))).add(pom).add(gars)</td>
                       <td>le fruit, la pomme et les garçons</td>
-                      <td>apple.clone()</td>
-                      <td>the apple</td>
+                      <td>CP(C('and'),NP(D('a'),N('fruit'))).add(apple).add(boy)</td>
+                      <td>a fruit, the apple and a boy</td>
                   </tr>
                   <tr>
                       <td>S(VP().add(aime).add(pom)).add(gars,0)</td>
                       <td>Les garçons aiment la pomme.</td>
-                      <td>apple.clone().n('p')</td>
-                      <td>the apples</td>
+                      <td>S(VP().add(love).add(apple)).add(boy,0)</td>
+                      <td>A boy loves the apple.</td>
                   </tr>                
                 </tbody>
                 </table>
