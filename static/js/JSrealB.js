@@ -689,12 +689,16 @@ JSrealE.prototype.realizeGroup = function(elementList) {
 };
 
 JSrealE.prototype.add = function(childElement, pos){
-    var pos = pos || this.elements.length;
+    if(pos == undefined){
+        var pos = this.elements.length;
+    }
     this.constituents = {head: undefined, modifier: [], subordinate: [], complement: []};
     
     this.addNewElement(pos,childElement);
 
     this.sortWord();
+
+    this.resetProp(false);
 
     return this;
 }
@@ -1290,7 +1294,10 @@ JSrealE.prototype.realizeNumber = function() {
             + "." + JSrealB.Config.get("feature.display_option.natural")))
     {   
         try{
-            if(this.parent != null){
+            if(this.getProp(JSrealB.Config.get("feature.gender.alias"))){
+                var numGender = this.getProp(JSrealB.Config.get("feature.gender.alias"));
+            }
+            else if(this.parent != null){
                 var noyau = this.parent.constituents.head;
                 if(noyau !== null){
                     var numGender = noyau.getProp(JSrealB.Config.get("feature.gender.alias"));
@@ -1409,6 +1416,7 @@ JSrealE.prototype.phonetic = function(content) {
         newContent = "";
         for(var j = 0, length3 = tokens.length; j < length3; j++)
         {
+            //if(tokens[j].mot=="")continue;
             newContent += tokens[j] + ((tokens[j].mot.charAt(0) === "<" 
                     || (j+1 < length3 && tokens[j+1].mot.slice(0, 2) === "</")
                     || j+1 >= length3) ? "" : " ");
@@ -1530,7 +1538,9 @@ function Tokn(mot){ // normalement on aurait besoin du lemme et de la catégorie
 }
 
 Tokn.prototype.toString = function (){
-    if (this.capitalized)return this.mot.charAt(0).toUpperCase()+this.mot.substring(1)+this.end;
+    if (this.capitalized){
+        return this.mot.charAt(0).toUpperCase()+this.mot.substring(1)+this.end;
+    }
     return this.mot+this.end;
 }
 

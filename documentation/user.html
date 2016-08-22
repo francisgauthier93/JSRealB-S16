@@ -1827,9 +1827,42 @@
         </section>
 
         <section>
-            <h2>Clone</h2>
+            <h2>JavaScript</h2>
             <p>L'option clone() permet de réutiliser certains syntagmes de manière alternative sans devoir les réécrire.</p>
-            <h3>Exemple</h3>   
+            <p>L'option add(element,position) permet d'ajouter element à un syntagme de manière dynamique. La position est un paramètre facultatif permettant de placer l'élément à la position voulue dans le syntagme. La valeur par défaut de la position est la dernière position possible.</p>
+            <p>
+                <h3>Déclaration de variables préalables</h3>
+                <span style="font-size: 15px;">var pomme = NP(D("le"),N("pomme"));</br>
+                    var gars = NP(D("le"),N("garçon")).n("p");</br>
+                    var aime = V("aimer");</br></br>
+
+                    var apple = NP(D("the"),N("apple"));</br>
+                    var boy = NP(D("a"),N("boy"));</br>
+                    var love = V("love");</span>
+            </p>
+           <!--  <script type="text/javascript">
+                JSrealLoader({
+                        language: "fr",
+                        lexiconUrl: URL.lexicon.fr,
+                        ruleUrl: URL.rule.fr,
+                        featureUrl: URL.feature
+                    }, function() {
+                        var pom = NP(D("le"),N("pomme"));
+                        var gars = NP(D("le"),N("garçon")).n("p");
+                        var aime = V("aimer");
+                    });
+                JSrealLoader({
+                        language: "en",
+                        lexiconUrl: URL.lexicon.en,
+                        ruleUrl: URL.rule.en,
+                        featureUrl: URL.feature
+                    }, function() {
+                        var apple = NP(D("the"),N("apple"));
+                        var boy = NP(D("a"),N("boy"));
+                        var love = V("love");
+                    });              
+            </script> -->
+            <h3>Exemple (avec clone)</h3>   
                 <table cellspacing="0" cellpadding="0">
                 <thead>
                   <tr>
@@ -1843,35 +1876,62 @@
                 </thead>
                 <tbody>
                   <tr>
-                      <td class="example-fr">var pom = NP(D("le"),N("pomme"));
-                      pom</td>
-                      <td></td>
-                      <td class="example-en">var pom = NP(D("a"),N("apple").g("n")); 
-                      pom</td>
-                      <td></td>
+                      <td>pom</td>
+                      <td>la pomme</td>
+                      <td>apple</td>
+                      <td>the apple</td>
                   </tr>
                   <tr>
-                      <td class="example-fr">var pom = NP(D("le"),N("pomme"));
-                      pom.clone()</td>
-                      <td></td>
-                      <td class="example-en">var pom = NP(D("a"),N("apple").g("n")); 
-                      pom.clone()</td>
-                      <td></td>
+                      <td>pom.clone()</td>
+                      <td>la pomme</td>
+                      <td>apple.clone()</td>
+                      <td>the apple</td>
                   </tr>
                   <tr>
-                      <td class="example-fr">var pom = NP(D("le"),N("pomme"));
-                      S(pom.a(","),pom.clone().n("p").a(","), "quelle différence").a("?")</td>
-                      <td></td>
-                      <td class="example-en">var pom = NP(D("a"),N("apple").g("n")); 
-                      S(pom.a(","),pom.clone().n("p").a(","), "what's the difference").a("?")</td>
-                      <td></td>
+                      <td>pom.clone().n('p')</td>
+                      <td>les pommes</td>
+                      <td>apple.clone().n('p')</td>
+                      <td>the apples</td>
                   </tr>
                   <tr>
-                      <td class="example-fr">var pom = NP(D("le"),N("pomme").n("p")); S(pom.a(","),Pro("je"),VP(V("manger"),pom.clone().pro()))</td>
-                      <td></td>
-                      <td class="example-en">var pom = NP(D("a"),N("apple").g("n")); S(pom.a(","),Pro("I"),VP(V("eat"),pom.clone().pro()))</td>
-                      <td></td>
+                      <td>S(pom.a(","),Pro("je"),VP(V("manger"),pom.clone().n('p').pro()))</td>
+                      <td>*La pommes, il les mange.</td>
+                      <td>S(apple.a(","),Pro("I"),VP(V("eat"),apple.clone().n('p').pro()))</td>
+                      <td>*The apple, he eats them.</td>
                   </tr>                  
+                </tbody>
+                </table>
+            <h3>Exemple (avec add)</h3>   
+                <table cellspacing="0" cellpadding="0">
+                <thead>
+                  <tr>
+<!--                     <th><span>Cas</span></th>
+                    <th><span>Option</span></th> -->
+                    <th><span>Cas d'utilisation en français</span></th>
+                    <th><span>Réalisation</span></th>
+                    <th><span>Cas d'utilisation en anglais</span></th>
+                    <th><span>Réalisation</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td>S().add(pomme)</td>
+                      <td>La pomme.</td>
+                      <td>S().add(apple)</td>
+                      <td>The apple.</td>
+                  </tr>
+                  <tr>
+                      <td>CP(C('et'),NP(D('le'),N('fruit'))).add(pom).add(gars)</td>
+                      <td>le fruit, la pomme et les garçons</td>
+                      <td>apple.clone()</td>
+                      <td>the apple</td>
+                  </tr>
+                  <tr>
+                      <td>S(VP().add(aime).add(pom)).add(gars,0)</td>
+                      <td>Les garçons aiment la pomme.</td>
+                      <td>apple.clone().n('p')</td>
+                      <td>the apples</td>
+                  </tr>                
                 </tbody>
                 </table>
         </section>

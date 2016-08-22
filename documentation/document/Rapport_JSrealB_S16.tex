@@ -2,7 +2,23 @@
 % !TEX encoding = UTF-8 Unicode
 
 \documentclass[11pt]{article} % use larger type; default would be 10pt
+%\usepackage[francais]{babel}
 
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{letterpaper} % or letterpaper (US) or a5paper or....
+% \geometry{margins=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+
+\usepackage{graphicx} % support the \includegraphics command and options
+%\graphicspath{ {image/} }
+
+%%% PACKAGES
+\usepackage{booktabs} 
+\usepackage{array} 
+\usepackage{paralist} 
+\usepackage{verbatim} 
+\usepackage{subfig}
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 \usepackage{csquotes}
 \usepackage{alltt}
@@ -11,27 +27,6 @@
 \usepackage{multirow}
 \usepackage{float}
 \usepackage[nottoc]{tocbibind}
-%\usepackage[francais]{babel}
-
-%%% PAGE DIMENSIONS
-\usepackage{geometry} % to change the page dimensions
-\geometry{letterpaper} % or letterpaper (US) or a5paper or....
-% \geometry{margins=2in} % for example, change the margins to 2 inches all round
-% \geometry{landscape} % set up the page for landscape
-%   read geometry.pdf for detailed page layout information
-
-\usepackage{graphicx} % support the \includegraphics command and options
-\graphicspath{ {image/} }
-
-% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
-
-%%% PACKAGES
-\usepackage{booktabs} % for much better looking tables
-\usepackage{array} % for better arrays (eg matrices) in maths
-\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
-\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
-\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
-% These packages are all incorporated in the memoir class to one degree or another...
 
 %%% HEADERS & FOOTERS
 \usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
@@ -66,30 +61,6 @@
 \renewcommand*{\tableautorefname}{Tableau}
 \renewcommand*{\subsectionautorefname}{Sous-section}
 \renewcommand*{\subsubsectionautorefname}{Sous-section}
-
-
-\newcommand{\simpleExample}[2]{\begin{center}
-                 \code{#1} \newline \real{#2}
-                 \end{center}}
-
-
-\newenvironment{tabExample}[2]
-{\begin{tabular}{|p{8cm}|c|}
-\hline
-\begin{alltt}#1\end{alltt} & \real{#2} \\
-\hline}
-{\end{tabular}}
-
-\newcommand{\abc}[2]{
-\begin{}
-  
-  
-\end{env}
-}
-
-
-
-%%% END Article customizations
 
 %%% The "real" document content comes below...
 
@@ -193,13 +164,11 @@ classés en deux catégories.
 
 \paragraph{Éléments terminaux}
 
-Les éléments terminaux forment les différents mots indivduels de la phrases.
+Les éléments terminaux forment les mots de la phrase.
 Ils font habituellement partie des syntagmes. Ils peuvent être
 appelés sans syntagme, mais cela risque d'engendrer peu ou pas d'accords
 avec les autres constituants de la phrase.
-Chaque mot de la phrase est un élément terminal et ils sont classés
-en fonction de leur classe de mots, selon les lexiques inclus dans le
-programme. La \autoref{tab:terminauxTable} liste les éléments disponibles.
+Le \autoref{tab:terminauxTable} liste les différents types d'éléments terminaux.
 
 \begin{table}[ht]
 \centering
@@ -364,7 +333,7 @@ sur les éléments et leurs réalisations.
 \centering
 \caption{La propagation}
 \label{fig:propag}
-\includegraphics[scale=0.8]{Propagation}
+\includegraphics[scale=0.8]{propagation}
 \end{figure}
 
 L'encadré du haut représente l'appel \JSB{}. Les éléments du bas sont ceux
@@ -392,23 +361,23 @@ soit \emph{Date} et \emph{Number}. Ces deux modules permettent l'intégration
 des dates plus facilement à l'intérieur même des phrases, ainsi que
 pour les nombres. 
 
-%Aussi, \JSB{} permet l'intégration des balises HTML, donc son intégration
-%est aisée sur le web. Le \autoref{exHTML} démontre un exemple d'utilisation
-%de \JSB{} pour la cération d'une balise HTML. \\
-%\begin{table}[ht]
-%\centering
-%\caption{Utilisation d'un tag HTML}
-%\begin{tabular}{|p{3.8cm} | l |}
-%\hline
-%\texttt{N('joueur').tag('u')}  &  \textnormal{(Appel)} \\
-%\hline    
-%\texttt{<u>joueur</u>}        &   \textnormal{(Réalisation \JSB{})} \\
-%\hline
-%\real{\underline{joueur}} & (Sur une page HTML) \\
-%\hline
-%\end{tabular}
-%\label{exHTML}
-%\end{table}
+Aussi, \JSB{} permet l'intégration des balises HTML, donc son intégration
+est aisée sur le web. Le \autoref{exHTML} démontre un exemple d'utilisation
+de \JSB{} pour la cération d'une balise HTML. \\
+\begin{table}[ht]
+\centering
+\caption{Utilisation d'un tag HTML}
+\begin{tabular}{|p{3.8cm} | l |}
+\hline
+\texttt{N('joueur').tag('u')}  &  \textnormal{Appel} \\
+\hline    
+\texttt{<u>joueur</u>}        &   \textnormal{Réalisation \JSB{}} \\
+\hline
+\real{\underline{joueur}} & Sur une page HTML \\
+\hline
+\end{tabular}
+\label{exHTML}
+\end{table}
 
 \subsection{Exécution}
 \label{subsec:exec}
@@ -832,7 +801,7 @@ Aucune modification à \JSB{} n'a été apportée de ce côté-là.
 \paragraph{Français}
 Le positionnement de l'adjectif se fait majoritairement
 après le nom. Par contre, avec plusieurs adjectifs communs, le placement
-se fait avant.(Grévisse p.432-436)\cite{gramGrevisse} Une première approche à ce problème a été de créer
+se fait avant.\cite[pp. 432-436]{gramGrevisse} Une première approche à ce problème a été de créer
 une fonction qui compterait les syllabes des adjectifs pour en déterminer
 la position, car des adjectifs monosyllabiques se placent habituellement
 avant le nom, comme \emph{long, court, gros ou vrai.} Par contre,
@@ -872,34 +841,34 @@ il s'inclut dans la structure syntaxique \JSB{}.
 \textbf{Français} \\
 \hline
 \begin{alltt}
-1.S(NP(D("le"),
-       N("maison").n("p"),
-       SP(Pro("que"),
-          Pro("je").pe(1).n("p"),
-          VP(V("rencontrer").t("pc")))))
+S(NP(D("le"),
+     N("maison").n("p"),
+     SP(Pro("que"),
+        Pro("je").pe(1).n("p"),
+        VP(V("rencontrer").t("pc")))))
 \end{alltt} &
 \begin{alltt}
-2.S(NP(D("le"),
-       N("gens").n("p"),
-       SP(Pro("qui"),
-          VP(V("danser")))))
+S(NP(D("le"),
+     N("gens").n("p"),
+     SP(Pro("qui"),
+        VP(V("danser")))))
 \end{alltt} \\
 \real{Les maisons \textbf{que nous avons rencontrées}.} & \real{Les gens \textbf{qui dansent}.} \\
 \hline
 \begin{alltt}
-3.S(NP(D("le"),
-       N("fleur"),
-       SP(Pro("dont"),
-          Pro("je").pe(2),
-          VP(Pro("me").pe(1),
-             V("parler").t('pq')))))
+S(NP(D("le"),
+     N("fleur"),
+     SP(Pro("dont"),
+        Pro("je").pe(2),
+        VP(Pro("me").pe(1),
+           V("parler").t('pq')))))
 \end{alltt} &
 \begin{alltt}
-4.S(Pro("je").pe(1),
-    VP(V("vouloir"),
-       SP(Pro("que"),
-          Pro('je').pe(2),
-          VP(V('partir').t('s')))))
+S(Pro("je").pe(1),
+  VP(V("vouloir"),
+     SP(Pro("que"),
+        Pro('je').pe(2),
+        VP(V('partir').t('s')))))
 \end{alltt} \\
 \real{La fleur \textbf{dont tu m'avais parlé}.} & \real{Je veux \textbf{que tu partes}.} \\
 \end{tabular}
@@ -912,26 +881,26 @@ il s'inclut dans la structure syntaxique \JSB{}.
 \textbf{Anglais} \\
 \hline
 \begin{alltt}
-1.S(NP(D("the"),
-       N("house").n("p"),
-       SP(Adv("that"),
-          Pro("I").pe(1).n("p"),
-          VP(V("meet").t("ps")))))
+S(NP(D("the"),
+     N("house").n("p"),
+     SP(Adv("that"),
+        Pro("I").pe(1).n("p"),
+        VP(V("meet").t("ps")))))
 \end{alltt} &
 \begin{alltt}
-2.S(NP(D("the"),
-       N("people").n("p"),
-       SP(Pro("who"),
-          VP(V("dance").t("p")))))
+S(NP(D("the"),
+     N("people").n("p"),
+     SP(Pro("who"),
+        VP(V("dance").t("p")))))
 \end{alltt} \\
 \real{The house \textbf{that we met}.} & \real{The people \textbf{who dance}.} \\
 \hline
 \begin{alltt}
-3.S(NP(D("the"),
-       N("car"),
-       SP(D("which"),
-          Pro("I").pe(2),
-          VP(V("buy").t("ps")))))
+S(NP(D("the"),
+     N("car"),
+     SP(D("which"),
+        Pro("I").pe(2),
+        VP(V("buy").t("ps")))))
 \end{alltt} \\
 \real{The car \textbf{which you bought}.}
 \end{tabular}
@@ -1134,19 +1103,19 @@ d'une table de règle, démontrée dans le \autoref{interroOptions}
 \multicolumn{1}{|c}{Option interrogative} & \multicolumn{1}{|c}{Retrait du constituant} & \multicolumn{1}{|c|}{Préfixe}\\
 \hline 
 \hline 
-\texttt{true/yon} & Aucun & \real{"Est-ce que"}\\
+\texttt{true/yon} & Aucun & \real{Est-ce que}\\
 \hline 
-\texttt{wos} & Sujet & \real{"Qui est-ce qui"}\\
+\texttt{wos} & Sujet & \real{Qui est-ce qui}\\
 \hline 
-\texttt{wod} & Objet direct & \real{"Qu'est-ce que"}\\
+\texttt{wod} & Objet direct & \real{Qu'est-ce que}\\
 \hline 
-\texttt{wad} & Objet direct & \real{"Qui est-ce que"}\\
+\texttt{wad} & Objet direct & \real{Qui est-ce que}\\
 \hline 
-\texttt{woi} & Objet indirect & \real{"À qui est-ce que"}\\
+\texttt{woi} & Objet indirect & \real{À qui est-ce que}\\
 \hline 
-\texttt{whe} & Aucun & \real{"Où"}\\
+\texttt{whe} & Aucun & \real{Où}\\
 \hline 
-\texttt{how} & Aucun & \real{"Comment"}\\
+\texttt{how} & Aucun & \real{Comment}\\
 \hline 
 \end{tabular}
 \label{interroOptions}
@@ -1175,19 +1144,19 @@ le \autoref{interroOptionsEn}.
 \multicolumn{1}{|c}{Option interrogative} & \multicolumn{1}{|c}{Retrait du constituant} & \multicolumn{1}{|c|}{Préfixe}\\
 \hline 
 \hline 
-\texttt{true/yon} & Aucun & \real{"Do/will"}(accordé)\\
+\texttt{true/yon} & Aucun & \real{Do/will}(accordé)\\
 \hline 
-\texttt{wos} & Sujet & \real{"Who"}\\
+\texttt{wos} & Sujet & \real{Who}\\
 \hline 
-\texttt{wod} & Objet direct & \real{"Who"}+\real{"do/will"}(accordé)\\
+\texttt{wod} & Objet direct & \real{Who}+\real{do/will}(accordé)\\
 \hline 
-\texttt{wad} & Objet direct & \real{"What"}+\real{"do/will"}(accordé)\\
+\texttt{wad} & Objet direct & \real{What}+\real{do/will}(accordé)\\
 \hline 
-\texttt{woi} & Objet indirect & \real{"To who"}+\real{"do/will"}(accordé)\\
+\texttt{woi} & Objet indirect & \real{To who}+\real{do/will}(accordé)\\
 \hline 
-\texttt{whe} & Aucun & \real{"Where"}+\real{"do/will"}(accordé)\\
+\texttt{whe} & Aucun & \real{Where}+\real{do/will}(accordé)\\
 \hline 
-\texttt{how} & Aucun & \real{"How"}+\real{"do/will"}(accordé)\\
+\texttt{how} & Aucun & \real{How}+\real{do/will}(accordé)\\
 \hline 
 \end{tabular}
 \label{interroOptionsEn}
@@ -1389,7 +1358,7 @@ de verbe initialement activées.
 \label{figvOptEn}
 \end{figure}
 
-{\small{} Dans la \autoref{figvOptEn}, l'appel initial se trouve au sommet de l'arbre. Les 
+{Dans la \autoref{figvOptEn}, l'appel initial se trouve au sommet de l'arbre. Les 
 cases enfants représentent les appels récursifs qui sont appelés par le programme.
 Si on observe les options de verbe, elles sont les trois \emph{true} initialement. Lors de
 chaque appel récursif, on observe que les appels de gauche ont une option consommée(qui est devenue
@@ -1510,7 +1479,7 @@ de l'option \texttt{clone()} et l'\autoref{exCloneDeux} démontre l'utilité de 
 fonction pour réaliser correctement notre exemple précédent. \\
 \begin{table}[ht]
 \caption{}
-\begin{tabular}{|c|c|}
+\begin{tabular}{|l|l|}
 \hline 
 \emph{var} \texttt{pom} = \texttt{NP(D("le"),N("pomme"))} & \real{la pomme}\\
 \hline 
