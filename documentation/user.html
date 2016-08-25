@@ -88,7 +88,20 @@
         
         <section>
             <h2>Chargement des ressources</h2>
-            <p>Pour fonctionner, JSrealB a besoin de ressources qui sont le lexique, 
+            <p>
+                Pour fonctionner, JSrealB a besoin de ressources qui sont le lexique,
+                les tables de règles et les features. Il est possible de charger toutes 
+                ces données en une seule opération. Il suffit d'inclure les lignes suivantes 
+                pour charger les langues correspondantes:
+                <ul>
+                    <li>Anglais-français: <code>&ltscript src="http://www-etud.iro.umontreal.ca/%7Egauthif/web_page_gauthif/<b>JSrealB-EnFr-min.js</b>"&gt&lt/script&gt</code></li>
+                    <li>Français seulement: <code>&ltscript src="http://www-etud.iro.umontreal.ca/%7Egauthif/web_page_gauthif/<b>JSrealB-Fr-min.js</b>"&gt&lt/script&gt</code></li>
+                    <li>Anglais seulement: <code>&ltscript src="http://www-etud.iro.umontreal.ca/%7Egauthif/web_page_gauthif/<b>JSrealB-En-min.js</b>"&gt&lt/script&gt</code></li>
+                </ul>
+                Lors du chargement de la version <b>JSrealB-EnFr-min.js</b>, il faut appeler la fonction <i>loadFr()</i> ou <i>loadEn()</i> pour charger une des deux langues. (initialement et à tout moment) 
+            </p>
+
+            <!-- <p>Pour fonctionner, JSrealB a besoin de ressources qui sont le lexique, 
                 les tables de règles et une liste de constantes.
                 Ces ressources doivent être chargées avant toute réalisation
                 à l'aide de <i>JSrealLoader()</i> comme dans l'exemple qui suit
@@ -129,7 +142,7 @@
                 <li><code>dataDir</code> est le chemin relatif du répertoire de ressources (<code>../data</code> pour l'exemple précédent);</li>
                 <li><code>language</code> est <code>en</code> ou <code>fr</code>;</li>
                 <li><code>fn</code> est une fonction qui sera appelée lorsque les ressources auront été chargées.</li>
-            </ul></p>
+            </ul></p> -->
         </section>
         
         <section>

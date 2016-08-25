@@ -87,7 +87,7 @@ class JSRealFrService extends JSRealService
         $aRuleTable = array();
         $aRuleTable['conjugation'] = $aConjugation;
         $aRuleTable['compound'] = $this->getAuxRule();
-        $aRuleTable['elisionEtre'] = $this->getElisionEtre();
+        $aRuleTable['elision'] = $this->getElision();
 //        $aRuleTable['declension'] = $aDeclensionRule;
 //        $aRuleTable['pronoun'] = $aPronounRule;
 //        $aRuleTable['punctuation'] = $aPunctuationRule;
@@ -516,27 +516,38 @@ class JSRealFrService extends JSRealService
     	);
     }
     
-    private function  getElisionEtre()
+    private function  getElision()
     {
     	return array(
-    			'verbe' => array(
-    					'en',
-    					'est',
-    					'était',
+    			'elisionEtre' => array(
+    					'verbe' => array(
+    							'en',
+    							'est',
+    							'était',
+    					),
+    					'aux' => array(
+    							'a',
+    							'aura',
+    							'avait',
+    							'ait',
+    							'eût',
+    							'aurait',
+    					),
+    					'pp' => array(
+    							'été',
+    							'étés',
+    							'étées'
+    					),
     			),
-    			'aux' => array(
-    					'a',
-    					'aura',
-    					'avait',
-    					'ait',
-    					'eût',
-    					'aurait',
+    			'elidables' => array(
+    					'la','ma','ta','sa',
+    					'le','me','te','se','ce','de','ne','je',
+    					'si',
+    					'que','jusque','lorsque','puisque','quoique',
+    					'nouveau','beau',
     			),
-    			'pp' => array(
-    					'été',
-    					'étés',
-    					'étées'
-    			),
+    			'voyellesAccentuees' => 'àäéèêëïîöôùû',
+    			'voyelles' => 'aeiouàäéèêëïîöôùû'    			
     	);
     }
     private function getUnionConjunction()

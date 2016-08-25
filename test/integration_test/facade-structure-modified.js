@@ -34,13 +34,13 @@ JSrealLoader({
         QUnit.test( "Phrase structure modified EN", function( assert ) {
             assert.equal(S(NP(D("the"),N("chicken")),VP(V("bite").t("p"))), "The chicken bites.", "No pronoun");
             assert.equal(S(NP(D("the"),N("chicken")).pro(),VP(V("bite").t("p"))), "He bites.", "Subject as pronoun");
-            assert.equal(S(NP(D("the"),N("chicken")),VP(V("bite").t("p"),NP(D("a"),N("kid").n("p")))), "The chicken bites the kids.", "No pronoun + cd");
+            assert.equal(S(NP(D("the"),N("chicken")),VP(V("bite").t("p"),NP(D("a"),N("kid").n("p")))), "The chicken bites kids.", "No pronoun + cd");
             assert.equal(S(NP(D("the"),N("chicken")),VP(V("bite").t("p"),NP(D("a"),N("kid").n("p")).pro())), "The chicken bites them.", "Cd as pronoun");
             assert.equal(S(NP(D("the"),N("chicken")).pro(),VP(V("bite").t("p"),NP(D("a"),N("kid").n("p")).pro())), "He bites them.", "Cd and subject as pronoun");
             assert.equal(S(NP(D("the"),N("chicken")),VP(V("bite").t("p"),
-                NP(D("a"),N("kid").n("p")),PP(P("at"),NP(D("my").pe(1),N("house"))))), "The chicken bites the kids at my house.", "No pronoun + cd + ci");
+                NP(D("a"),N("kid").n("p")),PP(P("at"),NP(D("my").pe(1),N("house"))))), "The chicken bites kids at my house.", "No pronoun + cd + ci");
             assert.equal(S(NP(D("the"),N("chicken")),VP(V("bite").t("p"),
-                NP(D("a"),N("kid").n("p")),PP(P("at"),NP(D("my").pe(1),N("house")).pro()))), "The chicken bites the kids at him.", "Ci as pronoun");
+                NP(D("a"),N("kid").n("p")),PP(P("at"),NP(D("my").pe(1),N("house")).pro()))), "The chicken bites kids at him.", "Ci as pronoun");
             assert.equal(S(NP(D("the"),N("chicken")).pro(),VP(V("bite").t("p"),
                 NP(D("a"),N("kid").n("p")).pro(),PP(P("at"),NP(D("my").pe(1),N("house")).pro()))), "He bites them at him.", "Subject, cd and ci as pronoun");
             assert.equal(S(NP(D("the"),N("chicken")).pro(),VP(V("bite").t("p"),

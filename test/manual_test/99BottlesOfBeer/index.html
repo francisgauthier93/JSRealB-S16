@@ -10,7 +10,7 @@
             var b=N("bottle");
             var ob=SP(P("of"),N("beer"));
             if (n==0) return NP("no more",b.n("p"),ob);
-            return NP(NO(n),b,ob);
+            return NP(NO(n).nat(),b,ob);
         }
         function nbbW(n){ // n bottles of beer on the wall
             return NP(nbb(n),

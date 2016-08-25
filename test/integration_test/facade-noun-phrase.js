@@ -4,7 +4,7 @@ JSrealLoader({
         ruleUrl: URL.rule.fr,
         featureUrl: URL.feature
     }, function() {
-    QUnit.test( "Syntagme FR", function( assert ) {
+    QUnit.test( "Syntagme nominal FR", function( assert ) {
         // NP : Noun Phrase
         assert.equal( NP(D("un"), N("camion")), "un camion", "NP : Aucun accord nécessaire" );
         assert.equal( NP(D("un"), N("camion")).n("p"), "des camions", "NP : Accord en nombre" );
@@ -23,12 +23,12 @@ JSrealLoader({
             ruleUrl: URL.rule.en,
             featureUrl: URL.feature
         }, function() {
-        QUnit.test( "Phrase EN", function( assert ) {
+        QUnit.test( "Noun Phrase EN", function( assert ) {
             // NP : Noun Phrase
-            assert.equal( NP(D("a"), A("lonely"), N("tourist").n("p")), "the lonely tourists", "1. NP: plural" );
+            assert.equal( NP(D("a"), A("lonely"), N("tourist").n("p")), "lonely tourists", "1. NP: plural" );
             assert.equal( NP(D("a"), N("car")), "a car", "2. NP" );
-            assert.equal( NP(D("a"), N("car")).n("p"), "the cars", "3. NP : Accord en nombre" );
-            assert.equal( NP(D("a"), A("old"), N("man")).n("p"), "the old men", "4. NP: adjective + plural" );
+            assert.equal( NP(D("a"), N("car")).n("p"), "cars", "3. NP : Accord en nombre" );
+            assert.equal( NP(D("a"), A("old"), N("man")).n("p"), "old men", "4. NP: adjective + plural" );
             assert.equal( NP(D("a"), A("young"), N("man")), "a young man", "5. NP" );
             assert.equal( NP(D("a"), N("bone")), "a bone", "6. NP" );
             assert.equal( NP(D("a"), A("old"), N("man")), "an old man", "7. NP: adjective" );

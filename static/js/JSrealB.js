@@ -1463,16 +1463,6 @@ var phraseFormatting = function(str, upperCaseFirstLetter, addFullStop, lastPunc
 };
 
 //// "module cheap" d'élision en français
-/// appelé dans phraseFormatting
-var voyellesAccentuées="àäéèêëïîöôùû";
-var voyelles="aeiou"+voyellesAccentuées;
-
-
-
-var elidables = ["la","ma","ta","sa",
-                 "le","me","te","se","ce","de","ne","je",
-                 "si",
-                 "que","jusque","lorsque","puisque","quoique"];
 
 // règles de http://www.aidenet.eu/grammaire01b.htm
 // Tokn au lieu de Token utilisé dans IDE...
@@ -1500,9 +1490,9 @@ function Tokn(mot){ // normalement on aurait besoin du lemme et de la catégorie
     catch(e){
         this.end="";
     }
-    this.elidable=elidables.indexOf(this.mot)>=0;
+    this.elidable=JSrealB.Config.get("rule.elision.elidables").indexOf(this.mot)>=0;
     this.voyelleOuHmuet=false;
-    if(voyelles.indexOf(c)>=0){
+    if(JSrealB.Config.get("rule.elision.voyelles").indexOf(c)>=0){
         this.voyelleOuHmuet=true;
         this.hAn=true;
         return;
@@ -1605,11 +1595,15 @@ function eliderMots(prevTokens,tokens){
         if (["ma","ta","sa"].indexOf(lastToken.mot)>=0){ // ma=>mon,ta=>ton,sa=>son
             lastToken.mot=lastToken.mot.charAt(0)+"on";
             prevTokens.push(tokens.shift());
-        } else if (lastToken.mot=="ce"){// ce => cet (On vérifie que le mot suivant n'est pas un verbe...)
+        } else if(["nouveau","beau"].indexOf(lastToken.mot)>=0){ // nouveau -> nouvel, beau -> bel
+            lastToken.mot=lastToken.mot.substring(0,lastToken.mot.length-2)+"l";
+            prevTokens.push(tokens.shift());
+        } 
+        else if (lastToken.mot=="ce"){// ce => cet (On vérifie que le mot suivant n'est pas un verbe...)
             
-            if(contains(JSrealB.Config.get("rule.elisionEtre.verbe"),tokens[0].mot) ||
-                contains(JSrealB.Config.get("rule.elisionEtre.aux"),tokens[0].mot) &&
-                        contains(JSrealB.Config.get("rule.elisionEtre.pp"),tokens[1].mot)) {
+            if(contains(JSrealB.Config.get("rule.elision.elisionEtre.verbe"),tokens[0].mot) ||
+                contains(JSrealB.Config.get("rule.elision.elisionEtre.aux"),tokens[0].mot) &&
+                        contains(JSrealB.Config.get("rule.elision.elisionEtre.pp"),tokens[1].mot)) {
                 tokens[0].mot=removeLastLetter(lastToken.mot)+"'"+tokens[0].mot;  //"ce" => "c'"
                 tokens[0].capitalized=lastToken.capitalized;
                 prevTokens.splice(lastTokenId, 1);
@@ -2857,8 +2851,8 @@ JSrealB.Module.Conjugation = (function(){
         verb += verbOptions.neg 
         verb += (verbOptions.prog == true)?" "+JSrealB.Config.get("rule.verb_option.prog.keyword"):"";
         if(verbOptions.pas == true){
-            verb +=" "+conjugate("être",(verbOptions.prog == true)?JSrealB.Config.get("feature.tense.base"):JSrealB.Config.get("feature.tense.participle.past"),person);
-            aux = "être";
+            verb +=" "+conjugate(JSrealB.Config.get("rule.compound.aux.êt"),(verbOptions.prog == true)?JSrealB.Config.get("feature.tense.base"):JSrealB.Config.get("feature.tense.participle.past"),person);
+            aux = JSrealB.Config.get("rule.compound.aux.êt");
         }
         //participe
         if(verbOptions.prog == true && !verbOptions.pas == true){ verb += " "+applySimpleEnding(unit,JSrealB.Config.get("feature.tense.base"),person, conjugationTable)}
@@ -2872,7 +2866,7 @@ JSrealB.Module.Conjugation = (function(){
         cdProp = cdProp || {};
         var pp = conjugate(unit,tense,person);
         var declTable = JSrealB.Config.get("rule.declension")["n28"];
-        if(aux == "être"){
+        if(aux == JSrealB.Config.get("rule.compound.aux.êt")){
             var featureAux = {"g":gender,"n":(person>3)?"p":"s"};
         }else{
             if(cdProp == undefined) return pp;

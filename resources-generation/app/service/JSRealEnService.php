@@ -98,6 +98,7 @@ class JSRealEnService extends JSRealService
         $aRuleTable['usePronoun'] = $this->getPronounRule();
         $aRuleTable['date'] = $this->getDateRule();
         $aRuleTable['number'] = $this->getNumberRule();
+        $aRuleTable['elision'] = $this->getElision();
         $aRuleTable['union'] = $this->getUnionConjunction();
         $aRuleTable['compound'] = $this->getAuxRule();
 
@@ -344,5 +345,15 @@ class JSRealEnService extends JSRealService
     private function getUnionConjunction()
     {
     	return "or";
+    }
+    private function  getElision()
+    {
+    	return array(
+    			'elidables' => array(
+    					'a',
+    			),
+    			'voyellesAccentuees' => 'àäéèêëïîöôùû',
+    			'voyelles' => 'aeiouàäéèêëïîöôùû'    			 
+    	);
     }
 }

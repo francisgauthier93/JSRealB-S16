@@ -325,7 +325,7 @@ return array(
             'relative_time' => 'rtime',
             'determiner' => 'det',
         	'natural_language' => 'nl'
-        )
+        ),
 //        'punctuation' => array(
 //            'alias' => 'pc',
 //            'full_stop' => 'st',

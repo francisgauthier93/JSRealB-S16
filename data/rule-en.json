@@ -2782,7 +2782,7 @@
             },{
                 "val": "an","n": "s"
             },{
-                "val": "the","n": "x"
+                "val": "","n": "x"
             }]
         },
         "d2": {
@@ -3041,6 +3041,11 @@
             "decimal": "."
         },
         "number": ["zero"]
+    },
+    "elision": {
+        "elidables": ["a"],
+        "voyellesAccentuees": "àäéèêëïîöôùû",
+        "voyelles": "aeiouàäéèêëïîöôùû"
     },
     "union": "or",
     "compound": {

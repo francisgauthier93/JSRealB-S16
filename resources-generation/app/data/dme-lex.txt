@@ -1780,7 +1780,7 @@
 (d1 "a"
 	("a" dart ind unc sing)
 	("an" dart ind unc sing)
-	("the" dart def c+u sgpl)
+	("" dart def c+u sgpl)  ; était ("the" dart def c+u sgpl) originalement
 )
 (d2 "my"
 	(my dpos def c+u p1 sgpl mafe sng)
