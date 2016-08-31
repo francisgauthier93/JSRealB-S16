@@ -1265,6 +1265,10 @@
 
         <section>
             <h2>Type de phrase</h2>
+            <div>5 types de phrases sont disponibles et peuvent être appelés simultanément.</br>
+            4 de ces types de phrases (exc,neg,pas,prog) requierent un Booléen - true/false. 
+            La phrase interrogative requiert une option donnée en String. Elles sont énumérées plus bas.
+            </div>
             <article>
                 <table cellspacing="0" cellpadding="0">
                 <thead>
@@ -1289,22 +1293,6 @@
                     <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer"))).typ({exc:true})</td>
                     <td></td>
                     <td class="example-en">S(Pro("I"),VP(V("love"),Pro("me"))).typ({exc:true})</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td class="lalign">.typ({int:true})</td>
-                    <td class="description">Phrase interrogative</td>
-                    <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer"))).typ({int:true})</td>
-                    <td></td>
-                    <td class="example-en">S(Pro("I"),VP(V("love"),Pro("me"))).typ({int:true})</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td class="lalign">.typ({int:true, exc:true})</td>
-                    <td class="description">Phrase interrogative et exclamative</td>
-                    <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer"))).typ({int:true, exc:true})</td>
-                    <td></td>
-                    <td class="example-en"></td>
                     <td></td>
                   </tr>
                   <tr>
@@ -1362,6 +1350,67 @@
                         VP(V("love"),NP(D("the"),N("mouse")))
                         ).typ({neg:true,pas:true,prog:true})</td>
                     <td></td>
+                  </tr>
+                  <tr>
+                    <td class="lalign">.typ({int:'yon'})</br>
+                    .typ({int:<i>option</i>})</td>
+                    <td class="description">Phrase interrogative</td>
+                    <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer"))).typ({int:'yon'})</td>
+                    <td></td>
+                    <td class="example-en">S(Pro("I"),VP(V("love"),Pro("me"))).typ({int:'yon'})</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="lalign">.typ({int:true, exc:true})</td>
+                    <td class="description">Phrase interrogative et exclamative</td>
+                    <td class="example-fr">S(Pro("je"),VP(Pro("me"),V("aimer"))).typ({int:true, exc:true})</td>
+                    <td></td>
+                    <td class="example-en">S(Pro("I"),VP(V("love"),Pro("me"))).typ({int:true, exc:true})</td>
+                    <td></td>
+                  </tr>
+                  </tbody>
+                </table>
+                <table cellspacing="0" cellpadding="0">
+                <thead>
+                  <tr>
+                    <th><span>Option pour les phrases interrogatives</span></th>
+                    <th><span>Description</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="groupe">
+                    <td>Option </td>
+                    <td>Appel: <code>S(...).typ({int:<i>option</i>})</code></td>                      
+                  </tr>
+                  <tr>
+                      <!-- <td class="description">Les différentes options pour les phrases interrogatives sont:</td> -->
+                      <td>'yon'</td>
+                      <td class="description">Question oui ou non.</td>
+                  </tr>
+                  <tr>
+                      <!-- <td class="description" rowspan="6">Appel: S(...).typ({int:option})</td> -->
+                      <td>'wos'</td>
+                      <td class="description">Qui fait l'action (sujet)</td>
+                  </tr>
+                  <tr>
+                      <td>'wod'</td>
+                      <td class="description">Qui subit l'action (objet direct)</td>
+                  </tr>
+                  <tr>
+                      <td>'wad'</td>
+                      <td class="description">Quoi subit l'action (objet direct)</td>
+                  </tr>
+                  <tr>
+                      <td>'woi'</td>
+                      <td class="description">À qui l'action est faite (objet indirect)</td>
+                  </tr>
+                  <tr>
+                      <td>'whe'</td>
+                      <td class="description">Où se situe l'action</td>
+                  </tr>
+                  <tr>
+                      <td>'how'</td>
+                      <td class="description">Comment se déroule l'action</td>
                   </tr>
                 </tbody>
                 </table>

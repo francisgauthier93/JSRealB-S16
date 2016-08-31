@@ -7,7 +7,7 @@ JSrealLoader({
     {
         QUnit.test( "Elision FR", function( assert ) {
             assert.equal(S(NP(D("un"),A("beau"),N("oiseau"))),"Un bel oiseau.", "beau -> bel");
-            assert.equal(S(NP(D("un"),A("nouveau"),N("avion"))),"Un nouvel avion", "nouveau -> nouvel");
+            assert.equal(S(NP(D("un"),A("nouveau"),N("avion"))),"Un nouvel avion.", "nouveau -> nouvel");
         	assert.equal(S(NP(D("le"),N("élève"),A("aimable")),VP(V("écrire"),PP(P("sur"),NP(D("le"),N("ardoise"))))), "L'élève aimable écrit sur l'ardoise.", "L'élève aimable écrit sur l'ardoise.");
             assert.equal(S(Pro("je").pe(1),VP(Pro("me").pe(2),V("aimer"),PP(P("pour"),NP(D("le"),N("éternité"))))), "Je t'aime pour l'éternité.", "Je t'aime pour l'éternité.");
             assert.equal(S(Pro("ce"),VP(V("être"),NP(D("un"),N("examen")),
