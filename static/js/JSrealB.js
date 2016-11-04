@@ -1118,7 +1118,7 @@ JSrealE.prototype.realizeTerminalElement = function() {
                     || this.getTreeRoot(true).getCtx("firstAux")!=null)){
                     conjugation = this.putAuxInFront(conjugation);
                 }
-            }catch(e){console.warn("No sentence:"+e)}
+            }catch(e){console.warn("Error while moving aux:"+e)}
             return conjugation;
         }
         else if(this.transformation === JSrealE.ruleType.regular)
@@ -1155,6 +1155,10 @@ JSrealE.prototype.putAuxInFront = function(conjug) {
     var length2=mots.length;
     if(length2>=2){
         var tokens=mots.map(function(mot){return new Tokn(mot)});
+    }
+    else{
+	   var tokens = [];
+	   tokens[0]=new Tokn(mots[0]);
     }
     var roote = this.getTreeRoot();
     
