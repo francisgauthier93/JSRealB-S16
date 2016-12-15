@@ -350,10 +350,10 @@ class JSRealFrService extends JSRealService
                     '0' => 'aujourd\'hui',
                     '1' => 'demain',
                     '2' => 'après-demain',
-                    '3' => '[l] prochain',
-                    '4' => '[l] prochain',
-                    '5' => '[l] prochain',
-                    '6' => '[l] prochain',
+                    '3' => '[l]',
+                    '4' => '[l]',
+                    '5' => '[l]',
+                    '6' => '[l]',
                     '+' => 'dans [x] jours'
                 )
             ),

@@ -206,11 +206,11 @@ class JSRealEnService extends JSRealService
                     '-1' => 'yesterday',
                     '0' => 'today',
                     '1' => 'tomorrow',
-                    '2' => 'next [l]',
-                    '3' => 'next [l]',
-                    '4' => 'next [l]',
-                    '5' => 'next [l]',
-                    '6' => 'next [l]',
+                    '2' => '[l]',
+                    '3' => '[l]',
+                    '4' => '[l]',
+                    '5' => '[l]',
+                    '6' => '[l]',
                     '+' => 'in [x] days'
                 )
             ),
