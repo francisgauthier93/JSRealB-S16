@@ -2371,6 +2371,12 @@ var PP_EN = function(childrenElt) {
 };
 extend(PP, PP_EN);
 
+/// Blank Node
+var BN = = function(childrenElt) {
+    BN.call(this, childrenElt);
+};
+extend(JSrealE, BN);
+
 //// Date
 var DT = function(date) {
     if(!(this instanceof DT))
@@ -4365,7 +4371,8 @@ var JSrealLoader = function(resource, done, fail) {
             if(fail) fail(error);
         }
     );
-};////////////////////////////////////////////////////////////////////////////////////
+};
+////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 //                                                                                //
 // Lexicon En                                                                     //
@@ -56948,7 +56955,7 @@ var ruleEn = {
             },{
                 "val": "an","n": "s"
             },{
-                "val": "the","n": "x"
+                "val": "","n": "x"
             }]
         },
         "d2": {
@@ -57207,6 +57214,11 @@ var ruleEn = {
             "decimal": "."
         },
         "number": ["zero"]
+    },
+    "elision": {
+        "elidables": ["a"],
+        "voyellesAccentuees": "àäéèêëïîöôùû",
+        "voyelles": "aeiouàäéèêëïîöôùû"
     },
     "union": "or",
     "compound": {
@@ -59611,10 +59623,15 @@ var ruleFr = {
             "progAuxTense": "f"
         }
     },
-    "elisionEtre": {
-        "verbe": ["en","est","était"],
-        "aux": ["a","aura","avait","ait","eût","aurait"],
-        "pp": ["été","étés","étées"]
+    "elision": {
+        "elisionEtre": {
+            "verbe": ["en","est","était"],
+            "aux": ["a","aura","avait","ait","eût","aurait"],
+            "pp": ["été","étés","étées"]
+        },
+        "elidables": ["la","ma","ta","sa","le","me","te","se","ce","de","ne","je","si","que","jusque","lorsque","puisque","quoique","nouveau","beau"],
+        "voyellesAccentuees": "àäéèêëïîöôùû",
+        "voyelles": "aeiouàäéèêëïîöôùû"
     },
     "declension": {
         "nI": {
@@ -61522,7 +61539,6 @@ var ruleFr = {
     },
     "union": "ou"
 }
-
 
 
 ////////////////////////////////////////////////////////////////////////////////////

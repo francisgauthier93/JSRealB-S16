@@ -2371,6 +2371,12 @@ var PP_EN = function(childrenElt) {
 };
 extend(PP, PP_EN);
 
+/// Blank Node
+var BN = = function(childrenElt) {
+    BN.call(this, childrenElt);
+};
+extend(JSrealE, BN);
+
 //// Date
 var DT = function(date) {
     if(!(this instanceof DT))
@@ -4365,7 +4371,8 @@ var JSrealLoader = function(resource, done, fail) {
             if(fail) fail(error);
         }
     );
-};////////////////////////////////////////////////////////////////////////////////////
+};
+////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 //                                                                                //
 // Lexicon Fr                                                                     //
